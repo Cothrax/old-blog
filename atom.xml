@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-12T13:41:18.274Z</updated>
+  <updated>2016-08-12T13:49:54.979Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/12/Hexo%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <id>https://cothrax.github.io/2016/08/12/Hexo初体验/</id>
     <published>2016-08-12T07:34:05.000Z</published>
-    <updated>2016-08-12T13:41:18.274Z</updated>
+    <updated>2016-08-12T13:49:54.979Z</updated>
     
     <content type="html"><![CDATA[<p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种<strong>BUG</strong>。</p>
 <h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
@@ -64,13 +64,13 @@
 <h4 id="一直显示“正在加载搜索结果，请稍等”"><a href="#一直显示“正在加载搜索结果，请稍等”" class="headerlink" title="一直显示“正在加载搜索结果，请稍等”"></a>一直显示“正在加载搜索结果，请稍等”</h4><p>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是<strong>http和https混用</strong>，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h4 id="搜索显示无结果"><a href="#搜索显示无结果" class="headerlink" title="搜索显示无结果"></a>搜索显示无结果</h4><p>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
-<blockquote>
-<p>end.</p>
-</blockquote>
 <h3 id="RSS功能"><a href="#RSS功能" class="headerlink" title="RSS功能"></a>RSS功能</h3><p>执行命令<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后在根下的配置文件里写入：<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#RSS订阅</span></div><div class="line"><span class="attr">plugin:</span></div><div class="line"><span class="bullet">-</span> hexo-generator-feed</div><div class="line"><span class="comment">#Feed Atom</span></div><div class="line"><span class="attr">feed:</span></div><div class="line"><span class="attr">type:</span> atom</div><div class="line"><span class="attr">path:</span> atom.xml</div><div class="line"><span class="attr">limit:</span> <span class="number">20</span></div></pre></td></tr></table></figure></p>
 <h4 id="RSS报UTF-8错误"><a href="#RSS报UTF-8错误" class="headerlink" title="RSS报UTF-8错误"></a>RSS报UTF-8错误</h4><p>Windows下会用BOM标记utf-8文件，hexo不识别这种标记，可以在目录下查找atom.xml文件，然后用utf-8的文本编辑器（如notepad++,gedit）打开，重新保存一下就好了</p>
 <h3 id="Chrome下分享图标显示不全"><a href="#Chrome下分享图标显示不全" class="headerlink" title="Chrome下分享图标显示不全"></a>Chrome下分享图标显示不全</h3><p>这是因为用了广告屏蔽的插件，如AdBlock可以设置屏蔽社交按钮。<br>然后有趣的事情发生了，ABP把页面下方的GitHub和Twitter的链接干掉了，它认不得知乎，于是一排图标只剩下知乎和Email了。</p>
+<blockquote>
+<p>end.</p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
