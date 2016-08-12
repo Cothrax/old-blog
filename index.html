@@ -68,347 +68,90 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/12/Hexo初体验/" title="Hexo初体验" itemprop="url">Hexo初体验</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-12T07:34:05.000Z" itemprop="datePublished"> Published 2016-08-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种<strong>BUG</strong>。</p>
-<h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="hexo.io">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
-<ol>
-<li><a href="http://blog.csdn.net/poem_of_sunshine/article/details/29369785/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat</a></li>
-<li><a href="https://ijiaober.github.io/categories/hexo/" target="_blank" rel="external">Hexo使用攻略 by ijiaober</a></li>
-</ol>
-<h2 id="安装和部署"><a href="#安装和部署" class="headerlink" title="安装和部署"></a>安装和部署</h2><h3 id="npm卡住不动"><a href="#npm卡住不动" class="headerlink" title="npm卡住不动"></a>npm卡住不动</h3><p>hexo是基于node.js，于是运行npm安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure></p>
-<p>由于gfw的存在，就动不了了。还好可以换<strong>国内的镜像</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nano ~/.npmrc</div><div class="line">registry =https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<p>或者用<a href="https://github.com/cnpm/cnpm" target="_blank" rel="external">cnpm</a>替换npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<h3 id="Hexo-command-not-found"><a href="#Hexo-command-not-found" class="headerlink" title="Hexo command not found"></a>Hexo command not found</h3><p>修改Windows的<strong>环境变量</strong>，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
-<h3 id="ERROR-Deployer-not-found-github"><a href="#ERROR-Deployer-not-found-github" class="headerlink" title="ERROR Deployer not found: github"></a>ERROR Deployer not found: github</h3><p>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>然后把<code>type</code>从<code>github</code>改成<code>git</code></p>
-<h3 id="deploy时repository各种报错"><a href="#deploy时repository各种报错" class="headerlink" title="deploy时repository各种报错"></a>deploy时repository各种报错</h3><p>肯定是yml哪里写错了，这玩意连冒号后面的空格都不能少，如我的username是Cothrax，于是deploy这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:cothrax/cothrax.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<h3 id="nothing-to-commit-working-tree-clean后卡住"><a href="#nothing-to-commit-working-tree-clean后卡住" class="headerlink" title="nothing to commit, working tree clean后卡住"></a>nothing to commit, working tree clean后卡住</h3><p>耐心等吧，实在不行使用科学上网工具，也可以用这个很棒的<strong>hosts</strong>优化网络：<a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">https://serve.netsh.org/pub/ipv4-hosts/</a></p>
-<h3 id="每次部署都要输入passphrase"><a href="#每次部署都要输入passphrase" class="headerlink" title="每次部署都要输入passphrase"></a>每次部署都要输入passphrase</h3><p>谁叫你生成ssh时设了密钥呢，passphrase是防止别人向你的项目中提交文件，重新生成一下ssh，passphrase那两个输入直接敲回车就可以了。</p>
-<h2 id="配置和体验"><a href="#配置和体验" class="headerlink" title="配置和体验"></a>配置和体验</h2><p>我用了<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>的主题，下面一些feature基于jacman，其他主题的设置应该大同小异，在此感谢这个<a href="http://wuchong.me/" target="_blank" rel="external">主题的作者</a></p>
-<h3 id="Markdown相关"><a href="#Markdown相关" class="headerlink" title="Markdown相关"></a>Markdown相关</h3><p>Hexo 3提供了<strong>标签插件</strong>，可以方便地插入图片和文件。</p>
-<ol>
-<li>官方文档<ol>
-<li>标签插件：<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/tag-plugins.html</a></li>
-<li>资源文件夹：<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/asset-folders.html</a></li>
-</ol>
-</li>
-<li>我的一些例子和测试：<a href="/2016/08/12/Test-Hexo/" title="Test Hexo">Test Hexo</a></li>
-</ol>
-<p>想实现代码复制到剪切板的功能，但js什么的早就忘干净了，于是替代方案是在<strong>文末给出asset链接指向源码文件</strong></p>
-<h3 id="多说评论系统"><a href="#多说评论系统" class="headerlink" title="多说评论系统"></a>多说评论系统</h3><ol>
-<li>登录多说，然后获取站点<strong>通用代码</strong>：<a href="http://duoshuo.com/create-site" target="_blank" rel="external">http://duoshuo.com/create-site</a></li>
-<li>找到<code>\themes\jacman\layout\_partial\post\comment.ejs</code></li>
-<li>把得到的通用代码复制到<code>&lt;section id=&quot;comments&quot; class=&quot;comment&quot;&gt;</code>和<code>&lt;/section&gt;</code>之间，原来的东西覆盖掉。</li>
-<li>然后主题的<code>_config.yml</code>中把<code>duoshuo_shortname</code>填成你的多说用户名就好了</li>
-<li>还有，如果想在一个页面（如404）<strong>禁用评论</strong>，可以在front-master中加<code>comments: false</code></li>
-</ol>
-<h3 id="站内搜索的实现"><a href="#站内搜索的实现" class="headerlink" title="站内搜索的实现"></a>站内搜索的实现</h3><p>百度的站内搜索要验证，结果不是是不支持https，就是是连不上github服务器，还会报301错误，无奈还是用google好啦。</p>
-<p>goole的<strong>自定义搜索引擎</strong>：<a href="https://cse.google.com/cse/all" target="_blank" rel="external">https://cse.google.com/cse/all</a><br>用jacman主题，只要更改jacman下的<code>_config.yml</code>，把cx码和enable设好，还有的注释上说得很清楚：</p>
-<blockquote>
-<p>To enable the custom search You must create a “search” folder in ‘/source’ and a “index.md” file<br>set the ‘front-matter’ as<br>layout: search<br>title: search</p>
-</blockquote>
-<h4 id="一直显示“正在加载搜索结果，请稍等”"><a href="#一直显示“正在加载搜索结果，请稍等”" class="headerlink" title="一直显示“正在加载搜索结果，请稍等”"></a>一直显示“正在加载搜索结果，请稍等”</h4><p>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是<strong>http和https混用</strong>，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="搜索显示无结果"><a href="#搜索显示无结果" class="headerlink" title="搜索显示无结果"></a>搜索显示无结果</h4><p>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
-<blockquote>
-<p>end.</p>
-</blockquote>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Tinkering-Note/">Tinkering Note</a>
-</div>
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/GitHub/">GitHub</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/12/Hexo初体验/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/Hexo初体验/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/12/Test-Hexo/" title="Test Hexo" itemprop="url">Test Hexo</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-12T02:44:49.000Z" itemprop="datePublished"> Published 2016-08-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>localhost下测试，asset、404都没有用，deploy后就能用啦。</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h2 id="一张图片"><a href="#一张图片" class="headerlink" title="一张图片"></a>一张图片</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> example.gif TestImage %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<img src="/2016/08/12/Test-Hexo/example.gif" alt="TestImage" title="TestImage">
-<h2 id="一份源码"><a href="#一份源码" class="headerlink" title="一份源码"></a>一份源码</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-/2016/08/12/Test-Hexo/p1523.pas
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">Link</span>](<span class="link">&#123;% asset_path p1523.pas %&#125;</span>)</div></pre></td></tr></table></figure>
-<p><a href="!--￼15--">Link</a></p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 有用吗 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/p1523.pas" title="有用吗">有用吗</a>
-<h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
-<figure class="highlight yml"><figcaption><span>404.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="number">404</span> Page not Found</div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="attr">toc:</span> <span class="literal">false</span></div><div class="line"><span class="attr">permalink:</span> /<span class="number">404</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
-<p><a href="https://cothrax.github.io/这就404了">https://cothrax.github.io/这就404了</a><br>还有根下<code>_config.yml</code>中<code>relative_link: false</code>，不然在子目录下404就找不到css了，然后layout就没有了</p>
-<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist 0781305b79f54aaeac06b49444529d1c p1144.pas %&#125;</div></pre></td></tr></table></figure>
-<p>好棒<br><script src="//gist.github.com/0781305b79f54aaeac06b49444529d1c.js?file=p1144.pas"></script></p>
-<h2 id="其他的"><a href="#其他的" class="headerlink" title="其他的"></a>其他的</h2><h3 id="Raw标签"><a href="#Raw标签" class="headerlink" title="Raw标签"></a>Raw标签</h3><p>我也不知道这是什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure>
-
-content
-
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Test-Hexo 标题 %&#125;</div><div class="line">&#123;% post_link Hello-the-Wicked-World %&#125;</div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/" title="标题">标题</a>
-<a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World">Hello the Wicked World</a>
-<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><p>Youtube和Vimeo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube video_id %&#125;</div><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure></p>
-<p>我的SSX号被封了，于是就不试了。</p>
-<p>Done.</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Tinkering-Note/">Tinkering Note</a>
-</div>
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/Markdown/">Markdown</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/12/Test-Hexo/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/Test-Hexo/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/" title="【Vijos】P1523 贪吃的九头龙" itemprop="url">【Vijos】P1523 贪吃的九头龙</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-12T00:55:10.000Z" itemprop="datePublished"> Published 2016-08-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。</p>
-<p>有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可是必须照顾到每个头，因此它需要把N个果子分成M组，每组至少有一个果子，让每个头吃一组。</p>
-<p>这M个脑袋中有一个最大，称为“大头”，是众头之首，它要吃掉恰好K个果子，而且K个果子中理所当然地应该包括唯一的一个最大的果子。果子由N-1根树枝连接起来，由于果树是一个整体，因此可以从任意一个果子出发沿着树枝“走到”任何一个其他的果子。</p>
-<p>对于每段树枝，如果它所连接的两个果子需要由不同的头来吃掉，那么两个头会共同把树枝弄断而把果子分开；如果这两个果子是由同一个头来吃掉，那么这个头会懒得把它弄断而直接把果子连同树枝一起吃掉。当然，吃树枝并不是很舒服的，因此每段树枝都有一个吃下去的“难受值”，而九头龙的难受值就是所有头吃掉的树枝的“难受值”之和。</p>
-<p>九头龙希望它的“难受值”尽量小，你能帮它算算吗？</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第1行包含三个整数N(1&lt;=N&lt;=300)，M(2&lt;=M&lt;=N)，K(1&lt;=K&lt;=N)。N个果子依次编号1,2,…,N，且最大的果子的编号总是1。第2行到第N行描述了果树的形态，每行包含三个整数a(1&lt;=a&lt;=N)，b(1&lt;=b&lt;=N)，c(0&lt;=c&lt;=105)，表示存在一段难受值为c的树枝连接果子a和果子b。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>8 2 4<br> 1 2 20<br> 1 3 4<br> 1 4 13<br> 2 5 10<br> 2 6 12<br> 3 7 15<br> 3 8 5</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>4</p>
-</blockquote>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>树形动态规划</p>
-<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>安徽省芜湖市第二十七中学测试题<br>NOI 2002 贪吃的九头龙(dragon)<br>Description:Official<br>Data:Official<br>Program:Converted by JackDavid127<br>​</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>发现树形DP根本不会==<br>首先状态无比复杂，考虑一个神一样的简化：<strong>树一定可以被k分染色。</strong><br>因为一张无向图能被二分染色的充要条件是至少两个节点且不存在偶数边的环，显然树时满足要求的，能被二分染色的图自然可以被k分染色。<br><br>于是题目变成了：</p>
-<ol>
-<li>用两种颜色染一棵树</li>
-<li>根节点颜色是1</li>
-<li>颜色是1的节点恰好是k个</li>
-</ol>
-<p>也就是说把所有小头看成一个头，如果m=2的话小头的难受度要算进答案，如果m&gt;2，我们可以通过<strong>分配小头来保证不存在难受度</strong>，此时对答案有贡献的只有大头的难受度。</p>
-<p>然后某神犇说方程好简单。。。OTZ<br><strong>f[i,j,k]表示以i为根的子树，j个被大头吃了，i的父节点是k吃的（0表示大头，1表示小头）</strong><br>方程见代码。</p>
-<p>注意这里的树是<strong>多叉转二叉</strong>的树，转的时候边的难受度可以放到子节点里，n-1条边与n个点配对，根节点1忽略不计。<br>然后答案是<strong>dp(tr[i].ch,k-1,1)</strong>，当然直接搜根然后特判一下也可以。</p>
-<p>还有注意初始化为负数方便记忆化，如果无法完成要赋成inf，codevs经常因为一个warning就大惊小怪地报CE，因为我用filldword赋-1，但其实不会出问题因为我给的是longint数组，今天知道了只要fillchar(a,sizeof(a),255)就完事了。<br>开始手残k=0和1写反了。。。居然还有10分真是不可思议</p>
-<figure class="highlight delphi"><figcaption><span>p1523.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math; </div><div class="line"><span class="keyword">const</span> inf=<span class="number">10000000</span>; </div><div class="line"><span class="keyword">type</span>    </div><div class="line">    edge=<span class="keyword">record</span> t,w,next:longint <span class="keyword">end</span>; </div><div class="line">    node=<span class="keyword">record</span> br,ch,w:longint <span class="keyword">end</span>;    </div><div class="line"><span class="keyword">var</span>     </div><div class="line">    n,m,k,i,f0,t0,w0:longint;    </div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">610</span>] <span class="keyword">of</span> edge; </div><div class="line">    tr:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> node;    </div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> longint;    </div><div class="line">    head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> longint;    </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f0,t0,w0:longint)</span>;</span>    </div><div class="line"><span class="keyword">var</span> m:longint;    </div><div class="line"><span class="keyword">begin</span>    </div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];    </div><div class="line">    g[m].t:=t0;g[m].w:=w0;    </div><div class="line">    g[m].next:=head[f0];head[f0]:=m;    </div><div class="line"><span class="keyword">end</span>; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,p:longint)</span>;</span> </div><div class="line"><span class="keyword">var</span> i,u:longint; </div><div class="line"><span class="keyword">begin</span> </div><div class="line">    i:=head[v]; </div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        u:=g[i].t; </div><div class="line">        <span class="keyword">if</span> p&lt;&gt;u <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">            tr[u].br:=tr[v].ch; </div><div class="line">            tr[v].ch:=u; </div><div class="line">            tr[u].w:=g[i].w; </div><div class="line">            dfs(u,v); </div><div class="line">        <span class="keyword">end</span>; </div><div class="line">        i:=g[i].next; </div><div class="line">    <span class="keyword">end</span>; </div><div class="line"><span class="keyword">end</span>;    </div><div class="line"></div><div class="line"><span class="comment">//v的子树，大头吃j棵，父节点是k吃的（0大头，1小头） </span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dp</span><span class="params">(v,j,k:longint)</span>:</span>longint; </div><div class="line"><span class="keyword">var</span> t,tmp:longint; </div><div class="line"><span class="keyword">begin</span> </div><div class="line">    <span class="keyword">if</span> v=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">        <span class="keyword">if</span> j=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(<span class="number">0</span>) <span class="keyword">else</span> <span class="keyword">exit</span>(inf) </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    <span class="keyword">if</span> f[v,j,k]&gt;=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(f[v,j,k]); </div><div class="line">    f[v,j,k]:=inf; </div><div class="line">    <span class="comment">//大头吃i </span></div><div class="line">    <span class="keyword">for</span> t:=<span class="number">1</span> <span class="keyword">to</span> j <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        tmp:=dp(tr[v].ch,t-<span class="number">1</span>,<span class="number">0</span>)+dp(tr[v].br,j-t,k); </div><div class="line">        <span class="keyword">if</span> k=<span class="number">0</span> <span class="keyword">then</span> inc(tmp,tr[v].w); </div><div class="line">        f[v,j,k]:=min(f[v,j,k],tmp); </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    <span class="comment">//小头吃i </span></div><div class="line">    <span class="keyword">for</span> t:=<span class="number">0</span> <span class="keyword">to</span> j <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        tmp:=dp(tr[v].ch,t,<span class="number">1</span>)+dp(tr[v].br,j-t,k); </div><div class="line">        <span class="keyword">if</span> (k=<span class="number">1</span>) <span class="keyword">and</span> (m=<span class="number">2</span>) <span class="keyword">then</span> inc(tmp,tr[v].w); </div><div class="line">        f[v,j,k]:=min(f[v,j,k],tmp); </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    dp:=f[v,j,k]; </div><div class="line"><span class="keyword">end</span>; </div><div class="line"></div><div class="line"><span class="keyword">begin</span>    </div><div class="line">    <span class="keyword">read</span>(n,m,k); </div><div class="line">    <span class="keyword">if</span> m+k&gt;n <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(-<span class="number">1</span>);halt <span class="keyword">end</span>; </div><div class="line">    <span class="comment">//先用邻接表存多叉    </span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span>    </div><div class="line">        <span class="keyword">read</span>(f0,t0,w0);    </div><div class="line">        add(f0,t0,w0);add(t0,f0,w0);    </div><div class="line">    <span class="keyword">end</span>;    </div><div class="line">    <span class="comment">//深搜一遍，多叉转二叉    </span></div><div class="line">    tr[<span class="number">1</span>].w:=<span class="number">0</span>;dfs(<span class="number">1</span>,<span class="number">0</span>); </div><div class="line">    <span class="comment">//记忆化 </span></div><div class="line">    fillchar(f,sizeof(f),<span class="number">255</span>); </div><div class="line">    <span class="keyword">write</span>(dp(tr[<span class="number">1</span>].ch,k-<span class="number">1</span>,<span class="number">0</span>));    </div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/p1523.pas" title="纯文本">纯文本</a>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
+    <a href="/2016/08/12/Hexo初体验/" title="Hexo初体验" itemprop="url">
   
-  <span></span> <a href="/tags/DP/">DP</a><a href="/tags/树形DP/">树形DP</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/P1523-贪吃的九头龙-Vijos/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">Hexo初体验</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试GitHub Pages，于是就有了这个页面。折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种BUG。
+参考教程这是用Hexo建的站，阅读了多位大牛的文章，才有</p>
+        
     
-      <a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World" itemprop="url">Hello the Wicked World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-11T23:13:10.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    <time datetime="2016-08-12T07:34:05.000Z" itemprop="datePublished">2016-08-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2016/08/12/Test-Hexo/" title="Test Hexo" itemprop="url">
+  
+    <h1 itemprop="name">Test Hexo</h1>
     
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >localhost下测试，asset、404都没有用，deploy后就能用啦。
+_config.yml1post_asset_folder: true
+一张图片1&amp;#123;% asset_img example.gif TestImage %&amp;#125;
+
+一份源码1&amp;#123</p>
         
-        <h1 id="Cothrax"><a href="#Cothrax" class="headerlink" title="Cothrax"></a>Cothrax</h1><blockquote>
-<p>这是测试页 </p>
-</blockquote>
-<p>注意：标题的#后面要有<strong>空格</strong></p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">program</span> noip2016;</div><div class="line"><span class="keyword">var</span> rp:qword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    writeln(<span class="string">'JS的一只蒟蒻'</span>);</div><div class="line">    writeln(<span class="string">'Evernote用腻了，想试试GitHub'</span>);</div><div class="line">    <span class="keyword">while</span> true <span class="keyword">do</span></div><div class="line">        inc(rp);</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
+    
+    <time datetime="2016-08-12T02:44:49.000Z" itemprop="datePublished">2016-08-12</time>
+  </a>
+</section>
 
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/" title="【Vijos】P1523 贪吃的九头龙" itemprop="url">
+  
+    <h1 itemprop="name">【Vijos】P1523 贪吃的九头龙</h1>
+    
+     
+           <p itemprop="description" >描述传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。
+有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可</p>
         
+    
+    <time datetime="2016-08-12T00:55:10.000Z" itemprop="datePublished">2016-08-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World" itemprop="url">
+  
+    <h1 itemprop="name">Hello the Wicked World</h1>
+    
+     
+           <p itemprop="description" >Cothrax
+这是测试页 
+
+注意：标题的#后面要有空格
+12345678program noip2016;var rp:qword;begin    writeln(&#39;JS的一只蒟蒻&#39;);    writeln(&#39;Evernote用腻了，想试试GitHub&#39;);    whi</p>
         
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Uncategorized/">Uncategorized</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/08/12/Hello-the-Wicked-World/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/Hello-the-Wicked-World/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
+    
+    <time datetime="2016-08-11T23:13:10.000Z" itemprop="datePublished">2016-08-12</time>
+  </a>
+</section>
 
 
 
@@ -422,6 +165,10 @@ content
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
 
   
 <div class="categorieslist">
@@ -451,6 +198,16 @@ content
        <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a>
     </div>
   </div>
+
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="cothrax" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
 
 
   <div class="linkslist">
@@ -488,20 +245,6 @@ content
           </li>
         
     </ul>
-</div>
-
-  
-<div class="github-card">
-<p class="asidetitle">Github Card</p>
-<div class="github-card" data-github="cothrax" data-width="220" data-height="119" data-theme="medium">
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
-</div>
-  </div>
-
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
 </aside>
