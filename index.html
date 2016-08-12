@@ -88,26 +88,22 @@
     <div class="article-content">
         
         <p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试GitHub Pages，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种BUG。</p>
-<p>##参考教程<br>这是用<a href="hexo.io">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
+<h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="hexo.io">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
 <ol>
 <li><a href="http://blog.csdn.net/poem_of_sunshine/article/details/29369785/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat</a></li>
 <li><a href="https://ijiaober.github.io/categories/hexo/" target="_blank" rel="external">Hexo使用攻略 by ijiaober</a></li>
 </ol>
-<p>##安装和部署</p>
-<p>###npm卡住不动<br>hexo是基于node.js，于是运行npm安装：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo</div></pre></td></tr></table></figure></p>
+<h2 id="安装和部署"><a href="#安装和部署" class="headerlink" title="安装和部署"></a>安装和部署</h2><h3 id="npm卡住不动"><a href="#npm卡住不动" class="headerlink" title="npm卡住不动"></a>npm卡住不动</h3><p>hexo是基于node.js，于是运行npm安装：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo</div></pre></td></tr></table></figure></p>
 <p>由于gfw的存在，就动不了了。还好可以换国内的镜像<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nano ~/<span class="selector-class">.npmrc</span></div><div class="line">registry =https:<span class="comment">//registry.npm.taobao.org</span></div></pre></td></tr></table></figure></p>
 <p>或者用<a href="https://github.com/cnpm/cnpm" target="_blank" rel="external">cnpm</a>替换npm<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install -g cnpm --registry=https:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org</div></pre></td></tr></table></figure></p>
-<p>###Hexo command not found</p>
-<p>修改Windows的环境变量，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
-<p>###ERROR Deployer not found: github<br>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
+<h3 id="Hexo-command-not-found"><a href="#Hexo-command-not-found" class="headerlink" title="Hexo command not found"></a>Hexo command not found</h3><p>修改Windows的环境变量，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
+<h3 id="ERROR-Deployer-not-found-github"><a href="#ERROR-Deployer-not-found-github" class="headerlink" title="ERROR Deployer not found: github"></a>ERROR Deployer not found: github</h3><p>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
 <p>然后把<code>type</code>改成<code>git</code></p>
-<p>###deploy时repository各种报错<br>肯定是yml哪里写错了，这玩意连冒号后面的空格都不能少，如我的username是Cothrax，于是deploy这样写：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">deploy</span>:</div><div class="line">  <span class="attribute">type</span>: git</div><div class="line">  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:cothrax/cothrax.github.io.git</div><div class="line">  <span class="attribute">branch</span>: master</div></pre></td></tr></table></figure></p>
-<p>###nothing to commit, working tree clean后卡住<br>耐心等吧，实在不行使用科学上网工具，也可以用这个很棒的hosts优化网络：<a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">https://serve.netsh.org/pub/ipv4-hosts/</a></p>
-<p>###每次部署都要输入passphrase</p>
-<p>谁叫你生成ssh时设了密钥呢，passphrase是防止别人向你的项目中提交文件，重新生成一下ssh，passphrase那两个输入直接敲回车就可以了。</p>
-<p>##配置和体验</p>
-<p>我用了jacman的主题，在此感谢这个<a href="http://wuchong.me/" target="_blank" rel="external">主题的作者</a></p>
-<p>###Markdown相关<br>Hexo 3提供了标签插件，可以方便地插入图片和文件。</p>
+<h3 id="deploy时repository各种报错"><a href="#deploy时repository各种报错" class="headerlink" title="deploy时repository各种报错"></a>deploy时repository各种报错</h3><p>肯定是yml哪里写错了，这玩意连冒号后面的空格都不能少，如我的username是Cothrax，于是deploy这样写：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">deploy</span>:</div><div class="line">  <span class="attribute">type</span>: git</div><div class="line">  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:cothrax/cothrax.github.io.git</div><div class="line">  <span class="attribute">branch</span>: master</div></pre></td></tr></table></figure></p>
+<h3 id="nothing-to-commit-working-tree-clean后卡住"><a href="#nothing-to-commit-working-tree-clean后卡住" class="headerlink" title="nothing to commit, working tree clean后卡住"></a>nothing to commit, working tree clean后卡住</h3><p>耐心等吧，实在不行使用科学上网工具，也可以用这个很棒的hosts优化网络：<a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">https://serve.netsh.org/pub/ipv4-hosts/</a></p>
+<h3 id="每次部署都要输入passphrase"><a href="#每次部署都要输入passphrase" class="headerlink" title="每次部署都要输入passphrase"></a>每次部署都要输入passphrase</h3><p>谁叫你生成ssh时设了密钥呢，passphrase是防止别人向你的项目中提交文件，重新生成一下ssh，passphrase那两个输入直接敲回车就可以了。</p>
+<h2 id="配置和体验"><a href="#配置和体验" class="headerlink" title="配置和体验"></a>配置和体验</h2><p>我用了jacman的主题，在此感谢这个<a href="http://wuchong.me/" target="_blank" rel="external">主题的作者</a></p>
+<h3 id="Markdown相关"><a href="#Markdown相关" class="headerlink" title="Markdown相关"></a>Markdown相关</h3><p>Hexo 3提供了标签插件，可以方便地插入图片和文件。</p>
 <ol>
 <li>官方文档<ol>
 <li>标签插件：<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/tag-plugins.html</a></li>
@@ -117,15 +113,17 @@
 <li>我的一些例子和测试：</li>
 </ol>
 <p>想实现代码复制到剪切板的功能，但js什么的早就忘干净了，于是替代方案是在<strong>文末给出asset链接指向源码文件</strong></p>
-<p>###站内搜索的实现<br>百度的站内搜索要验证，结果不是是不支持https，就是是连不上github服务器，还会报301错误，无奈还是用google好啦。</p>
+<h3 id="站内搜索的实现"><a href="#站内搜索的实现" class="headerlink" title="站内搜索的实现"></a>站内搜索的实现</h3><p>百度的站内搜索要验证，结果不是是不支持https，就是是连不上github服务器，还会报301错误，无奈还是用google好啦。</p>
 <p>goole的自定义搜索：<a href="https://cse.google.com/cse/all" target="_blank" rel="external">https://cse.google.com/cse/all</a><br>用jacman主题，只要更改jacman下的<code>_config.yml</code>，把cx码和enable设好，还有的注释上说得很清楚：</p>
 <blockquote>
 <p>To enable the custom search You must create a “search” folder in ‘/source’ and a “index.md” file<br>set the ‘front-matter’ as<br>layout: search<br>title: search</p>
 </blockquote>
-<p>####一直显示“正在加载搜索结果，请稍等”<br>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是http和https混用，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="一直显示“正在加载搜索结果，请稍等”"><a href="#一直显示“正在加载搜索结果，请稍等”" class="headerlink" title="一直显示“正在加载搜索结果，请稍等”"></a>一直显示“正在加载搜索结果，请稍等”</h4><p>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是http和https混用，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>####搜索显示无结果<br>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
-<p>大概就是这样。</p>
+<h4 id="搜索显示无结果"><a href="#搜索显示无结果" class="headerlink" title="搜索显示无结果"></a>搜索显示无结果</h4><p>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
+<blockquote>
+<p>end.</p>
+</blockquote>
 
         
         
