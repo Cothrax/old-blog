@@ -24,7 +24,7 @@
 
 如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat">
 <meta property="og:image" content="https://cothrax.github.io/2016/08/12/Hexo初体验/screenshot.jpg">
-<meta property="og:updated_time" content="2016-08-12T08:48:15.562Z">
+<meta property="og:updated_time" content="2016-08-12T08:57:15.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo初体验">
 <meta name="twitter:description" content="作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试GitHub Pages，于是就有了这个页面。折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种BUG。
@@ -142,13 +142,25 @@
 <blockquote>
 <p>To enable the custom search You must create a “search” folder in ‘/source’ and a “index.md” file<br>set the ‘front-matter’ as<br>layout: search<br>title: search</p>
 </blockquote>
-<p>####一直显示“正在加载搜索结果，请稍等”<br>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是http和https混用所致，找到<code>\themes\jacman\layout\_partial\search.ejs</code><br>将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>####一直显示“正在加载搜索结果，请稍等”<br>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是http和https混用，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>####搜索显示无结果<br>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
+<p>大概就是这样。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tinkering-Note/">Tinkering Note</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/GitHub/">GitHub</a>
+  </div>
 
 </div>
 
@@ -211,7 +223,11 @@
 		  
 		
 		  
-			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>2</sup></a></li>
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
 		  
 		
 		</ul>
@@ -224,6 +240,10 @@
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/DP/" title="DP">DP<sup>1</sup></a></li>
 			
 		
@@ -232,11 +252,11 @@
 			
 		
 			
-				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
+				<li><a href="/tags/GitHub/" title="GitHub">GitHub<sup>1</sup></a></li>
 			
 		
 		</ul>
