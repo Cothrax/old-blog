@@ -94,20 +94,22 @@
 </header>
     <div class="article-content">
         
-        <p>localhost下测试，asset、404都没有用，deploy后就能用啦。<br><figure class="highlight yml"><figcaption><span>_config.yml &#123;% asset_path p1523.pas %&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+        <p>localhost下测试，asset、404都没有用，deploy后就能用啦。<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <h2 id="一张图片"><a href="#一张图片" class="headerlink" title="一张图片"></a>一张图片</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> example.gif TestImage %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <img src="/2016/08/12/Test-Hexo/example.gif" alt="TestImage" title="TestImage">
 <h2 id="一份源码"><a href="#一份源码" class="headerlink" title="一份源码"></a>一份源码</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 /2016/08/12/Test-Hexo/p1523.pas
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">Link</span>](<span class="link">&#123;% asset_path p1523.pas %&#125;</span>)</div></pre></td></tr></table></figure>
-<p><a href="!--￼10--">Link</a></p>
+<p><a href="!--￼11--">Link</a></p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 有用吗 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="有用吗">有用吗</a>
+<figure class="highlight pas"><figcaption><span>p1523.pas ./p1523.pas source</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">write</span>(<span class="string">'上面有一个source'</span>);</div></pre></td></tr></table></figure>
 <h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
 <figure class="highlight yml"><figcaption><span>404.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="number">404</span> Page not Found</div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="attr">toc:</span> <span class="literal">false</span></div><div class="line"><span class="attr">permalink:</span> /<span class="number">404</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
 <p><a href="https://cothrax.github.io/这就404了">https://cothrax.github.io/这就404了</a><br>还有根下<code>_config.yml</code>中<code>relative_link: false</code>，不然在子目录下404就找不到css了，然后layout就没有了</p>
+<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><script src="//gist.github.com/0781305b79f54aaeac06b49444529d1c.js?file=p1144.pas"></script>
 
         
         
