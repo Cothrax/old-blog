@@ -1,78 +1,214 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    <title>Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Cothrax">
     
+
     
+    <meta name="description" content="502 Geteway Time-out">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cothrax">
+<meta property="og:url" content="https://cothrax.github.io/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="502 Geteway Time-out">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cothrax">
+<meta name="twitter:description" content="502 Geteway Time-out">
+
     
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
     <header>
-      <div>
+      
+<div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+				<a href="/"><img src="/img/logo.png" alt="Cothrax" title="Cothrax"/></a>
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">An OIer</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
-					
+					<ul>
+					 
 						<li><a href="/">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
 					
-					<li>
+						<li><a href="/about">About</a></li>
 					
+					<li>
+ 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:yoursite.com">
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:cothrax.github.io">
 					</form>
 					
 					</li>
 				</ul>
 			</nav>			
 </div>
-
     </header>
     <div id="container">
       <div id="main">
 
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wcked World" itemprop="url">
-  
-    <h1 itemprop="name">Hello the Wcked World</h1>
+   
     
-     
-           <p itemprop="description" >Cothrax12345678program noip2016;var rp:qword;begin	writeln(&#39;JS的一只蒟蒻&#39;);	writeln(&#39;Evernote用腻了，想试试GitHub&#39;);	while true do		inc(rp);end;</p>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/" title="【Vijos】P1523 贪吃的九头龙" itemprop="url">【Vijos】P1523 贪吃的九头龙</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-12T00:55:10.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。</p>
+<p>有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可是必须照顾到每个头，因此它需要把N个果子分成M组，每组至少有一个果子，让每个头吃一组。</p>
+<p>这M个脑袋中有一个最大，称为“大头”，是众头之首，它要吃掉恰好K个果子，而且K个果子中理所当然地应该包括唯一的一个最大的果子。果子由N-1根树枝连接起来，由于果树是一个整体，因此可以从任意一个果子出发沿着树枝“走到”任何一个其他的果子。</p>
+<p>对于每段树枝，如果它所连接的两个果子需要由不同的头来吃掉，那么两个头会共同把树枝弄断而把果子分开；如果这两个果子是由同一个头来吃掉，那么这个头会懒得把它弄断而直接把果子连同树枝一起吃掉。当然，吃树枝并不是很舒服的，因此每段树枝都有一个吃下去的“难受值”，而九头龙的难受值就是所有头吃掉的树枝的“难受值”之和。</p>
+<p>九头龙希望它的“难受值”尽量小，你能帮它算算吗？</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第1行包含三个整数N(1&lt;=N&lt;=300)，M(2&lt;=M&lt;=N)，K(1&lt;=K&lt;=N)。N个果子依次编号1,2,…,N，且最大的果子的编号总是1。第2行到第N行描述了果树的形态，每行包含三个整数a(1&lt;=a&lt;=N)，b(1&lt;=b&lt;=N)，c(0&lt;=c&lt;=105)，表示存在一段难受值为c的树枝连接果子a和果子b。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">8 2 4</div><div class="line">1 2 20</div><div class="line">1 3 4 </div><div class="line">1 4 13</div><div class="line">2 5 10</div><div class="line">2 6 12</div><div class="line">3 7 15</div><div class="line">3 8 5</div></pre></td></tr></table></figure>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4</div></pre></td></tr></table></figure>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>树形动态规划</p>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>安徽省芜湖市第二十七中学测试题<br>NOI 2002 贪吃的九头龙(dragon)<br>Description:Official<br>Data:Official<br>Program:Converted by JackDavid127<br>​</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>发现树形DP根本不会==<br>首先状态无比复杂，考虑一个神一样的简化：<strong>树一定可以被k分染色。</strong><br>因为一张无向图能被二分染色的充要条件是至少两个节点且不存在偶数边的环，显然树时满足要求的，能被二分染色的图自然可以被k分染色。<br><br>于是题目变成了：</p>
+<ol>
+<li>用两种颜色染一棵树</li>
+<li>根节点颜色是1</li>
+<li>颜色是1的节点恰好是k个</li>
+</ol>
+<p>也就是说把所有小头看成一个头，如果m=2的话小头的难受度要算进答案，如果m&gt;2，我们可以通过<strong>分配小头来保证不存在难受度</strong>，此时对答案有贡献的只有大头的难受度。</p>
+<p>然后神犇说方程好简单。。。OTZ<br><strong>f[i,j,k]表示以i为根的子树，j个被大头吃了，i的父节点是k吃的（0表示大头，1表示小头）</strong><br>方程见代码。</p>
+<p>注意这里的树是<strong>多叉转二叉</strong>的树，转的时候边的难受度可以放到子节点里，n-1条边与n个点配对，根节点1忽略不计。<br>然后答案是<strong>dp(tr[i].ch,k-1,1)</strong>，当然直接搜根然后特判一下也可以。</p>
+<p>还有注意初始化为负数方便记忆化，如果无法完成要赋成inf，codevs经常因为一个warning就大惊小怪地报CE，因为我用filldword赋-1，但其实不会出问题因为我给的是longint数组，今天知道了只要fillchar(a,sizeof(a),255)就完事了。<br>开始手残k=0和1写反了。。。居然还有10分真是不可思议</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math; </div><div class="line"><span class="keyword">const</span> inf=<span class="number">10000000</span>; </div><div class="line"><span class="keyword">type</span>  </div><div class="line">    edge=<span class="keyword">record</span> t,w,next:longint <span class="keyword">end</span>; </div><div class="line">    node=<span class="keyword">record</span> br,ch,w:longint <span class="keyword">end</span>;  </div><div class="line"><span class="keyword">var</span>   </div><div class="line">    n,m,k,i,f0,t0,w0:longint;  </div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">610</span>] <span class="keyword">of</span> edge; </div><div class="line">    tr:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> node;  </div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> longint;  </div><div class="line">    head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> longint;  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f0,t0,w0:longint)</span>;</span>  </div><div class="line"><span class="keyword">var</span> m:longint;  </div><div class="line"><span class="keyword">begin</span>  </div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];  </div><div class="line">    g[m].t:=t0;g[m].w:=w0;  </div><div class="line">    g[m].next:=head[f0];head[f0]:=m;  </div><div class="line"><span class="keyword">end</span>; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,p:longint)</span>;</span> </div><div class="line"><span class="keyword">var</span> i,u:longint; </div><div class="line"><span class="keyword">begin</span> </div><div class="line">    i:=head[v]; </div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        u:=g[i].t; </div><div class="line">        <span class="keyword">if</span> p&lt;&gt;u <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">            tr[u].br:=tr[v].ch; </div><div class="line">            tr[v].ch:=u; </div><div class="line">            tr[u].w:=g[i].w; </div><div class="line">            dfs(u,v); </div><div class="line">        <span class="keyword">end</span>; </div><div class="line">        i:=g[i].next; </div><div class="line">    <span class="keyword">end</span>; </div><div class="line"><span class="keyword">end</span>;  </div><div class="line"></div><div class="line"><span class="comment">//v的子树，大头吃j棵，父节点是k吃的（0大头，1小头） function dp(v,j,k:longint):longint; </span></div><div class="line"><span class="keyword">var</span> t,tmp:longint; </div><div class="line"><span class="keyword">begin</span> </div><div class="line">    <span class="keyword">if</span> v=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">        <span class="keyword">if</span> j=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(<span class="number">0</span>) <span class="keyword">else</span> <span class="keyword">exit</span>(inf) </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    <span class="keyword">if</span> f[v,j,k]&gt;=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(f[v,j,k]); </div><div class="line">    f[v,j,k]:=inf; </div><div class="line">    <span class="comment">//大头吃i </span></div><div class="line">    <span class="keyword">for</span> t:=<span class="number">1</span> <span class="keyword">to</span> j <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        tmp:=dp(tr[v].ch,t-<span class="number">1</span>,<span class="number">0</span>)+dp(tr[v].br,j-t,k); </div><div class="line">        <span class="keyword">if</span> k=<span class="number">0</span> <span class="keyword">then</span> inc(tmp,tr[v].w); </div><div class="line">        f[v,j,k]:=min(f[v,j,k],tmp); </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    <span class="comment">//小头吃i </span></div><div class="line">    <span class="keyword">for</span> t:=<span class="number">0</span> <span class="keyword">to</span> j <span class="keyword">do</span> <span class="keyword">begin</span> </div><div class="line">        tmp:=dp(tr[v].ch,t,<span class="number">1</span>)+dp(tr[v].br,j-t,k); </div><div class="line">        <span class="keyword">if</span> (k=<span class="number">1</span>) <span class="keyword">and</span> (m=<span class="number">2</span>) <span class="keyword">then</span> inc(tmp,tr[v].w); </div><div class="line">        f[v,j,k]:=min(f[v,j,k],tmp); </div><div class="line">    <span class="keyword">end</span>; </div><div class="line">    dp:=f[v,j,k]; </div><div class="line"><span class="keyword">end</span>; </div><div class="line"></div><div class="line"><span class="keyword">begin</span>  </div><div class="line">    <span class="keyword">read</span>(n,m,k); </div><div class="line">    <span class="keyword">if</span> m+k&gt;n <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(-<span class="number">1</span>);halt <span class="keyword">end</span>; </div><div class="line">    <span class="comment">//先用邻接表存多叉  </span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span>  </div><div class="line">        <span class="keyword">read</span>(f0,t0,w0);  </div><div class="line">        add(f0,t0,w0);add(t0,f0,w0);  </div><div class="line">    <span class="keyword">end</span>;  </div><div class="line">    <span class="comment">//深搜一遍，多叉转二叉  </span></div><div class="line">    tr[<span class="number">1</span>].w:=<span class="number">0</span>;dfs(<span class="number">1</span>,<span class="number">0</span>); </div><div class="line">    <span class="comment">//记忆化 </span></div><div class="line">    fillchar(f,sizeof(f),<span class="number">255</span>); </div><div class="line">    <span class="keyword">write</span>(dp(tr[<span class="number">1</span>].ch,k-<span class="number">1</span>,<span class="number">0</span>));  </div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/树形DP/">树形DP</a><a href="/tags/DP/">DP</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/08/12/P1523-贪吃的九头龙-Vijos/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/P1523-贪吃的九头龙-Vijos/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2016-08-11T23:13:10.000Z" itemprop="datePublished">2016-08-12</time>
-  </a>
-</section>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World" itemprop="url">Hello the Wicked World</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-11T23:13:10.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Cothrax"><a href="#Cothrax" class="headerlink" title="Cothrax"></a>Cothrax</h1><blockquote>
+<p>这是测试页 </p>
+</blockquote>
+<p>注意：标题的#后面要有<strong>空格</strong></p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">program</span> noip2016;</div><div class="line"><span class="keyword">var</span> rp:qword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	writeln(<span class="string">'JS的一只蒟蒻'</span>);</div><div class="line">	writeln(<span class="string">'Evernote用腻了，想试试GitHub'</span>);</div><div class="line">	<span class="keyword">while</span> true <span class="keyword">do</span></div><div class="line">		inc(rp);</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/08/12/Hello-the-Wicked-World/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/12/Hello-the-Wicked-World/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
 
 
 </div>
@@ -85,9 +221,61 @@
   
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/树形DP/" title="树形DP">树形DP<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DP/" title="DP">DP<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://vijos.org/" target="_blank" title="Vijos">Vijos</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://codevs.cn/" target="_blank" title="CodeVS">CodeVS</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://luogu.org/" target="_blank" title="Luogu">Luogu</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hzwer.com/" target="_blank" title="Hzwer">Hzwer</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
 
   <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
 </aside>
@@ -101,21 +289,44 @@
 	</div>
 	
 	
-	<div class="social-font clearfix">
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
 		
+		
+		
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+			
 		
-		<a href="http://yoursite.com" target="_blank" title="John Doe">John Doe</a>
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a>
+		
 		
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
@@ -133,18 +344,6 @@ $(document).ready(function(){
       a = $('#asidepart'),
       c = $('.closeaside'),
       o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-        
-    }
-  });
   c.click(function(){
     a.addClass('fadeOut').css('display', 'none');
     o.css('display', 'block').addClass('fadeIn');
@@ -158,6 +357,18 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
 });
 </script>
 
@@ -166,6 +377,98 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
 
   </body>
  </html>
