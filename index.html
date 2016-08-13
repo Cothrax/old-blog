@@ -78,6 +78,88 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/08/13/Vijos-P1982/" title="[Vijos] P1982 子串" itemprop="url">[Vijos] P1982 子串</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-13T07:58:53.000Z" itemprop="datePublished"> Published 2016-08-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有两个仅包含小写英文字母的字符串 A 和 B。现在要从字符串 A 中取出 k 个<strong>互不重叠</strong>的非空子串，然后把这 k 个子串按照其在字符串 A 中出现的顺序依次连接起来得到一 个新的字符串，请问有多少种方案可以使得这个新串与字符串 B 相等？注意：子串取出的位置不同也认为是不同的方案。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行是三个正整数 n，m，k，分别表示字符串 A 的长度，字符串 B 的长度，以及问 题描述中所提到的 k，每两个整数之间用一个空格隔开。第二行包含一个长度为 n 的字符串，表示字符串 A。 第三行包含一个长度为 m 的字符串，表示字符串 B。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出共一行，包含一个整数，表示所求方案数。由于答案可能很大，<strong>所以这里要求输出答案对 1,000,000,007 取模的结果。</strong></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h3><blockquote>
+<p>6 3 1<br>aabaab<br>aab</p>
+</blockquote>
+<h3 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h3><blockquote>
+<p>2</p>
+</blockquote>
+<h3 id="样例输入2"><a href="#样例输入2" class="headerlink" title="样例输入2"></a>样例输入2</h3><blockquote>
+<p>6 3 2<br>aabaab<br>aab</p>
+</blockquote>
+<h3 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h3><blockquote>
+<p>7</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于第 1 组数据：1≤n≤500，1≤m≤50，k=1；<br>对于第 2 组至第 3 组数据：1≤n≤500，1≤m≤50，k=2；<br>对于第 4 组至第 5 组数据：1≤n≤500，1≤m≤50，k=m；<br>对于第 1 组至第 7 组数据：1≤n≤500，1≤m≤50，1≤k≤m；<br>对于第 1 组至第 9 组数据：1≤n≤1000，1≤m≤100，1≤k≤m；<br>对于所有 10 组数据：1≤n≤1000，1≤m≤200，1≤k≤m。</p>
+<p>NOIP 2015 提高组 Day 2 第二题</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><strong>划分DP+滚动数组</strong><br>f[t,i,j] 在a[1..i]中取t份，与b[1..j]匹配的方法数。<br>注意初始化f[0,i,0]=1</p>
+<dir style="text-align:right"><a href="/2016/08/13/Vijos-P1982/p1982.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>*.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> z=<span class="number">1000000007</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,k,i,i0,i1,j,t,l:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">1010</span>,<span class="number">0</span>..<span class="number">210</span>] <span class="keyword">of</span> int;</div><div class="line">    a,b:ansistring;</div><div class="line"><span class="keyword">begin</span> <span class="comment">&#123;Main&#125;</span></div><div class="line">    readln(n,m,k);</div><div class="line">    readln(a);readln(b);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[<span class="number">0</span>,i,<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        i0:=i <span class="keyword">mod</span> <span class="number">2</span>;i1:=(i+<span class="number">1</span>) <span class="keyword">mod</span> <span class="number">2</span>;</div><div class="line">        fillchar(f[i0],sizeof(f[i0]),<span class="number">0</span>);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> t:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                f[i0,j,t]:=f[i0,j-<span class="number">1</span>,t];</div><div class="line">                l:=<span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> a[j-l]=b[t-l] <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                    <span class="keyword">if</span> l&gt;=min(j,t) <span class="keyword">then</span> break;</div><div class="line">                    f[i0,j,t]:=(f[i0,j,t]+f[i1,j-l-<span class="number">1</span>,t-l-<span class="number">1</span>]) <span class="keyword">mod</span> z;</div><div class="line">                    inc(l);</div><div class="line">                <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(f[k <span class="keyword">mod</span> <span class="number">2</span>,n,m]);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DP/">DP</a><a href="/tags/OI/">OI</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/划分DP/">划分DP</a><a href="/tags/字符串/">字符串</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/08/13/Vijos-P1982/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/08/13/Vijos-P1982/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/08/13/Vijos-P1981/" title="[Vijos] P1981 跳石头" itemprop="url">[Vijos] P1981 跳石头</a>
   </h1>
   <p class="article-author">By
@@ -123,7 +205,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/二分答案/">二分答案</a><a href="/tags/NOIP/">NOIP</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/二分答案/">二分答案</a>
   </div>
 
 </div>
@@ -198,7 +280,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/图论/">图论</a><a href="/tags/搜索/">搜索</a><a href="/tags/DFS/">DFS</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/图论/">图论</a><a href="/tags/搜索/">搜索</a><a href="/tags/DFS/">DFS</a><a href="/tags/NOIP/">NOIP</a>
   </div>
 
 </div>
@@ -608,7 +690,7 @@ content
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>3</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>4</sup></a></li>
 		  
 		
 		  
@@ -627,7 +709,7 @@ content
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/二分答案/" style="font-size: 10px;">二分答案</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a>
+       <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 13.33px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16.67px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/二分答案/" style="font-size: 10px;">二分答案</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a>
     </div>
   </div>
 
