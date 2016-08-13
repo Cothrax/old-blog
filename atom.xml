@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-13T05:41:25.719Z</updated>
+  <updated>2016-08-13T05:45:00.197Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Vijos】P1979 信息传递</title>
+    <title>\[Vijos\] P1979 信息传递</title>
     <link href="https://cothrax.github.io/2016/08/13/P1979-Vijos/"/>
     <id>https://cothrax.github.io/2016/08/13/P1979-Vijos/</id>
     <published>2016-08-13T05:28:09.000Z</published>
-    <updated>2016-08-13T05:41:25.719Z</updated>
+    <updated>2016-08-13T05:45:00.197Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有 n 个同学（编号为 1 到 n）正在玩一个信息传递的游戏。在游戏里每人都有一个固定的信息传递对象，其中，编号为i的同学的信息传递对象是编号为Ti的同学。<br>游戏开始时，每人都只知道自己的生日。之后每一轮中，所有人会同时将自己当前所知的生日信息告诉各自的信息传递对象（注意：可能有人可以从若干人那里获取信息， 但是每人只会把信息告诉一个人，即自己的信息传递对象）。当有人从别人口中得知自己的生日时，游戏结束。请问该游戏一共可以进行几轮？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入共 2 行。<br>第 1 行包含 1 个正整数 n，表示 n 个人。<br>第 2 行包含 n 个用空格隔开的正整数 T1,T2,… …,Tn，其中第 i 个整数Ti表示编号为i的同学的信息传递对象是编号为Ti的同学， Ti≤n且 Ti≠i。<br>数据保证游戏一定会结束。</p>
@@ -33,7 +33,7 @@
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 30%的数据， n ≤ 200；<br>对于 60%的数据，n ≤ 2500；<br>对于 100%的数据，n ≤ 200000。<br>【输入输出样例 1 说明】<br><img src="/2016/08/13/P1979-Vijos/noip2015tgd1t2.jpg" alt="noip2015tgd1t2.jpg" title="">​</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>本题的解法很多，比如说用并查集找最小环，Tarjan等。但发现，构成的有向图非常特殊：<strong>每个点的出度都是1</strong>，所以可以用简单的dfs解决问题。<br>用flag[v]记录v节点是否访问过，由于点的出度为1，从一个点出发构成的链是唯一确定的，一旦发现flag[t[v]]=true就可以回溯，标记t[v]这个点，用全局变量d储存回溯的链的长度，当回溯到t[v]时用d+1更新答案。</p>
-<p><dir style="text-align:right"></dir><br><figure class="highlight delphi"><figcaption><span>p1979.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span>	</div><div class="line">	n,i,p,d,ans:int;</div><div class="line">	t:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">	flag:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">	flag[v]:=true;</div><div class="line">	<span class="keyword">if</span> flag[t[v]] <span class="keyword">then</span> p:=t[v]</div><div class="line">	<span class="keyword">else</span> dfs(t[v]);</div><div class="line">	<span class="keyword">if</span> p=v <span class="keyword">then</span> ans:=min(ans,d+<span class="number">1</span>);</div><div class="line">	inc(d);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">read</span>(n);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(t[i]);</div><div class="line">	ans:=maxlongint;</div><div class="line">	fillchar(flag,sizeof(flag),false);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		d:=<span class="number">0</span>;p:=<span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> flag[i] <span class="keyword">then</span> dfs(i);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure></p>
+<p><dir style="text-align:right"><a href="/2016/08/13/P1979-Vijos/p1979.pas" title="复制代码">复制代码</a></dir><br><figure class="highlight delphi"><figcaption><span>p1979.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span>	</div><div class="line">	n,i,p,d,ans:int;</div><div class="line">	t:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">	flag:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">	flag[v]:=true;</div><div class="line">	<span class="keyword">if</span> flag[t[v]] <span class="keyword">then</span> p:=t[v]</div><div class="line">	<span class="keyword">else</span> dfs(t[v]);</div><div class="line">	<span class="keyword">if</span> p=v <span class="keyword">then</span> ans:=min(ans,d+<span class="number">1</span>);</div><div class="line">	inc(d);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">read</span>(n);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(t[i]);</div><div class="line">	ans:=maxlongint;</div><div class="line">	fillchar(flag,sizeof(flag),false);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		d:=<span class="number">0</span>;p:=<span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> flag[i] <span class="keyword">then</span> dfs(i);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
@@ -188,11 +188,11 @@ content
   </entry>
   
   <entry>
-    <title>【Vijos】P1523 贪吃的九头龙</title>
+    <title>\[Vijos\] P1523 贪吃的九头龙</title>
     <link href="https://cothrax.github.io/2016/08/12/P1523-Vijos/"/>
     <id>https://cothrax.github.io/2016/08/12/P1523-Vijos/</id>
     <published>2016-08-12T00:55:10.000Z</published>
-    <updated>2016-08-13T05:42:36.200Z</updated>
+    <updated>2016-08-13T05:45:09.608Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。</p>
 <p>有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可是必须照顾到每个头，因此它需要把N个果子分成M组，每组至少有一个果子，让每个头吃一组。</p>
