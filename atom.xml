@@ -192,7 +192,7 @@ content
     <link href="https://cothrax.github.io/2016/08/12/P1523-Vijos/"/>
     <id>https://cothrax.github.io/2016/08/12/P1523-Vijos/</id>
     <published>2016-08-12T00:55:10.000Z</published>
-    <updated>2016-08-12T13:36:52.068Z</updated>
+    <updated>2016-08-13T05:42:36.200Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。</p>
 <p>有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可是必须照顾到每个头，因此它需要把N个果子分成M组，每组至少有一个果子，让每个头吃一组。</p>
@@ -236,6 +236,8 @@ content
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
+    
+      <category term="NOI" scheme="https://cothrax.github.io/tags/NOI/"/>
     
   </entry>
   
