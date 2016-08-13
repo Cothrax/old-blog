@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://cothrax.github.io/2016/08/13/Vijos-P1983/index.html">
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="描述公元 2044 年，人类进入了宇宙纪元。L 国有 n 个星球，还有 n−1 条双向航道，每条航道建立在两个星球之间，这 n−1 条 航道连通了 L 国的所有星球。小 P 掌管一家物流公司，该公司有很多个运输计划，每个运输计划形如：有一艘物 流飞船需要从 ui 号星球沿最快的宇航路径飞行到 vi 号星球去。显然，飞船驶过一条航道是需要时间的，对于航道 j，任意飞船驶过它所花费的时间为 tj，并且">
-<meta property="og:updated_time" content="2016-08-13T11:01:34.544Z">
+<meta property="og:updated_time" content="2016-08-13T11:23:10.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Vijos] P1083 运输计划">
 <meta name="twitter:description" content="描述公元 2044 年，人类进入了宇宙纪元。L 国有 n 个星球，还有 n−1 条双向航道，每条航道建立在两个星球之间，这 n−1 条 航道连通了 L 国的所有星球。小 P 掌管一家物流公司，该公司有很多个运输计划，每个运输计划形如：有一艘物 流飞船需要从 ui 号星球沿最快的宇航路径飞行到 vi 号星球去。显然，飞船驶过一条航道是需要时间的，对于航道 j，任意飞船驶过它所花费的时间为 tj，并且">
@@ -117,7 +117,7 @@
 <ol>
 <li>count[起点]+=1</li>
 <li>count[终点]+=1</li>
-<li>count[lca]-=2<br>然后从根开始dfs，对一节点v，$count[v]+=sum{count[u]}\ |\ u=child(v)$<br>count[1]不考虑，若count[i]=路径总数tot，那么i在路径的交上。</li>
+<li>count[lca]-=2<br>然后从根开始dfs，对一节点v，$count[v]+=\sum count[u]\ |\ u=child(v)$<br>count[1]不考虑，若count[i]=路径总数tot，那么i在路径的交上。</li>
 </ol>
 <dir style="text-align:right"><a href="/2016/08/13/Vijos-P1983/P1983.pas" title="复制代码">复制代码</a></dir>
 

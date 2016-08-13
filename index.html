@@ -108,7 +108,7 @@
 <ol>
 <li>count[起点]+=1</li>
 <li>count[终点]+=1</li>
-<li>count[lca]-=2<br>然后从根开始dfs，对一节点v，$count[v]+=sum{count[u]}\ |\ u=child(v)$<br>count[1]不考虑，若count[i]=路径总数tot，那么i在路径的交上。</li>
+<li>count[lca]-=2<br>然后从根开始dfs，对一节点v，$count[v]+=\sum count[u]\ |\ u=child(v)$<br>count[1]不考虑，若count[i]=路径总数tot，那么i在路径的交上。</li>
 </ol>
 <dir style="text-align:right"><a href="/2016/08/13/Vijos-P1983/P1983.pas" title="复制代码">复制代码</a></dir>
 
