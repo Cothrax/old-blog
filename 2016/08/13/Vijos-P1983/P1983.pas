@@ -50,34 +50,6 @@ begin
     a[id].lca:=par[u,0];
 end;
 
-procedure qsort(b,e:int);
-var i,j,x:int;tmp:ask;
-begin
-    i:=b;j:=e;x:=a[random(e-b)+b].w;
-    repeat
-        while a[i].w<x do inc(i);
-        while a[j].w>x do dec(j);
-        if i<=j then begin
-            tmp:=a[i];a[i]:=a[j];a[j]:=tmp;
-            inc(i);dec(j);
-        end;
-    until i>j;
-    if i<e then qsort(i,e);
-    if b<j then qsort(b,j);
-end;
-
-function bin(x:int):int;
-var l,r,mid:int;
-begin
-    l:=1;r:=m;bin:=0;
-    //min(i)|a[i].w>=x
-    while l<=r do begin
-        mid:=(l+r) shr 1;
-        if a[mid].w>x then begin bin:=mid;r:=mid-1 end
-        else l:=mid+1;
-    end;
-end;
-
 procedure dfs2(v:int);
 var i,u:int;
 begin
@@ -95,16 +67,17 @@ end;
 function check(x:int):boolean;
 var i,j,w,tot:int;
 begin
-    if a[m].w<=x then exit(true);
-    j:=bin(x); //二分来卡常，然并卵
     fillchar(count,sizeof(count),0);
-    w:=0;tot:=m-j+1;
-    for i:=j to m do begin
-        inc(count[a[i].f]);
-        inc(count[a[i].t]);
-        dec(count[a[i].lca],2);
-        w:=max(w,a[i].w-x);
-    end;
+    w:=0;tot:=0;
+    for i:=1 to m do
+        if a[i].w>x then begin
+            inc(count[a[i].f]);
+            inc(count[a[i].t]);
+            dec(count[a[i].lca],2);
+            w:=max(w,a[i].w-x);inc(tot);
+        end;
+    if tot=0 then exit(true);
+    
     dfs2(1);
     for i:=2 to n do
         if (count[i]=tot) and (dist[i,0]>=w) then exit(true);
@@ -114,13 +87,12 @@ end;
 begin
     read(n,m);
     logn:=floor(ln(n)/ln(2));
-    j:=0;
+    l:=0;
     for i:=1 to n-1 do begin
         read(f0,t0,w0);
         add(f0,t0,w0);add(t0,f0,w0);
-        j:=max(j,w0);
+        l:=min(w0,l);
     end;
-    l:=j;
     for i:=1 to m do read(a[i].f,a[i].t);
 
     //倍增数组和LCA
@@ -134,10 +106,9 @@ begin
                 dist[j,i]:=dist[j,i-1]+dist[par[j,i-1],i-1];
         end;
     for i:=1 to m do lca(a[i].f,a[i].t,i);
-    qsort(1,m);
 
     //二分
-    r:=a[m].w;l:=max(a[1].w-l,0);
+    l:=0;r:=inf;
     while l<=r do begin
         mid:=(l+r) shr 1;
         if check(mid) then begin ans:=mid;r:=mid-1 end
