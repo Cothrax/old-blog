@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-14T01:04:57.517Z</updated>
+  <updated>2016-08-14T01:07:51.245Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,14 +20,16 @@
     <link href="https://cothrax.github.io/2016/08/13/Vijos-P1983/"/>
     <id>https://cothrax.github.io/2016/08/13/Vijos-P1983/</id>
     <published>2016-08-13T10:39:24.000Z</published>
-    <updated>2016-08-14T01:04:57.517Z</updated>
+    <updated>2016-08-14T01:07:51.245Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>公元 2044 年，人类进入了宇宙纪元。L 国有 n 个星球，还有 n−1 条双向航道，每条航道建立在两个星球之间，这 n−1 条 航道连通了 L 国的所有星球。<br>小 P 掌管一家物流公司，该公司有很多个运输计划，每个运输计划形如：有一艘物 流飞船需要从 ui 号星球沿最快的宇航路径飞行到 vi 号星球去。显然，飞船驶过一条航道是需要时间的，对于航道 j，任意飞船驶过它所花费的时间为 tj，并且任意两艘飞船之间不会产生任何干扰。<br>为了鼓励科技创新，L 国国王同意小 P 的物流公司参与 L 国的航道建设，即允许小 P 把某一条航道改造成虫洞，飞船驶过虫洞不消耗时间。<br>在虫洞的建设完成前小 P 的物流公司就预接了 m 个运输计划。在虫洞建设完成后， 这 m 个运输计划会同时开始，所有飞船一起出发。当这 m 个运输计划都完成时，小 P 的 物流公司的阶段性工作就完成了。<br>如果小 P 可以自由选择将哪一条航道改造成虫洞，试求出小 P 的物流公司完成阶段性工作所需要的最短时间是多少？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包括两个正整数 n、m,表示 L 国中星球的数量及小 P 公司预接的运输计划的数量,星球从 1 到 n 编号。接下来 n-1 行描述航道的建设情况,其中第 i 行包含三个整数 ai, bi 和 ti,表示第 i 条双向航道修建在 ai 与 bi 两个星球之间,任意飞船驶过它所花费的时间为 ti。 接下来 m 行描述运输计划的情况,其中第 j 行包含两个正整数 uj 和 vj,表示第 j 个运输计划是从 uj 号星球飞往 vj 号星球。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>共 1 行,包含 1 个整数,表示小 P 的物流公司完成阶段性工作所需要的最短时间。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>共 1 行,包含 1 个整数,表示小 P 的物流公司完成阶段性工作所需要的最短时间。<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h3><blockquote>
-<p>6 3<br>1 2 3<br>1 6 4<br>3 1 7<br>4 3 6<br>3 5 5<br>3 6<br>2 5<br>4 5<br><a id="more"></a></p>
-<h3 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h3><p>11</p>
+<p>6 3<br>1 2 3<br>1 6 4<br>3 1 7<br>4 3 6<br>3 5 5<br>3 6<br>2 5<br>4 5</p>
+</blockquote>
+<h3 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h3><blockquote>
+<p>11</p>
 </blockquote>
 <h2 id="限制​"><a href="#限制​" class="headerlink" title="限制​"></a>限制​</h2><p>一共有20组数据。<br>其中n的取值依次为：100，100，100，2000，1000，2000，3000，1000，2000，3000，80000，100000，70000，80000，90000，100000，80000，90000，100000，300000。<br>其中m的取值依次为：1，100，100，1，1000，2000，3000，1000，2000，3000，1，1，70000，80000，90000，100000，80000，90000，100000，300000。<br>其中第2，5，6，7，13，14，15，16组数据满足：第 i 条航道连接 i 号星球与 i+1 号星球。</p>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>输入输出样例 1<br>将第 1 条航道改造成虫洞：则三个计划耗时分别为：11、12、11，故需要花费的时 间为 12。<br>将第 2 条航道改造成虫洞：则三个计划耗时分别为：7、15、11，故需要花费的时 间为 15。<br>将第 3 条航道改造成虫洞：则三个计划耗时分别为：4、8、11，故需要花费的时间 为 11。<br>将第 4 条航道改造成虫洞：则三个计划耗时分别为：11、15、5，故需要花费的时 间为 15。<br>将第 5 条航道改造成虫洞：则三个计划耗时分别为：11、10、6，故需要花费的时 间为 11。<br>故将第 3 条或第 5 条航道改造成虫洞均可使得完成阶段性工作的耗时最短，需要花 费的时间为 11。</p>
@@ -53,9 +55,7 @@
     
       &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;公元 2044 年，人类进入了宇宙纪元。L 国有 n 个星球，还有 n−1 条双向航道，每条航道建立在两个星球之间，这 n−1 条 航道连通了 L 国的所有星球。&lt;br&gt;小 P 掌管一家物流公司，该公司有很多个运输计划，每个运输计划形如：有一艘物 流飞船需要从 ui 号星球沿最快的宇航路径飞行到 vi 号星球去。显然，飞船驶过一条航道是需要时间的，对于航道 j，任意飞船驶过它所花费的时间为 tj，并且任意两艘飞船之间不会产生任何干扰。&lt;br&gt;为了鼓励科技创新，L 国国王同意小 P 的物流公司参与 L 国的航道建设，即允许小 P 把某一条航道改造成虫洞，飞船驶过虫洞不消耗时间。&lt;br&gt;在虫洞的建设完成前小 P 的物流公司就预接了 m 个运输计划。在虫洞建设完成后， 这 m 个运输计划会同时开始，所有飞船一起出发。当这 m 个运输计划都完成时，小 P 的 物流公司的阶段性工作就完成了。&lt;br&gt;如果小 P 可以自由选择将哪一条航道改造成虫洞，试求出小 P 的物流公司完成阶段性工作所需要的最短时间是多少？&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;第一行包括两个正整数 n、m,表示 L 国中星球的数量及小 P 公司预接的运输计划的数量,星球从 1 到 n 编号。接下来 n-1 行描述航道的建设情况,其中第 i 行包含三个整数 ai, bi 和 ti,表示第 i 条双向航道修建在 ai 与 bi 两个星球之间,任意飞船驶过它所花费的时间为 ti。 接下来 m 行描述运输计划的情况,其中第 j 行包含两个正整数 uj 和 vj,表示第 j 个运输计划是从 uj 号星球飞往 vj 号星球。&lt;/p&gt;
-&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;共 1 行,包含 1 个整数,表示小 P 的物流公司完成阶段性工作所需要的最短时间。&lt;/p&gt;
-&lt;h2 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h2&gt;&lt;h3 id=&quot;样例输入1&quot;&gt;&lt;a href=&quot;#样例输入1&quot; class=&quot;headerlink&quot; title=&quot;样例输入1&quot;&gt;&lt;/a&gt;样例输入1&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;6 3&lt;br&gt;1 2 3&lt;br&gt;1 6 4&lt;br&gt;3 1 7&lt;br&gt;4 3 6&lt;br&gt;3 5 5&lt;br&gt;3 6&lt;br&gt;2 5&lt;br&gt;4 5&lt;br&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;共 1 行,包含 1 个整数,表示小 P 的物流公司完成阶段性工作所需要的最短时间。&lt;br&gt;
     
     </summary>
     
@@ -83,11 +83,11 @@
     <link href="https://cothrax.github.io/2016/08/13/Vijos-P1982/"/>
     <id>https://cothrax.github.io/2016/08/13/Vijos-P1982/</id>
     <published>2016-08-13T07:58:53.000Z</published>
-    <updated>2016-08-14T01:04:50.882Z</updated>
+    <updated>2016-08-14T01:08:06.062Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有两个仅包含小写英文字母的字符串 A 和 B。现在要从字符串 A 中取出 k 个<strong>互不重叠</strong>的非空子串，然后把这 k 个子串按照其在字符串 A 中出现的顺序依次连接起来得到一 个新的字符串，请问有多少种方案可以使得这个新串与字符串 B 相等？注意：子串取出的位置不同也认为是不同的方案。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行是三个正整数 n，m，k，分别表示字符串 A 的长度，字符串 B 的长度，以及问 题描述中所提到的 k，每两个整数之间用一个空格隔开。第二行包含一个长度为 n 的字符串，表示字符串 A。 第三行包含一个长度为 m 的字符串，表示字符串 B。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出共一行，包含一个整数，表示所求方案数。由于答案可能很大，<strong>所以这里要求输出答案对 1,000,000,007 取模的结果。</strong></p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出共一行，包含一个整数，表示所求方案数。由于答案可能很大，<strong>所以这里要求输出答案对 1,000,000,007 取模的结果。</strong><br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h3><blockquote>
 <p>6 3 1<br>aabaab<br>aab</p>
 </blockquote>
@@ -95,8 +95,10 @@
 <p>2</p>
 </blockquote>
 <h3 id="样例输入2"><a href="#样例输入2" class="headerlink" title="样例输入2"></a>样例输入2</h3><blockquote>
-<p>6 3 2<br>aabaab<br>aab<br><a id="more"></a></p>
-<h3 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h3><p>7</p>
+<p>6 3 2<br>aabaab<br>aab</p>
+</blockquote>
+<h3 id="样例输出2"><a href="#样例输出2" class="headerlink" title="样例输出2"></a>样例输出2</h3><blockquote>
+<p>7</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于第 1 组数据：1≤n≤500，1≤m≤50，k=1；<br>对于第 2 组至第 3 组数据：1≤n≤500，1≤m≤50，k=2；<br>对于第 4 组至第 5 组数据：1≤n≤500，1≤m≤50，k=m；<br>对于第 1 组至第 7 组数据：1≤n≤500，1≤m≤50，1≤k≤m；<br>对于第 1 组至第 9 组数据：1≤n≤1000，1≤m≤100，1≤k≤m；<br>对于所有 10 组数据：1≤n≤1000，1≤m≤200，1≤k≤m。</p>
 <p>NOIP 2015 提高组 Day 2 第二题</p>
@@ -109,15 +111,7 @@
     
       &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;有两个仅包含小写英文字母的字符串 A 和 B。现在要从字符串 A 中取出 k 个&lt;strong&gt;互不重叠&lt;/strong&gt;的非空子串，然后把这 k 个子串按照其在字符串 A 中出现的顺序依次连接起来得到一 个新的字符串，请问有多少种方案可以使得这个新串与字符串 B 相等？注意：子串取出的位置不同也认为是不同的方案。&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;第一行是三个正整数 n，m，k，分别表示字符串 A 的长度，字符串 B 的长度，以及问 题描述中所提到的 k，每两个整数之间用一个空格隔开。第二行包含一个长度为 n 的字符串，表示字符串 A。 第三行包含一个长度为 m 的字符串，表示字符串 B。&lt;/p&gt;
-&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出共一行，包含一个整数，表示所求方案数。由于答案可能很大，&lt;strong&gt;所以这里要求输出答案对 1,000,000,007 取模的结果。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h2&gt;&lt;h3 id=&quot;样例输入1&quot;&gt;&lt;a href=&quot;#样例输入1&quot; class=&quot;headerlink&quot; title=&quot;样例输入1&quot;&gt;&lt;/a&gt;样例输入1&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;6 3 1&lt;br&gt;aabaab&lt;br&gt;aab&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;样例输出1&quot;&gt;&lt;a href=&quot;#样例输出1&quot; class=&quot;headerlink&quot; title=&quot;样例输出1&quot;&gt;&lt;/a&gt;样例输出1&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;2&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;样例输入2&quot;&gt;&lt;a href=&quot;#样例输入2&quot; class=&quot;headerlink&quot; title=&quot;样例输入2&quot;&gt;&lt;/a&gt;样例输入2&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;6 3 2&lt;br&gt;aabaab&lt;br&gt;aab&lt;br&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出共一行，包含一个整数，表示所求方案数。由于答案可能很大，&lt;strong&gt;所以这里要求输出答案对 1,000,000,007 取模的结果。&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     
@@ -141,18 +135,19 @@
     <link href="https://cothrax.github.io/2016/08/13/Vijos-P1981/"/>
     <id>https://cothrax.github.io/2016/08/13/Vijos-P1981/</id>
     <published>2016-08-13T06:13:49.000Z</published>
-    <updated>2016-08-14T01:04:33.771Z</updated>
+    <updated>2016-08-14T01:08:18.199Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>一年一度的“跳石头”比赛又要开始了！<br>这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有 N 块岩石（不含起点和终 点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。<br>为了提高比赛难度，组委会计划移走一些岩石，使得选手们在比赛过程中的最短跳 跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走 M 块岩石（不能 移走起点和终点的岩石）。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入第一行包含三个整数 L，N，M，分别表示起点到终点的距离，起点和终 点之间的岩石数，以及组委会至多移走的岩石数。<br>接下来 N 行，每行一个整数，第 i 行的整数 Di（0&lt;Di&lt;L0&lt;Di&lt;L）表示第 i 块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同 一个位置。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出只包含一个整数，即最短跳跃距离的最大值。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出只包含一个整数，即最短跳跃距离的最大值。<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
 <p>25 5 2<br>2<br>11<br>14<br>17<br>21</p>
 </blockquote>
 <h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
 <p>4</p>
 </blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于20%的数据，0≤M≤N≤10。<br>对于50%的数据，0≤M≤N≤100。<br>对于100%的数据，0≤M≤N≤50000，1≤L≤1000000000。<br><a id="more"></a><br>对于样例。将与起点距离为 2 和 14 的两个岩石移走后，最短的跳跃距离为 4（从与起点距离17 的岩石跳到距离 21 的岩石，或者从距离 21 的岩石跳到终点）。</p>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于20%的数据，0≤M≤N≤10。<br>对于50%的数据，0≤M≤N≤100。<br>对于100%的数据，0≤M≤N≤50000，1≤L≤1000000000。</p>
+<p>对于样例。将与起点距离为 2 和 14 的两个岩石移走后，最短的跳跃距离为 4（从与起点距离17 的岩石跳到距离 21 的岩石，或者从距离 21 的岩石跳到终点）。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><strong>二分</strong>最大距离，不要忘记起终点的石头。</p>
 <dir style="text-align:right"><a href="/2016/08/13/Vijos-P1981/p1981.pas" title="复制代码">复制代码</a></dir>
 
@@ -162,14 +157,7 @@
     
       &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;一年一度的“跳石头”比赛又要开始了！&lt;br&gt;这项比赛将在一条笔直的河道中进行，河道中分布着一些巨大岩石。组委会已经选择好了两块岩石作为比赛起点和终点。在起点和终点之间，有 N 块岩石（不含起点和终 点的岩石）。在比赛过程中，选手们将从起点出发，每一步跳向相邻的岩石，直至到达终点。&lt;br&gt;为了提高比赛难度，组委会计划移走一些岩石，使得选手们在比赛过程中的最短跳 跃距离尽可能长。由于预算限制，组委会至多从起点和终点之间移走 M 块岩石（不能 移走起点和终点的岩石）。&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入第一行包含三个整数 L，N，M，分别表示起点到终点的距离，起点和终 点之间的岩石数，以及组委会至多移走的岩石数。&lt;br&gt;接下来 N 行，每行一个整数，第 i 行的整数 Di（0&amp;lt;Di&amp;lt;L0&amp;lt;Di&amp;lt;L）表示第 i 块岩石与起点的距离。这些岩石按与起点距离从小到大的顺序给出，且不会有两个岩石出现在同 一个位置。&lt;/p&gt;
-&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出只包含一个整数，即最短跳跃距离的最大值。&lt;/p&gt;
-&lt;h2 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h2&gt;&lt;h3 id=&quot;样例输入&quot;&gt;&lt;a href=&quot;#样例输入&quot; class=&quot;headerlink&quot; title=&quot;样例输入&quot;&gt;&lt;/a&gt;样例输入&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;25 5 2&lt;br&gt;2&lt;br&gt;11&lt;br&gt;14&lt;br&gt;17&lt;br&gt;21&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;样例输出&quot;&gt;&lt;a href=&quot;#样例输出&quot; class=&quot;headerlink&quot; title=&quot;样例输出&quot;&gt;&lt;/a&gt;样例输出&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;4&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;提示​&quot;&gt;&lt;a href=&quot;#提示​&quot; class=&quot;headerlink&quot; title=&quot;提示​&quot;&gt;&lt;/a&gt;提示​&lt;/h2&gt;&lt;p&gt;对于20%的数据，0≤M≤N≤10。&lt;br&gt;对于50%的数据，0≤M≤N≤100。&lt;br&gt;对于100%的数据，0≤M≤N≤50000，1≤L≤1000000000。&lt;br&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出只包含一个整数，即最短跳跃距离的最大值。&lt;br&gt;
     
     </summary>
     
@@ -241,7 +229,7 @@
     <link href="https://cothrax.github.io/2016/08/12/Hexo%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <id>https://cothrax.github.io/2016/08/12/Hexo初体验/</id>
     <published>2016-08-12T07:34:05.000Z</published>
-    <updated>2016-08-14T01:03:05.319Z</updated>
+    <updated>2016-08-14T01:09:33.754Z</updated>
     
     <content type="html"><![CDATA[<p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种<strong>BUG</strong>。</p>
 <h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
@@ -254,8 +242,7 @@
 <p>或者用<a href="https://github.com/cnpm/cnpm" target="_blank" rel="external">cnpm</a>替换npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
 <h3 id="Hexo-command-not-found"><a href="#Hexo-command-not-found" class="headerlink" title="Hexo command not found"></a>Hexo command not found</h3><p>修改Windows的<strong>环境变量</strong>，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
 <h3 id="ERROR-Deployer-not-found-github"><a href="#ERROR-Deployer-not-found-github" class="headerlink" title="ERROR Deployer not found: github"></a>ERROR Deployer not found: github</h3><p>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>然后把<code>type</code>从<code>github</code>改成<code>git</code></p>
+<p>然后把<code>type</code>从<code>github</code>改成<code>git</code><br><a id="more"></a></p>
 <h3 id="deploy时repository各种报错"><a href="#deploy时repository各种报错" class="headerlink" title="deploy时repository各种报错"></a>deploy时repository各种报错</h3><p>肯定是yml哪里写错了，这玩意连冒号后面的空格都不能少，如我的username是Cothrax，于是deploy这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:cothrax/cothrax.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
 <h3 id="nothing-to-commit-working-tree-clean后卡住"><a href="#nothing-to-commit-working-tree-clean后卡住" class="headerlink" title="nothing to commit, working tree clean后卡住"></a>nothing to commit, working tree clean后卡住</h3><p>耐心等吧，实在不行使用科学上网工具，也可以用这个很棒的<strong>hosts</strong>优化网络：<a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">https://serve.netsh.org/pub/ipv4-hosts/</a></p>
 <h3 id="每次部署都要输入passphrase"><a href="#每次部署都要输入passphrase" class="headerlink" title="每次部署都要输入passphrase"></a>每次部署都要输入passphrase</h3><p>谁叫你生成ssh时设了密钥呢，passphrase是防止别人向你的项目中提交文件，重新生成一下ssh，passphrase那两个输入直接敲回车就可以了。</p>
@@ -308,6 +295,7 @@
 &lt;p&gt;或者用&lt;a href=&quot;https://github.com/cnpm/cnpm&quot;&gt;cnpm&lt;/a&gt;替换npm&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g cnpm --registry=https://registry.npm.taobao.org&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Hexo-command-not-found&quot;&gt;&lt;a href=&quot;#Hexo-command-not-found&quot; class=&quot;headerlink&quot; title=&quot;Hexo command not found&quot;&gt;&lt;/a&gt;Hexo command not found&lt;/h3&gt;&lt;p&gt;修改Windows的&lt;strong&gt;环境变量&lt;/strong&gt;，把&lt;code&gt;hexo安装目录\node_modules\.bin&lt;/code&gt;加到Path里去就好了。&lt;/p&gt;
 &lt;h3 id=&quot;ERROR-Deployer-not-found-github&quot;&gt;&lt;a href=&quot;#ERROR-Deployer-not-found-github&quot; class=&quot;headerlink&quot; title=&quot;ERROR Deployer not found: github&quot;&gt;&lt;/a&gt;ERROR Deployer not found: github&lt;/h3&gt;&lt;p&gt;Hexo3.0把github改成了git&lt;br&gt;于是在bash中执行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install hexo-deployer-git --save&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后把&lt;code&gt;type&lt;/code&gt;从&lt;code&gt;github&lt;/code&gt;改成&lt;code&gt;git&lt;/code&gt;&lt;br&gt;
     
     </summary>
     
@@ -325,7 +313,7 @@
     <link href="https://cothrax.github.io/2016/08/12/Test-Hexo/"/>
     <id>https://cothrax.github.io/2016/08/12/Test-Hexo/</id>
     <published>2016-08-12T02:44:49.000Z</published>
-    <updated>2016-08-14T01:03:51.355Z</updated>
+    <updated>2016-08-14T01:08:51.448Z</updated>
     
     <content type="html"><![CDATA[<p>localhost下测试，asset、404都没有用，deploy后就能用啦。</p>
 <figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
@@ -337,9 +325,9 @@
 <p><a href="!--￼16--">Link</a></p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
-<a id="more"></a>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 有用吗 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="有用吗">有用吗</a>
+<a id="more"></a>
 <h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
 <figure class="highlight yml"><figcaption><span>404.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="number">404</span> Page not Found</div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="attr">toc:</span> <span class="literal">false</span></div><div class="line"><span class="attr">permalink:</span> /<span class="number">404</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
 <p><a href="https://cothrax.github.io/这就404了">https://cothrax.github.io/这就404了</a><br>还有根下<code>_config.yml</code>中<code>relative_link: false</code>，不然在子目录下404就找不到css了，然后layout就没有了</p>
@@ -374,6 +362,8 @@ content
 &lt;p&gt;&lt;a href=&quot;!--￼16--&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_link&lt;/span&gt; p1523.pas %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a href=&quot;/2016/08/12/Test-Hexo/p1523.pas&quot; title=&quot;p1523.pas&quot;&gt;p1523.pas&lt;/a&gt;
+&lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_link&lt;/span&gt; p1523.pas 有用吗 %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a href=&quot;/2016/08/12/Test-Hexo/p1523.pas&quot; title=&quot;有用吗&quot;&gt;有用吗&lt;/a&gt;
     
     </summary>
     
@@ -391,7 +381,7 @@ content
     <link href="https://cothrax.github.io/2016/08/12/Vijos-P1523/"/>
     <id>https://cothrax.github.io/2016/08/12/Vijos-P1523/</id>
     <published>2016-08-12T00:55:10.000Z</published>
-    <updated>2016-08-14T01:04:08.200Z</updated>
+    <updated>2016-08-14T01:08:37.112Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>传说中的九头龙是一种特别贪吃的动物。虽然名字叫“九头龙”，但这只是说它出生的时候有九个头，而在成长的过程中，它有时会长出很多的新头，头的总数会远大于九，当然也会有旧头因衰老而自己脱落。</p>
 <p>有一天，有M个脑袋的九头龙看到一棵长有N个果子的果树，喜出望外，恨不得一口把它全部吃掉。可是必须照顾到每个头，因此它需要把N个果子分成M组，每组至少有一个果子，让每个头吃一组。</p>
@@ -399,10 +389,12 @@ content
 <p>对于每段树枝，如果它所连接的两个果子需要由不同的头来吃掉，那么两个头会共同把树枝弄断而把果子分开；如果这两个果子是由同一个头来吃掉，那么这个头会懒得把它弄断而直接把果子连同树枝一起吃掉。当然，吃树枝并不是很舒服的，因此每段树枝都有一个吃下去的“难受值”，而九头龙的难受值就是所有头吃掉的树枝的“难受值”之和。</p>
 <p>九头龙希望它的“难受值”尽量小，你能帮它算算吗？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第1行包含三个整数N(1&lt;=N&lt;=300)，M(2&lt;=M&lt;=N)，K(1&lt;=K&lt;=N)。N个果子依次编号1,2,…,N，且最大的果子的编号总是1。第2行到第N行描述了果树的形态，每行包含三个整数a(1&lt;=a&lt;=N)，b(1&lt;=b&lt;=N)，c(0&lt;=c&lt;=105)，表示存在一段难受值为c的树枝连接果子a和果子b。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>8 2 4<br> 1 2 20<br> 1 3 4<br> 1 4 13<br> 2 5 10<br> 2 6 12<br> 3 7 15<br> 3 8 5<br><a id="more"></a></p>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>4</p>
+<p>8 2 4<br> 1 2 20<br> 1 3 4<br> 1 4 13<br> 2 5 10<br> 2 6 12<br> 3 7 15<br> 3 8 5</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>4</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>树形动态规划</p>
 <h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>安徽省芜湖市第二十七中学测试题<br>NOI 2002 贪吃的九头龙(dragon)<br>Description:Official<br>Data:Official<br>Program:Converted by JackDavid127<br>​</p>
@@ -429,9 +421,7 @@ content
 &lt;p&gt;对于每段树枝，如果它所连接的两个果子需要由不同的头来吃掉，那么两个头会共同把树枝弄断而把果子分开；如果这两个果子是由同一个头来吃掉，那么这个头会懒得把它弄断而直接把果子连同树枝一起吃掉。当然，吃树枝并不是很舒服的，因此每段树枝都有一个吃下去的“难受值”，而九头龙的难受值就是所有头吃掉的树枝的“难受值”之和。&lt;/p&gt;
 &lt;p&gt;九头龙希望它的“难受值”尽量小，你能帮它算算吗？&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入的第1行包含三个整数N(1&amp;lt;=N&amp;lt;=300)，M(2&amp;lt;=M&amp;lt;=N)，K(1&amp;lt;=K&amp;lt;=N)。N个果子依次编号1,2,…,N，且最大的果子的编号总是1。第2行到第N行描述了果树的形态，每行包含三个整数a(1&amp;lt;=a&amp;lt;=N)，b(1&amp;lt;=b&amp;lt;=N)，c(0&amp;lt;=c&amp;lt;=105)，表示存在一段难受值为c的树枝连接果子a和果子b。&lt;/p&gt;
-&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。&lt;/p&gt;
-&lt;h2 id=&quot;样例&quot;&gt;&lt;a href=&quot;#样例&quot; class=&quot;headerlink&quot; title=&quot;样例&quot;&gt;&lt;/a&gt;样例&lt;/h2&gt;&lt;h3 id=&quot;样例输入&quot;&gt;&lt;a href=&quot;#样例输入&quot; class=&quot;headerlink&quot; title=&quot;样例输入&quot;&gt;&lt;/a&gt;样例输入&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;8 2 4&lt;br&gt; 1 2 20&lt;br&gt; 1 3 4&lt;br&gt; 1 4 13&lt;br&gt; 2 5 10&lt;br&gt; 2 6 12&lt;br&gt; 3 7 15&lt;br&gt; 3 8 5&lt;br&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出仅有一行，包含一个整数，表示在满足“大头”的要求的前提下，九头龙的难受值的最小值。如果无法满足要求，输出-1。&lt;br&gt;
     
     </summary>
     
