@@ -60,10 +60,10 @@
 					
 					<li>
  					
-					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
-					</form>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
 					
 					</li>
 				</ul>
@@ -73,25 +73,47 @@
       </header>
       <div id="container">
         
-<div  id="main" class="page">
-  <div id='cse' style='width:100%;text-align:center'>正在加载搜索结果，请稍等。</div>
-</div>
-<script src="https://www.google.com.hk/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-google.load('search', '1', {language : 'zh-CN',style: google.loader.themes.MINIMALIST});
-google.setOnLoadCallback(function(){
-  var customSearchControl = new google.search.CustomSearchControl('004666637877820329806:298oqe8fgmq');
-  customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-  var options = new google.search.DrawOptions();
-  options.setAutoComplete(true);
-  customSearchControl.draw('cse', options);
-  var match = location.search.match(/q=([^&]*)(&|$)/);
-  if(match && match[1]){
-    var search = decodeURIComponent(match[1]); 
-    customSearchControl.execute(search);
+<div  id="container" class="page">
+  <div id="st-results-container" class="st-search-container" style="width:80%">正在加载搜索结果，请稍等。</div>
+  <style>.st-result-text {
+  background: #fafafa;
+  display: block;
+  border-left: 0.5em solid #ccc;
+  -webkit-transition: border-left 0.45s;
+  -moz-transition: border-left 0.45s;
+  -o-transition: border-left 0.45s;
+  -ms-transition: border-left 0.45s;
+  transition: border-left 0.45s;
+  padding: 0.5em;
+}
+@media only screen and (min-width: 768px) {
+  .st-result-text {
+    padding: 1em;
   }
-},true);
+}
+.st-result-text:hover {
+  border-left: 0.5em solid #ea6753;
+}
+.st-result-text h3 a{
+  color: #2ca6cb;
+  line-height: 1.5;
+  font-size: 22px;
+}
+.st-snippet em {
+  font-weight: bold;
+  color: #ea6753;
+}</style>
+
+<!--注意下面到</script>结束的代码块要替换成自己上面保存的Install Code代码--!>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
 </script>
+
 
 
       </div>
@@ -138,6 +160,15 @@ google.setOnLoadCallback(function(){
 		
 		
 		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
 </div>
 </footer>
       <script src="/js/jquery-2.0.3.min.js"></script>
