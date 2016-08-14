@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>[Vijos] p1906 | Cothrax</title>
+    <title>[Vijos] p1906 联合权值 | Cothrax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cothrax">
@@ -14,14 +14,14 @@
     <meta name="description" content="描述无向连通图 G 有 n 个点，n-1 条边。点从 1 到 n 依次编号，编号为 i 的点的权值为 Wi， 每条边的长度均为 1。图上两点(u, v)的距离定义为 u 点到 v 点的最短距离。对于图 G 上的点对(u, v)，若它们的距离为 2，则它们之间会产生Wu×Wv的联合权值。请问图 G 上所有可产生联合权值的有序点对中，联合权值最大的是多少？所有联合权值之和是多少？
 格式输入格式第一行包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Vijos] p1906">
+<meta property="og:title" content="[Vijos] p1906 联合权值">
 <meta property="og:url" content="https://cothrax.github.io/2016/08/14/Vijos-p1906/index.html">
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="描述无向连通图 G 有 n 个点，n-1 条边。点从 1 到 n 依次编号，编号为 i 的点的权值为 Wi， 每条边的长度均为 1。图上两点(u, v)的距离定义为 u 点到 v 点的最短距离。对于图 G 上的点对(u, v)，若它们的距离为 2，则它们之间会产生Wu×Wv的联合权值。请问图 G 上所有可产生联合权值的有序点对中，联合权值最大的是多少？所有联合权值之和是多少？
 格式输入格式第一行包">
-<meta property="og:updated_time" content="2016-08-14T09:48:36.000Z">
+<meta property="og:updated_time" content="2016-08-14T10:02:16.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Vijos] p1906">
+<meta name="twitter:title" content="[Vijos] p1906 联合权值">
 <meta name="twitter:description" content="描述无向连通图 G 有 n 个点，n-1 条边。点从 1 到 n 依次编号，编号为 i 的点的权值为 Wi， 每条边的长度均为 1。图上两点(u, v)的距离定义为 u 点到 v 点的最短距离。对于图 G 上的点对(u, v)，若它们的距离为 2，则它们之间会产生Wu×Wv的联合权值。请问图 G 上所有可产生联合权值的有序点对中，联合权值最大的是多少？所有联合权值之和是多少？
 格式输入格式第一行包">
 <meta name="twitter:creator" content="@Cothrax">
@@ -84,7 +84,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/14/Vijos-p1906/" title="[Vijos] p1906" itemprop="url">[Vijos] p1906</a>
+      <a href="/2016/08/14/Vijos-p1906/" title="[Vijos] p1906 联合权值" itemprop="url">[Vijos] p1906 联合权值</a>
   </h1>
   <p class="article-author">By
        
@@ -116,10 +116,12 @@
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 30%的数据，1 &lt; n ≤ 100；<br>对于 60%的数据，1 &lt; n ≤ 2000；<br>对于 100%的数据，1 &lt; n ≤ 200,000，0 &lt; WiWi ≤ 10,000。</p>
 <p>NOIP2014 提高组 Day1<br>​</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>14年的题目怎么都很水。。。<br>对于点v，记与有v连边的所有点为$u_i$，${u<em>i}$所能得到的联合权值之和=$(\sum W</em>{u<em>i})^2-\sum W</em>{u{i}}^2$<br>比如有与v连的有三个点，权值分别为a,b,c，那么这三个点能够成的联合权值之和=$2ab+2bc+2ca=(a+b+c)^2-a^2-b^2-c^2$<br>至于最大的权值，取$W_{u_i}$中的最大值和次大值，乘起来就是最大的联合权值。<br>于是扫一遍节点得到答案。<br>注意当v的度为1时不能构成联合权值</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>14年的题目怎么都很水。。。</p>
+<p>对于点v，记与有v连边的所有点为$u_i$，两两配对所能得到的联合权值之和=$(\sum W_{u_i})^2-\sum W_{u_{i}}^2$<br>比如有与v连的有三个点，权值分别为a,b,c，那么这三个点能够成的联合权值之和=$2ab+2bc+2ca=(a+b+c)^2-a^2-b^2-c^2$<br>至于最大的权值，取$W_{u_i}$中的最大值和次大值，乘起来就是最大的联合权值。<br>于是扫一遍节点得到答案。<br>注意当v的度为1时不能构成联合权值</p>
 <dir style="text-align:right"><a href="/2016/08/14/Vijos-p1906/p1906.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>p1906.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> z=<span class="number">10007</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,i,f,t,ans,maxw:int;</div><div class="line">    w,head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> edge;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].t:=t;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">solve</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u,fir,sec,sqrsum,sum:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fir:=<span class="number">0</span>;sec:=<span class="number">0</span>;sqrsum:=<span class="number">0</span>;sum:=<span class="number">0</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> w[u]&gt;fir <span class="keyword">then</span> <span class="keyword">begin</span> sec:=fir;fir:=w[u] <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> w[u]&gt;sec <span class="keyword">then</span> sec:=w[u];</div><div class="line">        sum:=(sum+w[u]) <span class="keyword">mod</span> z;</div><div class="line">        sqrsum:=(sqrsum+sqr(w[u])) <span class="keyword">mod</span> z;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> sec&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        maxw:=max(maxw,fir*sec);</div><div class="line">        ans:=(ans+sqr(sum)-sqrsum) <span class="keyword">mod</span> z;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f,t);</div><div class="line">        add(f,t);add(t,f);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(w[i]);</div><div class="line">    ans:=<span class="number">0</span>;maxw:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> solve(i);</div><div class="line">    <span class="keyword">write</span>(maxw,<span class="string">' '</span>,ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>  
+<figure class="highlight delphi"><figcaption><span>p1906.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> z=<span class="number">10007</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,i,f,t,ans,maxw:int;</div><div class="line">    w,head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> edge;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].t:=t;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">solve</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u,fir,sec,sqrsum,sum:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fir:=<span class="number">0</span>;sec:=<span class="number">0</span>;sqrsum:=<span class="number">0</span>;sum:=<span class="number">0</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> w[u]&gt;fir <span class="keyword">then</span> <span class="keyword">begin</span> sec:=fir;fir:=w[u] <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> w[u]&gt;sec <span class="keyword">then</span> sec:=w[u];</div><div class="line">        sum:=(sum+w[u]) <span class="keyword">mod</span> z;</div><div class="line">        sqrsum:=(sqrsum+sqr(w[u])) <span class="keyword">mod</span> z;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> sec&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        maxw:=max(maxw,fir*sec);</div><div class="line">        ans:=(ans+sqr(sum)-sqrsum) <span class="keyword">mod</span> z;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f,t);</div><div class="line">        add(f,t);add(t,f);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(w[i]);</div><div class="line">    ans:=<span class="number">0</span>;maxw:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> solve(i);</div><div class="line">    <span class="keyword">write</span>(maxw,<span class="string">' '</span>,ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -141,7 +143,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://cothrax.github.io/2016/08/14/Vijos-p1906/" data-title="[Vijos] p1906 | Cothrax" data-tsina="null" class="share clearfix">
+	  <div data-url="https://cothrax.github.io/2016/08/14/Vijos-p1906/" data-title="[Vijos] p1906 联合权值 | Cothrax" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -156,9 +158,9 @@
  
 
 <div class="next">
-<a href="/2016/08/14/Vijos-p1908/"  title="[Vijos] p1908">
+<a href="/2016/08/14/Vijos-p1908/"  title="[Vijos] p1908 无线网路发射器选址">
  <strong>下一篇：</strong><br/> 
- <span>[Vijos] p1908
+ <span>[Vijos] p1908 无线网路发射器选址
 </span>
 </a>
 </div>
@@ -167,7 +169,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/08/14/Vijos-p1906/" data-title="[Vijos] p1906" data-url="https://cothrax.github.io/2016/08/14/Vijos-p1906/"></div>
+	<div class="ds-thread" data-thread-key="2016/08/14/Vijos-p1906/" data-title="[Vijos] p1906 联合权值" data-url="https://cothrax.github.io/2016/08/14/Vijos-p1906/"></div>
 </section>
 
 
