@@ -87,11 +87,9 @@ end;
 begin
     read(n,m);
     logn:=floor(ln(n)/ln(2));
-    l:=0;
     for i:=1 to n-1 do begin
         read(f0,t0,w0);
         add(f0,t0,w0);add(t0,f0,w0);
-        l:=min(w0,l);
     end;
     for i:=1 to m do read(a[i].f,a[i].t);
 
