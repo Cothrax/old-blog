@@ -214,7 +214,7 @@
     <link href="https://cothrax.github.io/2016/08/12/Hexo%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <id>https://cothrax.github.io/2016/08/12/Hexo初体验/</id>
     <published>2016-08-12T07:34:05.000Z</published>
-    <updated>2016-08-12T13:49:54.979Z</updated>
+    <updated>2016-08-14T01:01:44.714Z</updated>
     
     <content type="html"><![CDATA[<p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种<strong>BUG</strong>。</p>
 <h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
@@ -225,6 +225,7 @@
 <h2 id="安装和部署"><a href="#安装和部署" class="headerlink" title="安装和部署"></a>安装和部署</h2><h3 id="npm卡住不动"><a href="#npm卡住不动" class="headerlink" title="npm卡住不动"></a>npm卡住不动</h3><p>hexo是基于node.js，于是运行npm安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure></p>
 <p>由于gfw的存在，就动不了了。还好可以换<strong>国内的镜像</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nano ~/.npmrc</div><div class="line">registry =https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
 <p>或者用<a href="https://github.com/cnpm/cnpm" target="_blank" rel="external">cnpm</a>替换npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="Hexo-command-not-found"><a href="#Hexo-command-not-found" class="headerlink" title="Hexo command not found"></a>Hexo command not found</h3><p>修改Windows的<strong>环境变量</strong>，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
 <h3 id="ERROR-Deployer-not-found-github"><a href="#ERROR-Deployer-not-found-github" class="headerlink" title="ERROR Deployer not found: github"></a>ERROR Deployer not found: github</h3><p>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
 <p>然后把<code>type</code>从<code>github</code>改成<code>git</code></p>
@@ -269,7 +270,15 @@
     
     <summary type="html">
     
-      &lt;p&gt;作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试&lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub Pages&lt;/a&gt;，于是就有了这个
+      &lt;p&gt;作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;，于是就有了这个页面。&lt;br&gt;折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种&lt;strong&gt;BUG&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;参考教程&quot;&gt;&lt;a href=&quot;#参考教程&quot; class=&quot;headerlink&quot; title=&quot;参考教程&quot;&gt;&lt;/a&gt;参考教程&lt;/h2&gt;&lt;p&gt;这是用&lt;a href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/poem_of_sunshine/article/details/29369785/&quot;&gt;如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ijiaober.github.io/categories/hexo/&quot;&gt;Hexo使用攻略 by ijiaober&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;安装和部署&quot;&gt;&lt;a href=&quot;#安装和部署&quot; class=&quot;headerlink&quot; title=&quot;安装和部署&quot;&gt;&lt;/a&gt;安装和部署&lt;/h2&gt;&lt;h3 id=&quot;npm卡住不动&quot;&gt;&lt;a href=&quot;#npm卡住不动&quot; class=&quot;headerlink&quot; title=&quot;npm卡住不动&quot;&gt;&lt;/a&gt;npm卡住不动&lt;/h3&gt;&lt;p&gt;hexo是基于node.js，于是运行npm安装：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g hexo&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;由于gfw的存在，就动不了了。还好可以换&lt;strong&gt;国内的镜像&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;nano ~/.npmrc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;registry =https://registry.npm.taobao.org&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者用&lt;a href=&quot;https://github.com/cnpm/cnpm&quot;&gt;cnpm&lt;/a&gt;替换npm&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g cnpm --registry=https://registry.npm.taobao.org&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
