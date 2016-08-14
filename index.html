@@ -563,18 +563,16 @@
 </header>
     <div class="article-content">
         
-        <p>localhost下测试，asset、404都没有用，deploy后就能用啦。</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+        <p><del>localhost下测试，asset、404都没有用，deploy后就</del>能用啦。</p>
+<p>要用资源文件夹的话：<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <h2 id="一张图片"><a href="#一张图片" class="headerlink" title="一张图片"></a>一张图片</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> example.gif TestImage %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <img src="/2016/08/12/Test-Hexo/example.gif" alt="TestImage" title="TestImage">
 <h2 id="一份源码"><a href="#一份源码" class="headerlink" title="一份源码"></a>一份源码</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 /2016/08/12/Test-Hexo/p1523.pas
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">Link</span>](<span class="link">&#123;% asset_path p1523.pas %&#125;</span>)</div></pre></td></tr></table></figure>
-<p><a href="!--￼16--">Link</a></p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 有用吗 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/p1523.pas" title="有用吗">有用吗</a>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 标题 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<a href="/2016/08/12/Test-Hexo/p1523.pas" title="标题">标题</a>
         
         
         <p class="article-more-link">

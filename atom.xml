@@ -413,34 +413,40 @@
     <link href="https://cothrax.github.io/2016/08/12/Test-Hexo/"/>
     <id>https://cothrax.github.io/2016/08/12/Test-Hexo/</id>
     <published>2016-08-12T02:44:49.000Z</published>
-    <updated>2016-08-14T01:08:51.448Z</updated>
+    <updated>2016-08-13T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>localhost下测试，asset、404都没有用，deploy后就能用啦。</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p><del>localhost下测试，asset、404都没有用，deploy后就</del>能用啦。</p>
+<p>要用资源文件夹的话：<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <h2 id="一张图片"><a href="#一张图片" class="headerlink" title="一张图片"></a>一张图片</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> example.gif TestImage %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <img src="/2016/08/12/Test-Hexo/example.gif" alt="TestImage" title="TestImage">
 <h2 id="一份源码"><a href="#一份源码" class="headerlink" title="一份源码"></a>一份源码</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 /2016/08/12/Test-Hexo/p1523.pas
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">Link</span>](<span class="link">&#123;% asset_path p1523.pas %&#125;</span>)</div></pre></td></tr></table></figure>
-<p><a href="!--￼16--">Link</a></p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 有用吗 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/p1523.pas" title="有用吗">有用吗</a>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 标题 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<a href="/2016/08/12/Test-Hexo/p1523.pas" title="标题">标题</a>
 <a id="more"></a>
 <h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
 <figure class="highlight yml"><figcaption><span>404.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="number">404</span> Page not Found</div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="attr">toc:</span> <span class="literal">false</span></div><div class="line"><span class="attr">permalink:</span> /<span class="number">404</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
 <p><a href="https://cothrax.github.io/这就404了">https://cothrax.github.io/这就404了</a><br>还有根下<code>_config.yml</code>中<code>relative_link: false</code>，不然在子目录下404就找不到css了，然后layout就没有了</p>
-<h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist 0781305b79f54aaeac06b49444529d1c p1144.pas %&#125;</div></pre></td></tr></table></figure>
+<h2 id="Raw标签"><a href="#Raw标签" class="headerlink" title="Raw标签"></a>Raw标签</h2><p>用来避免<strong>解析异常</strong>，如可以用Raw来避免markdown和mathjax的解析冲突。<br>如果直接这样写的话<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">点为$u<span class="emphasis">_i$，能得到的联合权值之和=$(\sum W_</span>&#123;u<span class="emphasis">_i&#125;)^2-\sum W_</span>&#123;u_&#123;i&#125;&#125;^2$</div></pre></td></tr></table></figure></p>
+<p>由于下划线被markdown当做斜体，就成了这样：</p>
+<blockquote>
+<p>点为$u<em>i$，能得到的联合权值之和=$(\sum W</em>{u<em>i})^2-\sum W</em>{u_{i}}^2$</p>
+</blockquote>
+<p>当然你可以用<strong>转义符</strong>来解决问题：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">点为$u\<span class="emphasis">_i$，能得到的联合权值之和=$(\sum W\_</span>&#123;u\<span class="emphasis">_i&#125;)^2-\sum W\_</span>&#123;u\_&#123;i&#125;&#125;^2$</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>点为$u_i$，能得到的联合权值之和=$(\sum W_{u_i})^2-\sum W_{u_{i}}^2$</p>
+</blockquote>
+<p>当公式特别长时，转义符就不方便了，于是这样写：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125; </div><div class="line">点为$u<span class="emphasis">_i$，能得到的联合权值之和=$(\sum W_</span>&#123;u<span class="emphasis">_i&#125;)^2-\sum W_</span>&#123;u_&#123;i&#125;&#125;^2$</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure></p>
+<p>就好啦：</p>
+<blockquote>
+点为$u_i$，能得到的联合权值之和=$(\sum W_{u_i})^2-\sum W_{u_{i}}^2$
+</blockquote>
+<h2 id="其他的"><a href="#其他的" class="headerlink" title="其他的"></a>其他的</h2><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Test-Hexo 标题 %&#125;</div><div class="line">&#123;% post_link Hello-the-Wicked-World %&#125;</div></pre></td></tr></table></figure>
+<a href="/2016/08/12/Test-Hexo/" title="标题">标题</a><br><br><a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World">Hello the Wicked World</a>
+<h3 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist 0781305b79f54aaeac06b49444529d1c p1144.pas %&#125;</div></pre></td></tr></table></figure>
 <p>好棒<br><script src="//gist.github.com/0781305b79f54aaeac06b49444529d1c.js?file=p1144.pas"></script></p>
-<h2 id="其他的"><a href="#其他的" class="headerlink" title="其他的"></a>其他的</h2><h3 id="Raw标签"><a href="#Raw标签" class="headerlink" title="Raw标签"></a>Raw标签</h3><p>我也不知道这是什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% raw %&#125;</div><div class="line">content</div><div class="line">&#123;% endraw %&#125;</div></pre></td></tr></table></figure>
-
-content
-
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% post_link Test-Hexo 标题 %&#125;</div><div class="line">&#123;% post_link Hello-the-Wicked-World %&#125;</div></pre></td></tr></table></figure>
-<a href="/2016/08/12/Test-Hexo/" title="标题">标题</a>
-<a href="/2016/08/12/Hello-the-Wicked-World/" title="Hello the Wicked World">Hello the Wicked World</a>
 <h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><p>Youtube和Vimeo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% youtube dc-nyGo0aC8 %&#125;</div></pre></td></tr></table></figure></p>
 <div class="video-container"><iframe src="//www.youtube.com/embed/dc-nyGo0aC8" frameborder="0" allowfullscreen></iframe></div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% vimeo video_id %&#125;</div></pre></td></tr></table></figure>
@@ -452,18 +458,16 @@ content
     
     <summary type="html">
     
-      &lt;p&gt;localhost下测试，asset、404都没有用，deploy后就能用啦。&lt;/p&gt;
-&lt;figure class=&quot;highlight yml&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_config.yml&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;post_asset_folder:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;p&gt;&lt;del&gt;localhost下测试，asset、404都没有用，deploy后就&lt;/del&gt;能用啦。&lt;/p&gt;
+&lt;p&gt;要用资源文件夹的话：&lt;br&gt;&lt;figure class=&quot;highlight yml&quot;&gt;&lt;figcaption&gt;&lt;span&gt;_config.yml&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;post_asset_folder:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id=&quot;一张图片&quot;&gt;&lt;a href=&quot;#一张图片&quot; class=&quot;headerlink&quot; title=&quot;一张图片&quot;&gt;&lt;/a&gt;一张图片&lt;/h2&gt;&lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_img&lt;/span&gt; example.gif TestImage %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;img src=&quot;/2016/08/12/Test-Hexo/example.gif&quot; alt=&quot;TestImage&quot; title=&quot;TestImage&quot;&gt;
 &lt;h2 id=&quot;一份源码&quot;&gt;&lt;a href=&quot;#一份源码&quot; class=&quot;headerlink&quot; title=&quot;一份源码&quot;&gt;&lt;/a&gt;一份源码&lt;/h2&gt;&lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_path&lt;/span&gt; p1523.pas %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 /2016/08/12/Test-Hexo/p1523.pas
-&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;Link&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;&amp;#123;% asset_path p1523.pas %&amp;#125;&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;a href=&quot;!--￼16--&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_link&lt;/span&gt; p1523.pas %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a href=&quot;/2016/08/12/Test-Hexo/p1523.pas&quot; title=&quot;p1523.pas&quot;&gt;p1523.pas&lt;/a&gt;
-&lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_link&lt;/span&gt; p1523.pas 有用吗 %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;a href=&quot;/2016/08/12/Test-Hexo/p1523.pas&quot; title=&quot;有用吗&quot;&gt;有用吗&lt;/a&gt;
+&lt;figure class=&quot;highlight django&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;span class=&quot;template-tag&quot;&gt;&amp;#123;% &lt;span class=&quot;name&quot;&gt;asset_link&lt;/span&gt; p1523.pas 标题 %&amp;#125;&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a href=&quot;/2016/08/12/Test-Hexo/p1523.pas&quot; title=&quot;标题&quot;&gt;标题&lt;/a&gt;
     
     </summary>
     
