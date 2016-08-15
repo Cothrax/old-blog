@@ -12,18 +12,18 @@
 
     
     <meta name="description" content="描述花匠栋栋种了一排花，每株花都有自己的高度。花儿越长越大，也越来越挤。栋栋决定把这排中的一部分花移走，将剩下的留在原地，使得剩下的花能有空间长大，同时，栋栋希望剩下的花排列得比较别致。具体而言，栋栋的花的高度可以看成一列整数h1, h2, … , hn。设当一部分花被移走后，剩下的花的高度依次为g1, g2, … , gm，则栋栋希望下面两个条件中至少有一个满足：
-条件 A：对于所有的1&amp;lt;">
+条件 A：对于所有的$1&amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Vijos] P1845 花匠">
 <meta property="og:url" content="https://cothrax.github.io/2016/08/14/Vijos-P1845/index.html">
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="描述花匠栋栋种了一排花，每株花都有自己的高度。花儿越长越大，也越来越挤。栋栋决定把这排中的一部分花移走，将剩下的留在原地，使得剩下的花能有空间长大，同时，栋栋希望剩下的花排列得比较别致。具体而言，栋栋的花的高度可以看成一列整数h1, h2, … , hn。设当一部分花被移走后，剩下的花的高度依次为g1, g2, … , gm，则栋栋希望下面两个条件中至少有一个满足：
-条件 A：对于所有的1&amp;lt;">
-<meta property="og:updated_time" content="2016-08-15T04:30:35.112Z">
+条件 A：对于所有的$1&amp;lt">
+<meta property="og:updated_time" content="2016-08-15T04:54:39.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Vijos] P1845 花匠">
 <meta name="twitter:description" content="描述花匠栋栋种了一排花，每株花都有自己的高度。花儿越长越大，也越来越挤。栋栋决定把这排中的一部分花移走，将剩下的留在原地，使得剩下的花能有空间长大，同时，栋栋希望剩下的花排列得比较别致。具体而言，栋栋的花的高度可以看成一列整数h1, h2, … , hn。设当一部分花被移走后，剩下的花的高度依次为g1, g2, … , gm，则栋栋希望下面两个条件中至少有一个满足：
-条件 A：对于所有的1&amp;lt;">
+条件 A：对于所有的$1&amp;lt">
 <meta name="twitter:creator" content="@Cothrax">
 
     
@@ -105,7 +105,7 @@
 		</div>
 		
 		<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>花匠栋栋种了一排花，每株花都有自己的高度。花儿越长越大，也越来越挤。栋栋决定把这排中的一部分花移走，将剩下的留在原地，使得剩下的花能有空间长大，同时，栋栋希望剩下的花排列得比较别致。<br>具体而言，栋栋的花的高度可以看成一列整数h1, h2, … , hn。设当一部分花被移走后，剩下的花的高度依次为g1, g2, … , gm，则栋栋希望下面两个条件中至少有一个满足：</p>
-<p>条件 A：对于所有的<code>1&lt;i&lt;m/2</code>，<code>g(2i)&gt;g(2i-1)</code>，且<code>g(2i)&gt;g(2i+1)</code>；<br>条件 B：对于所有的<code>1&lt;i&lt;m/2</code>，<code>g(2i)&lt;g(2i−1)</code>，且<code>g(2i)&lt;g(2i+1)</code>。</p>
+<p>条件 A：对于所有的<span>$1&lt;i&lt;m/2$</span><!-- Has MathJax -->，<span>$g_{2i}&gt;g_{2i-1}$</span><!-- Has MathJax -->，且<span>$g_{2i}&gt;g_{2i+1}$</span><!-- Has MathJax -->；<br>条件 B：对于所有的<span>$1&lt;i&lt;m/2$</span><!-- Has MathJax -->，<span>$g_{2i}&lt;g_{2i-1}$</span><!-- Has MathJax -->，且<span>$g_{2i}&lt;g_{2i+1}$</span><!-- Has MathJax -->。</p>
 <p>注意上面两个条件在m=1时同时满足，当m&gt;1时最多有一个能满足。<br>请问，栋栋最多能将多少株花留在原地。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第一行包含一个整数 n，表示开始时花的株数。<br>第二行包含 n 个整数，依次为h1, h2,… , hn，表示每株花的高度。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行，包含一个整数 m，表示最多能留在原地的花的株数。<br><a id="more"></a></p>
@@ -117,7 +117,10 @@
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 20%的数据，n ≤ 10；<br>对于 30%的数据，n ≤ 25；<br>对于 70%的数据，n ≤ 1000，0 ≤ hi ≤ 1000；<br>对于 100%的数据，1 ≤ n ≤ 100,000，0 ≤ hi ≤ 1,000,000，所有的h_i随机生成，所有随机数服从某区间内的均匀分布。</p>
 <p>NOIP 2013 提高组 day 2</p>
-<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>首先想到LIS，然后5分钟DP就写好啦，80分然后TLE<br>f[i,j] 以h[i]结尾的合法序列的最长长度<br>j=0时h[i]小于前一个数，j=1时h[i]大于前一个数<br>于是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f[i,0]:=max&#123;f[k,1]+1 | h[k]&gt;h[i] and 1≤k≤i&#125;</div><div class="line">f[i,1]:=max&#123;f[k,0]+1 | h[k]&lt;h[i] and 1≤k≤i&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>首先想到LIS，然后5分钟DP就写好啦，80分然后TLE</p>
+<blockquote>
+<p>f[i,j] 以h[i]结尾的合法序列的最长长度<br>j=0时h[i]小于前一个数，j=1时h[i]大于前一个数<br>于是<br>$f[i,0]=max{f[k,1]+1\ |\ h[k]&gt;h[i]\ and\ 1\leq k\leq i}$<br>$f[i,1]=max{f[k,0]+1\ |\ h[k]&lt;h[i]\ and\ 1\leq k\leq i}$</p>
+</blockquote>
 <dir style="text-align:right"><a href="/2016/08/14/Vijos-P1845/p1845.pas" title="复制代码">复制代码</a></dir>
 
 <figure class="highlight delphi"><figcaption><span>p1845.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    h:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    i,j,n,len:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(h[i]);</div><div class="line">    fillchar(f,sizeof(f),<span class="number">0</span>);</div><div class="line">    f[<span class="number">1</span>,<span class="number">0</span>]:=<span class="number">1</span>;f[<span class="number">1</span>,<span class="number">1</span>]:=<span class="number">1</span>;len:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> h[i]&gt;h[j] <span class="keyword">then</span> f[i,<span class="number">1</span>]:=max(f[i,<span class="number">1</span>],f[j,<span class="number">0</span>]+<span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> h[i]&lt;h[j] <span class="keyword">then</span> f[i,<span class="number">0</span>]:=max(f[i,<span class="number">0</span>],f[j,<span class="number">1</span>]+<span class="number">1</span>);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        len:=max(len,max(f[i,<span class="number">0</span>],f[i,<span class="number">1</span>]));</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(len);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
@@ -582,7 +585,7 @@ var _hmt = _hmt || [];
 
 <!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+  MathJax.Hub.Config("");
 </script>
 
 <script type="text/x-mathjax-config">
@@ -594,7 +597,7 @@ var _hmt = _hmt || [];
   });
 </script>
 
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
