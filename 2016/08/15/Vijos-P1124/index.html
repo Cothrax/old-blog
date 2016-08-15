@@ -1,0 +1,590 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[Vijos] P1124 字串变换 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="描述已知有两个字串 A\$, B\$ 及一组字串变换的规则（至多6个规则）:A1\$ -&amp;gt; B1\$A2\$ -&amp;gt; B2\$规则的含义为：在 A＄中的子串 A1\$ 可以变换为 B1\$、A2\$ 可以变换为 B2\$ …。例如：A\$＝’abcd’　B\$＝’xyz’变换规则为：‘abc’-&amp;gt;‘xu’　‘ud’-&amp;gt;‘y’　‘y’-&amp;gt;‘yz’则此时，A\$ 可以经过一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Vijos] P1124 字串变换">
+<meta property="og:url" content="https://cothrax.github.io/2016/08/15/Vijos-P1124/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="描述已知有两个字串 A\$, B\$ 及一组字串变换的规则（至多6个规则）:A1\$ -&amp;gt; B1\$A2\$ -&amp;gt; B2\$规则的含义为：在 A＄中的子串 A1\$ 可以变换为 B1\$、A2\$ 可以变换为 B2\$ …。例如：A\$＝’abcd’　B\$＝’xyz’变换规则为：‘abc’-&amp;gt;‘xu’　‘ud’-&amp;gt;‘y’　‘y’-&amp;gt;‘yz’则此时，A\$ 可以经过一">
+<meta property="og:updated_time" content="2016-08-15T10:29:20.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Vijos] P1124 字串变换">
+<meta name="twitter:description" content="描述已知有两个字串 A\$, B\$ 及一组字串变换的规则（至多6个规则）:A1\$ -&amp;gt; B1\$A2\$ -&amp;gt; B2\$规则的含义为：在 A＄中的子串 A1\$ 可以变换为 B1\$、A2\$ 可以变换为 B2\$ …。例如：A\$＝’abcd’　B\$＝’xyz’变换规则为：‘abc’-&amp;gt;‘xu’　‘ud’-&amp;gt;‘y’　‘y’-&amp;gt;‘yz’则此时，A\$ 可以经过一">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/15/Vijos-P1124/" title="[Vijos] P1124 字串变换" itemprop="url">[Vijos] P1124 字串变换</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-15T10:17:53.000Z" itemprop="datePublished"> Published 2016-08-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">3.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">4.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">4.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">4.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">5.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">6.</span> <span class="toc-text">题解</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>已知有两个字串 A\$, B\$ 及一组字串变换的规则（至多6个规则）:<br>A1\$ -&gt; B1\$<br>A2\$ -&gt; B2\$<br>规则的含义为：在 A＄中的子串 A1\$ 可以变换为 B1\$、A2\$ 可以变换为 B2\$ …。<br>例如：A\$＝’abcd’　B\$＝’xyz’<br>变换规则为：<br>‘abc’-&gt;‘xu’　‘ud’-&gt;‘y’　‘y’-&gt;‘yz’<br>则此时，A\$ 可以经过一系列的变换变为 B\$，其变换的过程为：<br>‘abcd’-&gt;‘xud’-&gt;‘xy’-&gt;‘xyz’<br>共进行了三次变换，使得 A\$ 变换为B\$。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为两个字符串，第二行至文件尾为变换规则<br>A\$ B\$<br>A1\$ B1\$ \<br>A2\$ B2\$ |-&gt; 变换规则<br>… … /<br>所有字符串长度的上限为 20。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>若在 10 步（包含 10步）以内能将 A\$ 变换为 B\$ ，则输出最少的变换步数；否则输出”NO ANSWER!”<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>abcd xyz<br>abc xu<br>ud y<br>y yz</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>每个测试点1s<br>noip2002提高组第二题</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>暴力BFS+Hash<br>注意：一个字串中可能存在对一个变化的多个匹配，如”aaa”和规则”a-&gt;p”就有三种情况<br>还有hash表比较大，fill耗时，于是省掉就好。</p>
+<p>###方法一：单向BFS+Hash</p>
+<dir style="text-align:right"><a href="/2016/08/15/Vijos-P1124/pp1124.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>pp1124.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> seed=<span class="number">131</span>;p=<span class="number">100000007</span>;</div><div class="line"><span class="keyword">type</span> state=<span class="keyword">record</span> s:<span class="keyword">string</span>;i:integer <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    ht:<span class="keyword">array</span>[<span class="number">0</span>..p] <span class="keyword">of</span> boolean;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> state;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">7</span>] <span class="keyword">of</span> <span class="keyword">string</span>;</div><div class="line">    n,p0,h,t:integer;s:<span class="keyword">string</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hash</span><span class="params">(s:<span class="keyword">string</span>)</span>:</span>dword;</div><div class="line"><span class="keyword">var</span> i:integer;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    hash:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> length(s) <span class="keyword">do</span></div><div class="line">        hash:=(hash*seed+ord(s[i])) <span class="keyword">and</span> $FFFFFFF;</div><div class="line">    hash:=hash <span class="keyword">mod</span> p;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="comment">//start开始，t在p中第一次出现的位置</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getpos</span><span class="params">(t,p:<span class="keyword">string</span>;start:integer)</span>:</span>integer;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    getpos:=pos(t,copy(p,start,length(p)-start+<span class="number">1</span>));</div><div class="line">    <span class="keyword">if</span> getpos&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> inc(getpos,start-<span class="number">1</span>);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">bfs</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> i,p0:integer;cstr,nstr:<span class="keyword">string</span>;ha:dword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> a[<span class="number">0</span>,<span class="number">0</span>]=a[<span class="number">1</span>,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(<span class="number">0</span>);halt <span class="keyword">end</span>;</div><div class="line">    h:=<span class="number">1</span>;t:=<span class="number">2</span>;</div><div class="line">    q[h].s:=a[<span class="number">0</span>,<span class="number">0</span>];q[h].i:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        cstr:=q[h].s;</div><div class="line">        <span class="keyword">if</span> q[h].i=<span class="number">10</span> <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            p0:=getpos(a[<span class="number">0</span>,i],cstr,<span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> p0&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                nstr:=cstr;</div><div class="line">                delete(nstr,p0,length(a[<span class="number">0</span>,i]));</div><div class="line">                insert(a[<span class="number">1</span>,i],nstr,p0);</div><div class="line">                </div><div class="line">                ha:=hash(nstr);</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ht[ha] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                    ht[ha]:=true;</div><div class="line">                    <span class="keyword">if</span> nstr=a[<span class="number">1</span>,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                        <span class="keyword">write</span>(q[h].i+<span class="number">1</span>);</div><div class="line">                        halt;</div><div class="line">                    <span class="keyword">end</span>;</div><div class="line">                    q[t].s:=nstr;q[t].i:=q[h].i+<span class="number">1</span>;</div><div class="line">                    inc(t);<span class="keyword">if</span> t&gt;<span class="number">10010</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">                <span class="keyword">end</span>;</div><div class="line">                p0:=getpos(a[<span class="number">0</span>,i],cstr,p0+<span class="number">1</span>);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        inc(h);<span class="keyword">if</span> h&gt;<span class="number">10010</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span> <span class="comment">&#123;Main&#125;</span></div><div class="line">    n:=-<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> <span class="keyword">not</span> eof <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(n);</div><div class="line">        readln(s);</div><div class="line">        p0:=pos(<span class="string">' '</span>,s);</div><div class="line">        a[<span class="number">0</span>,n]:=copy(s,<span class="number">1</span>,p0-<span class="number">1</span>);</div><div class="line">        a[<span class="number">1</span>,n]:=copy(s,p0+<span class="number">1</span>,length(s)-p0);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"></div><div class="line">    <span class="comment">//fillchar(ht,sizeof(ht),false);</span></div><div class="line">    bfs();</div><div class="line">    <span class="keyword">write</span>(<span class="string">'NO ANSWER!'</span>);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<p>###双向BFS+Hash<br>直接用hash表存得到该字串的最小步骤，然后发现匹配可以直接输出</p>
+<dir style="text-align:right"><a href="/2016/08/15/Vijos-P1124/p1124.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>p1124.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> seed=<span class="number">131</span>;p=<span class="number">10000019</span>;</div><div class="line"><span class="keyword">type</span> state=<span class="keyword">record</span> s:ansistring;i:integer <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    <span class="comment">//0：正向；1：逆向</span></div><div class="line">    ht:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..p] <span class="keyword">of</span> integer;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> state;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">7</span>] <span class="keyword">of</span> ansistring;</div><div class="line">    n,p0:integer;s:ansistring;</div><div class="line">    h,t:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> integer;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hash</span><span class="params">(s:ansistring)</span>:</span>dword;</div><div class="line"><span class="keyword">var</span> i:integer;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    hash:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> length(s) <span class="keyword">do</span></div><div class="line">        hash:=(hash*seed+ord(s[i])) <span class="keyword">and</span> $FFFFFFF;</div><div class="line">    hash:=hash <span class="keyword">mod</span> p;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getpos</span><span class="params">(t,p:<span class="keyword">string</span>;start:integer)</span>:</span>integer;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    getpos:=pos(t,copy(p,start,length(p)-start+<span class="number">1</span>));</div><div class="line">    <span class="keyword">if</span> getpos&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> inc(getpos,start-<span class="number">1</span>);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">expand</span><span class="params">(x:integer)</span>;</span></div><div class="line"><span class="keyword">var</span> i,p0:integer;cstr,nstr:ansistring;ha:dword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    cstr:=q[x,h[x]].s;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        p0:=getpos(a[x,i],cstr,<span class="number">1</span>);</div><div class="line">        <span class="keyword">while</span> p0&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            nstr:=cstr;</div><div class="line">            delete(nstr,p0,length(a[x,i]));</div><div class="line">            insert(a[<span class="number">1</span>-x,i],nstr,p0);</div><div class="line"></div><div class="line">            ha:=hash(nstr);</div><div class="line">            <span class="keyword">if</span> ht[<span class="number">1</span>-x,ha]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                <span class="keyword">write</span>(ht[<span class="number">1</span>-x,ha]+q[x,h[x]].i+<span class="number">1</span>);</div><div class="line">                halt;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">if</span> ht[x,ha]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                q[x,t[x]].s:=nstr;q[x,t[x]].i:=q[x,h[x]].i+<span class="number">1</span>;</div><div class="line">                ht[x,ha]:=q[x,t[x]].i;</div><div class="line">                inc(t[x]);<span class="keyword">if</span> t[x]&gt;<span class="number">10010</span> <span class="keyword">then</span> t[x]:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            p0:=getpos(a[x,i],cstr,p0+<span class="number">1</span>);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    inc(h[x]);<span class="keyword">if</span> h[x]&gt;<span class="number">10010</span> <span class="keyword">then</span> h[x]:=<span class="number">0</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">bfs</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> i:integer;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        h[i]:=<span class="number">1</span>;t[i]:=<span class="number">2</span>;</div><div class="line">        q[i,<span class="number">1</span>].s:=a[i,<span class="number">0</span>];q[i,<span class="number">1</span>].i:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> (h[i]&lt;&gt;t[i]) <span class="keyword">and</span> (q[i,t[i]].i&lt;=<span class="number">10</span>) <span class="keyword">then</span> expand(i);</div><div class="line">    <span class="keyword">until</span> ((h[<span class="number">0</span>]=t[<span class="number">0</span>]) <span class="keyword">and</span> (h[<span class="number">1</span>]=t[<span class="number">1</span>])) <span class="keyword">or</span> </div><div class="line">          (q[<span class="number">0</span>,h[<span class="number">0</span>]].i+q[<span class="number">1</span>,h[<span class="number">1</span>]].i&gt;<span class="number">10</span>);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span> <span class="comment">&#123;Main&#125;</span></div><div class="line">    n:=-<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> <span class="keyword">not</span> eof <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(n);</div><div class="line">        readln(s);</div><div class="line">        p0:=pos(<span class="string">' '</span>,s);</div><div class="line">        a[<span class="number">0</span>,n]:=copy(s,<span class="number">1</span>,p0-<span class="number">1</span>);</div><div class="line">        a[<span class="number">1</span>,n]:=copy(s,p0+<span class="number">1</span>,length(s)-p0);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//fillchar(ht,sizeof(ht),0);</span></div><div class="line">    bfs();</div><div class="line">    <span class="keyword">write</span>(<span class="string">'NO ANSWER!'</span>);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/字符串/">字符串</a><a href="/tags/Hash/">Hash</a><a href="/tags/BFS/">BFS</a><a href="/tags/双向BFS/">双向BFS</a><a href="/tags/搜索/">搜索</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/08/15/Vijos-P1124/" data-title="[Vijos] P1124 字串变换 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/15/Vijos-p1023/"  title="[Vijos] p1023 Victoria的舞会3">
+ <strong>下一篇：</strong><br/> 
+ <span>[Vijos] p1023 Victoria的舞会3
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/15/Vijos-P1124/" data-title="[Vijos] P1124 字串变换" data-url="https://cothrax.github.io/2016/08/15/Vijos-P1124/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">3.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">4.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">4.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">4.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">5.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">6.</span> <span class="toc-text">题解</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="cothrax" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 14px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maths/" style="font-size: 10px;">Maths</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 18px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分答案/" style="font-size: 10px;">二分答案</a> <a href="/tags/倍增/" style="font-size: 10px;">倍增</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/图论/" style="font-size: 16px;">图论</a> <a href="/tags/字符串/" style="font-size: 12px;">字符串</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/搜索/" style="font-size: 12px;">搜索</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/树结构/" style="font-size: 10px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/线性DP/" style="font-size: 10px;">线性DP</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://vijos.org/" target="_blank" title="Vijos">Vijos</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://codevs.cn/" target="_blank" title="CodeVS">CodeVS</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.luogu.org/" target="_blank" title="Luogu">Luogu</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Cothrax"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
