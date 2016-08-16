@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-16T02:26:38.104Z</updated>
+  <updated>2016-08-16T02:57:42.132Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,18 +20,18 @@
     <link href="https://cothrax.github.io/2016/08/16/2048%E6%BA%90%E7%A0%81%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
     <id>https://cothrax.github.io/2016/08/16/2048源码自定义/</id>
     <published>2016-08-16T00:35:51.000Z</published>
-    <updated>2016-08-16T02:26:38.104Z</updated>
+    <updated>2016-08-16T02:57:42.132Z</updated>
     
     <content type="html"><![CDATA[<p>看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。<br>2048 js版的源码被托管在GitHub上：<a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="external">gabrielecirulli/2048</a>。<br>说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。</p>
 <h2 id="大概看一下"><a href="#大概看一下" class="headerlink" title="大概看一下"></a>大概看一下</h2><ol>
-<li>animframe_polyfill.js：绘制动画帧，看不懂</li>
 <li>keyboard_input_manager.js：input事件</li>
 <li>html_actuator.js：处理交互界面，用dom更新html</li>
 <li>grid.js：格子</li>
 <li>tile.js：滑块对象</li>
 <li>local_storage_manager.js：本地缓存</li>
 <li>game_manager.js：主程序</li>
-<li>application.js：不知道是什么<a id="more"></a>
+<li>application.js：不知道是什么</li>
+<li>*_polyfill.js：各种polyfill<a id="more"></a>
 </li>
 </ol>
 <h2 id="自定义图片"><a href="#自定义图片" class="headerlink" title="自定义图片"></a>自定义图片</h2><h3 id="改CSS"><a href="#改CSS" class="headerlink" title="改CSS"></a>改CSS</h3><p>style里的css使用scss生成的，但我没学过，于是直接改main.css<br>找到.tile类<br>直接给对应的class加background<br>如.tile-2是方块2的style，加上：（<code>img/</code>在<code>style/</code>下，在里面放图片）<br><figure class="highlight"><figcaption><span>main.css</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background-image: url(./img/2.png);</div><div class="line">background-size:contain;</div></pre></td></tr></table></figure></p>
@@ -57,14 +57,14 @@
     
       &lt;p&gt;看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。&lt;br&gt;2048 js版的源码被托管在GitHub上：&lt;a href=&quot;https://github.com/gabrielecirulli/2048&quot;&gt;gabrielecirulli/2048&lt;/a&gt;。&lt;br&gt;说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。&lt;/p&gt;
 &lt;h2 id=&quot;大概看一下&quot;&gt;&lt;a href=&quot;#大概看一下&quot; class=&quot;headerlink&quot; title=&quot;大概看一下&quot;&gt;&lt;/a&gt;大概看一下&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;animframe_polyfill.js：绘制动画帧，看不懂&lt;/li&gt;
 &lt;li&gt;keyboard_input_manager.js：input事件&lt;/li&gt;
 &lt;li&gt;html_actuator.js：处理交互界面，用dom更新html&lt;/li&gt;
 &lt;li&gt;grid.js：格子&lt;/li&gt;
 &lt;li&gt;tile.js：滑块对象&lt;/li&gt;
 &lt;li&gt;local_storage_manager.js：本地缓存&lt;/li&gt;
 &lt;li&gt;game_manager.js：主程序&lt;/li&gt;
-&lt;li&gt;application.js：不知道是什么
+&lt;li&gt;application.js：不知道是什么&lt;/li&gt;
+&lt;li&gt;*_polyfill.js：各种polyfill
     
     </summary>
     

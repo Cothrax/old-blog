@@ -13,24 +13,24 @@
     
     <meta name="description" content="看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。2048 js版的源码被托管在GitHub上：gabrielecirulli/2048。说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。
 大概看一下
-animframe_polyfill.js：绘制动画帧，看不懂
-keyb">
+keyboard_input_manager.js：input事件
+ht">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2048源码自定义">
 <meta property="og:url" content="https://cothrax.github.io/2016/08/16/2048源码自定义/index.html">
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。2048 js版的源码被托管在GitHub上：gabrielecirulli/2048。说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。
 大概看一下
-animframe_polyfill.js：绘制动画帧，看不懂
-keyb">
+keyboard_input_manager.js：input事件
+ht">
 <meta property="og:image" content="https://cothrax.github.io/2016/08/16/2048源码自定义/Screenshot.jpg">
-<meta property="og:updated_time" content="2016-08-16T02:26:38.104Z">
+<meta property="og:updated_time" content="2016-08-16T02:57:42.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2048源码自定义">
 <meta name="twitter:description" content="看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。2048 js版的源码被托管在GitHub上：gabrielecirulli/2048。说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。
 大概看一下
-animframe_polyfill.js：绘制动画帧，看不懂
-keyb">
+keyboard_input_manager.js：input事件
+ht">
 <meta name="twitter:image" content="https://cothrax.github.io/2016/08/16/2048源码自定义/Screenshot.jpg">
 <meta name="twitter:creator" content="@Cothrax">
 
@@ -116,14 +116,14 @@ keyb">
 		
 		<p>看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。<br>2048 js版的源码被托管在GitHub上：<a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="external">gabrielecirulli/2048</a>。<br>说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。</p>
 <h2 id="大概看一下"><a href="#大概看一下" class="headerlink" title="大概看一下"></a>大概看一下</h2><ol>
-<li>animframe_polyfill.js：绘制动画帧，看不懂</li>
 <li>keyboard_input_manager.js：input事件</li>
 <li>html_actuator.js：处理交互界面，用dom更新html</li>
 <li>grid.js：格子</li>
 <li>tile.js：滑块对象</li>
 <li>local_storage_manager.js：本地缓存</li>
 <li>game_manager.js：主程序</li>
-<li>application.js：不知道是什么<a id="more"></a>
+<li>application.js：不知道是什么</li>
+<li>*_polyfill.js：各种polyfill<a id="more"></a>
 </li>
 </ol>
 <h2 id="自定义图片"><a href="#自定义图片" class="headerlink" title="自定义图片"></a>自定义图片</h2><h3 id="改CSS"><a href="#改CSS" class="headerlink" title="改CSS"></a>改CSS</h3><p>style里的css使用scss生成的，但我没学过，于是直接改main.css<br>找到.tile类<br>直接给对应的class加background<br>如.tile-2是方块2的style，加上：（<code>img/</code>在<code>style/</code>下，在里面放图片）<br><figure class="highlight"><figcaption><span>main.css</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background-image: url(./img/2.png);</div><div class="line">background-size:contain;</div></pre></td></tr></table></figure></p>
