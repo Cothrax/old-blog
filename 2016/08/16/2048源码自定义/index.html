@@ -24,7 +24,7 @@ keyb">
 animframe_polyfill.js：绘制动画帧，看不懂
 keyb">
 <meta property="og:image" content="https://cothrax.github.io/2016/08/16/2048源码自定义/Screenshot.jpg">
-<meta property="og:updated_time" content="2016-08-16T02:03:12.035Z">
+<meta property="og:updated_time" content="2016-08-16T02:26:38.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2048源码自定义">
 <meta name="twitter:description" content="看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。2048 js版的源码被托管在GitHub上：gabrielecirulli/2048。说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。
@@ -135,7 +135,7 @@ keyb">
 <h3 id="改JS"><a href="#改JS" class="headerlink" title="改JS"></a>改JS</h3><p>在html_actuator.js下，可以找到<code>HTMLActuator.prototype.addTile</code>方法，可以看到其中是通过dom来创建div元素的，找到：<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inner.textContent = tile.value;</div></pre></td></tr></table></figure></p>
 <p>滑块上的文字被设置为tile.value，就是滑块的数值。<br>把它注掉，然后给inner该css<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//inner.textContent = tile.value;</span></div><div class="line">inner.style.backgroundSize = <span class="string">"contain"</span>;</div><div class="line">inner.style.backgroundImage = <span class="string">"url(./style/img/"</span>+tile.value+<span class="string">".jpg)"</span>;</div></pre></td></tr></table></figure></p>
 <p>这样value对应的图片就会被设置成滑块的背景，然后在img/下放好$2^k$.jpg，我借用一下黄学长的图包，就变成了这样：<br><img src="/2016/08/16/2048源码自定义/Screenshot.jpg" alt="Screenshot.jpg" title=""></p>
-<p>会发现图片平铺覆盖了一个格子，这是因为图片不是正方形的，ps剪一下就可以了。<br>备足图片，如果还怕不够的话，用你准备的最大值对tile.value取模就好，至少不会爆掉。<br>另外注意图片是jpg还是png。</p>
+<p>会发现图片平铺覆盖了一个格子，这是因为图片不是正方形的，ps剪一下就可以了。<br>另外注意图片是jpg还是png。</p>
 <h2 id="在Hexo中部署2048"><a href="#在Hexo中部署2048" class="headerlink" title="在Hexo中部署2048"></a>在Hexo中部署2048</h2><p>新建页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page <span class="string">"2048"</span></div></pre></td></tr></table></figure></p>
 <p>把源码拷到2048/下，在2048/index.md中插入iframe（我把原来的index.html重命名为frame.html避免冲突）<br><figure class="highlight html"><figcaption><span>index.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"./frame.html"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"1300"</span> <span class="attr">seamless</span>=<span class="string">"seamless"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>tag插件也提供了iframe支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe ./frame.html %&#125;</div></pre></td></tr></table></figure></p>
