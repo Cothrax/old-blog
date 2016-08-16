@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-16T06:04:53.873Z</updated>
+  <updated>2016-08-16T14:32:37.602Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[JSOI2016] 提高1班-Day1</title>
+    <link href="https://cothrax.github.io/2016/08/16/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day1/"/>
+    <id>https://cothrax.github.io/2016/08/16/JSOI2016-提高1班-Day1/</id>
+    <published>2016-08-16T14:10:35.000Z</published>
+    <updated>2016-08-16T14:32:37.602Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="P1-选数"><a href="#P1-选数" class="headerlink" title="P1 选数"></a>P1 选数</h1><p>现在有一排共N个数，你需要从中选出恰好K个。选出K个数后，计算它们两两差值的绝对值的最小值S。你需要确定选出哪K个，才能最大化这个S。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入第一行两个正整数N、K，含义如上。<br>输入第二行N个正整数，依次表示这N个数A1~An。0＜Ai≤10^9。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行一个正整数，S的最大值。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>11 5<br>19 585 29 1111 5868 3331 272 4441 2251 868 581</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>1092</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于30%的数据，N≤18。<br>对于60%的数据，N≤20。<br>对于80%的数据，N≤100。<br>对于100%的数据，N≤100000，K&lt;=N</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最大化最小值，典型的二分答案。<br>然而不知道怎么在O(N)内判定一个解的正确性。。。<br>我们贪心的想：<br>先qsort升序<br>最小的数一定要选，可以反正：如果选了次小的数没有选最小，那么把次小换成最小的答案一定更优。<br>于是先选a[last=1]，O(N)扫一遍，如果a[i]-a[last]&gt;=mid那么就选i，更新last，统计个数。</p>
+<dir style="text-align:right"><a href="/2016/08/16/JSOI2016-提高1班-Day1/choose.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>choose.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line">    n,k,i,l,r,mid,ans:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(b,e:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,x:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=b;j:=e;x:=a[random(e-b)+b];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> a[i]&lt;x <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> a[j]&gt;x <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            swap(a[i],a[j]);</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(i,e);</div><div class="line">    <span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(b,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">(x:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> i,last,cnt:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    cnt:=<span class="number">1</span>;last:=a[<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> a[i]-last&gt;=x <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            last:=a[i];</div><div class="line">            inc(cnt);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    check:=cnt&gt;=k;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'choose.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'choose.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n,k);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">    qsort(<span class="number">1</span>,n);</div><div class="line">    l:=<span class="number">0</span>;r:=a[n]-a[<span class="number">1</span>];</div><div class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> check(mid) <span class="keyword">then</span> <span class="keyword">begin</span> ans:=mid;l:=mid+<span class="number">1</span> <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> r:=mid-<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-划区灌溉"><a href="#P2-划区灌溉" class="headerlink" title="P2 划区灌溉"></a>P2 划区灌溉</h1><p>约翰的奶牛们发现山脊上的草特别美味。为了维持草的生长，约翰打算安装若干喷灌器。<br>为简化问题，山脊可以看成一维的数轴，长为L(1≤L≤1,000,000)，而且L一定是一个偶数。每个喷灌器可以双向喷灌，并有确定的射程，该射程是一个整数，且不短于A，不长于B。A,B(1≤A≤B≤1000)都是给出的正整数。它所在位置的两边射程内，都属它的灌溉区域。现要求山脊的每一个区域都被灌溉到，而且喷灌器的灌溉区域不允许重叠。<br>约翰有N(1≤N≤1000)只奶牛，每一只都有特别喜爱的草区，第i只奶牛的草区是[Si，Ei]，不同奶牛的草区可以重叠。现要求，每只奶牛的草区仅被一个喷灌器灌溉。<br>寻找最少需要的喷灌器数目。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行：N,L.<br>第2行：A,B.<br>第3到N十2行：每行2个整数Si，Ei,(0≤S\&lt;E≤L).</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>最小的喷灌器数目。如果无法设计出满足条件的喷灌器数目，请输出-1.<br><!--more--></p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>2 8<br>1 2<br>6 7<br>3 6 </p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【样例说明】<br>如下图，只需安装三个喷灌器。c1,c2为奶牛们的草区。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">            |-----c2----|-c1|       </div><div class="line">|--<span class="number">-1</span>---|------<span class="number">-2</span>-------|--<span class="number">-3</span>---|   </div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line"><span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span>   <span class="number">7</span>   <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<p>【数据范围】<br>对于30%的数据，L≤100。<br>对于60%的数据，L≤10000。<br>对于100%的数据，1≤L≤1,000,000，1≤A≤B≤1000，1≤N≤1000。</p>
+<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>首先，看起来像线段覆盖DP，于是又$O(L^2)$的算法<br>左右都覆盖比较麻烦，可以看成只向左覆盖，范围[2*a,2*b]<br>80分，一个点TLE，还有一个不知道为什么WA。。。</p>
+<dir style="text-align:right"><a href="/2016/08/16/JSOI2016-提高1班-Day1/divide.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>divide.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,l,a,b,i,j,k:int;</div><div class="line">    seg:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[-<span class="number">1010</span>..<span class="number">1000010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">com</span><span class="params">(x,y:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> (seg[x,<span class="number">0</span>]&lt;seg[y,<span class="number">0</span>]) <span class="keyword">or</span> </div><div class="line">       ((seg[x,<span class="number">0</span>]=seg[y,<span class="number">0</span>]) <span class="keyword">and</span> (seg[x,<span class="number">1</span>]&lt;seg[y,<span class="number">1</span>])) <span class="keyword">then</span> com:=true</div><div class="line">    <span class="keyword">else</span> com:=false;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(b,e:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=b;j:=e;seg[<span class="number">0</span>]:=seg[random(e-b)+b];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> com(i,<span class="number">0</span>) <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> com(<span class="number">0</span>,j) <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            swap(seg[i,<span class="number">0</span>],seg[j,<span class="number">0</span>]);swap(seg[i,<span class="number">1</span>],seg[j,<span class="number">1</span>]);</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(i,e);</div><div class="line">    <span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(b,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'divide.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'divide.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n,l,a,b);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(seg[i,<span class="number">0</span>],seg[i,<span class="number">1</span>]);</div><div class="line">    qsort(<span class="number">1</span>,n);</div><div class="line">    filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    seg[<span class="number">0</span>,<span class="number">1</span>]:=<span class="number">0</span>;seg[<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">0</span>;seg[n+<span class="number">1</span>,<span class="number">0</span>]:=l;</div><div class="line"></div><div class="line">    f[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n+<span class="number">1</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=seg[i-<span class="number">1</span>,<span class="number">1</span>] <span class="keyword">to</span> seg[i,<span class="number">0</span>] <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> k:=a <span class="keyword">to</span> b <span class="keyword">do</span></div><div class="line">                f[j]:=min(f[j],f[j-k*<span class="number">2</span>]+<span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> f[l]=inf <span class="keyword">then</span> <span class="keyword">write</span>(-<span class="number">1</span>) <span class="keyword">else</span> <span class="keyword">write</span>(f[l]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>然后发现对于第i个位置，决策在[i-2<em>b,i-2</em>a]，于是想到了 定窗长最大值 的模型，而且决策单调，于是用单调队列优化成O(N)。<br>注意：</p>
+<ol>
+<li>同理看成向左覆盖，只能在偶数点处理</li>
+<li>注意端点和队列指针的细节</li>
+<li>被奶牛的草区覆盖的点不做处理，这可以用差分序列c预处理O(N)</li>
+</ol>
+<dir style="text-align:right"><a href="/2016/08/16/JSOI2016-提高1班-Day1/0divide.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>0divide.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,l,a,b,h,t,i,x:int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    c,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'divide.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'divide.out'</span>);rewrite(output);</div><div class="line">    </div><div class="line">    <span class="keyword">read</span>(n,l,a,b);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(h,t);</div><div class="line">        inc(c[h+<span class="number">1</span>]);dec(c[t]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> l <span class="keyword">do</span> inc(c[i],c[i-<span class="number">1</span>]);</div><div class="line"></div><div class="line">    filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    f[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    h:=<span class="number">0</span>;t:=<span class="number">0</span>;i:=<span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;=l <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        x:=i-<span class="number">2</span>*a;</div><div class="line">        <span class="keyword">if</span> x&gt;=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">while</span> (h&lt;&gt;t) <span class="keyword">and</span> (q[t-<span class="number">1</span>,<span class="number">0</span>]&gt;=f[x]) <span class="keyword">do</span> dec(t);</div><div class="line">            q[t,<span class="number">0</span>]:=f[x];q[t,<span class="number">1</span>]:=x;</div><div class="line">            inc(t);<span class="keyword">if</span> t&gt;<span class="number">10010</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">if</span> c[i]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            x:=i-<span class="number">2</span>*b;</div><div class="line">            <span class="keyword">while</span> (h&lt;&gt;t) <span class="keyword">and</span> (q[h,<span class="number">1</span>]&lt;x) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                inc(h);<span class="keyword">if</span> h&gt;<span class="number">10010</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">if</span> (h=t) <span class="keyword">or</span> (q[h,<span class="number">0</span>]=inf) <span class="keyword">then</span> f[i]:=inf <span class="keyword">else</span> f[i]:=q[h,<span class="number">0</span>]+<span class="number">1</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        inc(i,<span class="number">2</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> f[l]=inf <span class="keyword">then</span> <span class="keyword">write</span>(-<span class="number">1</span>) <span class="keyword">else</span> <span class="keyword">write</span>(f[l]);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;P1-选数&quot;&gt;&lt;a href=&quot;#P1-选数&quot; class=&quot;headerlink&quot; title=&quot;P1 选数&quot;&gt;&lt;/a&gt;P1 选数&lt;/h1&gt;&lt;p&gt;现在有一排共N个数，你需要从中选出恰好K个。选出K个数后，计算它们两两差值的绝对值的最小值S。你需要确定选出哪K个，才能最大化这个S。&lt;/p&gt;
+&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入第一行两个正整数N、K，含义如上。&lt;br&gt;输入第二行N个正整数，依次表示这N个数A1~An。0＜Ai≤10^9。&lt;/p&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;一行一个正整数，S的最大值。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
+    
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+  </entry>
   
   <entry>
     <title>[POJ] P2942 Knights of the Round Table</title>
@@ -328,9 +397,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
@@ -489,6 +558,8 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
@@ -498,8 +569,6 @@
       <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
     
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="二分" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     
       <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
     
@@ -549,11 +618,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
       <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="划分DP" scheme="https://cothrax.github.io/tags/%E5%88%92%E5%88%86DP/"/>
     
@@ -595,9 +664,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
-    
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
     
   </entry>
   
