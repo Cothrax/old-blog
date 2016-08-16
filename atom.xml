@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-15T10:32:59.015Z</updated>
+  <updated>2016-08-16T02:03:12.035Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2048源码自定义</title>
+    <link href="https://cothrax.github.io/2016/08/16/2048%E6%BA%90%E7%A0%81%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
+    <id>https://cothrax.github.io/2016/08/16/2048源码自定义/</id>
+    <published>2016-08-16T00:35:51.000Z</published>
+    <updated>2016-08-16T02:03:12.035Z</updated>
+    
+    <content type="html"><![CDATA[<p>看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。<br>2048 js版的源码被托管在GitHub上：<a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="external">gabrielecirulli/2048</a>。<br>说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。</p>
+<h2 id="大概看一下"><a href="#大概看一下" class="headerlink" title="大概看一下"></a>大概看一下</h2><ol>
+<li>animframe_polyfill.js：绘制动画帧，看不懂</li>
+<li>keyboard_input_manager.js：input事件</li>
+<li>html_actuator.js：处理交互界面，用dom更新html</li>
+<li>grid.js：格子</li>
+<li>tile.js：滑块对象</li>
+<li>local_storage_manager.js：本地缓存</li>
+<li>game_manager.js：主程序</li>
+<li>application.js：不知道是什么<a id="more"></a>
+</li>
+</ol>
+<h2 id="自定义图片"><a href="#自定义图片" class="headerlink" title="自定义图片"></a>自定义图片</h2><h3 id="改CSS"><a href="#改CSS" class="headerlink" title="改CSS"></a>改CSS</h3><p>style里的css使用scss生成的，但我没学过，于是直接改main.css<br>找到.tile类<br>直接给对应的class加background<br>如.tile-2是方块2的style，加上：（<code>img/</code>在<code>style/</code>下，在里面放图片）<br><figure class="highlight"><figcaption><span>main.css</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background-image: url(./img/2.png);</div><div class="line">background-size:contain;</div></pre></td></tr></table></figure></p>
+<p>同理加.tile-4, .tile-8等<br>但这样会出现问题</p>
+<ol>
+<li>一个个改好烦</li>
+<li>大于2048时只有一个.tile-super类，没法改</li>
+</ol>
+<h3 id="改JS"><a href="#改JS" class="headerlink" title="改JS"></a>改JS</h3><p>在html_actuator.js下，可以找到<code>HTMLActuator.prototype.addTile</code>方法，可以看到其中是通过dom来创建div元素的，找到：<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inner.textContent = tile.value;</div></pre></td></tr></table></figure></p>
+<p>滑块上的文字被设置为tile.value，就是滑块的数值。<br>把它注掉，然后给inner该css<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//inner.textContent = tile.value;</span></div><div class="line">inner.style.backgroundSize = <span class="string">"contain"</span>;</div><div class="line">inner.style.backgroundImage = <span class="string">"url(./style/img/"</span>+tile.value+<span class="string">".jpg)"</span>;</div></pre></td></tr></table></figure></p>
+<p>这样value对应的图片就会被设置成滑块的背景，然后在img/下放好$2^k$.jpg，我借用一下黄学长的图包，就变成了这样：<br><img src="/2016/08/16/2048源码自定义/Screenshot.jpg" alt="Screenshot.jpg" title=""></p>
+<p>会发现图片平铺覆盖了一个格子，这是因为图片不是正方形的，ps剪一下就可以了。<br>备足图片，如果还怕不够的话，用你准备的最大值对tile.value取模就好，至少不会爆掉。<br>另外注意图片是jpg还是png。</p>
+<h2 id="在Hexo中部署2048"><a href="#在Hexo中部署2048" class="headerlink" title="在Hexo中部署2048"></a>在Hexo中部署2048</h2><p>新建页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page <span class="string">"2048"</span></div></pre></td></tr></table></figure></p>
+<p>把源码拷到2048/下，在2048/index.md中插入iframe（我把原来的index.html重命名为frame.html避免冲突）<br><figure class="highlight html"><figcaption><span>index.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"./frame.html"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"1300"</span> <span class="attr">seamless</span>=<span class="string">"seamless"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>tag插件也提供了iframe支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe ./frame.html %&#125;</div></pre></td></tr></table></figure></p>
+<p>我的two048：<a href="https://cothrax.github.io/2048">https://cothrax.github.io/2048</a></p>
+<h2 id="修改game-manager-js"><a href="#修改game-manager-js" class="headerlink" title="修改game_manager.js"></a>修改game_manager.js</h2><blockquote>
+<p>留个坑</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。&lt;br&gt;2048 js版的源码被托管在GitHub上：&lt;a href=&quot;https://github.com/gabrielecirulli/2048&quot;&gt;gabrielecirulli/2048&lt;/a&gt;。&lt;br&gt;说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。&lt;/p&gt;
+&lt;h2 id=&quot;大概看一下&quot;&gt;&lt;a href=&quot;#大概看一下&quot; class=&quot;headerlink&quot; title=&quot;大概看一下&quot;&gt;&lt;/a&gt;大概看一下&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;animframe_polyfill.js：绘制动画帧，看不懂&lt;/li&gt;
+&lt;li&gt;keyboard_input_manager.js：input事件&lt;/li&gt;
+&lt;li&gt;html_actuator.js：处理交互界面，用dom更新html&lt;/li&gt;
+&lt;li&gt;grid.js：格子&lt;/li&gt;
+&lt;li&gt;tile.js：滑块对象&lt;/li&gt;
+&lt;li&gt;local_storage_manager.js：本地缓存&lt;/li&gt;
+&lt;li&gt;game_manager.js：主程序&lt;/li&gt;
+&lt;li&gt;application.js：不知道是什么
+    
+    </summary>
+    
+      <category term="Tinkering Note" scheme="https://cothrax.github.io/categories/Tinkering-Note/"/>
+    
+    
+      <category term="JavaScript" scheme="https://cothrax.github.io/tags/JavaScript/"/>
+    
+      <category term="CSS" scheme="https://cothrax.github.io/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>[Vijos] P1124 字串变换</title>
@@ -620,7 +682,7 @@
 <figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 标题 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
 <a href="/2016/08/12/Test-Hexo/p1523.pas" title="标题">标题</a>
 <a id="more"></a>
-<h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
+<h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> page <span class="string">"404"</span></div></pre></td></tr></table></figure>
 <figure class="highlight yml"><figcaption><span>404.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="number">404</span> Page not Found</div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="attr">toc:</span> <span class="literal">false</span></div><div class="line"><span class="attr">permalink:</span> /<span class="number">404</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
 <p><a href="https://cothrax.github.io/这就404了">https://cothrax.github.io/这就404了</a><br>还有根下<code>_config.yml</code>中<code>relative_link: false</code>，不然在子目录下404就找不到css了，然后layout就没有了</p>
 <h2 id="Raw标签"><a href="#Raw标签" class="headerlink" title="Raw标签"></a>Raw标签</h2><p>用来避免<strong>解析异常</strong>，如可以用Raw来避免markdown和mathjax的解析冲突。<br>如果直接这样写的话<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">点为$u<span class="emphasis">_i$，能得到的联合权值之和=$(\sum W_</span>&#123;u<span class="emphasis">_i&#125;)^2-\sum W_</span>&#123;u_&#123;i&#125;&#125;^2$</div></pre></td></tr></table></figure></p>
