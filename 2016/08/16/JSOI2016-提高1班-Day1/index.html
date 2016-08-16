@@ -21,7 +21,7 @@
 <meta property="og:description" content="P1 选数现在有一排共N个数，你需要从中选出恰好K个。选出K个数后，计算它们两两差值的绝对值的最小值S。你需要确定选出哪K个，才能最大化这个S。
 格式输入格式输入第一行两个正整数N、K，含义如上。输入第二行N个正整数，依次表示这N个数A1~An。0＜Ai≤10^9。
 输出格式一行一个正整数，S的最大值。">
-<meta property="og:updated_time" content="2016-08-16T14:32:37.602Z">
+<meta property="og:updated_time" content="2016-08-16T14:33:02.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[JSOI2016] 提高1班-Day1">
 <meta name="twitter:description" content="P1 选数现在有一排共N个数，你需要从中选出恰好K个。选出K个数后，计算它们两两差值的绝对值的最小值S。你需要确定选出哪K个，才能最大化这个S。
@@ -132,7 +132,7 @@
 <h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
 <p>3</p>
 </blockquote>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【样例说明】<br>如下图，只需安装三个喷灌器。c1,c2为奶牛们的草区。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">            |-----c2----|-c1|       </div><div class="line">|--<span class="number">-1</span>---|------<span class="number">-2</span>-------|--<span class="number">-3</span>---|   </div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line"><span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span>   <span class="number">7</span>   <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【样例说明】<br>如下图，只需安装三个喷灌器。c1,c2为奶牛们的草区。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">            |-----c2----|-c1|       </div><div class="line">|---1---|-------2-------|---3---|   </div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">0   1   2   3   4   5   6   7   8</div></pre></td></tr></table></figure></p>
 <p>【数据范围】<br>对于30%的数据，L≤100。<br>对于60%的数据，L≤10000。<br>对于100%的数据，1≤L≤1,000,000，1≤A≤B≤1000，1≤N≤1000。</p>
 <h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>首先，看起来像线段覆盖DP，于是又$O(L^2)$的算法<br>左右都覆盖比较麻烦，可以看成只向左覆盖，范围[2*a,2*b]<br>80分，一个点TLE，还有一个不知道为什么WA。。。</p>
 <dir style="text-align:right"><a href="/2016/08/16/JSOI2016-提高1班-Day1/divide.pas" title="复制代码">复制代码</a></dir>
