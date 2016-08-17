@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-17T10:46:01.149Z</updated>
+  <updated>2016-08-17T11:38:36.808Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/17/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     <id>https://cothrax.github.io/2016/08/17/JSOI2016-提高2班-位运算/</id>
     <published>2016-08-17T10:18:57.000Z</published>
-    <updated>2016-08-17T10:46:01.149Z</updated>
+    <updated>2016-08-17T11:38:36.808Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P1-拔河比赛"><a href="#P1-拔河比赛" class="headerlink" title="P1 拔河比赛"></a>P1 拔河比赛</h1><p>一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。</p>
@@ -105,6 +105,8 @@
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
   </entry>
   
