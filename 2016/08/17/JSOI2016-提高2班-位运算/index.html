@@ -1,0 +1,640 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[JSOI2016] 提高2班 位运算 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="P1 拔河比赛一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。
+格式输入格式数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。
+输出格式包含两个整数：分别是两个组的所有人的体重和，用一个空格隔开。注意如果这两个数不相等，则请把小的放在前面输出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JSOI2016] 提高2班 位运算">
+<meta property="og:url" content="https://cothrax.github.io/2016/08/17/JSOI2016-提高2班-位运算/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="P1 拔河比赛一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。
+格式输入格式数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。
+输出格式包含两个整数：分别是两个组的所有人的体重和，用一个空格隔开。注意如果这两个数不相等，则请把小的放在前面输出。">
+<meta property="og:updated_time" content="2016-08-17T10:46:01.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[JSOI2016] 提高2班 位运算">
+<meta name="twitter:description" content="P1 拔河比赛一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。
+格式输入格式数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。
+输出格式包含两个整数：分别是两个组的所有人的体重和，用一个空格隔开。注意如果这两个数不相等，则请把小的放在前面输出。">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/2048">Two048</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/17/JSOI2016-提高2班-位运算/" title="[JSOI2016] 提高2班 位运算" itemprop="url">[JSOI2016] 提高2班 位运算</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-17T10:18:57.000Z" itemprop="datePublished"> Published 2016-08-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-拔河比赛"><span class="toc-number">1.</span> <span class="toc-text">P1 拔河比赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">1.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">1.5.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">1.6.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-起床困难综合症"><span class="toc-number">2.</span> <span class="toc-text">P2 起床困难综合症</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-1"><span class="toc-number">2.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-乒乓游戏"><span class="toc-number">3.</span> <span class="toc-text">P3 乒乓游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-2"><span class="toc-number">3.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">3.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-黑客的攻击"><span class="toc-number">4.</span> <span class="toc-text">P4 黑客的攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-3"><span class="toc-number">4.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-3"><span class="toc-number">4.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-3"><span class="toc-number">4.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-3"><span class="toc-number">4.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">4.5.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="P1-拔河比赛"><a href="#P1-拔河比赛" class="headerlink" title="P1 拔河比赛"></a>P1 拔河比赛</h1><p>一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>包含两个整数：分别是两个组的所有人的体重和，用一个空格隔开。注意如果这两个数不相等，则请把小的放在前面输出。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>3<br>100<br>90<br>200</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>190 200</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>60%的数据保证 n&lt;=100，1&lt;=weight&lt;=500。<br>100%的数据保证 n&lt;=500，1&lt;=weight&lt;=1000。</p>
+<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>变形背包，很显然。<br>记f[i,j]前i个人差值为j的情况是否可能，a[i]放到第一组认为是-a[i]，放到第二组认为是+a[i]，那么：$f[i,j]=f[i,j-a[i]]\ or\ f[i,j+a[i]]$<br>但复杂度是$O(N^2W)$，60分。</p>
+<dir style="text-align:right"><a href="/2016/08/17/JSOI2016-提高2班-位运算/competition.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>competition.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,j,i0,i1:int;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">501</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,-<span class="number">501000</span>..<span class="number">501000</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'competition.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'competition.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    m:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(a[i]);</div><div class="line">        inc(m,a[i]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    fillchar(f,sizeof(f),false);</div><div class="line">    f[<span class="number">0</span>,<span class="number">0</span>]:=true;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        i0:=i <span class="keyword">mod</span> <span class="number">2</span>;i1:=<span class="number">1</span>-i0;</div><div class="line">        <span class="keyword">for</span> j:=-m <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">            f[i0,j]:=f[i1,j-a[i]] <span class="keyword">or</span> f[i1,j+a[i]];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    i0:=n <span class="keyword">mod</span> <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> f[i0,j] <span class="keyword">or</span> f[i0,-j] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">write</span>((m-j) <span class="keyword">div</span> <span class="number">2</span>,<span class="string">' '</span>,(m+j) <span class="keyword">div</span> <span class="number">2</span>);</div><div class="line">            halt</div><div class="line">        <span class="keyword">end</span>;</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>C++有一个stl叫bitset，然而p没有。<br>思路是H[w]表示组合出体重w是否可行，那么每次读入x，w=可行解+x 都是可行的，于是<code>H|=H&lt;&lt;x</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">bitset</span>&lt;501000&gt; H;</div><div class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">cin</span>&gt;&gt;n;</div><div class="line">    H[<span class="number">0</span>]=<span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">	     <span class="built_in">cin</span>&gt;&gt;x;s+=x;H=H|(H&lt;&lt;x);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> x=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++)<span class="keyword">if</span>(H[i]&amp;&amp;i&lt;=s-i)x=i;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">" "</span>&lt;&lt;s-x&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="P2-起床困难综合症"><a href="#P2-起床困难综合症" class="headerlink" title="P2 起床困难综合症"></a>P2 起床困难综合症</h1><p>21世纪，许多人得了一种奇怪的病：起床困难综合症，其临床表现为：起床难，起床后精神不佳。作为一名青春阳光好少年，atm一直坚持与起床困难综合症作斗争。通过研究相关文献，他找到了该病的发病原因：在深邃的太平洋海底中，出现了一条名为drd的巨龙，它掌握着睡眠之精髓，能随意延长大家的睡眠时间。正是由于drd的活动，起床困难综合症愈演愈烈，以惊人的速度在世界上传播。为了彻底消灭这种病，atm决定前往海底，消灭这条恶龙。<br>历经千辛万苦，atm终于来到了drd所在的地方，准备与其展开艰苦卓绝的战斗。drd有着十分特殊的技能，他的防御战线能够使用一定的运算来改变他受到的伤害。具体说来，drd的防御战线由n扇防御门组成。每扇防御门包括一个运算op和一个参数t，其中运算一定是OR,XOR,AND中的一种，参数则一定为非负整数。如果还未通过防御门时攻击力为x，则其通过这扇防御门后攻击力将变为xopt。最终drd受到的伤害为对方初始攻击力x依次经过所有n扇防御门后转变得到的攻击力。<br>由于atm水平有限，他的初始攻击力只能为0到m之间的一个整数（即他的初始攻击力只能在0,1,…,m中任选，但在通过防御门之后的攻击力不受m的限制）。为了节省体力，他希望通过选择合适的初始攻击力使得他的攻击能让drd受到最大的伤害，请你帮他计算一下，他的一次攻击最多能使drd受到多少伤害。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行包含2个整数，依次为n,m，表示drd有n扇防御门，atm的初始攻击力为0到m之间的整数。接下来n行，依次表示每一扇防御门。每行包括一个字符串op和一个非负整数t，两者由一个空格隔开，且op在前，t在后，op表示该防御门所对应的操作， t表示对应的参数。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行一个整数，表示atm的一次攻击最多使 drd 受到多少伤害。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>3 10<br>AND 5<br>OR 6<br>XOR 7</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p><strong>补充说明</strong><br>atm可以选择的初始攻击力为0,1,…,10。<br>假设初始攻击力为4，最终攻击力经过了如下计算<br>4 AND 5 = 4<br>4 OR  6 = 6<br>6 XOR 7 = 1<br>类似的，我们可以计算出初始攻击力为1,3,5,7,9时最终攻击力为0，初始攻击力为0,2,4,6,8,10时最终攻击力为1，因此atm的一次攻击最多使 drd 受到的伤害值为1。<br><strong>数据范围</strong><br>0&lt;=m&lt;=10^9<br>0&lt;=t&lt;=10^9<br>运算一定为OR,XOR,AND 中的一种</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>位运算每一位都是独立的，于是从高到低枚举选择数字的每一位，分几种情况讨论：</p>
+<ol>
+<li>该位取0时经过n次操作结果取1，该位选择0一定最优。</li>
+<li>若情况1不满足，该位取1时经过n次操作结果取1 且取1后值不超过m 这样我们也选择1。</li>
+<li>上两种情况不满足，则该位取0一定比取1小且更不容易超过m。<br>可以直接用<span>$(0...0)_2$</span><!-- Has MathJax -->和<span>$(1...1)_2$</span><!-- Has MathJax -->，这样优化为$O(N)$。<br>代码丑的可以。</li>
+</ol>
+<dir style="text-align:right"><a href="/2016/08/17/JSOI2016-提高2班-位运算/sleep.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>sleep.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    a1,a0,ans,orig,p,t,c,i,n,m:int; </div><div class="line">    s,op:<span class="keyword">string</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'sleep.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'sleep.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    readln(n,m);</div><div class="line">    a0:=<span class="number">0</span>;a1:=<span class="keyword">not</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        readln(s);</div><div class="line">        p:=pos(<span class="string">' '</span>,s);</div><div class="line">        op:=copy(s,<span class="number">1</span>,p-<span class="number">1</span>);</div><div class="line">        val(copy(s,p+<span class="number">1</span>,length(s)-p),t,c);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> op=<span class="string">'XOR'</span> <span class="keyword">then</span> <span class="keyword">begin</span> a0:=a0 xor t;a1:=a1 xor t <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> op=<span class="string">'OR'</span> <span class="keyword">then</span> <span class="keyword">begin</span> a0:=a0 <span class="keyword">or</span> t;a1:=a1 <span class="keyword">or</span> t <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">begin</span> a0:=a0 <span class="keyword">and</span> t;a1:=a1 <span class="keyword">and</span> t <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"></div><div class="line">    ans:=<span class="number">0</span>; <span class="comment">//最终伤害</span></div><div class="line">    orig:=<span class="number">0</span>; <span class="comment">//原始伤害</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">30</span> <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span> </div><div class="line">        <span class="keyword">if</span> ((a0 <span class="keyword">shr</span> i) <span class="keyword">and</span> <span class="number">1</span>)=<span class="number">1</span> <span class="keyword">then</span></div><div class="line">            ans:=ans <span class="keyword">or</span> (<span class="number">1</span> <span class="keyword">shl</span> i)</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (((a1 <span class="keyword">shr</span> i) <span class="keyword">and</span> <span class="number">1</span>)=<span class="number">1</span>) <span class="keyword">and</span> </div><div class="line">                ((orig <span class="keyword">or</span> (<span class="number">1</span> <span class="keyword">shl</span> i))&lt;=m) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            ans:=ans <span class="keyword">or</span> (<span class="number">1</span> <span class="keyword">shl</span> i);</div><div class="line">            orig:=orig <span class="keyword">or</span> (<span class="number">1</span> <span class="keyword">shl</span> i);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P3-乒乓游戏"><a href="#P3-乒乓游戏" class="headerlink" title="P3 乒乓游戏"></a>P3 乒乓游戏</h1><p>一条大街上住着n个乒乓球爱好者，经常组织比赛切磋技术。每个人都有一个不同的技能值ai。每场比赛需要3个人：两名选手，一名裁判。他们有一个奇怪的规定，即裁判必须住在两名选手的中间，并且技能值也在两名选手之间。问一共能组织多少种比赛。</p>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行是整数n，然后是n个不同的整数，即a1,a2,…,an，按照住处从左到右的顺序给每个乒乓球爱好者的技能值。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出比赛总数的值。<br><!--more--></p>
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5<br>6 1 8 10 1</p>
+</blockquote>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>30%的数据 n&lt;=3000。<br>100%的数据 n&lt;=100000,ai&lt;=100000。 </p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>对于裁判i，记1..i-1中技能值小于a[i]的人数为ls，i+1..n中小于a[i]的人数rs，那么这个裁判能组织的比赛数$=sl*(n-i-sr)+(i-1-sl)*sr$<br>扫一遍i，可以用两个树状数组维护。</p>
+<dir style="text-align:right"><a href="/2016/08/17/JSOI2016-提高2班-位运算/pingpong.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>pingpong.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> maxn=<span class="number">100000</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    l,r,a:arr;</div><div class="line">    n,i,sl,sr:int;ans:int64;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lowbit</span><span class="params">(x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span> lowbit:=x <span class="keyword">and</span> (-x) <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(<span class="keyword">var</span> a:arr;x,k:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> x=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">while</span> x&lt;=maxn <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(a[x],k);</div><div class="line">        inc(x,lowbit(x));</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(<span class="keyword">var</span> a:arr;x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    sum:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> x&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(sum,a[x]);</div><div class="line">        dec(x,lowbit(x));</div><div class="line">    <span class="keyword">end</span>;    </div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'pingpong.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'pingpong.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(a[i]);</div><div class="line">        <span class="keyword">if</span> i&lt;&gt;<span class="number">1</span> <span class="keyword">then</span> add(r,a[i],<span class="number">1</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        sl:=sum(l,a[i]);sr:=sum(r,a[i]);</div><div class="line">        inc(ans,sl*(n-i-sr)+(i-<span class="number">1</span>-sl)*sr);</div><div class="line">        add(r,a[i+<span class="number">1</span>],-<span class="number">1</span>);add(l,a[i],<span class="number">1</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P4-黑客的攻击"><a href="#P4-黑客的攻击" class="headerlink" title="P4 黑客的攻击"></a>P4 黑客的攻击</h1><p>假设你是一个黑客，入侵了一个有着n台计算机(编号为0,1,…,n-1)的网络。一共有n种服务，每台计算机都运行着所有的服务。对于每台计算机，你都可以选择一项服务，终止这台计算机和所有和它相邻计算机的该项服务（如果其中的一些服务已经停止，则这些服务继续处于停止状态）。你的目标是让尽量多的服务完全瘫痪（即：没有任何计算机运行该项服务)</p>
+<h2 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为整数n；以下n行每行描述一台计算机的相邻计算机，其中第一个数m为相邻的计算机个数，接下来m个数为这些计算机的编号。</p>
+<h2 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出完全瘫痪的服务器的最大数量<br><!--more--></p>
+<h2 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>4<br>1 1<br>1 0<br>1 3<br>1 2</p>
+</blockquote>
+<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>2</p>
+</blockquote>
+<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>n≤16。</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>看数据范围，状压DP，用二进制表示集合<br>a[i]预处理出点i相邻的节点，二进制表示<br>p[S]预处理出集合S所能够覆盖的点的集合<br>然后dp，<span>$f[S]=max\{f[S\ xor\ j]+1\ |\ j\in S\ and\ p[j]=(1\ shl\ n)-1\}$</span><!-- Has MathJax --></p>
+<dir style="text-align:right"><a href="/2016/08/17/JSOI2016-提高2班-位运算/hacker.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>hacker.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,k,i,j,t,lowbit:int;</div><div class="line">    f,p:<span class="keyword">array</span>[<span class="number">0</span>..(<span class="number">1</span> <span class="keyword">shl</span> <span class="number">16</span>)-<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">17</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'hacker.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'hacker.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    k:=(<span class="number">1</span> <span class="keyword">shl</span> n)-<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(m);</div><div class="line">        a[i]:=<span class="number">1</span> <span class="keyword">shl</span> i;</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">read</span>(t);</div><div class="line">            a[i]:=a[i] <span class="keyword">or</span> (<span class="number">1</span> <span class="keyword">shl</span> t);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        t:=i;</div><div class="line">        p[i]:=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> t&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            lowbit:=t <span class="keyword">and</span> (-t);</div><div class="line">            p[i]:=p[i] <span class="keyword">or</span> a[round(ln(lowbit)/ln(<span class="number">2</span>))];</div><div class="line">            t:=t-lowbit;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        f[i]:=<span class="number">0</span>;j:=i;</div><div class="line">        <span class="keyword">while</span> j&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> p[j]=k <span class="keyword">then</span> f[i]:=max(f[i xor j]+<span class="number">1</span>,f[i]);</div><div class="line">            j:=(j-<span class="number">1</span>) <span class="keyword">and</span> i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(f[k]);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/位运算/">位运算</a><a href="/tags/树状数组/">树状数组</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/08/17/JSOI2016-提高2班-位运算/" data-title="[JSOI2016] 提高2班 位运算 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/16/JSOI2016-提高1班-Day1/"  title="[JSOI2016] 提高1班-Day1">
+ <strong>下一篇：</strong><br/> 
+ <span>[JSOI2016] 提高1班-Day1
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/17/JSOI2016-提高2班-位运算/" data-title="[JSOI2016] 提高2班 位运算" data-url="https://cothrax.github.io/2016/08/17/JSOI2016-提高2班-位运算/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-拔河比赛"><span class="toc-number">1.</span> <span class="toc-text">P1 拔河比赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">1.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">1.5.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">1.6.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-起床困难综合症"><span class="toc-number">2.</span> <span class="toc-text">P2 起床困难综合症</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-1"><span class="toc-number">2.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-乒乓游戏"><span class="toc-number">3.</span> <span class="toc-text">P3 乒乓游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-2"><span class="toc-number">3.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">3.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-黑客的攻击"><span class="toc-number">4.</span> <span class="toc-text">P4 黑客的攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-3"><span class="toc-number">4.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-3"><span class="toc-number">4.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-3"><span class="toc-number">4.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-3"><span class="toc-number">4.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">4.5.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="cothrax" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 12px;">BFS</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 12px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maths/" style="font-size: 10px;">Maths</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 18px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 14px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/倍增/" style="font-size: 10px;">倍增</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/字符串/" style="font-size: 12px;">字符串</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/搜索/" style="font-size: 12px;">搜索</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 10px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/线性DP/" style="font-size: 10px;">线性DP</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://vijos.org/" target="_blank" title="Vijos">Vijos</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://codevs.cn/" target="_blank" title="CodeVS">CodeVS</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.luogu.org/" target="_blank" title="Luogu">Luogu</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+            
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a> | <a href="/sitemap.xml">Sitemap</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Cothrax"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
