@@ -123,7 +123,7 @@
     <link href="https://cothrax.github.io/2016/08/17/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     <id>https://cothrax.github.io/2016/08/17/JSOI2016-提高2班-位运算/</id>
     <published>2016-08-17T10:18:57.000Z</published>
-    <updated>2016-08-17T11:38:36.808Z</updated>
+    <updated>2016-08-18T03:34:11.718Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P1-拔河比赛"><a href="#P1-拔河比赛" class="headerlink" title="P1 拔河比赛"></a>P1 拔河比赛</h1><p>一个学校举行拔河比赛，所有的人被分成了两组，每个人必须（且只能够）在其中的一组，且两个组内的所有人体重加起来尽可能地接近。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>数据的第1行是一个n，表示参加拔河比赛的总人数，接下来的n行表示第1到第n个人的体重，每个人的体重weight都是整数。</p>
@@ -211,6 +211,8 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
   </entry>
   
   <entry>
@@ -218,7 +220,7 @@
     <link href="https://cothrax.github.io/2016/08/16/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day1/"/>
     <id>https://cothrax.github.io/2016/08/16/JSOI2016-提高1班-Day1/</id>
     <published>2016-08-16T14:10:35.000Z</published>
-    <updated>2016-08-17T03:34:22.548Z</updated>
+    <updated>2016-08-18T03:34:21.275Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P1-选数"><a href="#P1-选数" class="headerlink" title="P1 选数"></a>P1 选数</h1><p>现在有一排共N个数，你需要从中选出恰好K个。选出K个数后，计算它们两两差值的绝对值的最小值S。你需要确定选出哪K个，才能最大化这个S。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入第一行两个正整数N、K，含义如上。<br>输入第二行N个正整数，依次表示这N个数A1~An。0＜Ai≤10^9。</p>
@@ -321,6 +323,8 @@
       <category term="仙人掌图" scheme="https://cothrax.github.io/tags/%E4%BB%99%E4%BA%BA%E6%8E%8C%E5%9B%BE/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -813,6 +817,8 @@
       <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
     
       <category term="树链剖分" scheme="https://cothrax.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
