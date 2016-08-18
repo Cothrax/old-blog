@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-18T14:37:04.359Z</updated>
+  <updated>2016-08-18T14:38:36.907Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://cothrax.github.io/2016/08/18/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E6%A0%91%E5%BD%A2DP/"/>
     <id>https://cothrax.github.io/2016/08/18/JSOI2016-提高2班-树形DP/</id>
     <published>2016-08-18T14:30:18.000Z</published>
-    <updated>2016-08-18T14:37:04.359Z</updated>
+    <updated>2016-08-18T14:38:36.907Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="P1-学校网络"><a href="#P1-学校网络" class="headerlink" title="P1 学校网络"></a>P1 学校网络</h2><p>一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。<br><img src="/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg" alt="T.jpg" title=""><br>Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。</p>
+    <content type="html"><![CDATA[<h1 id="P1-学校网络"><a href="#P1-学校网络" class="headerlink" title="P1 学校网络"></a>P1 学校网络</h1><p>一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。<br><img src="/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg" alt="T.jpg" title=""><br>Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件包含多组测试数据，对于每组测试数据：<br>第一行包含一个整数N (N&lt;=10000) ；<br>接下来N-1行描述每一台电脑。第i行包含两个用空格隔开的整数y、l，表示i号电脑与之前的y号电脑连接，距离为l。<br>所有l之和不超过10^9。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每组测试数据输出N行，第i行表示离i号电脑的最远距离Si。<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
@@ -49,7 +49,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;P1-学校网络&quot;&gt;&lt;a href=&quot;#P1-学校网络&quot; class=&quot;headerlink&quot; title=&quot;P1 学校网络&quot;&gt;&lt;/a&gt;P1 学校网络&lt;/h2&gt;&lt;p&gt;一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。&lt;br&gt;&lt;img src=&quot;/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg&quot; alt=&quot;T.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。&lt;/p&gt;
+      &lt;h1 id=&quot;P1-学校网络&quot;&gt;&lt;a href=&quot;#P1-学校网络&quot; class=&quot;headerlink&quot; title=&quot;P1 学校网络&quot;&gt;&lt;/a&gt;P1 学校网络&lt;/h1&gt;&lt;p&gt;一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。&lt;br&gt;&lt;img src=&quot;/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg&quot; alt=&quot;T.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入文件包含多组测试数据，对于每组测试数据：&lt;br&gt;第一行包含一个整数N (N&amp;lt;=10000) ；&lt;br&gt;接下来N-1行描述每一台电脑。第i行包含两个用空格隔开的整数y、l，表示i号电脑与之前的y号电脑连接，距离为l。&lt;br&gt;所有l之和不超过10^9。&lt;/p&gt;
 &lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;对于每组测试数据输出N行，第i行表示离i号电脑的最远距离Si。&lt;br&gt;
     
