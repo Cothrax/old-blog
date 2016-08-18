@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-18T03:39:33.118Z</updated>
+  <updated>2016-08-18T14:37:04.359Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[JSOI2016] 提高2班 树形DP</title>
+    <link href="https://cothrax.github.io/2016/08/18/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E6%A0%91%E5%BD%A2DP/"/>
+    <id>https://cothrax.github.io/2016/08/18/JSOI2016-提高2班-树形DP/</id>
+    <published>2016-08-18T14:30:18.000Z</published>
+    <updated>2016-08-18T14:37:04.359Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="P1-学校网络"><a href="#P1-学校网络" class="headerlink" title="P1 学校网络"></a>P1 学校网络</h2><p>一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。<br><img src="/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg" alt="T.jpg" title=""><br>Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件包含多组测试数据，对于每组测试数据：<br>第一行包含一个整数N (N&lt;=10000) ；<br>接下来N-1行描述每一台电脑。第i行包含两个用空格隔开的整数y、l，表示i号电脑与之前的y号电脑连接，距离为l。<br>所有l之和不超过10^9。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每组测试数据输出N行，第i行表示离i号电脑的最远距离Si。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5<br>1 1<br>2 1<br>3 1<br>1 1</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3 2 3 4 4</p>
+</blockquote>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><dir style="text-align:right"><a href="/2016/08/18/JSOI2016-提高2班-树形DP/computer.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>computer.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">100000000</span>;</div><div class="line"><span class="keyword">type</span></div><div class="line">    int=longint; </div><div class="line">    edge=<span class="keyword">record</span> f,t,w,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,par:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    f,p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">2</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,j,k:int;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t,w:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].f:=f;g[m].t:=t;g[m].w:=w;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dp</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u,tmp:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(f[v],sizeof(f[v]),<span class="number">0</span>);</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;dp(u);</div><div class="line">        tmp:=f[u,<span class="number">0</span>]+g[i].w;</div><div class="line">        <span class="keyword">if</span> tmp&gt;f[v,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            f[v,<span class="number">1</span>]:=f[v,<span class="number">0</span>];</div><div class="line">            f[v,<span class="number">0</span>]:=tmp;</div><div class="line">            f[v,<span class="number">2</span>]:=u;</div><div class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> tmp&gt;f[v,<span class="number">1</span>] <span class="keyword">then</span></div><div class="line">            f[v,<span class="number">1</span>]:=tmp;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,w:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,tmp:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    p[v]:=f[v];</div><div class="line">    <span class="keyword">if</span> p[par[v],<span class="number">2</span>]&lt;&gt;v <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        tmp:=p[par[v],<span class="number">0</span>]+w;</div><div class="line">        <span class="keyword">if</span> tmp&gt;p[v,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            p[v,<span class="number">1</span>]:=p[v,<span class="number">0</span>];</div><div class="line">            p[v,<span class="number">0</span>]:=tmp;</div><div class="line">            p[v,<span class="number">2</span>]:=par[v];</div><div class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> tmp&gt;p[v,<span class="number">1</span>] <span class="keyword">then</span></div><div class="line">            p[v,<span class="number">1</span>]:=tmp;</div><div class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        tmp:=p[par[v],<span class="number">1</span>]+w;</div><div class="line">        <span class="keyword">if</span> tmp&gt;p[v,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            p[v,<span class="number">1</span>]:=p[v,<span class="number">0</span>];</div><div class="line">            p[v,<span class="number">0</span>]:=tmp;</div><div class="line">            p[v,<span class="number">2</span>]:=par[v];</div><div class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> tmp&gt;p[v,<span class="number">1</span>] <span class="keyword">then</span></div><div class="line">            p[v,<span class="number">1</span>]:=tmp;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        dfs(g[i].t,g[i].w);</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'computer.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'computer.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j,k);</div><div class="line">        add(j,i,k);par[i]:=j;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    dp(<span class="number">1</span>);</div><div class="line">    dfs(<span class="number">1</span>,-inf);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> writeln(p[i,<span class="number">0</span>]);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-黑手党"><a href="#P2-黑手党" class="headerlink" title="P2 黑手党"></a>P2 黑手党</h1><p>去年的芝加哥充满了黑帮争斗和奇怪的谋杀。警察局长真的厌倦了所有这些罪行，决定逮捕黑手党领袖。<br>不幸的是，芝加哥黑手党相当复杂的结构。没有人知道黑手党的信息。警方已经追踪他们一段时间的活动，并且知道他们中的一些人互相通信。根据收集到的资料，警察局长表明黑手党的层次结构可以表示为一棵树。黑手党首脑是树的根，每个节点表示一个人，一个节点的孩子即为这个节点表示的人的直接下属。<br>更不幸的是，虽然警方知道了匪徒的通讯，他们不知道谁是黑手党首脑。因此他们只有通信关系的无向树。<br>基于这样的思想，警察局长猜测可能表示黑手党首脑的节点必须满足：在删除它后，包含最多节点的剩余连通块的节点数最小。帮助警察找到所有可能成为黑手党首脑的节点。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含一个整数n(2≤n≤50000)，表示有n个人，编号为1~n。<br>接下来n-1行，每行两个数x，y，表示编号为x的人和编号为y的人之间有通信。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出所有可能成为黑手党首脑的人的编号，按升序排列，两个编号之间用空格隔开。<br><!--more--></p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>6<br>1 2<br>2 3<br>2 5<br>3 4<br>3 6</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>2 3</p>
+</blockquote>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><dir style="text-align:right"><a href="/2016/08/18/JSOI2016-提高2班-树形DP/godfather.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>godfather.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,i,j,k,mins:int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,siz,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">50010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].t:=t;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dp</span><span class="params">(v,p:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=head[v];</div><div class="line">    siz[v]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> u&lt;&gt;p <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            dp(u,v);</div><div class="line">            inc(siz[v],siz[u]);</div><div class="line">            f[v]:=max(f[v],siz[u]);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;    </div><div class="line">    f[v]:=max(f[v],n-siz[v]);</div><div class="line">    mins:=min(mins,f[v]);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'godfather.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'godfather.out'</span>);rewrite(output);</div><div class="line"></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j,k);</div><div class="line">        add(j,k);add(k,j);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    mins:=maxlongint;</div><div class="line">    dp(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> f[i]=mins <span class="keyword">then</span> <span class="keyword">write</span>(i,<span class="string">' '</span>);</div><div class="line"></div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;P1-学校网络&quot;&gt;&lt;a href=&quot;#P1-学校网络&quot; class=&quot;headerlink&quot; title=&quot;P1 学校网络&quot;&gt;&lt;/a&gt;P1 学校网络&lt;/h2&gt;&lt;p&gt;一所学校在几年前购进了第一台电脑（这台电脑的编号为1）。最近几年，学校又购买了N-1台电脑，每台新电脑和之前的某一台电脑连接。学校的管理员想知道对于每一台电脑i，到与它距离最远的电脑的距离Si。你需要提供这个信息。&lt;br&gt;&lt;img src=&quot;/2016/08/18/JSOI2016-提高2班-树形DP/T.jpg&quot; alt=&quot;T.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;Hint: 样例输入如上图所示，从图中你可以知道，4号电脑到1号电脑的距离最远，所以S1=3。4号电脑和5号电脑到2号电脑的距离最远，所以S2=2。5号电脑到3号电脑距离最远，所以S3=3。由此类推S4=4，S5=4。&lt;/p&gt;
+&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入文件包含多组测试数据，对于每组测试数据：&lt;br&gt;第一行包含一个整数N (N&amp;lt;=10000) ；&lt;br&gt;接下来N-1行描述每一台电脑。第i行包含两个用空格隔开的整数y、l，表示i号电脑与之前的y号电脑连接，距离为l。&lt;br&gt;所有l之和不超过10^9。&lt;/p&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;对于每组测试数据输出N行，第i行表示离i号电脑的最远距离Si。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
+    
+  </entry>
   
   <entry>
     <title>[JSOI2016] 提高1班 Day2</title>
@@ -110,11 +163,11 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
@@ -209,13 +262,13 @@
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -320,6 +373,8 @@
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
@@ -327,8 +382,6 @@
       <category term="仙人掌图" scheme="https://cothrax.github.io/tags/%E4%BB%99%E4%BA%BA%E6%8E%8C%E5%9B%BE/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -806,6 +859,8 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
@@ -821,8 +876,6 @@
       <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
     
       <category term="树链剖分" scheme="https://cothrax.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
