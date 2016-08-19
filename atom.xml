@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-19T01:13:01.537Z</updated>
+  <updated>2016-08-19T01:16:47.947Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/19/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day4/"/>
     <id>https://cothrax.github.io/2016/08/19/JSOI2016-提高1班-Day4/</id>
     <published>2016-08-19T01:03:58.000Z</published>
-    <updated>2016-08-19T01:13:01.537Z</updated>
+    <updated>2016-08-19T01:16:47.947Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P1-公约数"><a href="#P1-公约数" class="headerlink" title="P1 公约数"></a>P1 公约数</h1><p>小w 最近仔细研究了公约数，他想到了以下问题：<br>现有n 个正整数，从中选k（2&lt;=k&lt;=n）个，设这k 个数的最大公约数为g，则这k 个数<br>的价值为k*g。求这个价值的最大值。<br>小w 当然知道答案了。现在他想考考你，你能很快回答出来吗？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行，一个整数n。<br>第二行，n 个正整数。</p>
@@ -59,7 +59,7 @@
 <h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
 <p>18</p>
 </blockquote>
-<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>n\&lt;=100,m\&lt;=1000,si,ti,s,t\&lt;=n-1,f,di\&lt;=200,ai,bi\&lt;=1000<br>保证至多只有一名邮递员ai\<bi,其余均是ai\>bi<br>共50 组数据，保证数据有梯度。</bi,其余均是ai\></p>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>n&lt;=100,m&lt;=1000,si,ti,s,t&lt;=n-1,f,di&lt;=200,ai,bi&lt;=1000<br>保证至多只有一名邮递员ai\<bi,其余均是ai\>bi<br>共50 组数据，保证数据有梯度。</bi,其余均是ai\></p>
 <h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>想到网络流，但模型不一样</p>
 <ol>
 <li>没有流量限制</li>
