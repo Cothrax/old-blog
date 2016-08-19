@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-19T13:13:02.740Z</updated>
+  <updated>2016-08-19T13:14:58.449Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/19/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E6%A0%91%E5%BD%A2DP%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://cothrax.github.io/2016/08/19/JSOI2016-提高2班-树形DP（二）/</id>
     <published>2016-08-19T03:58:32.000Z</published>
-    <updated>2016-08-19T13:13:02.740Z</updated>
+    <updated>2016-08-19T13:14:58.449Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P5-The-more-The-better"><a href="#P5-The-more-The-better" class="headerlink" title="P5 The more, The better"></a>P5 The more, The better</h1><p>ACboy很喜欢玩一种战略游戏，在一个地图上，有N座城堡，每座城堡都有一定的宝物，在每次游戏中ACboy允许攻克M个城堡并获得里面的宝物。但由于地理位置原因，有些城堡不能直接攻克，要攻克这些城堡必须先攻克其他某一个特定的城堡。你能帮ACboy算出要获得尽量多的宝物应该攻克哪M个城堡吗？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每个测试实例首先包括2个整数，N,M.(1 &lt;= M &lt;= N &lt;= 200);在接下来的N行里，每行包括2个整数，a,b. 在第 i 行，a 代表要攻克第 i 个城堡必须先攻克第 a 个城堡，如果 a = 0 则代表可以直接攻克第 i 个城堡。b 代表第 i 个城堡的宝物数量, b &gt;= 0。当N = 0, M = 0输入结束。</p>
@@ -97,6 +97,8 @@
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
       <category term="树形背包" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2%E8%83%8C%E5%8C%85/"/>
+    
+      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -261,6 +263,8 @@
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
       <category term="树形背包" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2%E8%83%8C%E5%8C%85/"/>
+    
+      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
