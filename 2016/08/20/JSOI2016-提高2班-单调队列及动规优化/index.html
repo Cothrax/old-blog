@@ -4,7 +4,7 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>[JSOI2016] 单调队列及动规优化 | Cothrax</title>
+    <title>[JSOI2016] 提高2班 单调队列及动规优化 | Cothrax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cothrax">
@@ -13,13 +13,13 @@
     
     <meta name="description" content="P1 轰炸机大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。在一个月黑风高的夜晚，X国高层决定用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[JSOI2016] 单调队列及动规优化">
-<meta property="og:url" content="https://cothrax.github.io/2016/08/20/JSOI2016-单调队列及动规优化/index.html">
+<meta property="og:title" content="[JSOI2016] 提高2班 单调队列及动规优化">
+<meta property="og:url" content="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/index.html">
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="P1 轰炸机大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。在一个月黑风高的夜晚，X国高层决定用">
-<meta property="og:updated_time" content="2016-08-20T10:49:59.096Z">
+<meta property="og:updated_time" content="2016-08-20T10:52:41.533Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[JSOI2016] 单调队列及动规优化">
+<meta name="twitter:title" content="[JSOI2016] 提高2班 单调队列及动规优化">
 <meta name="twitter:description" content="P1 轰炸机大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。在一个月黑风高的夜晚，X国高层决定用">
 <meta name="twitter:creator" content="@Cothrax">
 
@@ -83,7 +83,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/20/JSOI2016-单调队列及动规优化/" title="[JSOI2016] 单调队列及动规优化" itemprop="url">[JSOI2016] 单调队列及动规优化</a>
+      <a href="/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/" title="[JSOI2016] 提高2班 单调队列及动规优化" itemprop="url">[JSOI2016] 提高2班 单调队列及动规优化</a>
   </h1>
   <p class="article-author">By
        
@@ -115,7 +115,7 @@
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>30%的数据：N&lt;=3000,M&lt;=100<br>100%的数据N,M&lt;=1000000 -maxlongint&lt;=Ai&lt;=maxlongint</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最大子段和的升级版，要求长度不超过m。<br>先求前缀和sum[i]<br>然后，记f[i]是以i结尾的最大子段和，<span>$f[i]=sum[i]-min\{sum[j]\ |\ i-j&lt;=m\}$</span><!-- Has MathJax --><br>然后可以用一个严格递增的单调队列维护sum[j]</p>
-<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-单调队列及动规优化/sum.pas" title="复制代码">复制代码</a></dir>
+<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/sum.pas" title="复制代码">复制代码</a></dir>
 
 <figure class="highlight delphi"><figcaption><span>sum.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,j,k,d,h,t,ans:int;</div><div class="line">    c,w,a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int; <span class="comment">//费用,价值,数量</span></div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(c[i],w[i],a[i]);</div><div class="line">    d:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        d:=min(m,d+c[i]*a[i]);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> c[i]-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            h:=<span class="number">1</span>;t:=<span class="number">0</span>;k:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> j+c[i]*k&lt;=d <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (q[t,<span class="number">0</span>]&lt;=f[j+c[i]*k]-w[i]*k) <span class="keyword">do</span> dec(t);</div><div class="line">                inc(t);q[t,<span class="number">1</span>]:=k;q[t,<span class="number">0</span>]:=f[j+c[i]*k]-w[i]*k;</div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (k-q[h,<span class="number">1</span>]&gt;a[i]) <span class="keyword">do</span> inc(h);</div><div class="line">                f[j+c[i]*k]:=max(f[j+c[i]*k],q[h,<span class="number">0</span>]+k*w[i]);</div><div class="line">                inc(k);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> ans:=max(ans,f[i]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
 <h1 id="P2-武器调度"><a href="#P2-武器调度" class="headerlink" title="P2 武器调度"></a>P2 武器调度</h1><p>为了取得胜利，X国高层决定调动武器库中的装备支援前线，以增强前线的战斗力。X国武器库中共有N种武器，每种武器都有固定的质量，且数量有限，能给前线增加的战斗力也是已知的。拟定将用飞机运送，为了使飞机具有能摆脱Y国防空导弹的速度，其最大装载质量不得超过M。现在他们需要你求出这一次装备运输最多能给前线增加多少战斗力。</p>
@@ -129,7 +129,7 @@
 </blockquote>
 <h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>30%的数据中，n&lt;=10<br>50%的数据中，n&lt;=50,m&lt;=5000<br>100%的数据中，n&lt;=100,m&lt;=10000,ci&lt;=100<br>保证输出结果在maxlongint范围内。</p>
 <h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>单调队列优化多重背包，代码优美到不可思议。<br>详解见此：<a href="http://www.cppblog.com/flyinghearts/archive/2010/09/01/125555.html" target="_blank" rel="external">http://www.cppblog.com/flyinghearts/archive/2010/09/01/125555.html</a></p>
-<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-单调队列及动规优化/war.pas" title="复制代码">复制代码</a></dir>
+<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/war.pas" title="复制代码">复制代码</a></dir>
 
 <figure class="highlight delphi"><figcaption><span>war.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,j,k,d,h,t,ans:int;</div><div class="line">    c,w,a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int; <span class="comment">//费用,价值,数量</span></div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'war.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'war.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(c[i],w[i],a[i]);</div><div class="line">    d:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        d:=min(m,d+c[i]*a[i]);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> c[i]-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            h:=<span class="number">1</span>;t:=<span class="number">0</span>;k:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> j+c[i]*k&lt;=d <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (q[t,<span class="number">0</span>]&lt;=f[j+c[i]*k]-w[i]*k) <span class="keyword">do</span> dec(t);</div><div class="line">                inc(t);q[t,<span class="number">1</span>]:=k;q[t,<span class="number">0</span>]:=f[j+c[i]*k]-w[i]*k;</div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (k-q[h,<span class="number">1</span>]&gt;a[i]) <span class="keyword">do</span> inc(h);</div><div class="line">                f[j+c[i]*k]:=max(f[j+c[i]*k],q[h,<span class="number">0</span>]+k*w[i]);</div><div class="line">                inc(k);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> ans:=max(ans,f[i]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>  
 	</div>
@@ -153,7 +153,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://cothrax.github.io/2016/08/20/JSOI2016-单调队列及动规优化/" data-title="[JSOI2016] 单调队列及动规优化 | Cothrax" data-tsina="null" class="share clearfix">
+	  <div data-url="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/" data-title="[JSOI2016] 提高2班 单调队列及动规优化 | Cothrax" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -179,7 +179,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/08/20/JSOI2016-单调队列及动规优化/" data-title="[JSOI2016] 单调队列及动规优化" data-url="https://cothrax.github.io/2016/08/20/JSOI2016-单调队列及动规优化/"></div>
+	<div class="ds-thread" data-thread-key="2016/08/20/JSOI2016-提高2班-单调队列及动规优化/" data-title="[JSOI2016] 提高2班 单调队列及动规优化" data-url="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/"></div>
 </section>
 
 
