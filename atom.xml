@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-20T03:58:00.358Z</updated>
+  <updated>2016-08-20T03:59:06.082Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,9 +20,31 @@
     <link href="https://cothrax.github.io/2016/08/20/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     <id>https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-二分答案/</id>
     <published>2016-08-20T03:12:13.000Z</published>
-    <updated>2016-08-20T03:58:00.358Z</updated>
+    <updated>2016-08-20T03:59:06.082Z</updated>
     
-    <content type="html"><![CDATA[<p>二分的坑点在于解的检验。<br>|题号|检验方法|<br>|—|—|<br>|P1 P2|贪心|<br>|P3 P5|DP|<br>|P4|DFS|</p>
+    <content type="html"><![CDATA[<p>二分的坑点在于解的检验。</p>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>检验方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 P2</td>
+<td>贪心</td>
+</tr>
+<tr>
+<td>P3 P5</td>
+<td>DP</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>DFS</td>
+</tr>
+</tbody>
+</table>
 <h1 id="P1-晒衣服"><a href="#P1-晒衣服" class="headerlink" title="P1 晒衣服"></a>P1 晒衣服</h1><p>洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。<br>N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度，要你求出弄干所有衣服的最少时间（湿度为0为干）。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件第一行N，A，B;<br>接下来1^行，每行一个数，表示衣服的湿度$a_i$（<span>$1\leq a_i\leq500000，1\leq N\leq 500000$</span><!-- Has MathJax -->）。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行一个整数，表示最少时间。<br><a id="more"></a></p>
@@ -98,7 +120,29 @@
     
     <summary type="html">
     
-      &lt;p&gt;二分的坑点在于解的检验。&lt;br&gt;|题号|检验方法|&lt;br&gt;|—|—|&lt;br&gt;|P1 P2|贪心|&lt;br&gt;|P3 P5|DP|&lt;br&gt;|P4|DFS|&lt;/p&gt;
+      &lt;p&gt;二分的坑点在于解的检验。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;题号&lt;/th&gt;
+&lt;th&gt;检验方法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;P1 P2&lt;/td&gt;
+&lt;td&gt;贪心&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P3 P5&lt;/td&gt;
+&lt;td&gt;DP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P4&lt;/td&gt;
+&lt;td&gt;DFS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h1 id=&quot;P1-晒衣服&quot;&gt;&lt;a href=&quot;#P1-晒衣服&quot; class=&quot;headerlink&quot; title=&quot;P1 晒衣服&quot;&gt;&lt;/a&gt;P1 晒衣服&lt;/h1&gt;&lt;p&gt;洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。&lt;br&gt;N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度，要你求出弄干所有衣服的最少时间（湿度为0为干）。&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入文件第一行N，A，B;&lt;br&gt;接下来1^行，每行一个数，表示衣服的湿度$a_i$（&lt;span&gt;$1\leq a_i\leq500000，1\leq N\leq 500000$&lt;/span&gt;&lt;!-- Has MathJax --&gt;）。&lt;/p&gt;
 &lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出一行一个整数，表示最少时间。&lt;br&gt;
