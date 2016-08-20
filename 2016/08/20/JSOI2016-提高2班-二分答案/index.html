@@ -11,20 +11,20 @@
     
 
     
-    <meta name="description" content="二分的坑点在于解的检验。P1 P2 贪心 $O(N)$P3 P5 DP $O(N^2)$P4 DFS $O(xN)$
-P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣">
+    <meta name="description" content="二分的坑点在于解的检验。|题号|检验方法||—|—||P1 P2|贪心||P3 P5|DP||P4|DFS|
+P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[JSOI2016] 提高2班 二分答案">
 <meta property="og:url" content="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-二分答案/index.html">
 <meta property="og:site_name" content="Cothrax">
-<meta property="og:description" content="二分的坑点在于解的检验。P1 P2 贪心 $O(N)$P3 P5 DP $O(N^2)$P4 DFS $O(xN)$
-P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣">
+<meta property="og:description" content="二分的坑点在于解的检验。|题号|检验方法||—|—||P1 P2|贪心||P3 P5|DP||P4|DFS|
+P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度">
 <meta property="og:image" content="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-二分答案/t.jpg">
-<meta property="og:updated_time" content="2016-08-20T03:55:00.230Z">
+<meta property="og:updated_time" content="2016-08-20T03:58:00.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[JSOI2016] 提高2班 二分答案">
-<meta name="twitter:description" content="二分的坑点在于解的检验。P1 P2 贪心 $O(N)$P3 P5 DP $O(N^2)$P4 DFS $O(xN)$
-P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣">
+<meta name="twitter:description" content="二分的坑点在于解的检验。|题号|检验方法||—|—||P1 P2|贪心||P3 P5|DP||P4|DFS|
+P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度">
 <meta name="twitter:image" content="https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-二分答案/t.jpg">
 <meta name="twitter:creator" content="@Cothrax">
 
@@ -108,9 +108,9 @@ P1 晒衣服洗完衣服后，你要弄干衣服。衣服在自然条件下用1�
 		
 		</div>
 		
-		<p>二分的坑点在于解的检验。<br>P1 P2 贪心 $O(N)$<br>P3 P5 DP $O(N^2)$<br>P4 DFS $O(xN)$</p>
+		<p>二分的坑点在于解的检验。<br>|题号|检验方法|<br>|—|—|<br>|P1 P2|贪心|<br>|P3 P5|DP|<br>|P4|DFS|</p>
 <h1 id="P1-晒衣服"><a href="#P1-晒衣服" class="headerlink" title="P1 晒衣服"></a>P1 晒衣服</h1><p>洗完衣服后，你要弄干衣服。衣服在自然条件下用1个单位时间可以晒干A点湿度，现在买了1台烘衣机，使用烘衣机可以让你用1个单位的时间使1件衣服除开自然晒干的A点湿度外，还可烘干B点湿度，但在1个单位的时间内只能对1件衣服使用。<br>N件衣服因为种种原因而不一样湿，现在告诉你每件衣服的湿度，要你求出弄干所有衣服的最少时间（湿度为0为干）。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件第一行N，A，B;<br>接下来1^行，每行一个数，表示衣服的湿度$a_i$（<span>$1\leq a_i\leq500000，1\leq N\leq 500000$</span><!-- Has MathJax -->)。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件第一行N，A，B;<br>接下来1^行，每行一个数，表示衣服的湿度$a_i$（<span>$1\leq a_i\leq500000，1\leq N\leq 500000$</span><!-- Has MathJax -->）。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行一个整数，表示最少时间。<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
 <p>3 2 1 1 2<br>3</p>
