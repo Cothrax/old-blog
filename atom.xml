@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-20T03:59:06.082Z</updated>
+  <updated>2016-08-20T10:49:59.096Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,11 +16,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[JSOI2016] 单调队列及动规优化</title>
+    <link href="https://cothrax.github.io/2016/08/20/JSOI2016-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E5%8F%8A%E5%8A%A8%E8%A7%84%E4%BC%98%E5%8C%96/"/>
+    <id>https://cothrax.github.io/2016/08/20/JSOI2016-单调队列及动规优化/</id>
+    <published>2016-08-20T10:34:23.000Z</published>
+    <updated>2016-08-20T10:49:59.096Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="P1-轰炸机"><a href="#P1-轰炸机" class="headerlink" title="P1 轰炸机"></a>P1 轰炸机</h1><p>大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。<br>在一个月黑风高的夜晚，X国高层决定用这架轰炸机发起突袭。他们预先侦查到了山路上双方军营共有N个军营，并探清了每个军营的情况，他们请你帮他们设计出这次突袭战果最大的方案。<br>X国战国的计算公式为：战果=敌方损失的战斗力-己方损失的战斗力。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数 N,M;<br>第2~N+1行，每行一个整数Ai，表示第i个军营的属性值。<br>abs(Ai)表示第i个军营的战斗力。<br>Ai>0，表明该军营是Y国的军营；<br>Ai&lt;0，表明该军营是X国的军营；<br>Ai=0，表明该军营是空的。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>仅一行，输出使突袭战果最大的方案（按照输入顺序输出所有轰炸目标的属性值），每两个属性值之间用一个空格隔开。</p>
+<a id="more"></a>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>4 2<br>-1<br>3<br>–10<br>20</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>20</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>30%的数据：N&lt;=3000,M&lt;=100<br>100%的数据N,M&lt;=1000000 -maxlongint&lt;=Ai&lt;=maxlongint</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最大子段和的升级版，要求长度不超过m。<br>先求前缀和sum[i]<br>然后，记f[i]是以i结尾的最大子段和，<span>$f[i]=sum[i]-min\{sum[j]\ |\ i-j&lt;=m\}$</span><!-- Has MathJax --><br>然后可以用一个严格递增的单调队列维护sum[j]</p>
+<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-单调队列及动规优化/sum.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>sum.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,j,k,d,h,t,ans:int;</div><div class="line">    c,w,a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int; <span class="comment">//费用,价值,数量</span></div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(c[i],w[i],a[i]);</div><div class="line">    d:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        d:=min(m,d+c[i]*a[i]);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> c[i]-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            h:=<span class="number">1</span>;t:=<span class="number">0</span>;k:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> j+c[i]*k&lt;=d <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (q[t,<span class="number">0</span>]&lt;=f[j+c[i]*k]-w[i]*k) <span class="keyword">do</span> dec(t);</div><div class="line">                inc(t);q[t,<span class="number">1</span>]:=k;q[t,<span class="number">0</span>]:=f[j+c[i]*k]-w[i]*k;</div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (k-q[h,<span class="number">1</span>]&gt;a[i]) <span class="keyword">do</span> inc(h);</div><div class="line">                f[j+c[i]*k]:=max(f[j+c[i]*k],q[h,<span class="number">0</span>]+k*w[i]);</div><div class="line">                inc(k);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> ans:=max(ans,f[i]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-武器调度"><a href="#P2-武器调度" class="headerlink" title="P2 武器调度"></a>P2 武器调度</h1><p>为了取得胜利，X国高层决定调动武器库中的装备支援前线，以增强前线的战斗力。X国武器库中共有N种武器，每种武器都有固定的质量，且数量有限，能给前线增加的战斗力也是已知的。拟定将用飞机运送，为了使飞机具有能摆脱Y国防空导弹的速度，其最大装载质量不得超过M。现在他们需要你求出这一次装备运输最多能给前线增加多少战斗力。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数 N，M；<br>第2~N+1行，每行三个整数Pi、Wi、Ci，<br>Pi表示每件第i种武器的质量；<br>Wi表示每件第i种武器能给前线增加的战斗力；<br>Ci表示第i种武器的数量。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>仅一行，输出这一次装备运输能给前线增加的最大战斗力。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5 20<br>3 8 5<br>12 16 2<br>1 4 1<br>5 9 2<br>4 11 1</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>55</p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>30%的数据中，n&lt;=10<br>50%的数据中，n&lt;=50,m&lt;=5000<br>100%的数据中，n&lt;=100,m&lt;=10000,ci&lt;=100<br>保证输出结果在maxlongint范围内。</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>单调队列优化多重背包，代码优美到不可思议。<br>详解见此：<a href="http://www.cppblog.com/flyinghearts/archive/2010/09/01/125555.html" target="_blank" rel="external">http://www.cppblog.com/flyinghearts/archive/2010/09/01/125555.html</a></p>
+<dir style="text-align:right"><a href="/2016/08/20/JSOI2016-单调队列及动规优化/war.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>war.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,j,k,d,h,t,ans:int;</div><div class="line">    c,w,a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int; <span class="comment">//费用,价值,数量</span></div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'war.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'war.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(c[i],w[i],a[i]);</div><div class="line">    d:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        d:=min(m,d+c[i]*a[i]);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> c[i]-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            h:=<span class="number">1</span>;t:=<span class="number">0</span>;k:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span> j+c[i]*k&lt;=d <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (q[t,<span class="number">0</span>]&lt;=f[j+c[i]*k]-w[i]*k) <span class="keyword">do</span> dec(t);</div><div class="line">                inc(t);q[t,<span class="number">1</span>]:=k;q[t,<span class="number">0</span>]:=f[j+c[i]*k]-w[i]*k;</div><div class="line">                <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (k-q[h,<span class="number">1</span>]&gt;a[i]) <span class="keyword">do</span> inc(h);</div><div class="line">                f[j+c[i]*k]:=max(f[j+c[i]*k],q[h,<span class="number">0</span>]+k*w[i]);</div><div class="line">                inc(k);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> ans:=max(ans,f[i]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;P1-轰炸机&quot;&gt;&lt;a href=&quot;#P1-轰炸机&quot; class=&quot;headerlink&quot; title=&quot;P1 轰炸机&quot;&gt;&lt;/a&gt;P1 轰炸机&lt;/h1&gt;&lt;p&gt;大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。&lt;br&gt;在一个月黑风高的夜晚，X国高层决定用这架轰炸机发起突袭。他们预先侦查到了山路上双方军营共有N个军营，并探清了每个军营的情况，他们请你帮他们设计出这次突袭战果最大的方案。&lt;br&gt;X国战国的计算公式为：战果=敌方损失的战斗力-己方损失的战斗力。&lt;/p&gt;
+&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;第一行两个整数 N,M;&lt;br&gt;第2~N+1行，每行一个整数Ai，表示第i个军营的属性值。&lt;br&gt;abs(Ai)表示第i个军营的战斗力。&lt;br&gt;Ai&gt;0，表明该军营是Y国的军营；&lt;br&gt;Ai&amp;lt;0，表明该军营是X国的军营；&lt;br&gt;Ai=0，表明该军营是空的。&lt;/p&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;仅一行，输出使突袭战果最大的方案（按照输入顺序输出所有轰炸目标的属性值），每两个属性值之间用一个空格隔开。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[JSOI2016] 提高2班 二分答案</title>
     <link href="https://cothrax.github.io/2016/08/20/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     <id>https://cothrax.github.io/2016/08/20/JSOI2016-提高2班-二分答案/</id>
     <published>2016-08-20T03:12:13.000Z</published>
-    <updated>2016-08-20T03:59:06.082Z</updated>
+    <updated>2016-08-20T03:59:49.801Z</updated>
     
     <content type="html"><![CDATA[<p>二分的坑点在于解的检验。</p>
 <table>
@@ -1369,90 +1429,6 @@
       <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo初体验</title>
-    <link href="https://cothrax.github.io/2016/08/12/Hexo%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
-    <id>https://cothrax.github.io/2016/08/12/Hexo初体验/</id>
-    <published>2016-08-12T07:34:05.000Z</published>
-    <updated>2016-08-14T01:09:33.754Z</updated>
-    
-    <content type="html"><![CDATA[<p>作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试<a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a>，于是就有了这个页面。<br>折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种<strong>BUG</strong>。</p>
-<h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p>这是用<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。</p>
-<ol>
-<li><a href="http://blog.csdn.net/poem_of_sunshine/article/details/29369785/" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat</a></li>
-<li><a href="https://ijiaober.github.io/categories/hexo/" target="_blank" rel="external">Hexo使用攻略 by ijiaober</a></li>
-</ol>
-<h2 id="安装和部署"><a href="#安装和部署" class="headerlink" title="安装和部署"></a>安装和部署</h2><h3 id="npm卡住不动"><a href="#npm卡住不动" class="headerlink" title="npm卡住不动"></a>npm卡住不动</h3><p>hexo是基于node.js，于是运行npm安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure></p>
-<p>由于gfw的存在，就动不了了。还好可以换<strong>国内的镜像</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nano ~/.npmrc</div><div class="line">registry =https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<p>或者用<a href="https://github.com/cnpm/cnpm" target="_blank" rel="external">cnpm</a>替换npm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<h3 id="Hexo-command-not-found"><a href="#Hexo-command-not-found" class="headerlink" title="Hexo command not found"></a>Hexo command not found</h3><p>修改Windows的<strong>环境变量</strong>，把<code>hexo安装目录\node_modules\.bin</code>加到Path里去就好了。</p>
-<h3 id="ERROR-Deployer-not-found-github"><a href="#ERROR-Deployer-not-found-github" class="headerlink" title="ERROR Deployer not found: github"></a>ERROR Deployer not found: github</h3><p>Hexo3.0把github改成了git<br>于是在bash中执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>然后把<code>type</code>从<code>github</code>改成<code>git</code><br><a id="more"></a></p>
-<h3 id="deploy时repository各种报错"><a href="#deploy时repository各种报错" class="headerlink" title="deploy时repository各种报错"></a>deploy时repository各种报错</h3><p>肯定是yml哪里写错了，这玩意连冒号后面的空格都不能少，如我的username是Cothrax，于是deploy这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:cothrax/cothrax.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<h3 id="nothing-to-commit-working-tree-clean后卡住"><a href="#nothing-to-commit-working-tree-clean后卡住" class="headerlink" title="nothing to commit, working tree clean后卡住"></a>nothing to commit, working tree clean后卡住</h3><p>耐心等吧，实在不行使用科学上网工具，也可以用这个很棒的<strong>hosts</strong>优化网络：<a href="https://serve.netsh.org/pub/ipv4-hosts/" target="_blank" rel="external">https://serve.netsh.org/pub/ipv4-hosts/</a></p>
-<h3 id="每次部署都要输入passphrase"><a href="#每次部署都要输入passphrase" class="headerlink" title="每次部署都要输入passphrase"></a>每次部署都要输入passphrase</h3><p>谁叫你生成ssh时设了密钥呢，passphrase是防止别人向你的项目中提交文件，重新生成一下ssh，passphrase那两个输入直接敲回车就可以了。</p>
-<h2 id="配置和体验"><a href="#配置和体验" class="headerlink" title="配置和体验"></a>配置和体验</h2><p>我用了<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman</a>的主题，下面一些feature基于jacman，其他主题的设置应该大同小异，在此感谢这个<a href="http://wuchong.me/" target="_blank" rel="external">主题的作者</a></p>
-<h3 id="Markdown相关"><a href="#Markdown相关" class="headerlink" title="Markdown相关"></a>Markdown相关</h3><p>Hexo 3提供了<strong>标签插件</strong>，可以方便地插入图片和文件。</p>
-<ol>
-<li>官方文档<ol>
-<li>标签插件：<a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/tag-plugins.html</a></li>
-<li>资源文件夹：<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/asset-folders.html</a></li>
-</ol>
-</li>
-<li>我的一些例子和测试：<a href="/2016/08/12/Test-Hexo/" title="Test Hexo">Test Hexo</a></li>
-</ol>
-<h4 id="代码复制到剪切板"><a href="#代码复制到剪切板" class="headerlink" title="代码复制到剪切板"></a>代码复制到剪切板</h4><p>直接复制会碰到行号，但js什么的早就忘干净了，于是替代方案是在<strong>给出asset链接指向源码文件</strong><br>可以在markdown里写html+css来处理右对齐<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">dir</span> <span class="attr">style</span>=<span class="string">"text-align:right"</span>&gt;</span></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 复制代码 %&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">dir</span>&gt;</span></span></div><div class="line">下面是代码块</div></pre></td></tr></table></figure></p>
-<p>就成了这样：<br><img src="/2016/08/12/Hexo初体验/codeblock.jpg" alt="用了css的效果" title="用了css的效果"></p>
-<h3 id="多说评论系统"><a href="#多说评论系统" class="headerlink" title="多说评论系统"></a>多说评论系统</h3><ol>
-<li>登录多说，然后获取站点<strong>通用代码</strong>：<a href="http://duoshuo.com/create-site" target="_blank" rel="external">http://duoshuo.com/create-site</a></li>
-<li>找到<code>\themes\jacman\layout\_partial\post\comment.ejs</code></li>
-<li>把得到的通用代码复制到<code>&lt;section id=&quot;comments&quot; class=&quot;comment&quot;&gt;</code>和<code>&lt;/section&gt;</code>之间，原来的东西覆盖掉。</li>
-<li>然后主题的<code>_config.yml</code>中把<code>duoshuo_shortname</code>填成你的多说用户名就好了</li>
-<li>还有，如果想在一个页面（如404）<strong>禁用评论</strong>，可以在front-master中加<code>comments: false</code></li>
-</ol>
-<h3 id="站内搜索的实现"><a href="#站内搜索的实现" class="headerlink" title="站内搜索的实现"></a>站内搜索的实现</h3><p>百度的站内搜索要验证，结果不是是不支持https，就是是连不上github服务器，还会报301错误，无奈还是用google好啦。</p>
-<p>goole的<strong>自定义搜索引擎</strong>：<a href="https://cse.google.com/cse/all" target="_blank" rel="external">https://cse.google.com/cse/all</a><br>用jacman主题，只要更改jacman下的<code>_config.yml</code>，把cx码和enable设好，还有的注释上说得很清楚：</p>
-<blockquote>
-<p>To enable the custom search You must create a “search” folder in ‘/source’ and a “index.md” file<br>set the ‘front-matter’ as<br>layout: search<br>title: search</p>
-</blockquote>
-<h4 id="一直显示“正在加载搜索结果，请稍等”"><a href="#一直显示“正在加载搜索结果，请稍等”" class="headerlink" title="一直显示“正在加载搜索结果，请稍等”"></a>一直显示“正在加载搜索结果，请稍等”</h4><p>检查了Chrome的Console：<br><img src="/2016/08/12/Hexo初体验/screenshot.jpg" alt="Console" title="Console"><br>发现是<strong>http和https混用</strong>，然后Chrome把不安全的http给block掉了，找到<code>\themes\jacman\layout\_partial\search.ejs</code>，将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>中的http改成https就好了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.google.com.hk/jsapi"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="搜索显示无结果"><a href="#搜索显示无结果" class="headerlink" title="搜索显示无结果"></a>搜索显示无结果</h4><p>没有向google提交你的blog，当然什么也找不到了。<br>把blog加到google的索引中：<br><a href="https://www.google.cn/intl/zh-CN/submit_content.html" target="_blank" rel="external">https://www.google.cn/intl/zh-CN/submit_content.html</a></p>
-<h3 id="RSS功能"><a href="#RSS功能" class="headerlink" title="RSS功能"></a>RSS功能</h3><p>执行命令<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></div></pre></td></tr></table></figure></p>
-<p>然后在根下的配置文件里写入：<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#RSS订阅</span></div><div class="line"><span class="attr">plugin:</span></div><div class="line"><span class="bullet">-</span> hexo-generator-feed</div><div class="line"><span class="comment">#Feed Atom</span></div><div class="line"><span class="attr">feed:</span></div><div class="line"><span class="attr">type:</span> atom</div><div class="line"><span class="attr">path:</span> atom.xml</div><div class="line"><span class="attr">limit:</span> <span class="number">20</span></div></pre></td></tr></table></figure></p>
-<h4 id="RSS报UTF-8错误"><a href="#RSS报UTF-8错误" class="headerlink" title="RSS报UTF-8错误"></a>RSS报UTF-8错误</h4><p>Windows下会用BOM标记utf-8文件，hexo不识别这种标记，可以在目录下查找atom.xml文件，然后用utf-8的文本编辑器（如notepad++,gedit）打开，重新保存一下就好了</p>
-<h3 id="Chrome下分享图标显示不全"><a href="#Chrome下分享图标显示不全" class="headerlink" title="Chrome下分享图标显示不全"></a>Chrome下分享图标显示不全</h3><p>这是因为用了广告屏蔽的插件，如AdBlock可以设置屏蔽社交按钮。<br>然后有趣的事情发生了，ABP把页面下方的GitHub和Twitter的链接干掉了，它认不得知乎，于是一排图标只剩下知乎和Email了。</p>
-<blockquote>
-<p>end.</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;作为JS的一只OIer，一直用Evernote写（tie）题（dai）解（ma），今天想试试&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;，于是就有了这个页面。&lt;br&gt;折腾了一个晚上带一个上午，自己的Blog已经有了雏形，记录一下中途遇到的各种&lt;strong&gt;BUG&lt;/strong&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;参考教程&quot;&gt;&lt;a href=&quot;#参考教程&quot; class=&quot;headerlink&quot; title=&quot;参考教程&quot;&gt;&lt;/a&gt;参考教程&lt;/h2&gt;&lt;p&gt;这是用&lt;a href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;建的站，阅读了多位大牛的文章，才有了我这个简陋的Blog。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/poem_of_sunshine/article/details/29369785/&quot;&gt;如何搭建一个独立博客——简明Github Pages与Hexo教程 by cnfeat&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://ijiaober.github.io/categories/hexo/&quot;&gt;Hexo使用攻略 by ijiaober&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;安装和部署&quot;&gt;&lt;a href=&quot;#安装和部署&quot; class=&quot;headerlink&quot; title=&quot;安装和部署&quot;&gt;&lt;/a&gt;安装和部署&lt;/h2&gt;&lt;h3 id=&quot;npm卡住不动&quot;&gt;&lt;a href=&quot;#npm卡住不动&quot; class=&quot;headerlink&quot; title=&quot;npm卡住不动&quot;&gt;&lt;/a&gt;npm卡住不动&lt;/h3&gt;&lt;p&gt;hexo是基于node.js，于是运行npm安装：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g hexo&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;由于gfw的存在，就动不了了。还好可以换&lt;strong&gt;国内的镜像&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;nano ~/.npmrc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;registry =https://registry.npm.taobao.org&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;或者用&lt;a href=&quot;https://github.com/cnpm/cnpm&quot;&gt;cnpm&lt;/a&gt;替换npm&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install -g cnpm --registry=https://registry.npm.taobao.org&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Hexo-command-not-found&quot;&gt;&lt;a href=&quot;#Hexo-command-not-found&quot; class=&quot;headerlink&quot; title=&quot;Hexo command not found&quot;&gt;&lt;/a&gt;Hexo command not found&lt;/h3&gt;&lt;p&gt;修改Windows的&lt;strong&gt;环境变量&lt;/strong&gt;，把&lt;code&gt;hexo安装目录\node_modules\.bin&lt;/code&gt;加到Path里去就好了。&lt;/p&gt;
-&lt;h3 id=&quot;ERROR-Deployer-not-found-github&quot;&gt;&lt;a href=&quot;#ERROR-Deployer-not-found-github&quot; class=&quot;headerlink&quot; title=&quot;ERROR Deployer not found: github&quot;&gt;&lt;/a&gt;ERROR Deployer not found: github&lt;/h3&gt;&lt;p&gt;Hexo3.0把github改成了git&lt;br&gt;于是在bash中执行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm install hexo-deployer-git --save&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;然后把&lt;code&gt;type&lt;/code&gt;从&lt;code&gt;github&lt;/code&gt;改成&lt;code&gt;git&lt;/code&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Tinkering Note" scheme="https://cothrax.github.io/categories/Tinkering-Note/"/>
-    
-    
-      <category term="Hexo" scheme="https://cothrax.github.io/tags/Hexo/"/>
-    
-      <category term="GitHub" scheme="https://cothrax.github.io/tags/GitHub/"/>
     
   </entry>
   
