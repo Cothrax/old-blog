@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-21T02:45:23.856Z</updated>
+  <updated>2016-08-21T02:52:46.421Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/21/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day5/"/>
     <id>https://cothrax.github.io/2016/08/21/JSOI2016-提高1班-Day5/</id>
     <published>2016-08-21T02:01:49.000Z</published>
-    <updated>2016-08-21T02:45:23.856Z</updated>
+    <updated>2016-08-21T02:52:46.421Z</updated>
     
     <content type="html"><![CDATA[<p>第1题一如既往地水，第3题的数据BT，但用dfs栈并没有爆。</p>
 <h1 id="P1-Video"><a href="#P1-Video" class="headerlink" title="P1 Video"></a>P1 Video</h1><p>pluto 喜欢看片，现在他的硬盘里有n 部片，但是由于他还要把妹，所以看片时间有限，他只能挑出其中的k 部片来看，他想知道有多少种不同的选片方案。方案数可能很大，答案mod 1000000007 输出。</p>
@@ -54,7 +54,7 @@
 <li>对于100% 的数据，0 &lt; k &lt; 100，0 &lt; Li &lt; Ri</li>
 <li>对于30% 的数据，n &lt; 10，Li &lt; Ri &lt; 100</li>
 <li>对于60% 的数据，n &lt; 500，Li &lt; Ri &lt; 2000</li>
-<li>对于100% 的数据，n &lt; 2000，Li &lt; Ri &lt; 1018</li>
+<li>对于100% 的数据，n &lt; 2000，Li &lt; Ri &lt; 10e18</li>
 </ul>
 <h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>先乱搞就能够求出第i个袋子中摸出第一位是1的球的概率p[i]（然而因为乱搞WA N次）<br>然后DP，f[i,j]在前i个袋子中摸出j个符合要求的球的概率<br><span>$f[i,j]=f[i-1,j-1]*p[i]+f[i-1,j]*(1-p[i])$</span><!-- Has MathJax --><br>注意：</p>
 <ol>
