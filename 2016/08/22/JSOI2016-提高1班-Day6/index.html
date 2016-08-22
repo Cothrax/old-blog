@@ -1,0 +1,769 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[JSOI2016] 提高1班 Day6 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="题目名称
+小W买礼物
+小W理笔记
+小W开关灯
+
+
+
+
+存盘文件名
+bday
+note
+lites
+
+
+输入文件名
+bday.in
+note.in
+lites.in
+
+
+输出文件名
+bday.out
+note.out
+lites.out
+
+
+时限
+3s
+1s
+1s
+
+
+内存限制
+64MB
+256MB
+256MB
+
+
+
+P1 小W买礼物小W 今天很高兴，因为商店给OIer 们发购物券了。小W 得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JSOI2016] 提高1班 Day6">
+<meta property="og:url" content="https://cothrax.github.io/2016/08/22/JSOI2016-提高1班-Day6/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="题目名称
+小W买礼物
+小W理笔记
+小W开关灯
+
+
+
+
+存盘文件名
+bday
+note
+lites
+
+
+输入文件名
+bday.in
+note.in
+lites.in
+
+
+输出文件名
+bday.out
+note.out
+lites.out
+
+
+时限
+3s
+1s
+1s
+
+
+内存限制
+64MB
+256MB
+256MB
+
+
+
+P1 小W买礼物小W 今天很高兴，因为商店给OIer 们发购物券了。小W 得">
+<meta property="og:updated_time" content="2016-08-22T04:29:57.956Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[JSOI2016] 提高1班 Day6">
+<meta name="twitter:description" content="题目名称
+小W买礼物
+小W理笔记
+小W开关灯
+
+
+
+
+存盘文件名
+bday
+note
+lites
+
+
+输入文件名
+bday.in
+note.in
+lites.in
+
+
+输出文件名
+bday.out
+note.out
+lites.out
+
+
+时限
+3s
+1s
+1s
+
+
+内存限制
+64MB
+256MB
+256MB
+
+
+
+P1 小W买礼物小W 今天很高兴，因为商店给OIer 们发购物券了。小W 得">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/2048">Two048</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/22/JSOI2016-提高1班-Day6/" title="[JSOI2016] 提高1班 Day6" itemprop="url">[JSOI2016] 提高1班 Day6</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-22T04:05:46.000Z" itemprop="datePublished"> Published 2016-08-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-小W买礼物"><span class="toc-number">1.</span> <span class="toc-text">P1 小W买礼物</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">1.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-小W-理笔记"><span class="toc-number">2.</span> <span class="toc-text">P2 小W 理笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-1"><span class="toc-number">2.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-小W-开关灯"><span class="toc-number">3.</span> <span class="toc-text">P3 小W 开关灯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-2"><span class="toc-number">3.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.5.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<table>
+<thead>
+<tr>
+<th style="text-align:center">题目名称</th>
+<th style="text-align:center">小W买礼物</th>
+<th style="text-align:center">小W理笔记</th>
+<th style="text-align:center">小W开关灯</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">存盘文件名</td>
+<td style="text-align:center">bday</td>
+<td style="text-align:center">note</td>
+<td style="text-align:center">lites</td>
+</tr>
+<tr>
+<td style="text-align:center">输入文件名</td>
+<td style="text-align:center">bday.in</td>
+<td style="text-align:center">note.in</td>
+<td style="text-align:center">lites.in</td>
+</tr>
+<tr>
+<td style="text-align:center">输出文件名</td>
+<td style="text-align:center">bday.out</td>
+<td style="text-align:center">note.out</td>
+<td style="text-align:center">lites.out</td>
+</tr>
+<tr>
+<td style="text-align:center">时限</td>
+<td style="text-align:center">3s</td>
+<td style="text-align:center">1s</td>
+<td style="text-align:center">1s</td>
+</tr>
+<tr>
+<td style="text-align:center">内存限制</td>
+<td style="text-align:center">64MB</td>
+<td style="text-align:center">256MB</td>
+<td style="text-align:center">256MB</td>
+</tr>
+</tbody>
+</table>
+<h1 id="P1-小W买礼物"><a href="#P1-小W买礼物" class="headerlink" title="P1 小W买礼物"></a>P1 小W买礼物</h1><p>小W 今天很高兴，因为商店给OIer 们发购物券了。小W 得到了一些价值不菲的SHOP<br>购物券，所以他决定买N 件礼物送给小M。<br>当小W 选好了N 件礼物，高兴地去结账时，他突然发现SHOP 对购物券的使用有非常奸<br>商（天下哪有免费的购物券？）的规定：一次只允许使用一张、不找零、不与现金混用。小<br>W 身上根本没有现金，并且他不愿意全部放弃挑选好的礼物。这就意味着，他只能通过这些<br>购物券结账，而且这张购物券所购买的物品的总价格，必须精确的等于这张购物券的面额。<br>怎么样才能顺利的买回这N 件礼物中的部分或全部送给小M 呢？<br>你的任务就是帮助小W 确定是否存在一个购买方案。小W 会告诉你每张购物券的面额以<br>及所有商品的价格，对每张购物券，你只需要确定能否找到一种选礼物方案，使得选出来的<br>礼物的价格总和正好是这张购物券的面额即可。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件bday.in 中有多组数据，每组数据的第一行为两个整数N 和M，分别表示小W<br>一共挑选了N 件礼物以及小W 的一张购物券的面额为M。接下来一行有N 个用空格隔开的正<br>整数，第I 个数表示第I 个礼物的价格。<br>输入数据以0 0 结束。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出文件bday.out 包含若干行，每行一个单词“YES”或者“NO”，分别代表存在一个<br>购买方案和不存在一个购买方案。</p>
+<a id="more"></a>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>10 2000<br>1000 100 200 300 400 500 700 600 900 800<br>10 2290<br>1000 100 200 300 400 500 700 600 900 800<br>0 0</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>YES<br>NO</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于30%的输入文件，所有的N≤20。<br>对于100%的输入文件，所有的N≤40，并且M 和物品的总价值不超过2^31-1，测试组<br>数不超过10 组，不少于5 组。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>m很大，背包显然不行，考虑到n很小，<strong>折半枚举</strong>。<br>记k=n div 2<br>枚举1..k的所有组合存入<strong>hash表</strong><br>枚举k+1..n的所有组合，对于每一个组合w查询hash表中m-w的值是否存在。<br>hash不要开太大，小心MLE，可以用拉链+数组模拟指针来实现。<br>当然也可以不用hash，前一半存入数组，排序，在枚举后一半时<strong>二分查找</strong></p>
+<p>自己的错误点</p>
+<ol>
+<li>所有物品都枚举完后（x=k+1/x=n+1）才能插入/查询hash。</li>
+<li>习惯用h[0]保存表的大小，但hash值=k mod sz是有可能为0的，所以不行。</li>
+</ol>
+<dir style="text-align:right"><a href="/2016/08/22/JSOI2016-提高1班-Day6/bday.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>bday.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> </div><div class="line">    maxn=<span class="number">1024</span>*<span class="number">1024</span>+<span class="number">10</span>;</div><div class="line">    sz=<span class="number">500009</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    node=<span class="keyword">record</span> i,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    h:<span class="keyword">array</span>[<span class="number">0</span>..sz] <span class="keyword">of</span> int;</div><div class="line">    t:<span class="keyword">array</span>[<span class="number">0</span>..maxn] <span class="keyword">of</span> node;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">41</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,hsz,i,k:int;flag:boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hash</span><span class="params">(k:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span> hash:=k <span class="keyword">mod</span> sz <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(k:int)</span>;</span></div><div class="line"><span class="keyword">var</span> j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(hsz);</div><div class="line">    j:=hash(k);</div><div class="line">    t[hsz].next:=h[j];t[hsz].i:=k;</div><div class="line">    h[j]:=hsz;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">(k:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> k&lt;<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(false);</div><div class="line">    i:=h[hash(k)];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> t[i].i=k <span class="keyword">then</span> <span class="keyword">exit</span>(true);</div><div class="line">        i:=t[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    query:=false;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(x,w,s:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> flag <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">if</span> (s=<span class="number">0</span>) <span class="keyword">and</span> (x=k+<span class="number">1</span>) <span class="keyword">then</span> <span class="keyword">begin</span> insert(w);<span class="keyword">exit</span> <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> (s=<span class="number">1</span>) <span class="keyword">and</span> (x=n+<span class="number">1</span>) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> query(m-w) <span class="keyword">then</span> flag:=true;</div><div class="line">        <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    dfs(x+<span class="number">1</span>,w+a[x],s);</div><div class="line">    dfs(x+<span class="number">1</span>,w,s);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'bday.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'bday.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">while</span> (n&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (m&lt;&gt;<span class="number">0</span>) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        k:=n <span class="keyword">div</span> <span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">        fillchar(h,sizeof(h),<span class="number">0</span>);hsz:=<span class="number">0</span>;</div><div class="line">        flag:=false;</div><div class="line">        dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>);dfs(k+<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> flag <span class="keyword">then</span> writeln(<span class="string">'YES'</span>) <span class="keyword">else</span> writeln(<span class="string">'NO'</span>);</div><div class="line">        <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-小W-理笔记"><a href="#P2-小W-理笔记" class="headerlink" title="P2 小W 理笔记"></a>P2 小W 理笔记</h1><p>小W 由于购物浪费了太多时间，导致他外语课都没有好好听。为什么是外语课？不是英<br>语课？因为小W 肯定会好好听英语课。由于没有好好听课， 小W 的笔记全都记的杂乱无章，<br>出现了好多错误的地方。 小W 的笔记是如此的糟糕，以至于他只记了一句例句，而且自己<br>还不知道是什么意思……然后在老师讲语法的时候， 小W 又零星的记了几个字母对，老师<br>说：这几个字母对是绝对不能相邻的，而且相邻是不关心字母的顺序的，比如老师说，‘ab’<br>不能相邻，那么相同的，‘ba’也不能相邻。<br>现在小W 到家了，打开了上课的笔记，然后他发现笔记有很多自相矛盾的地方：为什<br>么下面的不能相邻的字母对会出现在上面的例句里面呢？纠结再三， 小W 觉得下面的东西<br>相对比较简单，所以记错的概率比较小……他决定在上面的例句里面擦掉几个字母，使得句<br>子变得合法。<br>但是小W 还要把礼物送给小M，来不及整理笔记了，就把这个艰巨的任务留给了大家，<br>请问大家， 小W 最少要擦掉几个字母，才能使得上面的例句合法？</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行：一个整数 N。<br>第二行：一个长度为 N 的字符串，只包含小写字母，代表小W 记下的例句。<br>第三行：一个整数 M，代表不能相邻的字母对的个数。<br>接下来 M 行：每行两个小写字母，代表不能相邻的字母对，因为小W 太不认真了，所以可<br>能有重复。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行一个整数：最少要擦除的字母数。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>4<br>jsoi<br>2<br>oi<br>mo</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>1</p>
+</blockquote>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>对于10%的数据，M=0<br>对于另外30%的数据，N≤1000<br>对于100%的数据，N≤100000，M≤400</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>开始以为是什么高深的图论题，结果是DP囧。<br>首先很容易想到线性DP：f[i]为1..i个字符，以s[i]结尾，形成合法字串的最少擦去数。<br>$f[i]=f[j]+i-j$（s[i]与s[j]不排斥）<br>但$O(N^2)$是会TLE的<br>然后考虑到字母总共只有26个，于是有另一种DP法：记f[i,c]是1..i个字符中，以字母c结尾，形成合法串的最小擦去数。<br>然后根据排斥关系f[i]可以通过f[i-1]转移得到。<br>还要注意一下初始化。</p>
+<dir style="text-align:right"><a href="/2016/08/22/JSOI2016-提高1班-Day6/note.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>note.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">100000000</span>;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,ans:int;s:ansistring;c1,c2:char;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="string">'a'</span>..<span class="string">'z'</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="string">'a'</span>..<span class="string">'z'</span>,<span class="string">'a'</span>..<span class="string">'z'</span>] <span class="keyword">of</span> boolean;</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'note.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'note.out'</span>);rewrite(output);</div><div class="line">    filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    fillchar(g,sizeof(g),true);</div><div class="line">    readln(n);readln(s);readln(m);</div><div class="line">    <span class="keyword">if</span> m=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(<span class="number">0</span>);halt <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        readln(c1,c2);</div><div class="line">        g[c1,c2]:=false;g[c2,c1]:=false;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i,s[i]]:=i-<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> c1:=<span class="string">'a'</span> <span class="keyword">to</span> <span class="string">'z'</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> s[i]=c1 <span class="keyword">then</span></div><div class="line">                <span class="keyword">for</span> c2:=<span class="string">'a'</span> <span class="keyword">to</span> <span class="string">'z'</span> <span class="keyword">do</span></div><div class="line">                    <span class="keyword">if</span> g[c1,c2] <span class="keyword">then</span></div><div class="line">                        f[i,c1]:=min(f[i,c1],f[i-<span class="number">1</span>,c2]);</div><div class="line">            f[i,c1]:=min(f[i,c1],f[i-<span class="number">1</span>,c1]+<span class="number">1</span>);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    ans:=n;</div><div class="line">    <span class="keyword">for</span> c1:=<span class="string">'a'</span> <span class="keyword">to</span> <span class="string">'z'</span> <span class="keyword">do</span></div><div class="line">        ans:=min(ans,f[n,c1]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P3-小W-开关灯"><a href="#P3-小W-开关灯" class="headerlink" title="P3 小W 开关灯"></a>P3 小W 开关灯</h1><p>晚上到家小W 通过开关灯来保持自己神经的兴奋以便清醒地理笔记。<br>N(2≤N≤100,000)盏灯被连续的编号为1..N。刚回到家的时候,所有的灯都是关闭的。<br>小W 通过N 个按钮来控制灯的开关， 按第i 个按钮可以改变第 i 盏灯的状态。<br>小W 发出 M (1≤M≤100,000)条指令,每个指令都是两个整数中的一个(0 或1)。<br>第 1 种指令(用 0 表示)包含两个数字Si 和Ei(1≤Si≤Ei≤N)，它们表示起始开<br>关和终止开关。小W 需要把从 Si 到 Ei 之间的按钮都按一次,就可以完成这个指令。<br>第2 种指令(用 1 表示)同样包含两个数字Si 和Ei(1≤Si≤Ei≤N),不过这种指令<br>是询问从Si 到Ei 之间的灯有多少是亮着的。<br>请你帮助小W 得到正确的答案。</p>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第 1 行: 用空格隔开的两个整数 N 和 M。<br>第 2..M+1 行: 每行表示一个操作, 有三个用空格分开的整数: 指令号, Si 和 Ei。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每一次询问, 输出一行表示询问的结果。</p>
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>4 5<br>0 1 2<br>0 2 4<br>1 2 3<br>0 2 4<br>1 1 4</p>
+</blockquote>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>1<br>2</p>
+</blockquote>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p><strong>【样例解释】</strong><br>一共有 4 盏灯， 5 个指令。 下面是执行的情况:<br>1 2 3 4<br>Init: O O O O O = 关 + = 开<br>0 1 2 -&gt; + + O O 改变灯 1 和 2 的状态<br>0 2 4 -&gt; + O + +<br>1 2 3 -&gt; 1 输出在 2..3 的范围内有多少灯是亮的<br>0 2 4 -&gt; + + O O 改变灯 2 ,3 和 4 的状态<br>1 1 4 -&gt; 2 输出在 1..4 的范围内有多少灯是亮的<br><strong>【数据规模】</strong><br>对于 20%的数据: 1≤N,M≤100<br>对于 40%的数据: 1≤N,M≤10000<br>对于另外30%的数据: 只有最后一组是1 指令，前M-1 组为0 指令<br>对于100%的数据： 1≤N,M≤100000</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>这是道很水的线段树操作。</p>
+<dir style="text-align:right"><a href="/2016/08/22/JSOI2016-提高1班-Day6/lites.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>lites.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    sgt,tag:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,i,j,x,y:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">putdown</span><span class="params">(i,b,e:int)</span>;</span></div><div class="line"><span class="keyword">var</span> mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> b&lt;e <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        mid:=(b+e) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">        tag[i*<span class="number">2</span>]:=<span class="number">1</span>-tag[i*<span class="number">2</span>];sgt[i*<span class="number">2</span>]:=mid-b+<span class="number">1</span>-sgt[i*<span class="number">2</span>];</div><div class="line">        tag[i*<span class="number">2</span>+<span class="number">1</span>]:=<span class="number">1</span>-tag[i*<span class="number">2</span>+<span class="number">1</span>];sgt[i*<span class="number">2</span>+<span class="number">1</span>]:=e-mid-sgt[i*<span class="number">2</span>+<span class="number">1</span>];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    tag[i]:=<span class="number">0</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">(i,b,e,l,r:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> (r&lt;b) <span class="keyword">or</span> (l&gt;e) <span class="keyword">then</span> <span class="keyword">exit</span>(<span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (l&lt;=b) <span class="keyword">and</span> (e&lt;=r) <span class="keyword">then</span> <span class="keyword">exit</span>(sgt[i]);</div><div class="line">    mid:=(b+e) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> tag[i]=<span class="number">1</span> <span class="keyword">then</span> putdown(i,b,e);</div><div class="line">    query:=query(i*<span class="number">2</span>,b,mid,l,r)+query(i*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,e,l,r);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(i,b,e,l,r:int)</span>;</span></div><div class="line"><span class="keyword">var</span> mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> (r&lt;b) <span class="keyword">or</span> (l&gt;e) <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">if</span> (l&lt;=b) <span class="keyword">and</span> (e&lt;=r) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        sgt[i]:=e-b+<span class="number">1</span>-sgt[i];</div><div class="line">        tag[i]:=<span class="number">1</span>-tag[i];</div><div class="line">        <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    mid:=(b+e) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> tag[i]=<span class="number">1</span> <span class="keyword">then</span> putdown(i,b,e);</div><div class="line">    insert(i*<span class="number">2</span>,b,mid,l,r);insert(i*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,e,l,r);</div><div class="line">    sgt[i]:=sgt[i*<span class="number">2</span>]+sgt[i*<span class="number">2</span>+<span class="number">1</span>];</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'lites.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'lites.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j,x,y);</div><div class="line">        <span class="keyword">if</span> j=<span class="number">0</span> <span class="keyword">then</span> insert(<span class="number">1</span>,<span class="number">1</span>,n,x,y)</div><div class="line">        <span class="keyword">else</span> writeln(query(<span class="number">1</span>,<span class="number">1</span>,n,x,y));</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/字符串/">字符串</a><a href="/tags/Hash/">Hash</a><a href="/tags/枚举/">枚举</a><a href="/tags/折半枚举/">折半枚举</a><a href="/tags/线段树/">线段树</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/08/22/JSOI2016-提高1班-Day6/" data-title="[JSOI2016] 提高1班 Day6 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/21/Bash对拍和数据生成/"  title="Bash对拍和数据生成">
+ <strong>下一篇：</strong><br/> 
+ <span>Bash对拍和数据生成
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/22/JSOI2016-提高1班-Day6/" data-title="[JSOI2016] 提高1班 Day6" data-url="https://cothrax.github.io/2016/08/22/JSOI2016-提高1班-Day6/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-小W买礼物"><span class="toc-number">1.</span> <span class="toc-text">P1 小W买礼物</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">1.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-小W-理笔记"><span class="toc-number">2.</span> <span class="toc-text">P2 小W 理笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-1"><span class="toc-number">2.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.5.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-小W-开关灯"><span class="toc-number">3.</span> <span class="toc-text">P3 小W 开关灯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示-2"><span class="toc-number">3.4.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.5.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>22</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 11.25px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12.5px;">DFS</a> <a href="/tags/DP/" style="font-size: 18.75px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11.25px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.25px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 17.5px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LCA/" style="font-size: 11.25px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maths/" style="font-size: 10px;">Maths</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16.25px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 13.75px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 11.25px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.25px;">倍增</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调队列/" style="font-size: 11.25px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12.5px;">强连通分量</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/搜索/" style="font-size: 11.25px;">搜索</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/数论/" style="font-size: 11.25px;">数论</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.25px;">枚举</a> <a href="/tags/树形DP/" style="font-size: 13.75px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11.25px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 13.75px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 10px;">概率期望</a> <a href="/tags/状压DP/" style="font-size: 11.25px;">状压DP</a> <a href="/tags/线性DP/" style="font-size: 11.25px;">线性DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/贪心/" style="font-size: 11.25px;">贪心</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://vijos.org/" target="_blank" title="Vijos">Vijos</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://codevs.cn/" target="_blank" title="CodeVS">CodeVS</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.luogu.org/" target="_blank" title="Luogu">Luogu</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+            
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a> | <a href="/sitemap.xml">Sitemap</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Cothrax"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
