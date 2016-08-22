@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-22T14:05:27.242Z</updated>
+  <updated>2016-08-22T14:44:24.506Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/22/%E6%8A%98%E8%85%BEUbuntu/"/>
     <id>https://cothrax.github.io/2016/08/22/折腾Ubuntu/</id>
     <published>2016-08-22T13:00:50.000Z</published>
-    <updated>2016-08-22T14:05:27.242Z</updated>
+    <updated>2016-08-22T14:44:24.506Z</updated>
     
     <content type="html"><![CDATA[<p>noi_linux所用的ubuntu版本已经不被官方支持了，于是apt-get都无法正常工作，旧版的firefox无法解析各大OJ的css3/h5，于是试试Ubuntu。<br>以此日志记录一个下午的各种BUG和解决方案。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>之前用U盘启动盘装Linux失败了无数次，症状是进了loading界面，然后黑屏，光标闪了几秒后系统就休眠了，风扇还在转但不见动静。<br>我的解决方案是：</p>
@@ -30,7 +30,9 @@
 <li>经过前面的步骤，能进选择界面了，然后按F6，把<code>nomodeset</code>选上，就可以install Ubuntu了。<a id="more"></a>
 </li>
 </ol>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><p>每次都要sudo很不爽，于是切换到root，passwd后设置新的root密码，su后输入密码就可以了</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="GMONE"><a href="#GMONE" class="headerlink" title="GMONE"></a>GMONE</h3><p>noi_linux的桌面是gnome，而ubuntu 14默认桌面的unity。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install gnome</div></pre></td></tr></table></figure></p>
+<p>然后注销，在登陆时选一下就可以了。</p>
+<h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><p>每次都要sudo很不爽，于是切换到root，passwd后设置新的root密码，su后输入密码就可以了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo passwd</div><div class="line">su</div></pre></td></tr></table></figure>
 <p><strong>下文的命令都是以root执行的</strong></p>
 <p>还可以切换回普通用户，两个都可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">exit</span></div><div class="line">su user_name</div></pre></td></tr></table></figure></p>
