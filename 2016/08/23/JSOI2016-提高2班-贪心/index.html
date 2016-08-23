@@ -1,0 +1,631 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>[JSOI2016] 提高2班 贪心 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="贪心考的是RP，想对贪心策略就A了，想不到只有乱搞了。
+P1 拼点游戏C和S两位同学一起玩拼点游戏。有一堆白色卡牌和一堆蓝色卡牌，每张卡牌上写了一个整数点数。C随机抽取n张白色卡牌，S随机抽取n张蓝色卡牌，他们进行n回合拼点，每次两人各出一张卡牌，点数大者获得三颗巧克力，小者获得一颗巧克力，如果点数相同，每人各得二颗巧克力，使用过的卡牌不得重复使用。已知C和S取到的卡牌点数，请编程计算S最多和最少">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[JSOI2016] 提高2班 贪心">
+<meta property="og:url" content="https://cothrax.github.io/2016/08/23/JSOI2016-提高2班-贪心/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="贪心考的是RP，想对贪心策略就A了，想不到只有乱搞了。
+P1 拼点游戏C和S两位同学一起玩拼点游戏。有一堆白色卡牌和一堆蓝色卡牌，每张卡牌上写了一个整数点数。C随机抽取n张白色卡牌，S随机抽取n张蓝色卡牌，他们进行n回合拼点，每次两人各出一张卡牌，点数大者获得三颗巧克力，小者获得一颗巧克力，如果点数相同，每人各得二颗巧克力，使用过的卡牌不得重复使用。已知C和S取到的卡牌点数，请编程计算S最多和最少">
+<meta property="og:updated_time" content="2016-08-23T07:54:00.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[JSOI2016] 提高2班 贪心">
+<meta name="twitter:description" content="贪心考的是RP，想对贪心策略就A了，想不到只有乱搞了。
+P1 拼点游戏C和S两位同学一起玩拼点游戏。有一堆白色卡牌和一堆蓝色卡牌，每张卡牌上写了一个整数点数。C随机抽取n张白色卡牌，S随机抽取n张蓝色卡牌，他们进行n回合拼点，每次两人各出一张卡牌，点数大者获得三颗巧克力，小者获得一颗巧克力，如果点数相同，每人各得二颗巧克力，使用过的卡牌不得重复使用。已知C和S取到的卡牌点数，请编程计算S最多和最少">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+						<li><a href="/2048">Two048</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/23/JSOI2016-提高2班-贪心/" title="[JSOI2016] 提高2班 贪心" itemprop="url">[JSOI2016] 提高2班 贪心</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-23T07:15:25.000Z" itemprop="datePublished"> Published 2016-08-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-拼点游戏"><span class="toc-number">1.</span> <span class="toc-text">P1 拼点游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-特殊密码锁"><span class="toc-number">2.</span> <span class="toc-text">P2 特殊密码锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-电池的寿命"><span class="toc-number">3.</span> <span class="toc-text">P3 电池的寿命</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-积木大赛"><span class="toc-number">4.</span> <span class="toc-text">P4 积木大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-3"><span class="toc-number">4.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-3"><span class="toc-number">4.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-3"><span class="toc-number">4.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示"><span class="toc-number">4.3.3.</span> <span class="toc-text">提示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-3"><span class="toc-number">4.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>贪心考的是RP，想对贪心策略就A了，想不到只有乱搞了。</p>
+<h1 id="P1-拼点游戏"><a href="#P1-拼点游戏" class="headerlink" title="P1 拼点游戏"></a>P1 拼点游戏</h1><p>C和S两位同学一起玩拼点游戏。有一堆白色卡牌和一堆蓝色卡牌，每张卡牌上写了一个整数点数。C随机抽取n张白色卡牌，S随机抽取n张蓝色卡牌，他们进行n回合拼点，每次两人各出一张卡牌，点数大者获得三颗巧克力，小者获得一颗巧克力，如果点数相同，每人各得二颗巧克力，使用过的卡牌不得重复使用。已知C和S取到的卡牌点数，请编程计算S最多和最少能得到多少颗巧克力。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入包含多组测试数据。<br>每组测试数据的第一行是一个整数n(1&lt;=n&lt;=1000)，接下来一行是n个整数，表示C抽到的白色卡牌的点数，下一行也是n个整数，表示S抽到的蓝色卡牌的点数。<br>输入的最后以一个0表示结束。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对每组数据，输出一行，内容是两个整数用空格格开，分别表示S最多和最少可获得的巧克力数。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>3<br>92 83 71<br>95 87 74<br>2<br>20 20<br>20 20<br>2<br>20 19<br>22 18<br>0</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>9 5<br>4 4<br>4 4</p>
+</blockquote>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>第一个想到的是二分图匹配，但n≤1000 KM算法的复杂度是无法承受的。<br>其实是贪心，类似于田忌赛马。</p>
+<ol>
+<li>S的最小牌x&gt;C的最小牌y，先得3分。因为比x大的牌一定比x有更广的适用性，保留一定是更优的</li>
+<li>S的最大牌x&gt;C的最大牌y，先得3分。因为如果s次大牌z比y小，不选x的话只能得1分，如果z也比y大，由于y是C的最大牌，取x和z是等价的。</li>
+<li>上述都不满足，取S的最小牌消耗Y的最大牌</li>
+</ol>
+<p>最小得分就是4*n（总得分）-C的最大得分</p>
+<dir style="text-align:right"><a href="/2016/08/23/JSOI2016-提高2班-贪心/2986.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>2986.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> </div><div class="line">	int=longint;</div><div class="line">	arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	n,i:int;</div><div class="line">	a,b:arr;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(<span class="keyword">var</span> a:arr;b,e:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,x:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	i:=b;j:=e;x:=a[random(e-b)+b];</div><div class="line">	<span class="keyword">repeat</span></div><div class="line">		<span class="keyword">while</span> a[i]&lt;x <span class="keyword">do</span> inc(i);</div><div class="line">		<span class="keyword">while</span> a[j]&gt;x <span class="keyword">do</span> dec(j);</div><div class="line">		<span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">			swap(a[i],a[j]);</div><div class="line">			inc(i);dec(j);</div><div class="line">		<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">until</span> i&gt;j;</div><div class="line">	<span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(a,i,e);</div><div class="line">	<span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(a,b,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">solve</span><span class="params">(a,b:arr)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> la,lb,ra,rb,ans:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	la:=<span class="number">1</span>;lb:=<span class="number">1</span>;ra:=n;rb:=n;ans:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (la&lt;=ra) <span class="keyword">and</span> (lb&lt;=rb) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">if</span> a[la]&lt;b[lb] <span class="keyword">then</span> <span class="keyword">begin</span> inc(ans,<span class="number">3</span>);inc(la);inc(lb) <span class="keyword">end</span></div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> a[ra]&lt;b[rb] <span class="keyword">then</span> <span class="keyword">begin</span> inc(ans,<span class="number">3</span>);dec(ra);dec(rb) <span class="keyword">end</span></div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> a[ra]=b[lb] <span class="keyword">then</span> <span class="keyword">begin</span> inc(ans,<span class="number">2</span>);dec(ra);inc(lb) <span class="keyword">end</span></div><div class="line">		<span class="keyword">else</span> <span class="keyword">begin</span> inc(ans);dec(ra);inc(lb) <span class="keyword">end</span>;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	solve:=ans;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">read</span>(n);</div><div class="line">	<span class="keyword">while</span> n&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">		<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(b[i]);</div><div class="line">		qsort(a,<span class="number">1</span>,n);</div><div class="line">		qsort(b,<span class="number">1</span>,n);</div><div class="line">		writeln(solve(a,b),<span class="string">' '</span>,<span class="number">4</span>*n-solve(b,a));</div><div class="line">		<span class="keyword">read</span>(n);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-特殊密码锁"><a href="#P2-特殊密码锁" class="headerlink" title="P2 特殊密码锁"></a>P2 特殊密码锁</h1><p>有一种特殊的二进制密码锁，由n个相连的按钮组成（n&lt;30），按钮有凹/凸两种状态，用手按按钮会改变其状态。<br>然而让人头疼的是，当你按一个按钮时，跟它相邻的两个按钮状态也会反转。当然，如果你按的是最左或者最右边的按钮，该按钮只会影响到跟它相邻的一个按钮。<br>当前密码锁状态已知，需要解决的问题是，你至少需要按多少次按钮，才能将密码锁转变为所期望的目标状态。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>两行，给出两个由0、1组成的等长字符串，表示当前/目标密码锁状态，其中0代表凹，1代表凸。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>至少需要进行的按按钮操作次数，如果无法实现转变，则输出impossible。<br><!--more--></p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>011<br>000</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>1</p>
+</blockquote>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>这是一个简单的反转问题<br>基于以下事实：</p>
+<ol>
+<li>按按钮的顺序是没有影响的</li>
+<li>对于一个按钮被反转多次是多余的</li>
+</ol>
+<p>所以，从左到右扫一边，遇到不同的按钮i，将i..i+2反转，到n时如果不同说明无解。<br>还有一个细节，因为按第1个按钮会影响到第0个按钮，而第0个按钮的状态我们是不知道的，因此即使1..2个按钮的状态是正确的，我们也要尝试一下按第一个按钮，看看有没有更优解。</p>
+<dir style="text-align:right"><a href="/2016/08/23/JSOI2016-提高2班-贪心/8469.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>8469.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> n,ans:int;</div><div class="line">	s,d:<span class="keyword">string</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">flip</span><span class="params">(<span class="keyword">var</span> s:<span class="keyword">string</span>;i:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">	s[i]:=chr(ord(<span class="string">'1'</span>)+ord(<span class="string">'0'</span>)-ord(s[i]));</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">solve</span><span class="params">(s,d:<span class="keyword">string</span>)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	i:=<span class="number">1</span>;solve:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> i&lt;=n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">while</span> (s[i]=d[i]) <span class="keyword">and</span> (i&lt;=n) <span class="keyword">do</span> inc(i);</div><div class="line">		<span class="keyword">if</span> i&lt;n <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">			<span class="keyword">for</span> j:=i <span class="keyword">to</span> min(i+<span class="number">2</span>,n) <span class="keyword">do</span> flip(s,j);</div><div class="line">			inc(solve);</div><div class="line">		<span class="keyword">end</span>;</div><div class="line">		inc(i);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">		<span class="keyword">if</span> s[i]&lt;&gt;d[i] <span class="keyword">then</span> <span class="keyword">exit</span>(maxlongint);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	readln(s);readln(d);</div><div class="line">	n:=length(s);</div><div class="line">	ans:=solve(s,d);</div><div class="line">	flip(s,<span class="number">1</span>);flip(s,<span class="number">2</span>);</div><div class="line">	ans:=min(ans,solve(s,d)+<span class="number">1</span>);</div><div class="line">	<span class="keyword">if</span> ans=maxlongint <span class="keyword">then</span> <span class="keyword">write</span>(<span class="string">'impossible'</span>) <span class="keyword">else</span> <span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P3-电池的寿命"><a href="#P3-电池的寿命" class="headerlink" title="P3 电池的寿命"></a>P3 电池的寿命</h1><p>小S新买了一个掌上游戏机，这个游戏机由两节5号电池供电。为了保证能够长时间玩游戏，他买了很多5号电池，这些电池的生产商不同，质量也有差异，因而使用寿命也有所不同，有的能使用5个小时，有的可能就只能使用3个小时。显然如果他只有两个电池一个能用5小时一个能用3小时，那么他只能玩3个小时的游戏，有一个电池剩下的电量无法使用，但是如果他有更多的电池，就可以更加充分地利用它们，比如他有三个电池分别能用3、3、5小时，他可以先使用两节能用3个小时的电池，使用半个小时后再把其中一个换成能使用5个小时的电池，两个半小时后再把剩下的一节电池换成刚才换下的电池（那个电池还能用2.5个小时），这样总共就可以使用5.5个小时，没有一点浪费。<br>现在已知电池的数量和电池能够使用的时间，请你找一种方案使得使用时间尽可能的长。</p>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入包含多组数据。每组数据包括两行，第一行是一个整数N (2 ≤ N ≤ 1000)，表示电池的数目，接下来一行是N个正整数表示电池能使用的时间。</p>
+<h2 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h2><p>输入包含多组数据。每组数据包括两行，第一行是一个整数N (2 ≤ N ≤ 1000)，表示电池的数目，接下来一行是N个正整数表示电池能使用的时间。<br><!--more--></p>
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>2<br>3 5<br>3<br>3 3 5</p>
+</blockquote>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3.0<br>5.5</p>
+</blockquote>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>记最长的电池长为mxl，所有电池长度加起来为sum<br>如果mxl&lt;=sum/2，那么答案是sum/2<br>否则答案是sum-mxl</p>
+<dir style="text-align:right"><a href="/2016/08/23/JSOI2016-提高2班-贪心/2469.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>8469.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> n,i,j,sum,mxl:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">while</span> <span class="keyword">not</span> eof <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		readln(n);</div><div class="line">		mxl:=<span class="number">0</span>;sum:=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">			<span class="keyword">read</span>(j);</div><div class="line">			mxl:=max(mxl,j);</div><div class="line">			inc(sum,j);</div><div class="line">		<span class="keyword">end</span>;</div><div class="line">		readln;</div><div class="line">		writeln(min((sum-mxl)/<span class="number">1</span>,sum/<span class="number">2</span>):<span class="number">0</span>:<span class="number">1</span>);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P4-积木大赛"><a href="#P4-积木大赛" class="headerlink" title="P4 积木大赛"></a>P4 积木大赛</h1><p>春春幼儿园举办了一年一度的“积木大赛”。今年比赛的内容是搭建一座宽度为 n 的大厦，大厦可以看成由 n 块宽度为1的积木组成，第𝑖块积木的最终高度需要是hi。<br>在搭建开始之前，没有任何积木（可以看成 n 块高度为 0 的积木）。接下来每次操作，小朋友们可以选择一段连续区间[L,R]，然后将第 L 块到第 R 块之间（含第 L 块和第 R 块）所有积木的高度分别增加1。<br>小 M 是个聪明的小朋友，她很快想出了建造大厦的最佳策略，使得建造所需的操作次数最少。但她不是一个勤于动手的孩子，所以想请你帮忙实现这个策略，并求出最少的操作次数。</p>
+<h2 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入包含两行，第一行包含一个整数 n，表示大厦的宽度。<br>第二行包含 n 个整数，第i个整数为hi。</p>
+<h2 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h2><p>仅一行，即建造所需的最少操作数。<br><!--more--></p>
+<h2 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5<br>2 3 4 1 2</p>
+</blockquote>
+<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>5</p>
+</blockquote>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p>每个测试点1s。<br>其中一种可行的最佳方案,依次选择 [1,5] [1,3] [2,3] [3,3] [5,5]<br>对于 30%的数据，有1 ≤ n ≤ 10;<br>对于 70%的数据，有1 ≤ n ≤ 1000;<br>对于 100%的数据，有1 ≤ n ≤ 100000，0 ≤ hi ≤ 10000。</p>
+<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>显然我们希望一个区间尽量地长。<br>对于一块的高度h(i)<br>如果h(i+1)&lt;=h(i)，覆盖1..i的区间一定能覆盖h(i)，不用增加新区间。<br>否则，要覆盖h(i+1)-h(i)的高度差，新区间数=高度差。</p>
+<dir style="text-align:right"><a href="/2016/08/23/JSOI2016-提高2班-贪心/p1844.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>p1844.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">var</span> n,i,j,last,ans:longint;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">read</span>(n);</div><div class="line">	ans:=<span class="number">0</span>;last:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">read</span>(j);</div><div class="line">		inc(ans,max(<span class="number">0</span>,j-last));</div><div class="line">		last:=j;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/贪心/">贪心</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/08/23/JSOI2016-提高2班-贪心/" data-title="[JSOI2016] 提高2班 贪心 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/08/22/折腾Ubuntu/"  title="折腾Ubuntu">
+ <strong>下一篇：</strong><br/> 
+ <span>折腾Ubuntu
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/08/23/JSOI2016-提高2班-贪心/" data-title="[JSOI2016] 提高2班 贪心" data-url="https://cothrax.github.io/2016/08/23/JSOI2016-提高2班-贪心/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-拼点游戏"><span class="toc-number">1.</span> <span class="toc-text">P1 拼点游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-特殊密码锁"><span class="toc-number">2.</span> <span class="toc-text">P2 特殊密码锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-电池的寿命"><span class="toc-number">3.</span> <span class="toc-text">P3 电池的寿命</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P4-积木大赛"><span class="toc-number">4.</span> <span class="toc-text">P4 积木大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-3"><span class="toc-number">4.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-3"><span class="toc-number">4.1.1.</span> <span class="toc-text">输入格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式-3"><span class="toc-number">4.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-3"><span class="toc-number">4.3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.3.2.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示"><span class="toc-number">4.3.3.</span> <span class="toc-text">提示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-3"><span class="toc-number">4.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 11.25px;">BFS</a> <a href="/tags/Bash/" style="font-size: 11.25px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12.5px;">DFS</a> <a href="/tags/DP/" style="font-size: 18.75px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11.25px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 18.75px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/LCA/" style="font-size: 11.25px;">LCA</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maths/" style="font-size: 10px;">Maths</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16.25px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 13.75px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 11.25px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.25px;">倍增</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调队列/" style="font-size: 11.25px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12.5px;">强连通分量</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/搜索/" style="font-size: 11.25px;">搜索</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/数论/" style="font-size: 11.25px;">数论</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.25px;">枚举</a> <a href="/tags/树形DP/" style="font-size: 13.75px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11.25px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 13.75px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 10px;">概率期望</a> <a href="/tags/状压DP/" style="font-size: 11.25px;">状压DP</a> <a href="/tags/线性DP/" style="font-size: 11.25px;">线性DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/贪心/" style="font-size: 12.5px;">贪心</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://vijos.org/" target="_blank" title="Vijos">Vijos</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://codevs.cn/" target="_blank" title="CodeVS">CodeVS</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.luogu.org/" target="_blank" title="Luogu">Luogu</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+            
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a> | <a href="/sitemap.xml">Sitemap</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Cothrax"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
