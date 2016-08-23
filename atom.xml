@@ -132,7 +132,7 @@
     <link href="https://cothrax.github.io/2016/08/22/%E6%8A%98%E8%85%BEUbuntu/"/>
     <id>https://cothrax.github.io/2016/08/22/折腾Ubuntu/</id>
     <published>2016-08-22T13:00:50.000Z</published>
-    <updated>2016-08-23T12:43:14.441Z</updated>
+    <updated>2016-08-23T13:09:36.709Z</updated>
     
     <content type="html"><![CDATA[<p>noi_linux所用的ubuntu版本已经不被官方支持了，于是apt-get都无法正常工作，旧版的firefox无法解析各大OJ的css3/h5，于是试试Ubuntu。<br>以此日志记录一个下午的各种BUG和解决方案。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>之前用U盘启动盘装Linux失败了无数次，症状是进了loading界面，然后黑屏，光标闪了几秒后系统就休眠了，风扇还在转但不见动静。<br>我的解决方案是：</p>
@@ -159,6 +159,7 @@
 <p>编辑时写入alias，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> chrome=<span class="string">'chromium-browser &amp;'</span></div><div class="line"><span class="built_in">alias</span> ff=<span class="string">'firefox &amp;'</span></div><div class="line"><span class="built_in">alias</span> en=<span class="string">'firefox https://app.yinxiang.com/Home.action &amp;'</span></div><div class="line"><span class="built_in">alias</span> opdir=<span class="string">'nautilus'</span></div></pre></td></tr></table></figure></p>
 <h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>装了14想升到16，于是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get dist-upgrade</div><div class="line">sudo reboot</div><div class="line">sudo update-manager –d</div></pre></td></tr></table></figure></p>
 <p>当然以上操作也可以在图形界面下完成，系统工具里有软件包更新，Administration里有软件更新器<br>然后重启后，再进ubuntu时黑屏了，都做好重装的准备了，然后在win下把easybcd的ubuntu引导删掉重加一下就好了。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="USB容量丢失"><a href="#USB容量丢失" class="headerlink" title="USB容量丢失"></a>USB容量丢失</h3><p>原来30G的U盘做了启动盘后还剩1.03G囧。<br>找Win下的磁盘管理却不能删除卷，然后用<a href="http://www.diskgenius.cn/download.php" target="_blank" rel="external">Disk Genius</a>解决啦。</p>
 ]]></content>
     
     <summary type="html">
