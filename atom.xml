@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-23T10:12:27.950Z</updated>
+  <updated>2016-08-24T05:49:02.802Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[JSOI2016] 提高2班 DP</title>
+    <link href="https://cothrax.github.io/2016/08/24/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-DP/"/>
+    <id>https://cothrax.github.io/2016/08/24/JSOI2016-提高2班-DP/</id>
+    <published>2016-08-24T05:30:36.000Z</published>
+    <updated>2016-08-24T05:49:02.802Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="P1-飞扬的小鸟"><a href="#P1-飞扬的小鸟" class="headerlink" title="P1 飞扬的小鸟"></a>P1 飞扬的小鸟</h1><p>Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控制点击手机屏幕的频率来调节小鸟的飞行高度，让小鸟顺利通过画面右方的管道缝隙。如果小鸟一不小心撞到了水管或者掉在地上的话，便宣告失败。<br><img src="/2016/08/24/JSOI2016-提高2班-DP/noip2014tgd1p3i1.jpg" alt="noip2014tgd1p3i1.jpg" title=""><br>为了简化问题，我们对游戏规则进行了简化和改编：</p>
+<ol>
+<li>游戏界面是一个长为 n，高为 m 的二维平面，其中有k 个管道（忽略管道的宽度）。</li>
+<li>小鸟始终在游戏界面内移动。小鸟从游戏界面最左边 任意整数高度位置出发，到达游戏界面最右边时，游戏完成。</li>
+<li>小鸟每个单位时间沿横坐标方向右移的距离为 1，竖直移动的距离由玩家控制。如果点击屏幕，小鸟就会上升一定高度 X，每个单位时间可以点击多次，效果叠加； 如果不点击屏幕，小鸟就会下降一定高度 Y。小鸟位于横坐标方向不同位置时，上 升的高度 X 和下降的高度 Y 可能互不相同。</li>
+<li>小鸟高度等于 0 或者小鸟碰到管道时，游戏失败。小鸟高度为 m 时，无法再上升。</li>
+</ol>
+<p>现在，请你判断是否可以完成游戏。如果可以，输出最少点击屏幕数；否则，输出小鸟最多可以通过多少个管道缝隙。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第 1 行有 3 个整数 n，m，k，分别表示游戏界面的长度，高度和水管的数量，每两个 整数之间用一个空格隔开；<br>接下来的 n 行，每行 2 个用一个空格隔开的整数 X 和 Y，依次表示在横坐标位置 0~n-1 上玩家点击屏幕后，小鸟在下一位置上升的高度 X，以及在这个位置上玩家不点击屏幕时， 小鸟在下一位置下降的高度 Y。<br>接下来 k 行，每行 3 个整数 P，L，H，每两个整数之间用一个空格隔开。每行表示一个管道，其中 P 表示管道的横坐标，L 表示此管道缝隙的下边沿高度为 L，H 表示管道缝隙上边沿的高度（输入数据保证 P 各不相同，但不保证按照大小顺序给出）。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>共两行。<br>第一行，包含一个整数，如果可以成功完成游戏，则输出 1，否则输出 0。 第二行，包含一个整数，如果第一行为 1，则输出成功完成游戏需要最少点击屏幕数，否则，输出小鸟最多可以通过多少个管道缝隙。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>10 10 6<br>3 9<br>9 9<br>1 2<br>1 3<br>1 2<br>1 1<br>2 1<br>2 1<br>1 6<br>2 2<br>1 2 7<br>5 1 5<br>6 3 5<br>7 5 8<br>8 7 9<br>9 1 3</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>1<br>6</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 30%的数据：5≤n≤10，5≤m≤10，k=0，保证存在一组最优解使得同一单位时间最多点击屏幕 3 次；<br>对于 50%的数据：5≤n≤20，5≤m≤10，保证存在一组最优解使得同一单位时间最多点击屏幕 3 次；<br>对于 70%的数据：5≤n≤1000，5≤m≤100；<br>对于 100%的数据：<span>$5&le;n&le;10000,5&le;m&le;1000,0&le;k&lt;n,$</span><!-- Has MathJax --><br><span>$0&lt;X&lt;m,0&lt;Y&lt;m,0&lt;P&lt;n,0&le;L&lt;H&le;m,L+1&lt;H$</span><!-- Has MathJax -->。</p>
+<p>如下图所示，蓝色直线表示小鸟的飞行轨迹，红色直线表示管道。<br><img src="/2016/08/24/JSOI2016-提高2班-DP/noip2014tgd1p3i2.png" alt="noip2014tgd1p3i2.png" title=""></p>
+<p>NOIP2014 提高组 Day1</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>变形背包，几个注意点</p>
+<ol>
+<li>顶端要特判一下</li>
+<li>以下方案是<strong>不可行</strong>的：对于第i列，<strong>只</strong>对不被管道覆盖的点做背包。<br>因为用了完全背包的$O(N^2)$优化，被管道覆盖的点是有可能作为中间值出现的，所以正确的方案是：<strong>先该列对所有做背包，然后把被管道覆盖的点标记为inf。</strong></li>
+</ol>
+<dir style="text-align:right"><a href="/2016/08/24/JSOI2016-提高2班-DP/pp1907.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>pp1907.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    n,m,k,i,i1,i0,j,cnt,ans:int;</div><div class="line">    x,y,lb,ub:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    flag:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> boolean;b:boolean;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n,m,k);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(x[i],y[i]);</div><div class="line">        lb[i]:=<span class="number">0</span>;ub[i]:=m+<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    fillchar(flag,sizeof(flag),false);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j);<span class="keyword">read</span>(lb[j],ub[j]);</div><div class="line">        flag[j]:=true;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    </div><div class="line">    filldword(f[<span class="number">0</span>],sizeof(f[<span class="number">0</span>]) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> f[<span class="number">0</span>,i]:=<span class="number">0</span>;</div><div class="line">    cnt:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        i1:=i <span class="keyword">mod</span> <span class="number">2</span>;i0:=<span class="number">1</span>-i1;</div><div class="line">        filldword(f[i1],sizeof(f[i1]) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span>+x[i] <span class="keyword">to</span> m <span class="keyword">do</span> <span class="comment">//完全背包（上升）</span></div><div class="line">            f[i1,j]:=min(f[i1,j],min(f[i1,j-x[i]],f[i0,j-x[i]])+<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> x[i] <span class="keyword">do</span> <span class="comment">//特判顶点</span></div><div class="line">            f[i1,m]:=min(f[i1,m],min(f[i0,m-j],f[i1,m-j])+<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m-y[i] <span class="keyword">do</span> <span class="comment">//01背包（下落）</span></div><div class="line">            f[i1,j]:=min(f[i1,j],f[i0,j+y[i]]);</div><div class="line">        <span class="comment">//不可达的点标记为inf</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> lb[i] <span class="keyword">do</span> f[i1,j]:=inf;</div><div class="line">        <span class="keyword">for</span> j:=ub[i] <span class="keyword">to</span> m <span class="keyword">do</span> f[i1,j]:=inf;</div><div class="line">        <span class="comment">//判无解，和cnt更新</span></div><div class="line">        b:=false;</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> f[i1,j]&lt;&gt;inf <span class="keyword">then</span> <span class="keyword">begin</span> b:=true;break <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> b <span class="keyword">then</span> break</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> flag[i] <span class="keyword">then</span> inc(cnt);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> b <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        ans:=inf;i1:=n <span class="keyword">mod</span> <span class="number">2</span>;</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> ans:=min(ans,f[i1,i]);</div><div class="line">        writeln(<span class="number">1</span>);<span class="keyword">write</span>(ans);</div><div class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        writeln(<span class="number">0</span>);<span class="keyword">write</span>(cnt);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;P1-飞扬的小鸟&quot;&gt;&lt;a href=&quot;#P1-飞扬的小鸟&quot; class=&quot;headerlink&quot; title=&quot;P1 飞扬的小鸟&quot;&gt;&lt;/a&gt;P1 飞扬的小鸟&lt;/h1&gt;&lt;p&gt;Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控制点击手机屏幕的频率来调节小鸟的飞行高度，让小鸟顺利通过画面右方的管道缝隙。如果小鸟一不小心撞到了水管或者掉在地上的话，便宣告失败。&lt;br&gt;&lt;img src=&quot;/2016/08/24/JSOI2016-提高2班-DP/noip2014tgd1p3i1.jpg&quot; alt=&quot;noip2014tgd1p3i1.jpg&quot; title=&quot;&quot;&gt;&lt;br&gt;为了简化问题，我们对游戏规则进行了简化和改编：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;游戏界面是一个长为 n，高为 m 的二维平面，其中有k 个管道（忽略管道的宽度）。&lt;/li&gt;
+&lt;li&gt;小鸟始终在游戏界面内移动。小鸟从游戏界面最左边 任意整数高度位置出发，到达游戏界面最右边时，游戏完成。&lt;/li&gt;
+&lt;li&gt;小鸟每个单位时间沿横坐标方向右移的距离为 1，竖直移动的距离由玩家控制。如果点击屏幕，小鸟就会上升一定高度 X，每个单位时间可以点击多次，效果叠加； 如果不点击屏幕，小鸟就会下降一定高度 Y。小鸟位于横坐标方向不同位置时，上 升的高度 X 和下降的高度 Y 可能互不相同。&lt;/li&gt;
+&lt;li&gt;小鸟高度等于 0 或者小鸟碰到管道时，游戏失败。小鸟高度为 m 时，无法再上升。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;现在，请你判断是否可以完成游戏。如果可以，输出最少点击屏幕数；否则，输出小鸟最多可以通过多少个管道缝隙。&lt;/p&gt;
+&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;第 1 行有 3 个整数 n，m，k，分别表示游戏界面的长度，高度和水管的数量，每两个 整数之间用一个空格隔开；&lt;br&gt;接下来的 n 行，每行 2 个用一个空格隔开的整数 X 和 Y，依次表示在横坐标位置 0~n-1 上玩家点击屏幕后，小鸟在下一位置上升的高度 X，以及在这个位置上玩家不点击屏幕时， 小鸟在下一位置下降的高度 Y。&lt;br&gt;接下来 k 行，每行 3 个整数 P，L，H，每两个整数之间用一个空格隔开。每行表示一个管道，其中 P 表示管道的横坐标，L 表示此管道缝隙的下边沿高度为 L，H 表示管道缝隙上边沿的高度（输入数据保证 P 各不相同，但不保证按照大小顺序给出）。&lt;/p&gt;
+&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;共两行。&lt;br&gt;第一行，包含一个整数，如果可以成功完成游戏，则输出 1，否则输出 0。 第二行，包含一个整数，如果第一行为 1，则输出成功完成游戏需要最少点击屏幕数，否则，输出小鸟最多可以通过多少个管道缝隙。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>[JSOI2016] 提高2班 贪心</title>
@@ -121,9 +183,9 @@
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
-      <category term="Maths" scheme="https://cothrax.github.io/tags/Maths/"/>
-    
       <category term="高精度" scheme="https://cothrax.github.io/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
+    
+      <category term="Maths" scheme="https://cothrax.github.io/tags/Maths/"/>
     
   </entry>
   
@@ -343,19 +405,19 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="折半枚举" scheme="https://cothrax.github.io/tags/%E6%8A%98%E5%8D%8A%E6%9E%9A%E4%B8%BE/"/>
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="枚举" scheme="https://cothrax.github.io/tags/%E6%9E%9A%E4%B8%BE/"/>
+      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
     
-      <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+      <category term="枚举" scheme="https://cothrax.github.io/tags/%E6%9E%9A%E4%B8%BE/"/>
     
-      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="折半枚举" scheme="https://cothrax.github.io/tags/%E6%8A%98%E5%8D%8A%E6%9E%9A%E4%B8%BE/"/>
+    
+      <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
   </entry>
   
@@ -614,11 +676,11 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -763,11 +825,11 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
@@ -780,7 +842,7 @@
     <link href="https://cothrax.github.io/2016/08/19/JSOI2016-%E6%8F%90%E9%AB%982%E7%8F%AD-%E6%A0%91%E5%BD%A2DP%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://cothrax.github.io/2016/08/19/JSOI2016-提高2班-树形DP（二）/</id>
     <published>2016-08-19T03:58:32.000Z</published>
-    <updated>2016-08-23T10:24:55.121Z</updated>
+    <updated>2016-08-24T05:49:36.108Z</updated>
     
     <content type="html"><![CDATA[<h1 id="P5-The-more-The-better"><a href="#P5-The-more-The-better" class="headerlink" title="P5 The more, The better"></a>P5 The more, The better</h1><p>ACboy很喜欢玩一种战略游戏，在一个地图上，有N座城堡，每座城堡都有一定的宝物，在每次游戏中ACboy允许攻克M个城堡并获得里面的宝物。但由于地理位置原因，有些城堡不能直接攻克，要攻克这些城堡必须先攻克其他某一个特定的城堡。你能帮ACboy算出要获得尽量多的宝物应该攻克哪M个城堡吗？</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>每个测试实例首先包括2个整数，N,M.(1 &lt;= M &lt;= N &lt;= 200);在接下来的N行里，每行包括2个整数，a,b. 在第 i 行，a 代表要攻克第 i 个城堡必须先攻克第 a 个城堡，如果 a = 0 则代表可以直接攻克第 i 个城堡。b 代表第 i 个城堡的宝物数量, b &gt;= 0。当N = 0, M = 0输入结束。</p>
@@ -849,6 +911,8 @@
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
+    
+      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -1031,6 +1095,8 @@
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
+      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
+    
       <category term="树形背包" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2%E8%83%8C%E5%8C%85/"/>
     
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
@@ -1132,13 +1198,13 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
@@ -1229,9 +1295,9 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -1338,19 +1404,19 @@
     
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
     
       <category term="仙人掌图" scheme="https://cothrax.github.io/tags/%E4%BB%99%E4%BA%BA%E6%8E%8C%E5%9B%BE/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
@@ -1525,11 +1591,11 @@
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
     
-      <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
+      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
+      <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
     
       <category term="双向BFS" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E5%90%91BFS/"/>
     
@@ -1674,51 +1740,6 @@
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
       <category term="NOIP" scheme="https://cothrax.github.io/tags/NOIP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[Vijos] p1906 联合权值</title>
-    <link href="https://cothrax.github.io/2016/08/14/Vijos-p1906/"/>
-    <id>https://cothrax.github.io/2016/08/14/Vijos-p1906/</id>
-    <published>2016-08-14T09:37:51.000Z</published>
-    <updated>2016-08-14T10:02:16.512Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>无向连通图 G 有 n 个点，n-1 条边。点从 1 到 n 依次编号，编号为 i 的点的权值为 Wi， 每条边的长度均为 1。图上两点(u, v)的距离定义为 u 点到 v 点的最短距离。对于图 G 上的点对(u, v)，若它们的距离为 2，则它们之间会产生Wu×Wv的联合权值。<br>请问图 G 上所有可产生联合权值的有序点对中，联合权值最大的是多少？所有联合权值之和是多少？</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含 1 个整数 n。<br>接下来 n-1 行，每行包含 2 个用空格隔开的正整数 u、v，表示编号为 u 和编号为 v 的点 之间有边相连。<br>最后 1 行，包含 n 个正整数，每两个正整数之间用一个空格隔开，其中第 i 个整数表示 图 G 上编号为 i 的点的权值为Wi。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出共 1 行，包含 2 个整数，之间用一个空格隔开，依次为图 G 上联合权值的最大值 和所有联合权值之和。由于所有联合权值之和可能很大，输出它时要对10007取余。</p>
-<a id="more"></a>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>5<br>1 2<br>2 3<br>3 4<br>4 5<br>1 5 2 3 10</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>20 74</p>
-</blockquote>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>对于 30%的数据，1 &lt; n ≤ 100；<br>对于 60%的数据，1 &lt; n ≤ 2000；<br>对于 100%的数据，1 &lt; n ≤ 200,000，0 &lt; WiWi ≤ 10,000。</p>
-<p>NOIP2014 提高组 Day1<br>​</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>14年的题目怎么都很水。。。</p>
-<p>对于点v，记与有v连边的所有点为$u_i$，两两配对所能得到的联合权值之和=$(\sum W_{u_i})^2-\sum W_{u_{i}}^2$<br>比如有与v连的有三个点，权值分别为a,b,c，那么这三个点能够成的联合权值之和=$2ab+2bc+2ca=(a+b+c)^2-a^2-b^2-c^2$<br>至于最大的权值，取$W_{u_i}$中的最大值和次大值，乘起来就是最大的联合权值。<br>于是扫一遍节点得到答案。<br>注意当v的度为1时不能构成联合权值</p>
-<dir style="text-align:right"><a href="/2016/08/14/Vijos-p1906/p1906.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>p1906.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> z=<span class="number">10007</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,i,f,t,ans,maxw:int;</div><div class="line">    w,head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> edge;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].t:=t;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">solve</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u,fir,sec,sqrsum,sum:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fir:=<span class="number">0</span>;sec:=<span class="number">0</span>;sqrsum:=<span class="number">0</span>;sum:=<span class="number">0</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> w[u]&gt;fir <span class="keyword">then</span> <span class="keyword">begin</span> sec:=fir;fir:=w[u] <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> w[u]&gt;sec <span class="keyword">then</span> sec:=w[u];</div><div class="line">        sum:=(sum+w[u]) <span class="keyword">mod</span> z;</div><div class="line">        sqrsum:=(sqrsum+sqr(w[u])) <span class="keyword">mod</span> z;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> sec&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        maxw:=max(maxw,fir*sec);</div><div class="line">        ans:=(ans+sqr(sum)-sqrsum) <span class="keyword">mod</span> z;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f,t);</div><div class="line">        add(f,t);add(t,f);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(w[i]);</div><div class="line">    ans:=<span class="number">0</span>;maxw:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> solve(i);</div><div class="line">    <span class="keyword">write</span>(maxw,<span class="string">' '</span>,ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;无向连通图 G 有 n 个点，n-1 条边。点从 1 到 n 依次编号，编号为 i 的点的权值为 Wi， 每条边的长度均为 1。图上两点(u, v)的距离定义为 u 点到 v 点的最短距离。对于图 G 上的点对(u, v)，若它们的距离为 2，则它们之间会产生Wu×Wv的联合权值。&lt;br&gt;请问图 G 上所有可产生联合权值的有序点对中，联合权值最大的是多少？所有联合权值之和是多少？&lt;/p&gt;
-&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;第一行包含 1 个整数 n。&lt;br&gt;接下来 n-1 行，每行包含 2 个用空格隔开的正整数 u、v，表示编号为 u 和编号为 v 的点 之间有边相连。&lt;br&gt;最后 1 行，包含 n 个正整数，每两个正整数之间用一个空格隔开，其中第 i 个整数表示 图 G 上编号为 i 的点的权值为Wi。&lt;/p&gt;
-&lt;h2 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h2&gt;&lt;p&gt;输出共 1 行，包含 2 个整数，之间用一个空格隔开，依次为图 G 上联合权值的最大值 和所有联合权值之和。由于所有联合权值之和可能很大，输出它时要对10007取余。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="Maths" scheme="https://cothrax.github.io/tags/Maths/"/>
     
   </entry>
   
