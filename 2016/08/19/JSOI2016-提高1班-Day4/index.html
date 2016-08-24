@@ -155,8 +155,9 @@
 <p>考虑到只有<strong>一名</strong>邮递员<span>$ai&lt;bi$</span><!-- Has MathJax -->，于是可以<strong>贪心</strong>。<br>如果没有这样的邮递员的话，显然对于一个邮递员要运<strong>尽量多的货物</strong>，才能使费用最少，这种情况下，直接用满流f，计算每条边的费用，然后跑floyd即可。<br>这个贪心可以反证，假设有一条路径上有两个邮递员i和j，它们的流都<span>$&lt;f$</span><!-- Has MathJax -->，不妨设<span>$ai&lt;aj$</span><!-- Has MathJax -->，把aj的流加到ai上显然更优。<br>如果有一个<span>$ai&gt;bi$</span><!-- Has MathJax -->的邮递员的话，对于经过这个邮递员x的路径s-&gt;t的最优解存可能存在另一种情况：</p>
 <ol>
 <li>s-&gt;t上经过x跑一个流为d[x]</li>
-<li>s-&gt;t上不经过x跑一个流f-d[x]<br>这样我们可以对这两种情况都跑一次floyd，然后枚举两点i,j根据三次floyd的结果得到最小值。</li>
+<li>s-&gt;t上不经过x跑一个流f-d[x]</li>
 </ol>
+<p>这样我们可以对这两种情况都跑一次floyd，然后枚举两点i,j根据三次floyd的结果得到最小值。</p>
 <p>坑点</p>
 <ol>
 <li>f-d[x]的流不能经过x</li>
