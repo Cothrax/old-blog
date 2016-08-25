@@ -81,7 +81,7 @@ t3.in/out
 
 三题是数学题orz
 P1 小W的动漫小W最近迷上了日本动漫，每天都有无数部动漫的更新等着他去看">
-<meta property="og:updated_time" content="2016-08-25T12:58:38.033Z">
+<meta property="og:updated_time" content="2016-08-25T12:59:10.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="雅礼中学模拟赛 Day1">
 <meta name="twitter:description" content="题目名称
@@ -262,7 +262,7 @@ P1 小W的动漫小W最近迷上了日本动漫，每天都有无数部动漫的
 <p>13<br>5</p>
 </blockquote>
 <h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>30%的数据满足：a&lt;=1000 b&lt;=1000<br>100%的数据满足：2&lt;=a&lt;=b&lt;=10^18</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>枚举指数k，$x^k\in [a,b]$的x的个数<span>$=\left \lfloor  b^{1/k}\right \rfloor -\left \lceil a^{1/k}+1\right \rceil$</span><!-- Has MathJax --><br>$x^y=e^{ln(x^y)}=e^{y\cdot ln(x)}$，可以用<code>exp(y*ln(x))</code>得到。<br>注意精度！</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>枚举指数k，$x^k\in [a,b]$的x的个数<span>$=\left \lfloor  b^{1/k}\right \rfloor -\left \lceil a^{1/k}\right \rceil+1$</span><!-- Has MathJax --><br>$x^y=e^{ln(x^y)}=e^{y\cdot ln(x)}$，可以用<code>exp(y*ln(x))</code>得到。<br>注意精度！</p>
 <ol>
 <li>k=1用b-a+1单独算</li>
 <li>重写floor和ceil，当<code>k-round(k)&lt;eps</code>时，<code>floor(k)=ceil(k)=k</code></li>
