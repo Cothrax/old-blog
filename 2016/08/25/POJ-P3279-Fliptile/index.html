@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="描述Farmer John knows that an intellectually satisfied cow is a happy cow who will give more milk. He has arranged a brainy activity for cows in which they manipulate an M × N grid (1 ≤ M ≤ 15; 1 ≤ N ≤">
 <meta property="og:image" content="https://cothrax.github.io/2016/08/25/POJ-P3279-Fliptile/game.png">
-<meta property="og:updated_time" content="2016-08-25T12:50:48.946Z">
+<meta property="og:updated_time" content="2016-08-25T12:55:00.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[POJ] P3279 Fliptile">
 <meta name="twitter:description" content="描述Farmer John knows that an intellectually satisfied cow is a happy cow who will give more milk. He has arranged a brainy activity for cows in which they manipulate an M × N grid (1 ≤ M ≤ 15; 1 ≤ N ≤">
@@ -112,7 +112,9 @@
 <h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>Lines 1..M: Each line contains N space-separated integers, each specifying how many times to flip that particular location.<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
 <p>4 4<br>1 0 0 1<br>0 1 1 0<br>0 1 1 0<br>1 0 0 1</p>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>0 0 0 0<br>1 0 0 1<br>1 0 0 1<br>0 0 0 0</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>0 0 0 0<br>1 0 0 1<br>1 0 0 1<br>0 0 0 0</p>
 </blockquote>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这些牛玩的是ubuntu自带的小游戏叫关灯。<br>这是一个二维的反转问题，这在<a href="/2016/08/23/JSOI2016-提高2班-贪心/" title="贪心P2">贪心P2</a>中提到过。<br>考察点(i,j)，可以反转它的格子有5个，不便于处理，我么可以先枚举第一行的翻转方法，让后for i=2..n for j=1..m逐格枚举，这样每个格子是否要翻转就唯一确定了。<br>比如说(2,2)，由于(1,i)已知，(2,1)已经考察过了，能翻转(1,2)的只有(2,2)，于是如果(1,2)=1，那(2,2)就要翻转。<br>当全部考虑过后，如果发现最后一行还有为1个格子，那就无解。<br>另外第一行的方法可以用位运算表示。<br>可以用ac的程序玩游戏啦。<br><img src="/2016/08/25/POJ-P3279-Fliptile/game.png" alt="game.png" title=""></p>
 <dir style="text-align:right"><a href="/2016/08/25/POJ-P3279-Fliptile/3279.pas" title="复制代码">复制代码</a></dir>
