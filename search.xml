@@ -26,7 +26,7 @@
 <p>1<br>170</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于前 30%的数据, n &lt;= 10<br>对于前 50%的数据, n &lt;= 10000 ,保证数据随机, w &lt;= 2 * 10 ^ 9<br>对于后 50%的数据, n &lt;= 2000000,w &lt;= 10 ^ 4,z &lt;= 10 ^ 5<br>内存限制 256M ,时间限制 1s ,必要时请手写人工栈</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这本来是一道很水的<strong>树形DP</strong><br>第一问就是叶节点的个数<br>第二问：记f[v]是节点v的能量，那么f[v]=sum(f[u]<em>e(v,u))+w[v]（u是v的儿子）<br>然后有了两个问题：<br>1.<em>*爆栈</em></em>：手写一个人工栈。因为是f[v]是回溯更新得到的，我们先从根bfs得到拓扑序，然后逆着拓扑序用循环处理dp（就是从最深的叶节点向上更新，一直到根）。ps：如果是用父节点更新子节点的话，直接用bfs处理dp就好了</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这本来是一道很水的<strong>树形DP</strong><br>第一问就是叶节点的个数<br>第二问：记f[v]是节点v的能量，那么f[v]=sum(f[u]*e(v,u))+w[v]（u是v的儿子）<br>然后有了两个问题：<br>1.<strong>爆栈</strong>：手写一个人工栈。因为是f[v]是回溯更新得到的，我们先从根bfs得到拓扑序，然后逆着拓扑序用循环处理dp（就是从最深的叶节点向上更新，一直到根）。ps：如果是用父节点更新子节点的话，直接用bfs处理dp就好了</p>
 <ol>
 <li>pascal党的杯具：<strong>int64的bug</strong>，好像int64的底层是用浮点数trunc出来的，对它大量取模（尤其是模数也是int64时）出现了精度误差，我们用qword替代int64来做。</li>
 </ol>
