@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-28T12:03:18.832Z</updated>
+  <updated>2016-08-28T12:08:35.465Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/28/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-prefix/"/>
     <id>https://cothrax.github.io/2016/08/28/雅礼中学2015模拟赛-prefix/</id>
     <published>2016-08-28T11:50:39.000Z</published>
-    <updated>2016-08-28T12:03:18.832Z</updated>
+    <updated>2016-08-28T12:08:35.465Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>PCY 学生物学累了。突然看到地上有一本笔记本。<br>上面写着“ isdashagaydashisorisdashnot … ”之类的字眼,独具慧眼的他发现这些字符串中有着大<br>秘密!类似“ isdash ”这样的前缀在字符串中出现的次数不止一次!他觉得这其中一定有蹊跷,于是<br>开始一个一个数前缀出现的次数。<br>虽然他早已经从逐字符匹配转换到了多行同时匹配模式,但是这小小的练习本上几十万个字符还<br>是让他措手不及。你能帮助他吗?他想知道所有长度为偶数的前缀在整个字符串出现的次数和。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>共一行,一个字符串 s</p>
@@ -33,8 +33,12 @@
 <blockquote>
 <p>isdashagayisdashagaydashisnotagaydashisnotagay</p>
 </blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>样例1</p>
+<blockquote>
 <p>6</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
 <p>30</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 30%的数据, |S| &lt;= 100 ,保证数据随机<br>对于 100%的数据, |S| &lt;= 200000<br>内存限制 256M ,时间限制 1s</p>

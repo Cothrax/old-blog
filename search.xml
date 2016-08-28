@@ -17,8 +17,12 @@
 <blockquote>
 <p>isdashagayisdashagaydashisnotagaydashisnotagay</p>
 </blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>样例1</p>
+<blockquote>
 <p>6</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
 <p>30</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 30%的数据, |S| &lt;= 100 ,保证数据随机<br>对于 100%的数据, |S| &lt;= 200000<br>内存限制 256M ,时间限制 1s</p>
