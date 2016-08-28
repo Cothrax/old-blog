@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-28T14:49:04.499Z</updated>
+  <updated>2016-08-28T14:50:00.922Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/28/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-chain/"/>
     <id>https://cothrax.github.io/2016/08/28/雅礼中学2015模拟赛-chain/</id>
     <published>2016-08-28T13:44:36.000Z</published>
-    <updated>2016-08-28T14:49:04.499Z</updated>
+    <updated>2016-08-28T14:50:00.922Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>PCY 最近在努力地学习生物。看到食物链这一节的时候,他迷茫了。<br>生态系统中的生物种类众多,亦于生态系统分别扮演着不同的角色,但根据它们能量和物质中所引起的作用,可以被分类为生产者、消费者和分解者三个类别。最底层是“生产者”,是以阳光来行使光合作用,自行用水和二氧化碳等无机物合成有机物的绿色植物;再上层是各级“消费者”,要依赖生产者供应物质和能量;当消费者死亡以后,“分解者”会以他们的尸体为食物。<br>生物必修二曾写道,“两个营养级之间的能量传递效率为 10% ~ 20%”。<br>PCY 说,“那些错综复杂的食物网我根本看不清楚”,于是我们将问题简化,每一个物种只存在唯一一个的捕食者(形成捕食关系),给出这些捕食关系,和每个物种所拥有的能量。求出整个食物网中食物链的数量和处在最高营养级的物种的能量。(某一物种的能量 = 摄入食物的能量 * 传递效率 + 自身能量),不考虑能量损耗,为了避免精度误差,能量效率按均为整数计算。也就是说,一个物种被吃了以后他的能量就成了他的数倍了。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为 n ,代表物种数量(物种按 1 … n 编号)<br>接下来 n - 1 行,每一行三个整数 x,y,z ,代表 y 被 x 捕食,且两个物种之间能量传递的效率为<br>z(1 &lt;= x, y &lt;= n,x ≠ y)<br>接下来 n 行,每行一个整数 w ,代表 1 … n 号物种的能量</p>
@@ -42,8 +42,9 @@
 <p>1<br>170</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于前 30%的数据, n &lt;= 10<br>对于前 50%的数据, n &lt;= 10000 ,保证数据随机, w &lt;= 2 * 10 ^ 9<br>对于后 50%的数据, n &lt;= 2000000,w &lt;= 10 ^ 4,z &lt;= 10 ^ 5<br>内存限制 256M ,时间限制 1s ,必要时请手写人工栈</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这本来是一道很水的<strong>树形DP</strong><br>第一问就是叶节点的个数<br>第二问：记f[v]是节点v的能量，那么f[v]=sum(f[u]*e(v,u))+w[v]（u是v的儿子）<br>然后有了两个问题：<br>1.<strong>爆栈</strong>：手写一个人工栈。因为是f[v]是回溯更新得到的，我们先从根bfs得到拓扑序，然后逆着拓扑序用循环处理dp（就是从最深的叶节点向上更新，一直到根）。ps：如果是用父节点更新子节点的话，直接用bfs处理dp就好了</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这本来是一道很水的<strong>树形DP</strong><br>第一问就是叶节点的个数<br>第二问：记f[v]是节点v的能量，那么f[v]=sum(f[u]*e(v,u))+w[v]（u是v的儿子）<br>然后有了两个问题：</p>
 <ol>
+<li><strong>爆栈</strong>：手写一个人工栈。因为是f[v]是回溯更新得到的，我们先从根bfs得到拓扑序，然后逆着拓扑序用循环处理dp（就是从最深的叶节点向上更新，一直到根）。ps：如果是用父节点更新子节点的话，直接用bfs处理dp就好了</li>
 <li>pascal党的杯具：<strong>int64的bug</strong>，好像int64的底层是用浮点数trunc出来的，对它大量取模（尤其是模数也是int64时）出现了精度误差，我们用qword替代int64来做。</li>
 </ol>
 <p>读入和取模的常数都很大，在ubuntu下测好像tle了，pascal没有读入优化（杯具），不过std好像也tle了</p>
