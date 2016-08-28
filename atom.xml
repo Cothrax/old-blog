@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-28T10:33:04.253Z</updated>
+  <updated>2016-08-28T10:34:12.779Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/28/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day3-message/"/>
     <id>https://cothrax.github.io/2016/08/28/JSOI2016-提高1班-Day3-message/</id>
     <published>2016-08-28T10:23:48.000Z</published>
-    <updated>2016-08-28T10:33:04.253Z</updated>
+    <updated>2016-08-28T10:34:12.779Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>体育老师又向班主任打小报告了。<br>悲剧的是体育老师并不记得是哪些人在体育课上捣乱，他只记得捣乱的人在队里是连续的一段，并且他知道一共有多少人捣乱以及这些人的身高比较信息。他向班主任提供了这些信息，希望能找出捣乱的人。<br>作为班主任的得力小助手，这任务自然又落到了小w的头上。<br>小w记得全班体育课的队形以及各个位置上人的身高，他要找出捣乱的是哪一段人。当然他知道可能找到不止一段人，请按从小至大的顺序输出所有可能。<br>身高比较信息：体育老师记得的是相对身高，比如他记得他告诉班主任捣乱的人身高分别是1 4 4 3 2 1，那么我们能知道第一个人比第二个人矮，第二个人和第三个人一样高等等诸如此类。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数N，K。N表示全班人数，K表示捣乱的人数。<br>第二行至第N+1行每行一个正整数表示各个人的身高。<br>第N+2行至第N+K+1行每行一个正整数表示捣乱的人的身高信息。</p>
@@ -52,8 +52,6 @@
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
       <category term="模式匹配" scheme="https://cothrax.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
-    
-      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
