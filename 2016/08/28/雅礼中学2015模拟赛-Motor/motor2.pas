@@ -29,7 +29,6 @@ var
 		tmp:=h[i,0];h[i,0]:=h[j,0];h[j,0]:=tmp;
 		tmp:=h[i,1];h[i,1]:=h[j,1];h[j,1]:=tmp;
 	end;
-
 	procedure heapify(i:int);
 	var l,r,s:int;
 	begin
@@ -41,14 +40,12 @@ var
 			heapify(s);
 		end;
 	end;
-	
 	procedure extract();
 	begin
 		swap(1,sz);
 		dec(sz);
 		heapify(1);
 	end;
-	
 	procedure reduceto(i,k:int);
 	begin
 		h[i,1]:=k;
@@ -57,7 +54,6 @@ var
 			i:=i div 2;
 		end;
 	end;
-	
 	procedure insert(x,k:int);
 	begin
 		inc(sz);
@@ -80,7 +76,6 @@ begin
 		end;
 	end;
 end;
-
 
 begin
 	assign(input,'motor.in');reset(input);
