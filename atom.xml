@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-28T10:38:02.172Z</updated>
+  <updated>2016-08-28T12:03:18.832Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>雅礼中学2015模拟赛 prefix</title>
+    <link href="https://cothrax.github.io/2016/08/28/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-prefix/"/>
+    <id>https://cothrax.github.io/2016/08/28/雅礼中学2015模拟赛-prefix/</id>
+    <published>2016-08-28T11:50:39.000Z</published>
+    <updated>2016-08-28T12:03:18.832Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>PCY 学生物学累了。突然看到地上有一本笔记本。<br>上面写着“ isdashagaydashisorisdashnot … ”之类的字眼,独具慧眼的他发现这些字符串中有着大<br>秘密!类似“ isdash ”这样的前缀在字符串中出现的次数不止一次!他觉得这其中一定有蹊跷,于是<br>开始一个一个数前缀出现的次数。<br>虽然他早已经从逐字符匹配转换到了多行同时匹配模式,但是这小小的练习本上几十万个字符还<br>是让他措手不及。你能帮助他吗?他想知道所有长度为偶数的前缀在整个字符串出现的次数和。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>共一行,一个字符串 s</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共一行,输出一个整数,代表长度为偶数的前缀在整个字符串出现的次数和。<br><a id="more"></a></p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><p>样例1</p>
+<blockquote>
+<p>abababc</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
+<p>isdashagayisdashagaydashisnotagaydashisnotagay</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>6</p>
+<p>30</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 30%的数据, |S| &lt;= 100 ,保证数据随机<br>对于 100%的数据, |S| &lt;= 200000<br>内存限制 256M ,时间限制 1s</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>KMP+DP，KMP是一个无比神奇的算法</p>
+<ol>
+<li>ORZ D.E.Knuth</li>
+<li>ORZ J.H.Morris</li>
+<li>ORZ V.R.Pratt</li>
+</ol>
+<p>这一题应用了经典kmp中<strong>前缀匹配后缀</strong>的思想。<br>考虑kmp中的next数组，next[i]实际上是使得s[1..k]=s[i-k+1..i]的最大k。<br>于是定义f[i]：s[1..i]中，对于一个<strong>偶数</strong>前缀[1..j]，使得[1..j]=[i-j+1..i]的所有j的个数。（就是与后缀匹配的偶数前缀的数量）<br>那么：<br>f[i]=f[next[i]]+1（i为偶数）<br>f[i]=f[next[i]]（i为奇数）<br>答案是sum(f[i])</p>
+<dir style="text-align:right"><a href="/2016/08/28/雅礼中学2015模拟赛-prefix/prefix.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>prefix.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	p,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">	s:ansistring;</div><div class="line">	n,i,j,ans:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	assign(input,<span class="string">'prefix.in'</span>);reset(input);</div><div class="line">	assign(output,<span class="string">'prefix.out'</span>);rewrite(output);</div><div class="line">	readln(s);n:=length(s);</div><div class="line">	p[<span class="number">1</span>]:=<span class="number">0</span>;j:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">while</span> (j&gt;<span class="number">0</span>) <span class="keyword">and</span> (s[j+<span class="number">1</span>]&lt;&gt;s[i]) <span class="keyword">do</span> j:=p[j];</div><div class="line">		<span class="keyword">if</span> s[j+<span class="number">1</span>]=s[i] <span class="keyword">then</span> inc(j);</div><div class="line">		p[i]:=j; </div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	ans:=<span class="number">0</span>;</div><div class="line">	fillchar(f,sizeof(f),<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">if</span> (i <span class="keyword">and</span> <span class="number">1</span>)=<span class="number">0</span> <span class="keyword">then</span> inc(f[i]);</div><div class="line">		inc(f[i],f[p[i]]);</div><div class="line">		inc(ans,f[i]);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">write</span>(ans);</div><div class="line">	close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;PCY 学生物学累了。突然看到地上有一本笔记本。&lt;br&gt;上面写着“ isdashagaydashisorisdashnot … ”之类的字眼,独具慧眼的他发现这些字符串中有着大&lt;br&gt;秘密!类似“ isdash ”这样的前缀在字符串中出现的次数不止一次!他觉得这其中一定有蹊跷,于是&lt;br&gt;开始一个一个数前缀出现的次数。&lt;br&gt;虽然他早已经从逐字符匹配转换到了多行同时匹配模式,但是这小小的练习本上几十万个字符还&lt;br&gt;是让他措手不及。你能帮助他吗?他想知道所有长度为偶数的前缀在整个字符串出现的次数和。&lt;/p&gt;
+&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;共一行,一个字符串 s&lt;/p&gt;
+&lt;h3 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h3&gt;&lt;p&gt;共一行,输出一个整数,代表长度为偶数的前缀在整个字符串出现的次数和。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="KMP" scheme="https://cothrax.github.io/tags/KMP/"/>
+    
+  </entry>
   
   <entry>
     <title>[JSOI2016] 提高1班 Day3 message</title>
@@ -51,9 +107,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="模式匹配" scheme="https://cothrax.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="模式匹配" scheme="https://cothrax.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
     
       <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
@@ -600,11 +656,11 @@
       <category term="Tinkering Note" scheme="https://cothrax.github.io/categories/Tinkering-Note/"/>
     
     
-      <category term="Hexo" scheme="https://cothrax.github.io/tags/Hexo/"/>
-    
       <category term="Bash" scheme="https://cothrax.github.io/tags/Bash/"/>
     
       <category term="Linux" scheme="https://cothrax.github.io/tags/Linux/"/>
+    
+      <category term="Hexo" scheme="https://cothrax.github.io/tags/Hexo/"/>
     
       <category term="Ubuntu" scheme="https://cothrax.github.io/tags/Ubuntu/"/>
     
@@ -764,13 +820,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="折半枚举" scheme="https://cothrax.github.io/tags/%E6%8A%98%E5%8D%8A%E6%9E%9A%E4%B8%BE/"/>
     
@@ -779,6 +833,8 @@
       <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -1040,13 +1096,13 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
@@ -1563,9 +1619,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
@@ -1661,13 +1717,13 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -1771,13 +1827,13 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="JSOI" scheme="https://cothrax.github.io/tags/JSOI/"/>
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
@@ -1854,68 +1910,6 @@
       <category term="二分图" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/"/>
     
       <category term="补图" scheme="https://cothrax.github.io/tags/%E8%A1%A5%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2048源码自定义</title>
-    <link href="https://cothrax.github.io/2016/08/16/2048%E6%BA%90%E7%A0%81%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
-    <id>https://cothrax.github.io/2016/08/16/2048源码自定义/</id>
-    <published>2016-08-16T00:35:51.000Z</published>
-    <updated>2016-08-16T03:00:23.803Z</updated>
-    
-    <content type="html"><![CDATA[<p>看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。<br>2048 js版的源码被托管在GitHub上：<a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="external">gabrielecirulli/2048</a>。<br>说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。</p>
-<h2 id="大概看一下"><a href="#大概看一下" class="headerlink" title="大概看一下"></a>大概看一下</h2><ol>
-<li>keyboard_input_manager.js：input事件</li>
-<li>html_actuator.js：处理交互界面，用dom更新html</li>
-<li>grid.js：格子</li>
-<li>tile.js：滑块对象</li>
-<li>local_storage_manager.js：本地缓存</li>
-<li>game_manager.js：主程序</li>
-<li>application.js：不知道是什么</li>
-<li>*_polyfill.js：各种polyfill<a id="more"></a>
-</li>
-</ol>
-<h2 id="自定义图片"><a href="#自定义图片" class="headerlink" title="自定义图片"></a>自定义图片</h2><h3 id="改CSS"><a href="#改CSS" class="headerlink" title="改CSS"></a>改CSS</h3><p>style里的css使用scss生成的，但我没学过，于是直接改main.css<br>找到.tile类<br>直接给对应的class加background<br>如.tile-2是方块2的style，加上：（<code>img/</code>在<code>style/</code>下，在里面放图片）<br><figure class="highlight"><figcaption><span>main.css</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background-image: url(./img/2.png);</div><div class="line">background-size:contain;</div></pre></td></tr></table></figure></p>
-<p>同理加.tile-4, .tile-8等<br>但这样会出现问题</p>
-<ol>
-<li>一个个改好烦</li>
-<li>大于2048时只有一个.tile-super类，没法改</li>
-</ol>
-<h3 id="改JS"><a href="#改JS" class="headerlink" title="改JS"></a>改JS</h3><p>在html_actuator.js下，可以找到<code>HTMLActuator.prototype.addTile</code>方法，可以看到其中是通过dom来创建div元素的，找到：<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">inner.textContent = tile.value;</div></pre></td></tr></table></figure></p>
-<p>滑块上的文字被设置为tile.value，就是滑块的数值。<br>把它注掉，然后给inner该css<br><figure class="highlight js"><figcaption><span>html_actuator.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//inner.textContent = tile.value;</span></div><div class="line">inner.style.backgroundSize = <span class="string">"contain"</span>;</div><div class="line">inner.style.backgroundImage = <span class="string">"url(./style/img/"</span>+tile.value+<span class="string">".jpg)"</span>;</div></pre></td></tr></table></figure></p>
-<p>这样value对应的图片就会被设置成滑块的背景，然后在img/下放好$2^k$.jpg，我借用一下黄学长的图包，就变成了这样：<br><img src="/2016/08/16/2048源码自定义/Screenshot.jpg" alt="Screenshot.jpg" title=""></p>
-<p>会发现图片平铺覆盖了一个格子，这是因为图片不是正方形的，ps剪一下就可以了。<br>另外注意图片是jpg还是png。</p>
-<h2 id="在Hexo中部署2048"><a href="#在Hexo中部署2048" class="headerlink" title="在Hexo中部署2048"></a>在Hexo中部署2048</h2><p>新建页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page <span class="string">"2048"</span></div></pre></td></tr></table></figure></p>
-<p>把源码拷到2048/下，在2048/index.md中插入iframe（我把原来的index.html重命名为frame.html避免冲突）<br><figure class="highlight html"><figcaption><span>index.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"./frame.html"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"1300"</span> <span class="attr">seamless</span>=<span class="string">"seamless"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>tag插件也提供了iframe支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% iframe ./frame.html %&#125;</div></pre></td></tr></table></figure></p>
-<p>我的two048：<a href="https://cothrax.github.io/2048">https://cothrax.github.io/2048</a></p>
-<h2 id="修改game-manager-js"><a href="#修改game-manager-js" class="headerlink" title="修改game_manager.js"></a>修改game_manager.js</h2><blockquote>
-<p>留个坑</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;看到好多神犇的Blog里都有2048，于是自己找源码玩一玩。&lt;br&gt;2048 js版的源码被托管在GitHub上：&lt;a href=&quot;https://github.com/gabrielecirulli/2048&quot;&gt;gabrielecirulli/2048&lt;/a&gt;。&lt;br&gt;说来话长，JavaScript是我的初恋，四年前在Codeacademy接触了前端编程，自此走上了一条不归路。然而打开源码包，看到一坨JS还是一脸懵。。。早忘干净啦。&lt;/p&gt;
-&lt;h2 id=&quot;大概看一下&quot;&gt;&lt;a href=&quot;#大概看一下&quot; class=&quot;headerlink&quot; title=&quot;大概看一下&quot;&gt;&lt;/a&gt;大概看一下&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;keyboard_input_manager.js：input事件&lt;/li&gt;
-&lt;li&gt;html_actuator.js：处理交互界面，用dom更新html&lt;/li&gt;
-&lt;li&gt;grid.js：格子&lt;/li&gt;
-&lt;li&gt;tile.js：滑块对象&lt;/li&gt;
-&lt;li&gt;local_storage_manager.js：本地缓存&lt;/li&gt;
-&lt;li&gt;game_manager.js：主程序&lt;/li&gt;
-&lt;li&gt;application.js：不知道是什么&lt;/li&gt;
-&lt;li&gt;*_polyfill.js：各种polyfill
-    
-    </summary>
-    
-      <category term="Tinkering Note" scheme="https://cothrax.github.io/categories/Tinkering-Note/"/>
-    
-    
-      <category term="JavaScript" scheme="https://cothrax.github.io/tags/JavaScript/"/>
-    
-      <category term="CSS" scheme="https://cothrax.github.io/tags/CSS/"/>
     
   </entry>
   
