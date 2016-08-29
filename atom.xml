@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-29T15:17:49.430Z</updated>
+  <updated>2016-08-29T15:18:59.134Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/29/JSOI2016-%E6%8F%90%E9%AB%981%E7%8F%AD-Day3-resistor/"/>
     <id>https://cothrax.github.io/2016/08/29/JSOI2016-提高1班-Day3-resistor/</id>
     <published>2016-08-29T14:53:54.000Z</published>
-    <updated>2016-08-29T15:17:49.430Z</updated>
+    <updated>2016-08-29T15:18:59.134Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>物理课上老师让小 w 测一个电路板的电阻,小 w 用欧姆表很快就得到了答案。但是,欧姆表巨大的误差是令小 w 无法容忍的,于是他决定用数学方法准确算出总电阻。<br>电路板一共有 N 个连接点,M 个电阻,小 w 需要算出 1 号连接点和 N 号连接点的总电阻。</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>多组数据,输入直到文件结束<br>每组数据第一行两个整数 N,M<br>接下来 M 行,每行三个非负整数 X,Y,R,表示电阻连接的两接点和阻值(X 与 Y 可能相等)。</p>
