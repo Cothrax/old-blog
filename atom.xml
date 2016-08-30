@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-08-30T02:03:54.890Z</updated>
+  <updated>2016-08-30T02:05:33.847Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/08/30/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-Day3/"/>
     <id>https://cothrax.github.io/2016/08/30/雅礼中学2015模拟赛-Day3/</id>
     <published>2016-08-30T01:25:20.000Z</published>
-    <updated>2016-08-30T02:03:54.890Z</updated>
+    <updated>2016-08-30T02:05:33.847Z</updated>
     
     <content type="html"><![CDATA[<table>
 <thead>
@@ -70,7 +70,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：<br><span>$a_0=1$</span><!-- Has MathJax --><br><span>$a_n=a_i+a_j$</span><!-- Has MathJax --> (n≥1;i,j在[0,n-1]内随机)<br>Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？<br>出于ta对整数的热爱，你只需要输出答案向下取整后的值</p>
+<h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：<br><span>$a_0=1$</span><!-- Has MathJax --><br><span>$a_n=a_i+a_j$</span><!-- Has MathJax --> (n≥1;i,j在[0,n-1]内随机)<br>Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？<br>出于ta对整数的热爱，你只需要输出答案向下取整后的值</p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>一个整数T，表示数据组数<br>每组数据一行，包括一个整数n</p>
 <h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数E(an)<br><a id="more"></a></p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
@@ -92,7 +92,7 @@
 <dir style="text-align:right"><a href="/2016/08/30/雅礼中学2015模拟赛-Day3/A.pas" title="复制代码">复制代码</a></dir>
 
 <figure class="highlight delphi"><figcaption><span>A.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> t,n:qword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'A.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'A.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(t);</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">read</span>(n);</div><div class="line">        writeln(n+<span class="number">1</span>);</div><div class="line">        t:=t-<span class="number">1</span>;</div><div class="line">    <span class="keyword">until</span> t=<span class="number">0</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>泡泡鱼是一条调皮的鱼，ta的家住在一片珊瑚礁上。在ta的眼里，这些珊瑚礁的形态可以脑补成一个n个节点，m条边的带权图，在海水的腐蚀下，这些珊瑚礁形成了许多的环，ta想考考你能不能找出这些环中，权值的平均值最小的环。泡泡鱼这么聪明，ta当然知道答案，调皮的ta对你说，如果你算错了，就要吃ta下的蛋。因为ta很调皮，ta把图变成了有向图，还有可能用无环图坑你。为代表你知道，你只需告诉ta最小的平均权值即可。</p>
+<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>泡泡鱼是一条调皮的鱼，ta的家住在一片珊瑚礁上。在ta的眼里，这些珊瑚礁的形态可以脑补成一个n个节点，m条边的带权图，在海水的腐蚀下，这些珊瑚礁形成了许多的环，ta想考考你能不能找出这些环中，权值的平均值最小的环。泡泡鱼这么聪明，ta当然知道答案，调皮的ta对你说，如果你算错了，就要吃ta下的蛋。因为ta很调皮，ta把图变成了有向图，还有可能用无环图坑你。为代表你知道，你只需告诉ta最小的平均权值即可。</p>
 <h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>共m+1行。<br>第1行，2个整数n和m，表示珊瑚礁的点数和边数。<br>第2~m+1行，每行3个正整数u，v，w，表示u与v之间有一条权值为w的有向边。</p>
 <h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>如果输入数据无环，输出”PaPaFish is laying egg!”。（不含引号）<br>否则输出一个浮点数ans， 表示所有环中，权值的平均值最小的环的平均权值。答案保留2位小数。<br><!--more--></p>
 <h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
@@ -106,6 +106,9 @@
 <dir style="text-align:right"><a href="/2016/08/30/雅礼中学2015模拟赛-Day3/B.pas" title="复制代码">复制代码</a></dir>
 
 <figure class="highlight delphi"><figcaption><span>B.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> eps=<span class="number">0.000000000001</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> f,t,next:int;w:double <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,f0,t0,w0:int;l,r,mid:double;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,cnt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    d:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> double;</div><div class="line">    inq:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f0,t0:int;w0:double)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].f:=f0;g[m].t:=t0;g[m].w:=w0;</div><div class="line">    g[m].next:=head[f0];head[f0]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spfa</span><span class="params">(x:double)</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> i,v,u,h,t:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(d,sizeof(d),<span class="number">0</span>);</div><div class="line">    fillchar(inq,sizeof(inq),true);</div><div class="line">    filldword(cnt,sizeof(cnt) <span class="keyword">shr</span> <span class="number">1</span>,<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> q[i]:=i;</div><div class="line">    h:=<span class="number">1</span>;t:=n+<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        v:=q[h];inq[v]:=false;</div><div class="line">        inc(h);<span class="keyword">if</span> h&gt;<span class="number">10010</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">        i:=head[v];</div><div class="line">        <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            u:=g[i].t;</div><div class="line">            <span class="keyword">if</span> d[u]&gt;d[v]+g[i].w-x <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                d[u]:=d[v]+g[i].w-x;</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> inq[u] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                    inq[u]:=true;q[t]:=u;</div><div class="line">                    inc(t);<span class="keyword">if</span> t&gt;<span class="number">10010</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">                    inc(cnt[u]);</div><div class="line">                    <span class="keyword">if</span> cnt[u]&gt;n <span class="keyword">then</span> <span class="keyword">exit</span>(true);</div><div class="line">                <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            i:=g[i].next;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    spfa:=false;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'B.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'B.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    l:=<span class="number">0</span>;r:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f0,t0);<span class="keyword">read</span>(w0);</div><div class="line">        r:=max(r,w0);</div><div class="line">        add(f0,t0,w0);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    r:=r+<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> spfa(r) <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">        <span class="keyword">write</span>(<span class="string">'PaPaFish is laying egg!'</span>);</div><div class="line">        halt;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">while</span> r-l&gt;<span class="number">0.0001</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r)/<span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> spfa(mid) <span class="keyword">then</span> r:=mid <span class="keyword">else</span> l:=mid;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(r:<span class="number">0</span>:<span class="number">2</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><blockquote>
+<p>还没写</p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -158,7 +161,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&quot;A&quot;&gt;&lt;a href=&quot;#A&quot; class=&quot;headerlink&quot; title=&quot;A&quot;&gt;&lt;/a&gt;A&lt;/h2&gt;&lt;p&gt;码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：&lt;br&gt;&lt;span&gt;$a_0=1$&lt;/span&gt;&lt;!-- Has MathJax --&gt;&lt;br&gt;&lt;span&gt;$a_n=a_i+a_j$&lt;/span&gt;&lt;!-- Has MathJax --&gt; (n≥1;i,j在[0,n-1]内随机)&lt;br&gt;Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？&lt;br&gt;出于ta对整数的热爱，你只需要输出答案向下取整后的值&lt;/p&gt;
+&lt;h1 id=&quot;A&quot;&gt;&lt;a href=&quot;#A&quot; class=&quot;headerlink&quot; title=&quot;A&quot;&gt;&lt;/a&gt;A&lt;/h1&gt;&lt;p&gt;码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：&lt;br&gt;&lt;span&gt;$a_0=1$&lt;/span&gt;&lt;!-- Has MathJax --&gt;&lt;br&gt;&lt;span&gt;$a_n=a_i+a_j$&lt;/span&gt;&lt;!-- Has MathJax --&gt; (n≥1;i,j在[0,n-1]内随机)&lt;br&gt;Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？&lt;br&gt;出于ta对整数的热爱，你只需要输出答案向下取整后的值&lt;/p&gt;
 &lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;一个整数T，表示数据组数&lt;br&gt;每组数据一行，包括一个整数n&lt;/p&gt;
 &lt;h3 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h3&gt;&lt;p&gt;一个整数E(an)&lt;br&gt;
     
@@ -168,6 +171,16 @@
     
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
   </entry>
   
@@ -715,9 +728,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="枚举" scheme="https://cothrax.github.io/tags/%E6%9E%9A%E4%B8%BE/"/>
-    
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="枚举" scheme="https://cothrax.github.io/tags/%E6%9E%9A%E4%B8%BE/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -1766,9 +1779,9 @@
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
       <category term="强连通分量" scheme="https://cothrax.github.io/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
