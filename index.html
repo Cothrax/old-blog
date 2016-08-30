@@ -79,6 +79,123 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/08/30/NOIP模拟赛-2014-3-15/" title="NOIP模拟赛 2014-3-15" itemprop="url">NOIP模拟赛 2014-3-15</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-30T11:59:14.000Z" itemprop="datePublished"> Published 2016-08-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <table>
+<thead>
+<tr>
+<th>题目名</th>
+<th>高级打字机</th>
+<th>不等数列</th>
+<th>经营与开发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>源文件</td>
+<td>type.cpp/c/pas</td>
+<td>num.cpp/c/pas</td>
+<td>exploit.cpp/c/pas</td>
+</tr>
+<tr>
+<td>输入文件</td>
+<td>type.in</td>
+<td>num.in</td>
+<td>exploit.in</td>
+</tr>
+<tr>
+<td>输出文件</td>
+<td>type.out</td>
+<td>num.out</td>
+<td>exploit.out</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>1000MS</td>
+<td>1000MS</td>
+<td>1000MS</td>
+</tr>
+<tr>
+<td>内存限制</td>
+<td>256MB</td>
+<td>256MB</td>
+<td>256MB</td>
+</tr>
+<tr>
+<td>测试点</td>
+<td>5+(5)</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>测试点分值</td>
+<td>20</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这套题来源于：<a href="http://hzwer.com/7602.html">http://hzwer.com/7602.html</a></p>
+</blockquote>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/08/30/NOIP模拟赛-2014-3-15/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/贪心/">贪心</a><a href="/tags/树结构/">树结构</a><a href="/tags/离线/">离线</a><a href="/tags/可持久化/">可持久化</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/08/30/雅礼中学2015模拟赛-Day3/" title="雅礼中学2015模拟赛 Day3" itemprop="url">雅礼中学2015模拟赛 Day3</a>
   </h1>
   <p class="article-author">By
@@ -730,76 +847,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/24/JSOI2016-提高2班-DP/" title="[JSOI2016] 提高2班 DP" itemprop="url">[JSOI2016] 提高2班 DP</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-24T05:30:36.000Z" itemprop="datePublished"> Published 2016-08-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="P1-飞扬的小鸟"><a href="#P1-飞扬的小鸟" class="headerlink" title="P1 飞扬的小鸟"></a>P1 飞扬的小鸟</h1><p>Flappy Bird 是一款风靡一时的休闲手机游戏。玩家需要不断控制点击手机屏幕的频率来调节小鸟的飞行高度，让小鸟顺利通过画面右方的管道缝隙。如果小鸟一不小心撞到了水管或者掉在地上的话，便宣告失败。<br><img src="/2016/08/24/JSOI2016-提高2班-DP/noip2014tgd1p3i1.jpg" alt="noip2014tgd1p3i1.jpg" title=""><br>为了简化问题，我们对游戏规则进行了简化和改编：</p>
-<ol>
-<li>游戏界面是一个长为 n，高为 m 的二维平面，其中有k 个管道（忽略管道的宽度）。</li>
-<li>小鸟始终在游戏界面内移动。小鸟从游戏界面最左边 任意整数高度位置出发，到达游戏界面最右边时，游戏完成。</li>
-<li>小鸟每个单位时间沿横坐标方向右移的距离为 1，竖直移动的距离由玩家控制。如果点击屏幕，小鸟就会上升一定高度 X，每个单位时间可以点击多次，效果叠加； 如果不点击屏幕，小鸟就会下降一定高度 Y。小鸟位于横坐标方向不同位置时，上 升的高度 X 和下降的高度 Y 可能互不相同。</li>
-<li>小鸟高度等于 0 或者小鸟碰到管道时，游戏失败。小鸟高度为 m 时，无法再上升。</li>
-</ol>
-<p>现在，请你判断是否可以完成游戏。如果可以，输出最少点击屏幕数；否则，输出小鸟最多可以通过多少个管道缝隙。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第 1 行有 3 个整数 n，m，k，分别表示游戏界面的长度，高度和水管的数量，每两个 整数之间用一个空格隔开；<br>接下来的 n 行，每行 2 个用一个空格隔开的整数 X 和 Y，依次表示在横坐标位置 0~n-1 上玩家点击屏幕后，小鸟在下一位置上升的高度 X，以及在这个位置上玩家不点击屏幕时， 小鸟在下一位置下降的高度 Y。<br>接下来 k 行，每行 3 个整数 P，L，H，每两个整数之间用一个空格隔开。每行表示一个管道，其中 P 表示管道的横坐标，L 表示此管道缝隙的下边沿高度为 L，H 表示管道缝隙上边沿的高度（输入数据保证 P 各不相同，但不保证按照大小顺序给出）。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共两行。<br>第一行，包含一个整数，如果可以成功完成游戏，则输出 1，否则输出 0。 第二行，包含一个整数，如果第一行为 1，则输出成功完成游戏需要最少点击屏幕数，否则，输出小鸟最多可以通过多少个管道缝隙。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/24/JSOI2016-提高2班-DP/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/背包/">背包</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -818,7 +865,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>33</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>34</sup></a></li>
 		  
 		
 		  
@@ -837,7 +884,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 11px;">BFS</a> <a href="/tags/Bash/" style="font-size: 11px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 19px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 19px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 11px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11px;">LCA</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 14px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 12px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11px;">倍增</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调队列/" style="font-size: 11px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/堆/" style="font-size: 11px;">堆</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/搜索/" style="font-size: 11px;">搜索</a> <a href="/tags/数学/" style="font-size: 13px;">数学</a> <a href="/tags/数据结构/" style="font-size: 17px;">数据结构</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最短路/" style="font-size: 11px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 11px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 13px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 11px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 11px;">状压DP</a> <a href="/tags/线性DP/" style="font-size: 11px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 11px;">组合数学</a> <a href="/tags/背包/" style="font-size: 12px;">背包</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 10px;">负环</a> <a href="/tags/贪心/" style="font-size: 13px;">贪心</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11px;">高精度</a>
+       <a href="/tags/BFS/" style="font-size: 10.91px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.91px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 11.82px;">DFS</a> <a href="/tags/DP/" style="font-size: 19.09px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 10.91px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.82px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 18.18px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 10.91px;">KMP</a> <a href="/tags/LCA/" style="font-size: 10.91px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.91px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15.45px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 13.64px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 11.82px;">位运算</a> <a href="/tags/倍增/" style="font-size: 10.91px;">倍增</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调队列/" style="font-size: 10.91px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/图论/" style="font-size: 17.27px;">图论</a> <a href="/tags/堆/" style="font-size: 10.91px;">堆</a> <a href="/tags/字符串/" style="font-size: 12.73px;">字符串</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 11.82px;">强连通分量</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/搜索/" style="font-size: 10.91px;">搜索</a> <a href="/tags/数学/" style="font-size: 12.73px;">数学</a> <a href="/tags/数据结构/" style="font-size: 16.36px;">数据结构</a> <a href="/tags/数论/" style="font-size: 11.82px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最短路/" style="font-size: 10.91px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.82px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.55px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.91px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 10.91px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 13.64px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 10.91px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 10.91px;">状压DP</a> <a href="/tags/离线/" style="font-size: 10px;">离线</a> <a href="/tags/线性DP/" style="font-size: 10.91px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 10.91px;">组合数学</a> <a href="/tags/背包/" style="font-size: 11.82px;">背包</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 10px;">负环</a> <a href="/tags/贪心/" style="font-size: 13.64px;">贪心</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 10.91px;">高精度</a>
     </div>
   </div>
 

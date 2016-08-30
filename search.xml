@@ -4,6 +4,148 @@
   
     
     <entry>
+      <title><![CDATA[NOIP模拟赛 2014-3-15]]></title>
+      <url>https://cothrax.github.io/2016/08/30/NOIP%E6%A8%A1%E6%8B%9F%E8%B5%9B-2014-3-15/</url>
+      <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>题目名</th>
+<th>高级打字机</th>
+<th>不等数列</th>
+<th>经营与开发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>源文件</td>
+<td>type.cpp/c/pas</td>
+<td>num.cpp/c/pas</td>
+<td>exploit.cpp/c/pas</td>
+</tr>
+<tr>
+<td>输入文件</td>
+<td>type.in</td>
+<td>num.in</td>
+<td>exploit.in</td>
+</tr>
+<tr>
+<td>输出文件</td>
+<td>type.out</td>
+<td>num.out</td>
+<td>exploit.out</td>
+</tr>
+<tr>
+<td>时间限制</td>
+<td>1000MS</td>
+<td>1000MS</td>
+<td>1000MS</td>
+</tr>
+<tr>
+<td>内存限制</td>
+<td>256MB</td>
+<td>256MB</td>
+<td>256MB</td>
+</tr>
+<tr>
+<td>测试点</td>
+<td>5+(5)</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>测试点分值</td>
+<td>20</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这套题来源于：<a href="http://hzwer.com/7602.html" target="_blank" rel="external">http://hzwer.com/7602.html</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Problem-1-高级打字机"><a href="#Problem-1-高级打字机" class="headerlink" title="Problem 1 高级打字机"></a>Problem 1 高级打字机</h1><p>早苗入手了最新的高级打字机。最新款自然有着与以往不同的功能，那就是它具备撤销功能，厉害吧。<br>请为这种高级打字机设计一个程序，支持如下3种操作：</p>
+<ol>
+<li>T x：在文章末尾打下一个小写字母x。(type操作)</li>
+<li>U x：撤销最后的x次修改操作。（Undo操作）<br>（注意Query操作并不算修改操作）</li>
+<li>Q x：询问当前文章中第x个字母并输出。（Query操作）</li>
+</ol>
+<p>文章一开始可以视为空串。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行：一个整数n，表示操作数量。<br>以下n行，每行一个命令。保证输入的命令合法。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>每行输出一个字母，表示Query操作的答案。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>7<br>T a<br>T b<br>T c<br>Q 2<br>U 2<br>T c<br>Q 2</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>b<br>c</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于40%的数据 n&lt;=200;<br>对于100%的数据 n&lt;=100000；保证Undo操作不会撤销Undo操作。<br>高级挑战<br>对于200%的数据 n&lt;=100000；Undo操作可以撤销Undo操作。<br>IOI挑战<br>必须使用在线算法完成该题。</p>
+<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>对于100%的数据，直接模拟就好了</p>
+<dir style="text-align:right"><a href="/2016/08/30/NOIP模拟赛-2014-3-15/type.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>type.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> char;</div><div class="line">	i,j,n,p:int;c,x:char;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	assign(input,<span class="string">'type.in'</span>);reset(input);</div><div class="line">	assign(output,<span class="string">'type.out'</span>);rewrite(output);</div><div class="line">	readln(n);</div><div class="line">	p:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">read</span>(c);<span class="keyword">read</span>(x);</div><div class="line">		<span class="keyword">case</span> c <span class="keyword">of</span> </div><div class="line">			<span class="string">'T'</span>:<span class="keyword">begin</span> inc(p);readln(a[p]) <span class="keyword">end</span>;</div><div class="line">			<span class="string">'U'</span>:<span class="keyword">begin</span> readln(j);dec(p,j) <span class="keyword">end</span>;</div><div class="line">			<span class="string">'Q'</span>:<span class="keyword">begin</span> readln(j);writeln(a[j]) <span class="keyword">end</span>;</div><div class="line">		<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>对于200%的数据，离线做，应用可持久化的版本树<br>对每次修改操作新建一个版本，用这些版本作为节点建树：（记本次操作为m）</p>
+<ol>
+<li>T c操作：m向m-1连一条边，边上标记字符c</li>
+<li>U x操作：m向m-x-1连一条边，边上标记’.’表示是U操作<br>然后开数组q记录查询操作。<br>然后从节点0开始dfs一遍就可以了。</li>
+</ol>
+<dir style="text-align:right"><a href="/2016/08/30/NOIP模拟赛-2014-3-15/type2.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>type2.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> </div><div class="line">	int=longint;</div><div class="line">	edge=<span class="keyword">record</span> f,t,next:int;c:char <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> edge;</div><div class="line">	head,cnt,l,r:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line">	q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">	ans:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> char;</div><div class="line">	n,m,k,i,j,sz:int;c,x:char;s:ansistring;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int;c:char)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">	inc(sz);</div><div class="line">	g[sz].f:=f;g[sz].t:=t;g[sz].c:=c;</div><div class="line">	g[sz].next:=head[f];head[f]:=sz;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">for</span> i:=l[v] <span class="keyword">to</span> r[v] <span class="keyword">do</span> ans[i]:=s[q[i,<span class="number">1</span>]];</div><div class="line">	i:=head[v];</div><div class="line">	<span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		u:=g[i].t;</div><div class="line">		<span class="keyword">if</span> g[i].c&lt;&gt;<span class="string">'.'</span> <span class="keyword">then</span> s:=s+g[i].c;</div><div class="line">		dfs(u);</div><div class="line">		<span class="keyword">if</span> g[i].c&lt;&gt;<span class="string">'.'</span> <span class="keyword">then</span> delete(s,length(s),<span class="number">1</span>);</div><div class="line">		i:=g[i].next;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	assign(input,<span class="string">'type.in'</span>);reset(input);</div><div class="line">	assign(output,<span class="string">'type.out'</span>);rewrite(output);</div><div class="line">	readln(n);</div><div class="line">	m:=<span class="number">0</span>;sz:=<span class="number">0</span>;k:=<span class="number">0</span>;</div><div class="line">	fillchar(head,sizeof(head),<span class="number">0</span>);</div><div class="line">	fillchar(q,sizeof(q),<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		<span class="keyword">read</span>(c);<span class="keyword">read</span>(x);</div><div class="line">		<span class="keyword">case</span> c <span class="keyword">of</span></div><div class="line">			<span class="string">'Q'</span>:<span class="keyword">begin</span> </div><div class="line">				inc(k);q[k,<span class="number">0</span>]:=m;readln(q[k,<span class="number">1</span>]) <span class="keyword">end</span>;</div><div class="line">			<span class="string">'T'</span>:<span class="keyword">begin</span> readln(x);inc(m);add(m-<span class="number">1</span>,m,x) <span class="keyword">end</span>;</div><div class="line">			<span class="string">'U'</span>:<span class="keyword">begin</span> readln(j);inc(m);add(m-j-<span class="number">1</span>,m,<span class="string">'.'</span>) <span class="keyword">end</span>;</div><div class="line">		<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	fillchar(cnt,sizeof(cnt),<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> inc(cnt[q[i,<span class="number">0</span>]]);</div><div class="line">	r[<span class="number">0</span>]:=<span class="number">0</span>;l[<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		l[i]:=r[i-<span class="number">1</span>]+<span class="number">1</span>;</div><div class="line">		r[i]:=l[i]+cnt[i]-<span class="number">1</span>;</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	dfs(<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> writeln(ans[i]);</div><div class="line">	close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="Problem-2-不等数列"><a href="#Problem-2-不等数列" class="headerlink" title="Problem 2 不等数列"></a>Problem 2 不等数列</h1><p>将1到n任意排列，然后在排列的每两个数之间根据他们的大小关系插入“<span>$&gt;$</span><!-- Has MathJax -->”和“<span>$&lt;$</span><!-- Has MathJax -->”。问在所有排列中，有多少个排列恰好有k个“<span>$&lt;$</span><!-- Has MathJax -->”。答案对2012取模。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行2个整数n,k。</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数表示答案。</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5 2</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>66</p>
+</blockquote>
+<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>对于30%的数据：<span>$n \leq 10$</span><!-- Has MathJax --><br>对于100%的数据：<span>$k &lt; n \leq 1000$</span><!-- Has MathJax --></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>DP就好了<br>记f[i,j]是1..i个数的所有排列中，有j个小于号的方案数。<br>考虑将数字i插入1..i-1的某个排列中，因为i比排列中的任何数都要大：</p>
+<ol>
+<li>插到头位置，会多一个大于号，由f[i-1,j]转移</li>
+<li>插到尾位置，会多一个小于号，由f[i-1,j-1]转移</li>
+<li>插到中间，一定会变成<span>$a_j&lt;i&gt;a_{j+1}$</span><!-- Has MathJax -->的形式<ol>
+<li>如果原来是小于，那么会多一个大于号，由f[i-1,j]转移，共j种</li>
+<li>如果原来是大于，会多一个小于号，有f[i-1,j-1]转移，共i-j-1种</li>
+</ol>
+</li>
+</ol>
+<p>合并后，方程为：$f[i,j]=f[i-1,j-1]\cdot (i-j)+f[i-1,j]\cdot (j+1)$</p>
+<dir style="text-align:right"><a href="/2016/08/30/NOIP模拟赛-2014-3-15/num.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>num.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	n,k,i,j:int;</div><div class="line">	f:<span class="keyword">array</span>[-<span class="number">1</span>..<span class="number">1010</span>,-<span class="number">1</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	assign(input,<span class="string">'num.in'</span>);reset(input);</div><div class="line">	assign(output,<span class="string">'num.out'</span>);rewrite(output);</div><div class="line">	<span class="keyword">read</span>(n,k);</div><div class="line">	f[<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">		<span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> i-<span class="number">1</span> <span class="keyword">do</span></div><div class="line">			f[i,j]:=(f[i-<span class="number">1</span>,j-<span class="number">1</span>]*(i-j)+f[i-<span class="number">1</span>,j]*(j+<span class="number">1</span>)) <span class="keyword">mod</span> <span class="number">2012</span>;</div><div class="line">	<span class="keyword">write</span>(f[n,k]);</div><div class="line">	close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="Problem-3-经营与开发"><a href="#Problem-3-经营与开发" class="headerlink" title="Problem 3 经营与开发"></a>Problem 3 经营与开发</h1><p>4X概念体系，是指在PC战略游戏中一种相当普及和成熟的系统概念，得名自4个同样以“EX”为开头的英语单词。<br>eXplore（探索）<br>eXpand（拓张与发展）<br>eXploit（经营与开发）<br>eXterminate（征服）<br>——维基百科</p>
+<p>今次我们着重考虑exploit部分，并将其模型简化：<br>你驾驶着一台带有钻头（初始能力值w）的飞船，按既定路线依次飞过n个星球。</p>
+<p>星球笼统的分为2类：资源型和维修型。（p为钻头当前能力值）</p>
+<ol>
+<li>资源型：含矿物质量a[i]，若选择开采，则得到a[i]*p的金钱，之后钻头损耗k%，即p=p*(1-0.01k)</li>
+<li>维修型：维护费用b[i]，若选择维修，则支付b[i]*p的金钱，之后钻头修复c%，即p=p*(1+0.01c)<br>注：维修后钻头的能力值可以超过初始值（你可以认为是翻修+升级）</li>
+</ol>
+<p>请作为舰长的你仔细抉择以最大化收入。</p>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行4个整数n,k,c,w。<br>以下n行，每行2个整数type,x。<br>type为1则代表其为资源型星球，x为其矿物质含量a[i]；<br>type为2则代表其为维修型星球，x为其维护费用b[i]；</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个实数（保留2位小数），表示最大的收入。</p>
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5 50 50 10<br>1 10<br>1 20<br>2 10<br>2 20<br>1 30</p>
+</blockquote>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>375.00</p>
+</blockquote>
+<h2 id="提示​-2"><a href="#提示​-2" class="headerlink" title="提示​"></a>提示​</h2><p>对于30%的数据 n&lt;=100<br>另有20%的数据 n&lt;=1000；k=100<br>对于100%的数据 n&lt;=100000; 0&lt;=k,c,w,a[i],b[i]&lt;=100；保证答案不超过10^9</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>首先很容易看出DP，然后想到变形背包，但问题在于费用的范围未知而且非整数。<br>这一题应用的<strong>反向处理+贪心状态表示</strong><br>首先可以忽略w，默认起始能力值为1，最后答案乘上w就可以了。<br>记f[i]第i个点能力值为1，<strong>i..n</strong>所能得到的最大收益<br>倒过来写转移：</p>
+<ol>
+<li>i为资源：$f[i]=max(f[i+1],f[i+1]*(1-k\%)+a[i])$</li>
+<li>i为维修：$f[i]=max(f[i+1],f[i+1]*(1+c\%)-b[i])$</li>
+</ol>
+<p>答案是$w\cdot f[1]$</p>
+<dir style="text-align:right"><a href="/2016/08/30/NOIP模拟赛-2014-3-15/exploit.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>exploit.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">	n,w,i:int;</div><div class="line">	k,c:double;</div><div class="line">	a,t:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line">	f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> double;</div><div class="line"><span class="keyword">begin</span></div><div class="line">	assign(input,<span class="string">'exploit.in'</span>);reset(input);</div><div class="line">	assign(output,<span class="string">'exploit.out'</span>);rewrite(output);</div><div class="line">	<span class="keyword">read</span>(n,k,c,w);</div><div class="line">	k:=(<span class="number">100</span>-k)/<span class="number">100</span>;c:=(<span class="number">100</span>+c)/<span class="number">100</span>;</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(t[i],a[i]);</div><div class="line">	f[n+<span class="number">1</span>]:=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> i:=n <span class="keyword">downto</span> <span class="number">1</span> <span class="keyword">do</span></div><div class="line">		<span class="keyword">if</span> t[i]=<span class="number">1</span> <span class="keyword">then</span> </div><div class="line">			f[i]:=max(f[i+<span class="number">1</span>],f[i+<span class="number">1</span>]*k+a[i])</div><div class="line">		<span class="keyword">else</span> </div><div class="line">			f[i]:=max(f[i+<span class="number">1</span>],f[i+<span class="number">1</span>]*c-a[i]);</div><div class="line">	<span class="keyword">write</span>(f[<span class="number">1</span>]*w:<span class="number">0</span>:<span class="number">2</span>);</div><div class="line">	close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[雅礼中学2015模拟赛 Day3]]></title>
       <url>https://cothrax.github.io/2016/08/30/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-Day3/</url>
       <content type="html"><![CDATA[<table>
