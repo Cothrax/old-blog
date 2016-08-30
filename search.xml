@@ -360,9 +360,9 @@
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于 30%的数据, |S| &lt;= 100 ,保证数据随机<br>对于 100%的数据, |S| &lt;= 200000<br>内存限制 256M ,时间限制 1s</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>KMP+DP，KMP是一个无比神奇的算法</p>
 <ol>
-<li>ORZ D.E.Knuth</li>
-<li>ORZ J.H.Morris</li>
-<li>ORZ V.R.Pratt</li>
+<li>orz D.E.Knuth</li>
+<li>orz J.H.Morris</li>
+<li>orz V.R.Pratt</li>
 </ol>
 <p>这一题应用了经典kmp中<strong>前缀匹配后缀</strong>的思想。<br>考虑kmp中的next数组，next[i]实际上是使得s[1..k]=s[i-k+1..i]的最大k。<br>于是定义f[i]：s[1..i]中，对于一个<strong>偶数</strong>前缀[1..j]，使得[1..j]=[i-j+1..i]的所有j的个数。（就是与后缀匹配的偶数前缀的数量）<br>那么：<br>f[i]=f[next[i]]+1（i为偶数）<br>f[i]=f[next[i]]（i为奇数）<br>答案是sum(f[i])</p>
 <dir style="text-align:right"><a href="/2016/08/28/雅礼中学2015模拟赛-prefix/prefix.pas" title="复制代码">复制代码</a></dir>
