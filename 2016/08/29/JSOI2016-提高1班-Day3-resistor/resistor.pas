@@ -39,7 +39,7 @@ begin
 		end;
 		f:=0;
 		for i:=1 to n do
-			if abs(g0[1,i])>eps then inc(f,g[i,n+1]*g0[1,i]);
+			if abs(g0[n,i])>eps then inc(f,g[i,n+1]*g0[n,i]);
 		writeln(round(abs(1/f)*100)/100:0:2);
 	end;
 	close(input);close(output);
