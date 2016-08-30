@@ -63,14 +63,13 @@
 <blockquote>
 <p>这套题来源于：<a href="http://hzwer.com/7602.html" target="_blank" rel="external">http://hzwer.com/7602.html</a></p>
 </blockquote>
-<a id="more"></a>
 <h1 id="Problem-1-高级打字机"><a href="#Problem-1-高级打字机" class="headerlink" title="Problem 1 高级打字机"></a>Problem 1 高级打字机</h1><p>早苗入手了最新的高级打字机。最新款自然有着与以往不同的功能，那就是它具备撤销功能，厉害吧。<br>请为这种高级打字机设计一个程序，支持如下3种操作：</p>
 <ol>
 <li>T x：在文章末尾打下一个小写字母x。(type操作)</li>
 <li>U x：撤销最后的x次修改操作。（Undo操作）<br>（注意Query操作并不算修改操作）</li>
 <li>Q x：询问当前文章中第x个字母并输出。（Query操作）</li>
 </ol>
-<p>文章一开始可以视为空串。</p>
+<p>文章一开始可以视为空串。<br><a id="more"></a></p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行：一个整数n，表示操作数量。<br>以下n行，每行一个命令。保证输入的命令合法。</p>
 <h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>每行输出一个字母，表示Query操作的答案。</p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
