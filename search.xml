@@ -79,7 +79,7 @@
 <h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
 <p>7</p>
 </blockquote>
-<p>##提示<br>【样例说明】<br>第一队妹子取2，3。<br>第二队妹子取0，1。<br>第三队妹子取1。</p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【样例说明】<br>第一队妹子取2，3。<br>第二队妹子取0，1。<br>第三队妹子取1。</p>
 <p>【数据范围】<br>请大家放心，虽然chenzeyu97妹子无数，但是这次他叫来的个数n是有限的。=v=<br>对于30%的数据，妹子数不大于200。<br>对于60%的数据，妹子数不大于2000。<br>对于100%的数据，妹子数1000000。<br>而且，由于chenzeyu97没有CCR那样的影响力，所以他的妹子选完的最大美丽度和不超过maxlongint。</p>
 <h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>dp就好，f[i,j] 1..j的mz分i组的最大和，sum[i]前缀和<br><span>$f[i,j]=max\{f[i-1,k]+sum[j]-sum[k]\}$</span><!-- Has MathJax --></p>
 <p>每次计算完f[i]，此时f[i,j]指的是第i段数<strong>以a[j]结尾</strong>的最大和，于是还要2..n扫一遍：<br><span>$f[i,j]=max(f[i,j],f[i,j-1])$</span><!-- Has MathJax --></p>
@@ -107,7 +107,7 @@
 <blockquote>
 <p>-1</p>
 </blockquote>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【数据规模】<br>对于50%的数据，1≤N≤20，1≤k≤5，1≤m≤3;<br>对于另外20%的数据，1≤N≤10000，1≤k≤5,1≤m≤30;<br>对于100%的数据，1≤N≤10000，1≤k≤10，1≤m≤100。</p>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>【数据规模】<br>对于50%的数据，1≤N≤20，1≤k≤5，1≤m≤3;<br>对于另外20%的数据，1≤N≤10000，1≤k≤5,1≤m≤30;<br>对于100%的数据，1≤N≤10000，1≤k≤10，1≤m≤100。</p>
 <h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>第一眼看成反转问题，贪心想了好久没有结果。其实是<strong>差分序列+图论建模+bfs+状压DP</strong><br>先把目标序列a变成模2意义下的差分序列b。<br>差分序列b中的元素1最多2k个。题目变成了<strong>把b中的所有元素全变成0的最小操作数</strong><br>每次操作相当于把b[i]和b[size[j]+i]取反：</p>
 <ol>
 <li>当两个值都是0时，这个操作是多余的</li>
