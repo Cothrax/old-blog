@@ -1,0 +1,718 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>欢乐赛 2014-5-31 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="题目名称
+水灾
+某种数列问题
+密码锁
+
+
+
+
+源文件
+sliker.cpp/c/pas
+jx.cpp/c/pas
+password.cpp/c/pas
+
+
+输入文件
+sliker.in
+jx.in
+password.in
+
+
+输出文件
+sliker.out
+jx.out
+password.out
+
+
+
+
+来源：hzwer.com
+
+P1 水灾大雨应经下了几天雨，却还是没有停的样子。土豪CCY">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欢乐赛 2014-5-31">
+<meta property="og:url" content="https://cothrax.github.io/2016/09/04/欢乐赛-2014-5-31/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="题目名称
+水灾
+某种数列问题
+密码锁
+
+
+
+
+源文件
+sliker.cpp/c/pas
+jx.cpp/c/pas
+password.cpp/c/pas
+
+
+输入文件
+sliker.in
+jx.in
+password.in
+
+
+输出文件
+sliker.out
+jx.out
+password.out
+
+
+
+
+来源：hzwer.com
+
+P1 水灾大雨应经下了几天雨，却还是没有停的样子。土豪CCY">
+<meta property="og:updated_time" content="2016-09-04T04:33:29.612Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="欢乐赛 2014-5-31">
+<meta name="twitter:description" content="题目名称
+水灾
+某种数列问题
+密码锁
+
+
+
+
+源文件
+sliker.cpp/c/pas
+jx.cpp/c/pas
+password.cpp/c/pas
+
+
+输入文件
+sliker.in
+jx.in
+password.in
+
+
+输出文件
+sliker.out
+jx.out
+password.out
+
+
+
+
+来源：hzwer.com
+
+P1 水灾大雨应经下了几天雨，却还是没有停的样子。土豪CCY">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/04/欢乐赛-2014-5-31/" title="欢乐赛 2014-5-31" itemprop="url">欢乐赛 2014-5-31</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-04T03:45:17.000Z" itemprop="datePublished"> Published 2016-09-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-水灾"><span class="toc-number">1.</span> <span class="toc-text">P1 水灾</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.3.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-某种数列问题"><span class="toc-number">2.</span> <span class="toc-text">P2 某种数列问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.3.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-密码锁"><span class="toc-number">3.</span> <span class="toc-text">P2 密码锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">3.3.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<table>
+<thead>
+<tr>
+<th style="text-align:center">题目名称</th>
+<th style="text-align:center">水灾</th>
+<th style="text-align:center">某种数列问题</th>
+<th style="text-align:center">密码锁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">源文件</td>
+<td style="text-align:center">sliker.cpp/c/pas</td>
+<td style="text-align:center">jx.cpp/c/pas</td>
+<td style="text-align:center">password.cpp/c/pas</td>
+</tr>
+<tr>
+<td style="text-align:center">输入文件</td>
+<td style="text-align:center">sliker.in</td>
+<td style="text-align:center">jx.in</td>
+<td style="text-align:center">password.in</td>
+</tr>
+<tr>
+<td style="text-align:center">输出文件</td>
+<td style="text-align:center">sliker.out</td>
+<td style="text-align:center">jx.out</td>
+<td style="text-align:center">password.out</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>来源：hzwer.com</p>
+</blockquote>
+<h1 id="P1-水灾"><a href="#P1-水灾" class="headerlink" title="P1 水灾"></a>P1 水灾</h1><p>大雨应经下了几天雨，却还是没有停的样子。土豪CCY刚从外地赚完1e元回来，知道不久除了自己别墅，其他的地方都将会被洪水淹没。<br>CCY所在的城市可以用一个N*M(N,M&lt;=50)的地图表示，地图上有五种符号：“. * X D S”。其中“X”表示石头，水和人都不能从上面经过。“.”表示平原，CCY和洪水都可以经过。“*”表示洪水开始地方（可能有多个地方开始发生洪水）。“D”表示CCY的别墅。“S”表示CCY现在的位置。<br>CCY每分钟可以向相邻位置移动，而洪水将会在CCY移动之后把相邻的没有的土地淹没（从已淹没的土地）。<br>求CCY回到别墅的最少时间。如果聪哥回不了家，就很可能会被淹死，那么他就要膜拜黄金大神涨RP来呼叫直升飞机，所以输出“ORZ hzwer!!!”。<br><a id="more"></a></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件 sliker.in </p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出文件 sliker.out</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><p>样例1</p>
+<blockquote>
+<p>3 3<br>D.*<br>…<br>.S.</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
+<p>3 3<br>D.*<br>…<br>..S</p>
+</blockquote>
+<p>样例3</p>
+<blockquote>
+<p>3 6<br>D…*.<br>.X.X..<br>….S.</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>样例1</p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
+<p>ORZ hzwer!!!</p>
+</blockquote>
+<p>样例3</p>
+<blockquote>
+<p>6</p>
+</blockquote>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>比洪水到达时间早就可以走，bfs两次就可以了。<br>审题：洪水不能通过别墅D</p>
+<dir style="text-align:right"><a href="/2016/09/04/欢乐赛-2014-5-31/sliker.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>sliker.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">51</span>,<span class="number">0</span>..<span class="number">51</span>] <span class="keyword">of</span> int;</div><div class="line"><span class="keyword">const</span> </div><div class="line">    dir:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">3</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int=((<span class="number">0</span>,<span class="number">1</span>),(<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,-<span class="number">1</span>),(-<span class="number">1</span>,<span class="number">0</span>));</div><div class="line">    inf=<span class="number">100000000</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    map:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">51</span>,<span class="number">0</span>..<span class="number">51</span>] <span class="keyword">of</span> char;</div><div class="line">    s:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2510</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,k,i,j,sx,sy,tx,ty:int;</div><div class="line">    f,d:arr;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">bfs</span><span class="params">(sx,sy:int;<span class="keyword">var</span> d:arr;b:boolean)</span>;</span></div><div class="line"><span class="keyword">var</span> </div><div class="line">    h,t,i,nx,ny,x,y:int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2510</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    used:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">51</span>,<span class="number">0</span>..<span class="number">51</span>] <span class="keyword">of</span> boolean;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(used,sizeof(used),false);</div><div class="line">    h:=<span class="number">0</span>;t:=<span class="number">1</span>;</div><div class="line">    q[h,<span class="number">0</span>]:=sx;q[h,<span class="number">1</span>]:=sy;</div><div class="line">    d[sx,sy]:=<span class="number">0</span>;used[sx,sy]:=true;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        x:=q[h,<span class="number">0</span>];y:=q[h,<span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            nx:=q[h,<span class="number">0</span>]+dir[i,<span class="number">0</span>];ny:=q[h,<span class="number">1</span>]+dir[i,<span class="number">1</span>];</div><div class="line">            <span class="keyword">if</span> (nx&lt;<span class="number">1</span>) <span class="keyword">or</span>(nx&gt;n) <span class="keyword">or</span> (ny&lt;<span class="number">1</span>) <span class="keyword">or</span> (ny&gt;m) <span class="keyword">then</span> continue;</div><div class="line">            <span class="keyword">if</span> used[nx,ny] <span class="keyword">or</span> (map[nx,ny]=<span class="string">'X'</span>) <span class="keyword">then</span> continue;</div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> b <span class="keyword">and</span> (map[nx,ny]=<span class="string">'D'</span>) <span class="keyword">then</span> continue;</div><div class="line">            used[nx,ny]:=true;</div><div class="line">            d[nx,ny]:=min(d[nx,ny],d[x,y]+<span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> b <span class="keyword">and</span> (d[nx,ny]&gt;=f[nx,ny]) <span class="keyword">then</span> continue;</div><div class="line">            q[t,<span class="number">0</span>]:=nx;q[t,<span class="number">1</span>]:=ny;inc(t);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        inc(h);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'sliker.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'sliker.out'</span>);rewrite(output);</div><div class="line">    readln(n,m);k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">read</span>(map[i,j]);</div><div class="line">            <span class="keyword">case</span> map[i,j] <span class="keyword">of</span> </div><div class="line">                <span class="string">'S'</span>:<span class="keyword">begin</span> sx:=i;sy:=j <span class="keyword">end</span>;</div><div class="line">                <span class="string">'D'</span>:<span class="keyword">begin</span> tx:=i;ty:=j <span class="keyword">end</span>;</div><div class="line">                <span class="string">'*'</span>:<span class="keyword">begin</span> inc(k);s[k,<span class="number">0</span>]:=i;s[k,<span class="number">1</span>]:=j <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">if</span> j=m <span class="keyword">then</span> readln;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> bfs(s[i,<span class="number">0</span>],s[i,<span class="number">1</span>],f,false);</div><div class="line">    filldword(d,sizeof(d) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    bfs(sx,sy,d,true);</div><div class="line">    <span class="keyword">if</span> d[tx,ty]&lt;&gt;inf <span class="keyword">then</span> <span class="keyword">write</span>(d[tx,ty])</div><div class="line">    <span class="keyword">else</span> <span class="keyword">write</span>(<span class="string">'ORZ hzwer!!!'</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-某种数列问题"><a href="#P2-某种数列问题" class="headerlink" title="P2 某种数列问题"></a>P2 某种数列问题</h1><p>众所周知，chenzeyu97有无数的妹子(阿掉！&gt;_&lt;)，而且他还有很多恶趣味的问题，继上次纠结于一排妹子的排法以后，今天他有非(chi)常(bao)认(cheng)真(zhe)去研究一个奇怪的问题。有一堆他的妹子站成一排，然后对于每个妹子有一个美丽度，当然美丽度越大越好，chenzeyu97妹子很多，但是质量上不容乐观，经常出现很多美丽度为负数的妹子(喜闻乐见)，chenzeyu97希望从一排妹子里找出3队连续的妹子，使她们的美丽度和最大。注意，一个妹子不能被编入多个队伍而且一定要拿出三队，不然czy会闲着没事做~。<br>简单滴说就是：<br>给定一个数列，从中找到3个无交集的连续子数列使其和最大。</p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行一个数n，表示数列长度。<br>接下来有n行，每行一个数，第i行为第i个数。</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>仅有一个数，表示最大和。<br><!--more--></p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>10<br>-1<br>2<br>3<br>-4<br>0<br>1<br>-6<br>-1<br>1<br>-2</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>7</p>
+</blockquote>
+<p>##提示<br>【样例说明】<br>第一队妹子取2，3。<br>第二队妹子取0，1。<br>第三队妹子取1。</p>
+<p>【数据范围】<br>请大家放心，虽然chenzeyu97妹子无数，但是这次他叫来的个数n是有限的。=v=<br>对于30%的数据，妹子数不大于200。<br>对于60%的数据，妹子数不大于2000。<br>对于100%的数据，妹子数1000000。<br>而且，由于chenzeyu97没有CCR那样的影响力，所以他的妹子选完的最大美丽度和不超过maxlongint。</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>dp就好，f[i,j] 1..j的mz分i组的最大和，sum[i]前缀和<br><span>$f[i,j]=max\{f[i-1,k]+sum[j]-sum[k]\}$</span><!-- Has MathJax --></p>
+<p>每次计算完f[i]，此时f[i,j]指的是第i段数<strong>以a[j]结尾</strong>的最大和，于是还要2..n扫一遍：<br><span>$f[i,j]=max(f[i,j],f[i,j-1])$</span><!-- Has MathJax --></p>
+<p>复杂度$O(3N^2)$，尝试优化，我们变形一下：<br><span>$f[i,j]=max\{f[i-1,k]-sum[k]\}+sum[j]$</span><!-- Has MathJax --></p>
+<p>然后用<strong>单调栈</strong>维护即可。<br>此外注意一下端点。</p>
+<dir style="text-align:right"><a href="/2016/09/04/欢乐赛-2014-5-31/jx.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>jx.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    n,i,j,t:int;</div><div class="line">    sum,s:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000010</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000010</span>,<span class="number">0</span>..<span class="number">3</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">push</span><span class="params">(x:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">while</span> (t&gt;<span class="number">0</span>) <span class="keyword">and</span> (s[t]&lt;=x) <span class="keyword">do</span> dec(t);</div><div class="line">    inc(t);s[t]:=x;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'jx.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'jx.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    sum[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j);</div><div class="line">        sum[i]:=sum[i-<span class="number">1</span>]+j;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//f[i,j]=max(f[k,j-1]-sum[k])+sum[i]</span></div><div class="line">    f[<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        t:=<span class="number">0</span>;</div><div class="line">        push(f[i-<span class="number">1</span>,i-<span class="number">1</span>]-sum[i-<span class="number">1</span>]);</div><div class="line">        <span class="keyword">for</span> j:=i <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[j,i]:=s[<span class="number">1</span>]+sum[j];</div><div class="line">            push(f[j,i-<span class="number">1</span>]-sum[j]);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">            f[j,i]:=max(f[j,i],f[j-<span class="number">1</span>,i]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(f[n,<span class="number">3</span>]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<h1 id="P2-密码锁"><a href="#P2-密码锁" class="headerlink" title="P2 密码锁"></a>P2 密码锁</h1><p>hzwer有一把密码锁，由N个开关组成。一开始的时候，所有开关都是关上的。当且仅当开关x1,x2,x3,…xk为开，其他开关为关时，密码锁才会打开。<br>他可以进行M种的操作，每种操作有一个size[i]，表示，假如他选择了第i种的操作的话，他可以任意选择连续的size[i]个格子，把它们全部取反。（注意，由于黄金大神非常的神，所以操作次数可以无限&gt;_&lt;）<br>本来这是一个无关紧要的问题，但是，黄金大神不小心他的钱丢进去了，没有的钱他哪里能逃过被chenzeyu97 NTR的命运？&gt;_&lt;  于是，他为了虐爆czy，也为了去泡更多的妹子，决定打开这把锁。但是他那么神的人根本不屑这种”水题”。于是，他找到了你。<br>你的任务很简单，求出最少需要多少步才能打开密码锁，或者如果无解的话，请输出-1。</p>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行，三个正整数N，K，M，如题目所述。<br>第2行，K个正整数，表示开关x1,x2,x3..xk必须为开，保证x两两不同。<br>第三行，M个正整数，表示size[i]，size[]可能有重复元素。</p>
+<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出答案，无解输出-1。<br><!--more--></p>
+<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><p>样例1</p>
+<blockquote>
+<p>10 8 2<br>1 2 3 5 6 7 8 9<br>3 5</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
+<p>3 2 1<br>1 2<br>3</p>
+</blockquote>
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><p>样例1</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p>样例2</p>
+<blockquote>
+<p>-1</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>【数据规模】<br>对于50%的数据，1≤N≤20，1≤k≤5，1≤m≤3;<br>对于另外20%的数据，1≤N≤10000，1≤k≤5,1≤m≤30;<br>对于100%的数据，1≤N≤10000，1≤k≤10，1≤m≤100。</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>第一眼看成反转问题，贪心想了好久没有结果。其实是<strong>差分序列+图论建模+bfs+状压DP</strong><br>先把目标序列a变成模2意义下的差分序列b。<br>差分序列b中的元素1最多2k个。题目变成了<strong>把b中的所有元素全变成0的最小操作数</strong><br>每次操作相当于把b[i]和b[size[j]+i]取反：</p>
+<ol>
+<li>当两个值都是0时，这个操作是多余的</li>
+<li>有一个0，一个1时，相当于把1移到0所在的位置</li>
+<li>两个都是1时，相当于两个元素1匹配，抵消了。</li>
+</ol>
+<p>所以b中的所有元素1都要<strong>两两匹配</strong>，把所有元素1作为顶点建图，边权可以用bfs计算出来（g[i,j]=把i移到j的最小操作数）。<br>然后题目就抽象为<strong>一个完全图上的最小权匹配</strong>。<br>因为<strong>顶点数2k≤20</strong>，可以状压DP解决：</p>
+<span>$f[S]=min\{f[S-lowbit-j]+g[lowbit,j]\ \ |\ \ j\ \in\ S-lowbit\}$</span><!-- Has MathJax -->
+<p>当然闲的蛋疼可以写带花树。</p>
+<dir style="text-align:right"><a href="/2016/09/04/欢乐赛-2014-5-31/password.pas" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight delphi"><figcaption><span>password.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span></div><div class="line">    inf=<span class="number">100000000</span>;</div><div class="line">    maxn=<span class="number">1</span> <span class="keyword">shl</span> <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,k,m,i,j,sz,ans:int;</div><div class="line">    a,b:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    s:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">21</span>,<span class="number">0</span>..<span class="number">21</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..maxn+<span class="number">10</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">bfs</span><span class="params">(x:int)</span>;</span></div><div class="line"><span class="keyword">var</span> </div><div class="line">    h,t,i,v,u:int;</div><div class="line">    q,d:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    filldword(d,sizeof(d) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    h:=<span class="number">1</span>;t:=<span class="number">2</span>;d[x]:=<span class="number">0</span>;q[h]:=x;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        v:=q[h];</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> </div><div class="line">            <span class="keyword">for</span> j:=-<span class="number">1</span> <span class="keyword">to</span> <span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                u:=v+s[i]*j;</div><div class="line">                <span class="keyword">if</span> (u&lt;<span class="number">1</span>) <span class="keyword">or</span> (u&gt;n) <span class="keyword">then</span> continue;</div><div class="line">                <span class="keyword">if</span> d[u]&lt;&gt;inf <span class="keyword">then</span> continue;</div><div class="line">                d[u]:=d[v]+<span class="number">1</span>;q[t]:=u;</div><div class="line">                inc(t);<span class="keyword">if</span> t&gt;<span class="number">10010</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        inc(h);<span class="keyword">if</span> h&gt;<span class="number">10010</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> b[i]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span></div><div class="line">            g[b[x],b[i]]:=d[i];</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dp</span><span class="params">(s:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> x,li,i,lj,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> s=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(<span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> f[s]&lt;&gt;-<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">exit</span>(f[s]);</div><div class="line">    f[s]:=inf;</div><div class="line">    li:=s <span class="keyword">and</span> (-s);</div><div class="line">    i:=round(ln(li)/ln(<span class="number">2</span>)+<span class="number">1</span>);</div><div class="line">    x:=s-li;</div><div class="line">    <span class="keyword">while</span> x&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        lj:=x <span class="keyword">and</span> (-x);</div><div class="line">        j:=round(ln(lj)/ln(<span class="number">2</span>)+<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> g[i,j]&lt;&gt;inf <span class="keyword">then</span></div><div class="line">            f[s]:=min(f[s],dp(s-li-lj)+g[i,j]);</div><div class="line">        dec(x,lj);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">exit</span>(f[s]);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'password.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'password.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,k,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j);</div><div class="line">        a[j]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(s[i]);</div><div class="line">    inc(n);sz:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=n <span class="keyword">downto</span> <span class="number">1</span> <span class="keyword">do</span> b[i]:=a[i] xor a[i-<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> b[i]=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            inc(sz);b[i]:=sz;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> b[i]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> bfs(i);</div><div class="line">    <span class="comment">//f[S]=min&#123;f[S-lowbit-(1 shl j)]+d[lb,j]&#125;</span></div><div class="line">    fillchar(f,sizeof(f),<span class="number">255</span>);</div><div class="line">    ans:=dp(<span class="number">1</span> <span class="keyword">shl</span> sz-<span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> ans=inf <span class="keyword">then</span> <span class="keyword">write</span>(-<span class="number">1</span>) <span class="keyword">else</span> <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/BFS/">BFS</a><a href="/tags/图论/">图论</a><a href="/tags/状压DP/">状压DP</a><a href="/tags/搜索/">搜索</a><a href="/tags/单调栈/">单调栈</a><a href="/tags/差分序列/">差分序列</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/09/04/欢乐赛-2014-5-31/" data-title="欢乐赛 2014-5-31 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/09/03/NOIP模拟赛-2014-5-24/"  title="NOIP模拟赛 2014-5-24">
+ <strong>下一篇：</strong><br/> 
+ <span>NOIP模拟赛 2014-5-24
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-水灾"><span class="toc-number">1.</span> <span class="toc-text">P1 水灾</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.3.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-某种数列问题"><span class="toc-number">2.</span> <span class="toc-text">P2 某种数列问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.3.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-密码锁"><span class="toc-number">3.</span> <span class="toc-text">P2 密码锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-2"><span class="toc-number">3.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-2"><span class="toc-number">3.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-2"><span class="toc-number">3.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">3.3.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-2"><span class="toc-number">3.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>39</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 12px;">BFS</a> <a href="/tags/Bash/" style="font-size: 11px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 19px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 18px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 11px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11px;">LCA</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 14px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 12px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11px;">倍增</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 10px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 12px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/堆/" style="font-size: 11px;">堆</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分序列/" style="font-size: 12px;">差分序列</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10px;">拆点</a> <a href="/tags/搜索/" style="font-size: 12px;">搜索</a> <a href="/tags/数学/" style="font-size: 13px;">数学</a> <a href="/tags/数据结构/" style="font-size: 17px;">数据结构</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最短路/" style="font-size: 12px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 11px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 11px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 12px;">状压DP</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/离线/" style="font-size: 11px;">离线</a> <a href="/tags/线性DP/" style="font-size: 11px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 11px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 11px;">组合数学</a> <a href="/tags/背包/" style="font-size: 12px;">背包</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 11px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11px;">高精度</a>
+    </div>
+  </div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+            
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a> | <a href="/sitemap.xml">Sitemap</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
