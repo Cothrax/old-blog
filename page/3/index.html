@@ -79,6 +79,72 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/08/21/Bash对拍和数据生成/" title="Bash对拍和数据生成" itemprop="url">Bash对拍和数据生成</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-21T14:32:04.000Z" itemprop="datePublished"> Published 2016-08-21</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>NOIP2016在即，学习一下Linux下对拍脚本的编写以及数据生成的技巧。</p>
+<h2 id="Bash对拍脚本"><a href="#Bash对拍脚本" class="headerlink" title="Bash对拍脚本"></a>Bash对拍脚本</h2><p>先把dash关掉防止脚本报<code>Syntax error: Bad for loop variable</code>的错误<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg-reconfigure dash</div></pre></td></tr></table></figure></p>
+<p>在弹出的选项中选NO即可。<br>然后可以开始写脚本了，name是程序的名字xxx，<code>xxx_gen</code>是数据生成器，<code>xxx_che</code>是暴力程序，对于每一道题改一下name变量值即可。</p>
+<dir style="text-align:right"><a href="/2016/08/21/Bash对拍和数据生成/check.sh" title="复制代码">复制代码</a></dir>
+
+<figure class="highlight bash"><figcaption><span>check.sh</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">name=<span class="string">"test"</span>                         <span class="comment">#程序名</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> ((;1;))                         <span class="comment">#死循环</span></div><div class="line"><span class="keyword">do</span></div><div class="line">    ./<span class="variable">$&#123;name&#125;</span>_gen                   <span class="comment">#数据生成器</span></div><div class="line">    ./<span class="variable">$&#123;name&#125;</span>_che                   <span class="comment">#暴力程序</span></div><div class="line">    ./<span class="variable">$&#123;name&#125;</span>                       <span class="comment">#程序</span></div><div class="line">    diff <span class="variable">$&#123;name&#125;</span>.out <span class="variable">$&#123;name&#125;</span>.ans    <span class="comment">#比较</span></div><div class="line">    <span class="keyword">if</span> [ $? <span class="_">-ne</span> <span class="string">"0"</span> ]; <span class="keyword">then</span>         <span class="comment">#如果diff的输出$?和"0"不等</span></div><div class="line">        <span class="built_in">echo</span> <span class="string">"fail"</span></div><div class="line">        <span class="built_in">exit</span>                        <span class="comment">#退出</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">echo</span> <span class="string">"pass"</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/08/21/Bash对拍和数据生成/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tinkering-Note/">Tinkering Note</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/Bash/">Bash</a><a href="/tags/Linux/">Linux</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/08/21/JSOI2016-提高1班-Day5/" title="[JSOI2016] 提高1班 Day5" itemprop="url">[JSOI2016] 提高1班 Day5</a>
   </h1>
   <p class="article-author">By
@@ -115,7 +181,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/数论/">数论</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/乘法逆元/">乘法逆元</a><a href="/tags/组合数学/">组合数学</a><a href="/tags/概率期望/">概率期望</a><a href="/tags/倍增/">倍增</a><a href="/tags/LCA/">LCA</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/数论/">数论</a><a href="/tags/乘法逆元/">乘法逆元</a><a href="/tags/组合数学/">组合数学</a><a href="/tags/概率期望/">概率期望</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/倍增/">倍增</a><a href="/tags/LCA/">LCA</a>
   </div>
 
 </div>
@@ -178,7 +244,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a><a href="/tags/数据结构/">数据结构</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a>
   </div>
 
 </div>
@@ -327,7 +393,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/背包/">背包</a><a href="/tags/位运算/">位运算</a><a href="/tags/状压DP/">状压DP</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/树形背包/">树形背包</a><a href="/tags/树结构/">树结构</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/背包/">背包</a><a href="/tags/位运算/">位运算</a><a href="/tags/状压DP/">状压DP</a><a href="/tags/树形背包/">树形背包</a><a href="/tags/树结构/">树结构</a>
   </div>
 
 </div>
@@ -453,7 +519,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/背包/">背包</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/树形背包/">树形背包</a><a href="/tags/树结构/">树结构</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/背包/">背包</a><a href="/tags/树形背包/">树形背包</a><a href="/tags/树结构/">树结构</a>
   </div>
 
 </div>
@@ -516,7 +582,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/图论/">图论</a><a href="/tags/堆/">堆</a><a href="/tags/并查集/">并查集</a><a href="/tags/最短路/">最短路</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/并查集/">并查集</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/图论/">图论</a><a href="/tags/堆/">堆</a><a href="/tags/最短路/">最短路</a>
   </div>
 
 </div>
@@ -579,7 +645,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/树状数组/">树状数组</a><a href="/tags/位运算/">位运算</a><a href="/tags/状压DP/">状压DP</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/树状数组/">树状数组</a><a href="/tags/位运算/">位运算</a><a href="/tags/状压DP/">状压DP</a>
   </div>
 
 </div>
@@ -642,72 +708,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/二分答案/">二分答案</a><a href="/tags/BFS/">BFS</a><a href="/tags/仙人掌图/">仙人掌图</a><a href="/tags/图论/">图论</a><a href="/tags/差分序列/">差分序列</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/16/POJ-P2942/" title="[POJ] P2942 Knights of the Round Table" itemprop="url">[POJ] P2942 Knights of the Round Table</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-16T05:42:38.000Z" itemprop="datePublished"> Published 2016-08-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Being a knight is a very attractive career: searching for the Holy Grail, saving damsels in distress, and drinking with the other knights are fun things to do. Therefore, it is not very surprising that in recent years the kingdom of King Arthur has experienced an unprecedented increase in the number of knights. There are so many knights now, that it is very rare that every Knight of the Round Table can come at the same time to Camelot and sit around the round table; usually only a small group of the knights isthere, while the rest are busy doing heroic deeds around the country.</p>
-<p>Knights can easily get over-excited during discussions-especially after a couple of drinks. After some unfortunate accidents, King Arthur asked the famous wizard Merlin to make sure that in the future no fights break out between the knights. After studying the problem carefully, Merlin realized that the fights can only be prevented if the knights are seated according to the following two rules:</p>
-<ol>
-<li>The knights should be seated such that two knights who hate each other should not be neighbors at the table. (Merlin has a list that says who hates whom.) The knights are sitting around a roundtable, thus every knight has exactly two neighbors.</li>
-<li>An odd number of knights should sit around the table. This ensures that if the knights cannot agree on something, then they can settle the issue by voting. (If the number of knights is even, then itcan happen that “yes” and “no” have the same number of votes, and the argument goes on.)
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/16/POJ-P2942/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/图论/">图论</a><a href="/tags/双连通分量/">双连通分量</a><a href="/tags/割点/">割点</a><a href="/tags/二分图/">二分图</a><a href="/tags/补图/">补图</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a><a href="/tags/二分答案/">二分答案</a><a href="/tags/BFS/">BFS</a><a href="/tags/仙人掌图/">仙人掌图</a><a href="/tags/图论/">图论</a><a href="/tags/差分序列/">差分序列</a>
   </div>
 
 </div>
@@ -747,7 +748,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>39</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>40</sup></a></li>
 		  
 		
 		  
@@ -766,7 +767,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 12px;">BFS</a> <a href="/tags/Bash/" style="font-size: 11px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 19px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 18px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 11px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11px;">LCA</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 14px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 12px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11px;">倍增</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 10px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 12px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/堆/" style="font-size: 11px;">堆</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分序列/" style="font-size: 12px;">差分序列</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10px;">拆点</a> <a href="/tags/搜索/" style="font-size: 12px;">搜索</a> <a href="/tags/数学/" style="font-size: 13px;">数学</a> <a href="/tags/数据结构/" style="font-size: 17px;">数据结构</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最短路/" style="font-size: 12px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 11px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 11px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 12px;">状压DP</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/离线/" style="font-size: 11px;">离线</a> <a href="/tags/线性DP/" style="font-size: 11px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 11px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 11px;">组合数学</a> <a href="/tags/背包/" style="font-size: 12px;">背包</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 11px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11px;">高精度</a>
+       <a href="/tags/BFS/" style="font-size: 12px;">BFS</a> <a href="/tags/Bash/" style="font-size: 11px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 12px;">DFS</a> <a href="/tags/DP/" style="font-size: 19px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 18px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 11px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11px;">LCA</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 11px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 16px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 14px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 12px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11px;">倍增</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 10px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 12px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/堆/" style="font-size: 11px;">堆</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分序列/" style="font-size: 12px;">差分序列</a> <a href="/tags/并查集/" style="font-size: 11px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10px;">拆点</a> <a href="/tags/搜索/" style="font-size: 12px;">搜索</a> <a href="/tags/数学/" style="font-size: 13px;">数学</a> <a href="/tags/数据结构/" style="font-size: 17px;">数据结构</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最短路/" style="font-size: 12px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 11px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 11px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 11px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 12px;">状压DP</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/离线/" style="font-size: 11px;">离线</a> <a href="/tags/线性DP/" style="font-size: 11px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 11px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 11px;">组合数学</a> <a href="/tags/背包/" style="font-size: 12px;">背包</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 11px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11px;">高精度</a>
     </div>
   </div>
 
