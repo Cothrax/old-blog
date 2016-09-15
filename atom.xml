@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-14T14:20:09.807Z</updated>
+  <updated>2016-09-15T02:26:15.861Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NOIP模拟赛 舞蹈课</title>
+    <link href="https://cothrax.github.io/2016/09/15/noip-2014-9-13-dancingLessons/"/>
+    <id>https://cothrax.github.io/2016/09/15/noip-2014-9-13-dancingLessons/</id>
+    <published>2016-09-15T02:18:52.000Z</published>
+    <updated>2016-09-15T02:26:15.861Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有 n 个人参加一个舞蹈课。每个人的舞蹈技术由整数 来决定。在舞蹈课的开始,他们从左到右站成一排。当这一排中至少有一对相邻的异性时,舞蹈技术相差最小的那一对会出列并开始跳舞。如果相差最小的不止一对,那么最左边的那一对出列。一对异性出列之后,队伍中的空白按原顺序补上(即:若队伍为 ABCD,那么 BC 出列之后队伍变为 AD)。舞蹈技术相差最小即是 的绝对值最小。<br>你的任务是,模拟以上过程,确定跳舞的配对及顺序。<br><a id="more"></a></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为正整数n(1≤n≤2*10e5):队伍中的人数。下一行包含 n 个字<br>符 B 或者 G,B 代表男,G 代表女。下一行为 n 个整数ai(ai≤10e7)有信息按照从左到右的顺序给出。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>第一行:出列的总对数 k。接下来输出 k 行,每行是两个整数。按跳舞顺序输出,两个整数代表这一对舞伴的编号(按输入顺序从左往右 1 至 n 编号)。请先输出较小的整数,再输出较大的整数。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>4<br>BGBG<br>4 2 4 3</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>2<br>3 4<br>1 2</p>
+</blockquote>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>用堆维护最小值，元素的删除用链表维护。<br>关于最小堆中任意元素的删除：</p>
+<ol>
+<li>将该元素的值设成inf，然后heapify</li>
+<li>注意在维护下标映射时，不考虑碰到值为inf的元素</li>
+<li>如果堆的size=0或堆顶元素为inf，则已经为空</li>
+</ol>
+<dir style="text-align:right"></dir>
+
+<figure class="highlight delphi"><figcaption><span>classroomLessons.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=maxlongint <span class="keyword">shr</span> <span class="number">2</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    nh=<span class="keyword">record</span> l,r,d:int <span class="keyword">end</span>;</div><div class="line">    nl=<span class="keyword">record</span> l,r:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    hp:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> nh;</div><div class="line">    lk:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> nl;</div><div class="line">    lh,a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> char;</div><div class="line">    ans:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,sh,cnt,l1,r1,l2,r2:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(i,j:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:nh;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> hp[i].d&lt;&gt;inf <span class="keyword">then</span> lh[hp[i].l]:=j;</div><div class="line">    <span class="keyword">if</span> hp[j].d&lt;&gt;inf <span class="keyword">then</span> lh[hp[j].l]:=i;</div><div class="line">    tmp:=hp[i];hp[i]:=hp[j];hp[j]:=tmp;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">com</span><span class="params">(p,c:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    com:=(hp[p].d&lt;hp[c].d) <span class="keyword">or</span> </div><div class="line">        ((hp[p].d=hp[c].d) <span class="keyword">and</span> (hp[p].l&lt;hp[c].l));</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">heapify</span><span class="params">(i:int)</span>;</span></div><div class="line"><span class="keyword">var</span> l,r,s:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    l:=i <span class="keyword">shl</span> <span class="number">1</span>;r:=l <span class="keyword">or</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (l&lt;=sh) <span class="keyword">and</span> com(l,i) <span class="keyword">then</span> s:=l <span class="keyword">else</span> s:=i;</div><div class="line">    <span class="keyword">if</span> (r&lt;=sh) <span class="keyword">and</span> com(r,s) <span class="keyword">then</span> s:=r;</div><div class="line">    <span class="keyword">if</span> s&lt;&gt;i <span class="keyword">then</span> <span class="keyword">begin</span> swap(s,i);heapify(s) <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">extract</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">begin</span> swap(<span class="number">1</span>,sh);dec(sh);heapify(<span class="number">1</span>) <span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">delete</span><span class="params">(x:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span> i:=lh[x];hp[i].d:=inf;heapify(i) <span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(x,y:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(sh);lh[x]:=sh;</div><div class="line">    hp[sh].l:=x;hp[sh].r:=y;</div><div class="line">    hp[sh].d:=abs(a[x]-a[y]);</div><div class="line">    i:=sh;</div><div class="line">    <span class="keyword">while</span> (i&gt;<span class="number">1</span>) <span class="keyword">and</span> com(i,i <span class="keyword">shr</span> <span class="number">1</span>) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        swap(i,i <span class="keyword">shr</span> <span class="number">1</span>);i:=i <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'dancingLessons.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'dancingLessons.out'</span>);rewrite(output);</div><div class="line">    readln(n);sh:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(g[i]);readln;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(a[i]);</div><div class="line">        lk[i].l:=i-<span class="number">1</span>;lk[i].r:=i+<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    lk[n].r:=<span class="number">0</span>;lk[<span class="number">0</span>].r:=<span class="number">1</span>;lk[<span class="number">0</span>].l:=n;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> g[i]&lt;&gt;g[i-<span class="number">1</span>] <span class="keyword">then</span> insert(i-<span class="number">1</span>,i);</div><div class="line">    cnt:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (hp[<span class="number">1</span>].d&lt;&gt;inf) <span class="keyword">and</span> (sh&lt;&gt;<span class="number">0</span>) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(cnt);</div><div class="line">        l1:=hp[<span class="number">1</span>].l;r1:=hp[<span class="number">1</span>].r;extract;</div><div class="line">        l2:=lk[l1].l;r2:=lk[r1].r;</div><div class="line">        <span class="keyword">if</span> (l2&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (g[l1]&lt;&gt;g[l2]) <span class="keyword">then</span> delete(l2);</div><div class="line">        <span class="keyword">if</span> (r2&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (g[r1]&lt;&gt;g[r2]) <span class="keyword">then</span> delete(r1);</div><div class="line">        <span class="keyword">if</span> (min(l2,r2)&lt;&gt;<span class="number">0</span>) <span class="keyword">and</span> (g[l2]&lt;&gt;g[r2]) <span class="keyword">then</span></div><div class="line">            insert(l2,r2);</div><div class="line">        ans[cnt,<span class="number">0</span>]:=l1;ans[cnt,<span class="number">1</span>]:=r1;</div><div class="line">        lk[l2].r:=r2;lk[r2].l:=l2;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    writeln(cnt);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cnt <span class="keyword">do</span> writeln(ans[i,<span class="number">0</span>],<span class="string">' '</span>,ans[i,<span class="number">1</span>]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;有 n 个人参加一个舞蹈课。每个人的舞蹈技术由整数 来决定。在舞蹈课的开始,他们从左到右站成一排。当这一排中至少有一对相邻的异性时,舞蹈技术相差最小的那一对会出列并开始跳舞。如果相差最小的不止一对,那么最左边的那一对出列。一对异性出列之后,队伍中的空白按原顺序补上(即:若队伍为 ABCD,那么 BC 出列之后队伍变为 AD)。舞蹈技术相差最小即是 的绝对值最小。&lt;br&gt;你的任务是,模拟以上过程,确定跳舞的配对及顺序。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
+    
+      <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>NOIP模拟赛 皇帝的烦恼</title>
@@ -1639,173 +1685,6 @@
       <category term="离线" scheme="https://cothrax.github.io/tags/%E7%A6%BB%E7%BA%BF/"/>
     
       <category term="可持久化" scheme="https://cothrax.github.io/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>雅礼中学2015模拟赛 Day3</title>
-    <link href="https://cothrax.github.io/2016/08/30/%E9%9B%85%E7%A4%BC%E4%B8%AD%E5%AD%A62015%E6%A8%A1%E6%8B%9F%E8%B5%9B-Day3/"/>
-    <id>https://cothrax.github.io/2016/08/30/雅礼中学2015模拟赛-Day3/</id>
-    <published>2016-08-30T01:25:20.000Z</published>
-    <updated>2016-08-30T12:39:05.617Z</updated>
-    
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th>题目名称</th>
-<th>A</th>
-<th>B</th>
-<th>C</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>源文件</td>
-<td>A.c/.cpp/.pas</td>
-<td>B.c/.cpp/.pas</td>
-<td>C.c/.cpp/.pas</td>
-</tr>
-<tr>
-<td>输入/输出文件名</td>
-<td>A.in/.out</td>
-<td>B.in/.out</td>
-<td>C.in/.out</td>
-</tr>
-<tr>
-<td>测试点数</td>
-<td>10</td>
-<td>10</td>
-<td>10</td>
-</tr>
-<tr>
-<td>每个测试点分值</td>
-<td>10</td>
-<td>10</td>
-<td>10</td>
-</tr>
-<tr>
-<td>单个测试点时限</td>
-<td>1s</td>
-<td>1s</td>
-<td>1s</td>
-</tr>
-<tr>
-<td>空间限制</td>
-<td>128MB</td>
-<td>128MB</td>
-<td>128MB</td>
-</tr>
-</tbody>
-</table>
-<h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：<br><span>$a_0=1$</span><!-- Has MathJax --><br><span>$a_n=a_i+a_j$</span><!-- Has MathJax -->（n≥1；i,j在[0,n-1]内随机）<br>Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？<br>出于ta对整数的热爱，你只需要输出答案向下取整后的值<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>一个整数T，表示数据组数<br>每组数据一行，包括一个整数n</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数<span>$E(a_n)$</span><!-- Has MathJax --></p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>2<br>0<br>1</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>1<br>2</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于前30%的数据T&lt;=10, n&lt;=3000<br>对于前60%的数据T&lt;=100, n&lt;=100000<br>对于100%的数据T &lt;= 10000, 0 &lt;= n &lt;= 2147483647</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>结论题，<span>$E(a_n)=n+1$</span><!-- Has MathJax -->，方便起见，下文<span>$a_n=E(a_n)$</span><!-- Has MathJax --></p>
-<p>期望值定义得：<span>$a_n=\sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\dfrac{a_i+a_j}{n^2}$</span><!-- Has MathJax --></p>
-<p>合并同类项：<span>$a_n=\dfrac{2}{n}\sum_{i=0}^{n-1}a_i$</span><!-- Has MathJax --></p>
-<p>又：<span>$a_{n-1}=\dfrac{2}{n-1}\sum_{i=0}^{n-2}a_i$</span><!-- Has MathJax --></p>
-<p>变形得：<span>$\sum_{i=0}^{n-2}a_i=\dfrac{(n-1)a_{n-1}}{2}$</span><!-- Has MathJax --></p>
-<p>上式带入$a_n$的式子：<span>$a_n=\dfrac{2}{n}(\dfrac{(n-1)a_{n-1}}{2}+a_{n-1})$</span><!-- Has MathJax --></p>
-<p>合并变形后：<span>$\dfrac{a_n}{n+1}=\dfrac{a_{n-1}}{n}=\frac{a_0}{1}=1$</span><!-- Has MathJax --></p>
-<p>所以<span>$a_n=n+1$</span><!-- Has MathJax --></p>
-<p>ps:如果不会证的话，写几个找找规律吧。</p>
-<dir style="text-align:right"><a href="/2016/08/30/雅礼中学2015模拟赛-Day3/A.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>A.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> t,n:qword;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'A.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'A.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(t);</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">read</span>(n);</div><div class="line">        writeln(n+<span class="number">1</span>);</div><div class="line">        t:=t-<span class="number">1</span>;</div><div class="line">    <span class="keyword">until</span> t=<span class="number">0</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>泡泡鱼是一条调皮的鱼，ta的家住在一片珊瑚礁上。在ta的眼里，这些珊瑚礁的形态可以脑补成一个n个节点，m条边的带权图，在海水的腐蚀下，这些珊瑚礁形成了许多的环，ta想考考你能不能找出这些环中，权值的平均值最小的环。泡泡鱼这么聪明，ta当然知道答案，调皮的ta对你说，如果你算错了，就要吃ta下的蛋。因为ta很调皮，ta把图变成了有向图，还有可能用无环图坑你。为代表你知道，你只需告诉ta最小的平均权值即可。</p>
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>共m+1行。<br>第1行，2个整数n和m，表示珊瑚礁的点数和边数。<br>第2~m+1行，每行3个正整数u，v，w，表示u与v之间有一条权值为w的有向边。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>如果输入数据无环，输出”PaPaFish is laying egg!”。（不含引号）<br>否则输出一个浮点数ans， 表示所有环中，权值的平均值最小的环的平均权值。答案保留2位小数。<br><!--more--></p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>2 2<br>1 2 2<br>2 1 3</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>2.50</p>
-</blockquote>
-<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>对于前40%的数据n &lt;= 50, m &lt;= 5000<br>对于100%的数据1 &lt;= n &lt;= 1000, 1 &lt;= m &lt;= 10000, 0 &lt;= w &lt;= 10000000</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>先yy了一个找环的方法：先tarjan找出强连通分量，然后dfs找环。<br>骗60分，虽然这个方法是错的，比如下面这个分量，3个环中dfs最多找到2个。<br><img src="/2016/08/30/雅礼中学2015模拟赛-Day3/g.png" alt="g.png" title=""><br>正解是<strong>二分+判负环</strong><br>二分最小平均值mid，将所有边都减去mid，如果这个值比最小的平均值大，此时图中一定有负圈，用spfa判断。<br>ps: spfa判负圈比bellman快一些，但最慢的点还是跑了很久。</p>
-<dir style="text-align:right"><a href="/2016/08/30/雅礼中学2015模拟赛-Day3/B.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>B.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> eps=<span class="number">0.000000000001</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> f,t,next:int;w:double <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,f0,t0,w0:int;l,r,mid:double;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,cnt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10010</span>] <span class="keyword">of</span> int;</div><div class="line">    d:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> double;</div><div class="line">    inq:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f0,t0:int;w0:double)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].f:=f0;g[m].t:=t0;g[m].w:=w0;</div><div class="line">    g[m].next:=head[f0];head[f0]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spfa</span><span class="params">(x:double)</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> i,v,u,h,t:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(d,sizeof(d),<span class="number">0</span>);</div><div class="line">    fillchar(inq,sizeof(inq),true);</div><div class="line">    filldword(cnt,sizeof(cnt) <span class="keyword">shr</span> <span class="number">1</span>,<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> q[i]:=i;</div><div class="line">    h:=<span class="number">1</span>;t:=n+<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        v:=q[h];inq[v]:=false;</div><div class="line">        inc(h);<span class="keyword">if</span> h&gt;<span class="number">10010</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">        i:=head[v];</div><div class="line">        <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            u:=g[i].t;</div><div class="line">            <span class="keyword">if</span> d[u]&gt;d[v]+g[i].w-x <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                d[u]:=d[v]+g[i].w-x;</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> inq[u] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                    inq[u]:=true;q[t]:=u;</div><div class="line">                    inc(t);<span class="keyword">if</span> t&gt;<span class="number">10010</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">                    inc(cnt[u]);</div><div class="line">                    <span class="keyword">if</span> cnt[u]&gt;n <span class="keyword">then</span> <span class="keyword">exit</span>(true);</div><div class="line">                <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            i:=g[i].next;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    spfa:=false;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'B.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'B.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    l:=<span class="number">0</span>;r:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f0,t0);<span class="keyword">read</span>(w0);</div><div class="line">        r:=max(r,w0);</div><div class="line">        add(f0,t0,w0);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    r:=r+<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> spfa(r) <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">        <span class="keyword">write</span>(<span class="string">'PaPaFish is laying egg!'</span>);</div><div class="line">        halt;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">while</span> r-l&gt;<span class="number">0.0001</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r)/<span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> spfa(mid) <span class="keyword">then</span> r:=mid <span class="keyword">else</span> l:=mid;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(r:<span class="number">0</span>:<span class="number">2</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><blockquote>
-<p>还没写</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;题目名称&lt;/th&gt;
-&lt;th&gt;A&lt;/th&gt;
-&lt;th&gt;B&lt;/th&gt;
-&lt;th&gt;C&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;源文件&lt;/td&gt;
-&lt;td&gt;A.c/.cpp/.pas&lt;/td&gt;
-&lt;td&gt;B.c/.cpp/.pas&lt;/td&gt;
-&lt;td&gt;C.c/.cpp/.pas&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;输入/输出文件名&lt;/td&gt;
-&lt;td&gt;A.in/.out&lt;/td&gt;
-&lt;td&gt;B.in/.out&lt;/td&gt;
-&lt;td&gt;C.in/.out&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;测试点数&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;每个测试点分值&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;单个测试点时限&lt;/td&gt;
-&lt;td&gt;1s&lt;/td&gt;
-&lt;td&gt;1s&lt;/td&gt;
-&lt;td&gt;1s&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;空间限制&lt;/td&gt;
-&lt;td&gt;128MB&lt;/td&gt;
-&lt;td&gt;128MB&lt;/td&gt;
-&lt;td&gt;128MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;A&quot;&gt;&lt;a href=&quot;#A&quot; class=&quot;headerlink&quot; title=&quot;A&quot;&gt;&lt;/a&gt;A&lt;/h1&gt;&lt;p&gt;码零鼠是一只很喜欢mx数学的神犇，上面那个不是ta本人的样子。这天，ta在研究一个神奇的数列，这个数列是这样的：&lt;br&gt;&lt;span&gt;$a_0=1$&lt;/span&gt;&lt;!-- Has MathJax --&gt;&lt;br&gt;&lt;span&gt;$a_n=a_i+a_j$&lt;/span&gt;&lt;!-- Has MathJax --&gt;（n≥1；i,j在[0,n-1]内随机）&lt;br&gt;Ta想知道对于给定的n，an的期望值是多少，你能告诉ta吗？&lt;br&gt;出于ta对整数的热爱，你只需要输出答案向下取整后的值&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
-    
-      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
   </entry>
   
