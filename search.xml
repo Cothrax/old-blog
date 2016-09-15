@@ -18,7 +18,7 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>用堆维护最小值，元素的删除用链表维护。<br>关于最小堆中任意元素的删除：</p>
 <ol>
 <li>将该元素的值设成inf，然后heapify</li>
-<li>注意在维护下标映射时，不考虑碰到值为inf的元素</li>
+<li>注意在维护下标映射时，不考虑值为inf的元素</li>
 <li>如果堆的size=0或堆顶元素为inf，则已经为空</li>
 </ol>
 <dir style="text-align:right"></dir>

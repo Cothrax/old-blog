@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-15T02:26:15.861Z</updated>
+  <updated>2016-09-15T02:26:46.725Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/09/15/noip-2014-9-13-dancingLessons/"/>
     <id>https://cothrax.github.io/2016/09/15/noip-2014-9-13-dancingLessons/</id>
     <published>2016-09-15T02:18:52.000Z</published>
-    <updated>2016-09-15T02:26:15.861Z</updated>
+    <updated>2016-09-15T02:26:46.725Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有 n 个人参加一个舞蹈课。每个人的舞蹈技术由整数 来决定。在舞蹈课的开始,他们从左到右站成一排。当这一排中至少有一对相邻的异性时,舞蹈技术相差最小的那一对会出列并开始跳舞。如果相差最小的不止一对,那么最左边的那一对出列。一对异性出列之后,队伍中的空白按原顺序补上(即:若队伍为 ABCD,那么 BC 出列之后队伍变为 AD)。舞蹈技术相差最小即是 的绝对值最小。<br>你的任务是,模拟以上过程,确定跳舞的配对及顺序。<br><a id="more"></a></p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为正整数n(1≤n≤2*10e5):队伍中的人数。下一行包含 n 个字<br>符 B 或者 G,B 代表男,G 代表女。下一行为 n 个整数ai(ai≤10e7)有信息按照从左到右的顺序给出。</p>
@@ -34,7 +34,7 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>用堆维护最小值，元素的删除用链表维护。<br>关于最小堆中任意元素的删除：</p>
 <ol>
 <li>将该元素的值设成inf，然后heapify</li>
-<li>注意在维护下标映射时，不考虑碰到值为inf的元素</li>
+<li>注意在维护下标映射时，不考虑值为inf的元素</li>
 <li>如果堆的size=0或堆顶元素为inf，则已经为空</li>
 </ol>
 <dir style="text-align:right"></dir>
