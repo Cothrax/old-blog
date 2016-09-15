@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Cothrax">
 <meta property="og:description" content="描述黄金大神国的首都位于hzwer河中的一座岛屿。一道上班的时候，成千上万辆汽车通过岛屿从西岸的住宅区（由桥连接岛的西部）到东岸的工业区（由桥连接岛的东部）。该岛类似于矩形，它的边平行于主方向。故可将它看作是笛卡尔坐标系中的一个A*B的矩形，它的对角分别为（0, 0）和（A, B）。岛上有n个交通节点（后宫建筑），编号为1…n，第i个节点坐标为(xi, yi)。如果一个节点的坐标为(0, y)，它">
 <meta property="og:image" content="https://cothrax.github.io/2016/09/15/noip-2014-9-27-traffic/illu.png">
-<meta property="og:updated_time" content="2016-09-15T13:18:59.185Z">
+<meta property="og:updated_time" content="2016-09-15T13:20:17.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOIP模拟赛 交通">
 <meta name="twitter:description" content="描述黄金大神国的首都位于hzwer河中的一座岛屿。一道上班的时候，成千上万辆汽车通过岛屿从西岸的住宅区（由桥连接岛的西部）到东岸的工业区（由桥连接岛的东部）。该岛类似于矩形，它的边平行于主方向。故可将它看作是笛卡尔坐标系中的一个A*B的矩形，它的对角分别为（0, 0）和（A, B）。岛上有n个交通节点（后宫建筑），编号为1…n，第i个节点坐标为(xi, yi)。如果一个节点的坐标为(0, y)，它">
@@ -123,7 +123,7 @@
 </blockquote>
 <p>先从西岸正向bfs，标记所有从西岸可达的点；对于可达点i，d[i]=1<br>考虑西岸的一个点i，记它能到达的东岸上最北边的点为u[i]，最南边的点为d[i]，那么，那么点i能够到达<strong>东岸上$y_j\in[y_{u[i]},y_{d[i]}]\ and\ d[j]=1$的所有点j</strong>：</p>
 <blockquote>
-<p>由于图上的边不能相交，边i-&gt;u[i],边i-&gt;d[i]和东岸构成了一个封闭的三角形，位于其中的点j想与外界联通，必然要经过<span>$i,(a,d[i]),(a,tu[i]$</span><!-- Has MathJax -->中的点，即与i连通<br>所以将东岸的点排序后，反向bfs，做两次标记算出d[i]和u[i]即可。</p>
+<p>由于图上的边不能相交，<em>边i-&gt;u[i]</em>,<em>边i-&gt;d[i]</em>和<em>东岸</em>构成了一个封闭的三角形，位于其中的点j想与外界联通，必然要经过<span>$i,(a,d[i]),(a,tu[i]$</span><!-- Has MathJax -->中的点，即与i连通<br>所以将东岸的点排序后，反向bfs，做两次标记算出d[i]和u[i]即可。</p>
 </blockquote>
 <p>平面图还有一些奇怪的性质，详见<a href="https://zh.wikipedia.org/zh-cn/%E5%B9%B3%E9%9D%A2%E5%9B%BE_(%E5%9B%BE%E8%AE%BA" target="_blank" rel="external">Wikipedia</a></p>
 <dir style="text-align:right"><a href="/2016/09/15/noip-2014-9-27-traffic/traffic0.pas" title="复制代码">复制代码</a></dir>

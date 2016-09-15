@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-15T13:18:59.185Z</updated>
+  <updated>2016-09-15T13:20:17.184Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/09/15/noip-2014-9-27-traffic/"/>
     <id>https://cothrax.github.io/2016/09/15/noip-2014-9-27-traffic/</id>
     <published>2016-09-15T12:55:31.000Z</published>
-    <updated>2016-09-15T13:18:59.185Z</updated>
+    <updated>2016-09-15T13:20:17.184Z</updated>
     
     <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>黄金大神国的首都位于hzwer河中的一座岛屿。一道上班的时候，成千上万辆汽车通过岛屿从西岸的住宅区（由桥连接岛的西部）到东岸的工业区（由桥连接岛的东部）。<br>该岛类似于矩形，它的边平行于主方向。故可将它看作是笛卡尔坐标系中的一个A*B的矩形，它的对角分别为（0, 0）和（A, B）。<br>岛上有n个交通节点（后宫建筑），编号为1…n，第i个节点坐标为(xi, yi)。如果一个节点的坐标为(0, y)，它就位于岛的西岸。类似的，坐标为(A, y)的节点位于岛的东岸。各个节点由街道连接，每条街道用线段连接两个节点。街道有单向行驶或双向行驶之分。除端点外任意两条街道都没有公共点。也没有桥梁或者隧道。<br>你不能对道路网络形状做任何其他假设。沿河岸的街道或节点可能没有入口或者出口街道。由于交通堵塞日趋严重，黄金大神想快速治理好他的国家，于是聘请你测试岛上当前的道路网是否足够。要求你写一个程序确定从岛的西岸的每个节点能够到达东岸的多少个节点。<br><a id="more"></a></p>
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行包含4个整数n, m, A, B，分别表示hzwer市中心的节点数，街道数和岛屿的尺寸。<br>接下来的n行，每行包含两个整数xi，yi (0≤xi≤A,0≤yi≤B)，表示第i个节点的坐标。任意两个节点的坐标都不相同。<br>再往下的m行表示街道，每条街道用3个整数ci, di, ki（1≤ci, di≤n, ci≠di, ki∈{1,2}），表示节点ci、di有街道连接，如果ki=1,表示从ci到di的街道是单向的，否则，这条街道可以双向行驶。每个无序对{ci, di}最多出现1次。<br>你可以假设西岸节点中至少有1个能够到达东岸的一些节点。</p>
@@ -42,7 +42,7 @@
 </blockquote>
 <p>先从西岸正向bfs，标记所有从西岸可达的点；对于可达点i，d[i]=1<br>考虑西岸的一个点i，记它能到达的东岸上最北边的点为u[i]，最南边的点为d[i]，那么，那么点i能够到达<strong>东岸上$y_j\in[y_{u[i]},y_{d[i]}]\ and\ d[j]=1$的所有点j</strong>：</p>
 <blockquote>
-<p>由于图上的边不能相交，边i-&gt;u[i],边i-&gt;d[i]和东岸构成了一个封闭的三角形，位于其中的点j想与外界联通，必然要经过<span>$i,(a,d[i]),(a,tu[i]$</span><!-- Has MathJax -->中的点，即与i连通<br>所以将东岸的点排序后，反向bfs，做两次标记算出d[i]和u[i]即可。</p>
+<p>由于图上的边不能相交，<em>边i-&gt;u[i]</em>,<em>边i-&gt;d[i]</em>和<em>东岸</em>构成了一个封闭的三角形，位于其中的点j想与外界联通，必然要经过<span>$i,(a,d[i]),(a,tu[i]$</span><!-- Has MathJax -->中的点，即与i连通<br>所以将东岸的点排序后，反向bfs，做两次标记算出d[i]和u[i]即可。</p>
 </blockquote>
 <p>平面图还有一些奇怪的性质，详见<a href="https://zh.wikipedia.org/zh-cn/%E5%B9%B3%E9%9D%A2%E5%9B%BE_(%E5%9B%BE%E8%AE%BA" target="_blank" rel="external">Wikipedia</a></p>
 <dir style="text-align:right"><a href="/2016/09/15/noip-2014-9-27-traffic/traffic0.pas" title="复制代码">复制代码</a></dir>
