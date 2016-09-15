@@ -4,23 +4,23 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>NOIP模拟赛 黑魔法师之门 | Cothrax</title>
+    <title>NOIP模拟赛 人偶师 | Cothrax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cothrax">
     
 
     
-    <meta name="description" content="描述经过了 16 个工作日的紧张忙碌,未来的人类终于收集到了足够的能源。然而在与 Violet星球的战争中,由于 Z 副官的愚蠢,地球的领袖 applepi 被邪恶的黑魔法师 Vani 囚禁在了Violet 星球。为了重启 Nescafé这一宏伟的科技工程,人类派出了一支由 XLk、Poet_shy 和lydrainbowcat 三人组成的精英队伍,穿越时空隧道,去往 Violet 星球拯救领袖">
+    <meta name="description" content="描述n点m双向边的图，每个点有2个状态：开和关。每次操作改变一个点的状态，以及与其有边直接相连的点的状态。问开启所有点至少需要多少次操作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOIP模拟赛 黑魔法师之门">
-<meta property="og:url" content="https://cothrax.github.io/2016/09/10/NOIP模拟赛-黑魔法师之门/index.html">
+<meta property="og:title" content="NOIP模拟赛 人偶师">
+<meta property="og:url" content="https://cothrax.github.io/2016/09/15/noip-2014-9-27-alice/index.html">
 <meta property="og:site_name" content="Cothrax">
-<meta property="og:description" content="描述经过了 16 个工作日的紧张忙碌,未来的人类终于收集到了足够的能源。然而在与 Violet星球的战争中,由于 Z 副官的愚蠢,地球的领袖 applepi 被邪恶的黑魔法师 Vani 囚禁在了Violet 星球。为了重启 Nescafé这一宏伟的科技工程,人类派出了一支由 XLk、Poet_shy 和lydrainbowcat 三人组成的精英队伍,穿越时空隧道,去往 Violet 星球拯救领袖">
-<meta property="og:updated_time" content="2016-09-10T15:36:03.902Z">
+<meta property="og:description" content="描述n点m双向边的图，每个点有2个状态：开和关。每次操作改变一个点的状态，以及与其有边直接相连的点的状态。问开启所有点至少需要多少次操作。">
+<meta property="og:updated_time" content="2016-09-15T09:46:02.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOIP模拟赛 黑魔法师之门">
-<meta name="twitter:description" content="描述经过了 16 个工作日的紧张忙碌,未来的人类终于收集到了足够的能源。然而在与 Violet星球的战争中,由于 Z 副官的愚蠢,地球的领袖 applepi 被邪恶的黑魔法师 Vani 囚禁在了Violet 星球。为了重启 Nescafé这一宏伟的科技工程,人类派出了一支由 XLk、Poet_shy 和lydrainbowcat 三人组成的精英队伍,穿越时空隧道,去往 Violet 星球拯救领袖">
+<meta name="twitter:title" content="NOIP模拟赛 人偶师">
+<meta name="twitter:description" content="描述n点m双向边的图，每个点有2个状态：开和关。每次操作改变一个点的状态，以及与其有边直接相连的点的状态。问开启所有点至少需要多少次操作。">
 <meta name="twitter:creator" content="@Cothrax">
 
     
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/10/NOIP模拟赛-黑魔法师之门/" title="NOIP模拟赛 黑魔法师之门" itemprop="url">NOIP模拟赛 黑魔法师之门</a>
+      <a href="/2016/09/15/noip-2014-9-27-alice/" title="NOIP模拟赛 人偶师" itemprop="url">NOIP模拟赛 人偶师</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-10T15:22:00.000Z" itemprop="datePublished"> Published 2016-09-10</time>
+    <time datetime="2016-09-15T09:18:05.000Z" itemprop="datePublished"> Published 2016-09-15</time>
     
   </p>
 </header>
@@ -97,33 +97,32 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例说明"><span class="toc-number">4.1.</span> <span class="toc-text">样例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据范围与约定"><span class="toc-number">4.2.</span> <span class="toc-text">数据范围与约定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>经过了 16 个工作日的紧张忙碌,未来的人类终于收集到了足够的能源。然而在与 Violet星球的战争中,由于 Z 副官的愚蠢,地球的领袖 applepi 被邪恶的黑魔法师 Vani 囚禁在了Violet 星球。为了重启 Nescafé这一宏伟的科技工程,人类派出了一支由 XLk、Poet_shy 和lydrainbowcat 三人组成的精英队伍,穿越时空隧道,去往 Violet 星球拯救领袖 applepi。<br>applepi 被囚禁的地点只有一扇门,当地人称它为“黑魔法师之门”。这扇门上画着一张无向无权图,而打开这扇门的密码就是<strong>图中每个点的度数大于零且都是偶数的子图的个数对 1000000009 取模的值</strong>。此处子图 (V, E) 定义为:点集 V 和边集 E 都是原图的任意子集,其中 E 中的边的端点都在 V 中。<br>但是 Vani 认为这样的密码过于简单,因此门上的图是动态的。起初图中只有 N 个顶点而没有边。Vani 建造的门控系统共操作 M 次,每次往图中添加一条边。你必须在每次操作后都填写正确的密码,才能够打开黑魔法师的牢狱,去拯救伟大的领袖 applepi。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含两个整数 N 和 M。<br>接下来 M 行,每行两个整数 A 和 B,代表门控系统添加了一条无向边 (A, B)。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一共 M 行,表示每次操作后的密码。<br><a id="more"></a></p>
+		<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>n点m双向边的图，每个点有2个状态：开和关。每次操作改变一个点的状态，以及与其有边直接相连的点的状态。问开启所有点至少需要多少次操作。<br><a id="more"></a></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行2个整数n,m。<br>第二行n个整数，第i个数表示第i点的状态，0为关，1为开。<br>第3..m+2行，每行2个整数a,b，表示a和b直接相连，同一条边不会出现多次。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>第一行一个整数k表示最少的操作次数，所有数据保证至少有一组可行解。<br>第二行k个整数，表示操作的点的编号。</p>
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>4 8<br>3 1<br>3 2<br>2 1<br>2 1<br>1 3<br>1 4<br>2 4<br>2 3</p>
+<p>4 3<br>1 1 0 0<br>2 3<br>1 3<br>2 4</p>
 </blockquote>
 <h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>0<br>0<br>13<br>7<br>7<br>15<br>31</p>
+<p>3<br>1 2 3</p>
 </blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><h3 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h3><p>第三次添加之后,存在一个满足条件的子图 {1, 2, 3}(其中 1, 2, 3 是数据中边的标号)。<br>第四次添加之后,存在三个子图 {1, 2, 3},{1, 2, 4},{3, 4}。<br>„„</p>
-<h3 id="数据范围与约定"><a href="#数据范围与约定" class="headerlink" title="数据范围与约定"></a>数据范围与约定</h3><p>对于 30% 的数据,N, M≤10。<br>对于 100% 的数据,N≤200000,M≤300000。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>构造（找规律）后并查集，容易发现一个满足题意的子图是有环的，且都可以看做是多个简单环拼接起来，实际上答案=2^(简单环的个数)-1<br>有以下几种思路：</p>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于30%的数据，1&lt;=n&lt;=10，0&lt;=m&lt;=40<br>对于60%的数据，1&lt;=n&lt;=30，0&lt;=m&lt;=100<br>对于100%的数据，1&lt;=n&lt;=40，0&lt;=m&lt;=500</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>图上的反转问题，可以联想到如下题目：</p>
 <ol>
-<li>考虑边e(x,y)，如果x和y已经连通，那么将e加进去会形成一个简单环，将这个环加入已有的子图中会构造出新的答案，于是ans=ans*2+1</li>
-<li>或者说，由于答案的子图都是由简单环组合出来的，二项式定理可得答案是$\sum_{i=1}^{n}C(n,i)=2^n-1$，同样可以算出来</li>
-<li>题解提供了一种奇怪的构造思路：<blockquote>
-<p>因为一个环里每个点的度数都是大于零的偶数,我们可以这样来构造答案:每个环有选和不选两种选择,如果选择了该环,那么环上所有边的“选择次数” +1。最后取所有“选择次数”为奇数的边构成一个边集,就是一个答案。可以证明这样构造出来的解不重复且涵盖了所有情况。因此答案就是 2^(图中”元”环的个数)。实现方法非常简单,只需要一个并查集即可。</p>
-</blockquote>
-</li>
+<li>最小权匹配（状压dp）：<a href="/2016/09/04/欢乐赛-2014-5-31/" title="P3密码锁">P3密码锁</a></li>
+<li>部分枚举+贪心：<a href="/2016/08/25/POJ-P3279-Fliptile/" title="关灯游戏">关灯游戏</a></li>
+<li>状压dp：<a href="/2016/08/17/JSOI2016-提高2班-位运算/" title="P4黑客的攻击">P4黑客的攻击</a></li>
+<li><del>这是线段树：<a href="/2016/08/22/JSOI2016-提高1班-Day6/" title="P3小W开关灯">P3小W开关灯</a></del></li>
 </ol>
-<dir style="text-align:right"><a href="/2016/09/10/NOIP模拟赛-黑魔法师之门/magician.pas" title="复制代码">复制代码</a></dir>
+<p>关于本题，由n≤40<del>很容易</del>是<strong>折半枚举</strong>。<br>方案和状态可以压成int64，于是可以用位运算优化。<br>用hash拉链存第一次dfs的结果，然后第二次反过来dfs。<br>还有就是pascal的一个坑，下面程序的输出结果是-2147483648<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> i,a:int64;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=<span class="number">31</span>;a:=<span class="number">1</span> <span class="keyword">shl</span> i;</div><div class="line">    <span class="keyword">write</span>(a);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure></p>
+<p>原因是shl操作时默认参数1为longint，所以会发生溢出，要强转<code>a:=int64(1) shl int64(i)</code>，参考了<a href="https://stackoverflow.com/questions/8127693/how-can-i-get-a-result-larger-than-232-from-shl" target="_blank" rel="external">stackoverflow</a></p>
+<dir style="text-align:right"><a href="/2016/09/15/noip-2014-9-27-alice/alice.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>magician.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> z=<span class="number">1000000009</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    par:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,i,ans,x,y:int;</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> find:=x</div><div class="line">    <span class="keyword">else</span> <span class="keyword">begin</span> par[x]:=find(par[x]);find:=par[x] <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(x,y:int)</span>;</span></div><div class="line"><span class="keyword">begin</span> x:=find(x);y:=find(y);par[x]:=y <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(x,y:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span> same:=find(x)=find(y) <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'magician.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'magician.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> par[i]:=i;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(x,y);</div><div class="line">        <span class="keyword">if</span> same(x,y) <span class="keyword">then</span> ans:=(ans*<span class="number">2</span>+<span class="number">1</span>) <span class="keyword">mod</span> z <span class="keyword">else</span> union(x,y);</div><div class="line">        writeln(ans); </div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><figcaption><span>alice.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> z=<span class="number">500009</span>;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    h,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1500010</span>] <span class="keyword">of</span> int64;</div><div class="line">    c,next:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1500010</span>] <span class="keyword">of</span> int;</div><div class="line">    head:<span class="keyword">array</span>[<span class="number">0</span>..z] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">41</span>] <span class="keyword">of</span> int64;</div><div class="line">    i,j,k,n,m,sz,cnt,mn:int;lb,h0,f0,ans:int64;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lsh</span><span class="params">(a,b:int64)</span>:</span>int64;</div><div class="line"><span class="keyword">begin</span> lsh:=int64(a) <span class="keyword">shl</span> int64(b) <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(h0,f0:int64;cnt:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=h0 <span class="keyword">mod</span> z;</div><div class="line">    inc(sz);h[sz]:=h0;f[sz]:=f0;c[sz]:=cnt;</div><div class="line">    next[sz]:=head[i];head[i]:=sz;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">(h0:int64)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=h0 <span class="keyword">mod</span> z;i:=head[i];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> h0=h[i] <span class="keyword">then</span> <span class="keyword">exit</span>(i);</div><div class="line">        i:=next[i];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    query:=-<span class="number">1</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">print</span><span class="params">(ans:int64)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">while</span> ans&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        lb:=ans <span class="keyword">and</span> (-ans);</div><div class="line">        <span class="keyword">write</span>(round(ln(lb)/ln(<span class="number">2</span>))+<span class="number">1</span>,<span class="string">' '</span>);</div><div class="line">        dec(ans,lb);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,x:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> (x=<span class="number">0</span>) <span class="keyword">and</span> (v=k+<span class="number">1</span>) <span class="keyword">then</span> <span class="keyword">begin</span> insert(h0,f0,cnt);<span class="keyword">exit</span> <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> (x=<span class="number">1</span>) <span class="keyword">and</span> (v=n+<span class="number">1</span>) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        i:=query(h0);</div><div class="line">        <span class="keyword">if</span> (i&lt;&gt;-<span class="number">1</span>) <span class="keyword">and</span> (c[i]+cnt&lt;mn) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            mn:=c[i]+cnt;</div><div class="line">            ans:=f[i] <span class="keyword">or</span> f0;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    h0:=h0 xor g[v];f0:=f0 <span class="keyword">or</span> lsh(<span class="number">1</span>,v-<span class="number">1</span>);inc(cnt);</div><div class="line">    dfs(v+<span class="number">1</span>,x);</div><div class="line">    h0:=h0 xor g[v];f0:=f0-lsh(<span class="number">1</span>,v-<span class="number">1</span>);dec(cnt);</div><div class="line">    dfs(v+<span class="number">1</span>,x);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span> <span class="comment">&#123;main&#125;</span></div><div class="line">    assign(input,<span class="string">'alice.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'alice.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);h0:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j);inc(h0,lsh(<span class="number">1</span>,i-<span class="number">1</span>)*j);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> g[i]:=lsh(<span class="number">1</span>,i-<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j,k);</div><div class="line">        inc(g[j],lsh(<span class="number">1</span>,k-<span class="number">1</span>));</div><div class="line">        inc(g[k],lsh(<span class="number">1</span>,j-<span class="number">1</span>));</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    k:=n <span class="keyword">shr</span> <span class="number">1</span>;f0:=<span class="number">0</span>;cnt:=<span class="number">0</span>;sz:=<span class="number">0</span>;</div><div class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">    h0:=lsh(<span class="number">1</span>,n)-<span class="number">1</span>;f0:=<span class="number">0</span>;cnt:=<span class="number">0</span>;mn:=maxlongint;</div><div class="line">    dfs(k+<span class="number">1</span>,<span class="number">1</span>);</div><div class="line">    </div><div class="line">    writeln(mn);print(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -137,7 +136,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/并查集/">并查集</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/图论/">图论</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/折半枚举/">折半枚举</a><a href="/tags/Hash/">Hash</a><a href="/tags/位运算/">位运算</a>
   </div>
 
 </div>
@@ -146,7 +145,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://cothrax.github.io/2016/09/10/NOIP模拟赛-黑魔法师之门/" data-title="NOIP模拟赛 黑魔法师之门 | Cothrax" data-tsina="null" class="share clearfix">
+	  <div data-url="https://cothrax.github.io/2016/09/15/noip-2014-9-27-alice/" data-title="NOIP模拟赛 人偶师 | Cothrax" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -159,19 +158,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/09/11/NOIP模拟赛-梦幻布丁/" title="NOIP模拟赛 梦幻布丁">
-  <strong>上一篇：</strong><br/>
-  <span>
-  NOIP模拟赛 梦幻布丁</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/09/10/NOIP模拟赛-2014-06-28/"  title="NOIP模拟赛 2014-06-28">
+<a href="/2016/09/15/noip-2014-9-13-dancingLessons/"  title="NOIP模拟赛 舞蹈课">
  <strong>下一篇：</strong><br/> 
- <span>NOIP模拟赛 2014-06-28
+ <span>NOIP模拟赛 舞蹈课
 </span>
 </a>
 </div>
@@ -186,7 +177,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例说明"><span class="toc-number">4.1.</span> <span class="toc-text">样例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据范围与约定"><span class="toc-number">4.2.</span> <span class="toc-text">数据范围与约定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a></li></ol>
  
   </div>
 
