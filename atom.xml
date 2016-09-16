@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-16T06:53:34.676Z</updated>
+  <updated>2016-09-16T07:03:24.714Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,23 +20,9 @@
     <link href="https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/"/>
     <id>https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/</id>
     <published>2016-09-16T05:39:30.000Z</published>
-    <updated>2016-09-16T06:53:34.676Z</updated>
+    <updated>2016-09-16T07:03:24.714Z</updated>
     
-    <content type="html"><![CDATA[<style>
-    .copy{
-        position:relative;
-        z-index:10;
-        color:#000;
-        font-size:13px;
-        margin:0px 11px -98px 0px;
-        text-align:right;
-    }
-    .copy a{
-        color:rgb(153,153,153);
-    }
-</style>
-
-<h2 id="优化源码复制"><a href="#优化源码复制" class="headerlink" title="优化源码复制"></a>优化源码复制</h2><p>之前在【<a href="/2016/08/12/Hexo初体验/" title="Hexo初体验">Hexo初体验</a>】中提到过<strong>代码复制到剪切板</strong>的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：</p>
+    <content type="html"><![CDATA[<h2 id="优化源码复制"><a href="#优化源码复制" class="headerlink" title="优化源码复制"></a>优化源码复制</h2><p>之前在【<a href="/2016/08/12/Hexo初体验/" title="Hexo初体验">Hexo初体验</a>】中提到过<strong>代码复制到剪切板</strong>的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：</p>
 <ol>
 <li>便于管理源码</li>
 <li>方便复习模板题</li>
@@ -60,21 +46,7 @@
     
     <summary type="html">
     
-      &lt;style&gt;
-    .copy{
-        position:relative;
-        z-index:10;
-        color:#000;
-        font-size:13px;
-        margin:0px 11px -98px 0px;
-        text-align:right;
-    }
-    .copy a{
-        color:rgb(153,153,153);
-    }
-&lt;/style&gt;
-
-&lt;h2 id=&quot;优化源码复制&quot;&gt;&lt;a href=&quot;#优化源码复制&quot; class=&quot;headerlink&quot; title=&quot;优化源码复制&quot;&gt;&lt;/a&gt;优化源码复制&lt;/h2&gt;&lt;p&gt;之前在【&lt;a href=&quot;/2016/08/12/Hexo初体验/&quot; title=&quot;Hexo初体验&quot;&gt;Hexo初体验&lt;/a&gt;】中提到过&lt;strong&gt;代码复制到剪切板&lt;/strong&gt;的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：&lt;/p&gt;
+      &lt;h2 id=&quot;优化源码复制&quot;&gt;&lt;a href=&quot;#优化源码复制&quot; class=&quot;headerlink&quot; title=&quot;优化源码复制&quot;&gt;&lt;/a&gt;优化源码复制&lt;/h2&gt;&lt;p&gt;之前在【&lt;a href=&quot;/2016/08/12/Hexo初体验/&quot; title=&quot;Hexo初体验&quot;&gt;Hexo初体验&lt;/a&gt;】中提到过&lt;strong&gt;代码复制到剪切板&lt;/strong&gt;的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;便于管理源码&lt;/li&gt;
 &lt;li&gt;方便复习模板题&lt;/li&gt;
@@ -166,9 +138,9 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
@@ -248,9 +220,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="平面图" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E9%9D%A2%E5%9B%BE/"/>
     
@@ -1384,11 +1356,11 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="差分序列" scheme="https://cothrax.github.io/tags/%E5%B7%AE%E5%88%86%E5%BA%8F%E5%88%97/"/>
     
@@ -1589,11 +1561,11 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
