@@ -79,69 +79,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/" title="[JSOI2016] 提高2班 单调队列及动规优化" itemprop="url">[JSOI2016] 提高2班 单调队列及动规优化</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-20T10:34:23.000Z" itemprop="datePublished"> Published 2016-08-20</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="P1-轰炸机"><a href="#P1-轰炸机" class="headerlink" title="P1 轰炸机"></a>P1 轰炸机</h1><p>大山两侧的X国与Y国爆发了一场战争，由于山势险峻，只有一条山路可以通行，所以双方的军营都设置在这一条路上（直线）。X国科学家正在研制一种高威力轰炸机，其炮弹可以大规模精准摧毁目标。由于在前线连连失利，X国高层决定提前将其投入使用。但由于研发尚未完成，仅有一枚导弹可供使用。这枚导弹至多可以摧毁M个目标（包括敌方军营和己方军营），但这些目标必须是连续的。<br>在一个月黑风高的夜晚，X国高层决定用这架轰炸机发起突袭。他们预先侦查到了山路上双方军营共有N个军营，并探清了每个军营的情况，他们请你帮他们设计出这次突袭战果最大的方案。<br>X国战国的计算公式为：战果=敌方损失的战斗力-己方损失的战斗力。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数 N,M;<br>第2~N+1行，每行一个整数Ai，表示第i个军营的属性值。<br>abs(Ai)表示第i个军营的战斗力。<br>Ai>0，表明该军营是Y国的军营；<br>Ai&lt;0，表明该军营是X国的军营；<br>Ai=0，表明该军营是空的。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>仅一行，输出使突袭战果最大的方案（按照输入顺序输出所有轰炸目标的属性值），每两个属性值之间用一个空格隔开。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/20/JSOI2016-提高2班-单调队列及动规优化/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2016/08/20/JSOI2016-提高2班-二分答案/" title="[JSOI2016] 提高2班 二分答案" itemprop="url">[JSOI2016] 提高2班 二分答案</a>
   </h1>
   <p class="article-author">By
@@ -735,6 +672,69 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/15/Vijos-P1124/" title="[Vijos] P1124 字串变换" itemprop="url">[Vijos] P1124 字串变换</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-15T10:17:53.000Z" itemprop="datePublished"> Published 2016-08-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>已知有两个字串 A\$, B\$ 及一组字串变换的规则（至多6个规则）:<br>A1\$ -&gt; B1\$<br>A2\$ -&gt; B2\$<br>规则的含义为：在 A＄中的子串 A1\$ 可以变换为 B1\$、A2\$ 可以变换为 B2\$ …。<br>例如：A\$＝’abcd’　B\$＝’xyz’<br>变换规则为：<br>‘abc’-&gt;‘xu’　‘ud’-&gt;‘y’　‘y’-&gt;‘yz’<br>则此时，A\$ 可以经过一系列的变换变为 B\$，其变换的过程为：<br>‘abcd’-&gt;‘xud’-&gt;‘xy’-&gt;‘xyz’<br>共进行了三次变换，使得 A\$ 变换为B\$。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为两个字符串，第二行至文件尾为变换规则<br>A\$ B\$<br>A1\$ B1\$ \<br>A2\$ B2\$ |-&gt; 变换规则<br>… … /<br>所有字符串长度的上限为 20。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>若在 10 步（包含 10步）以内能将 A\$ 变换为 B\$ ，则输出最少的变换步数；否则输出”NO ANSWER!”<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/08/15/Vijos-P1124/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/BFS/">BFS</a><a href="/tags/Hash/">Hash</a><a href="/tags/字符串/">字符串</a><a href="/tags/NOIP/">NOIP</a><a href="/tags/双向BFS/">双向BFS</a><a href="/tags/搜索/">搜索</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next<span></span></a>
@@ -753,7 +753,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>59</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>58</sup></a></li>
 		  
 		
 		  
