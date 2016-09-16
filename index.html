@@ -79,81 +79,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/09/16/test-code/" title="test code" itemprop="url">test code</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-09-16T04:24:52.000Z" itemprop="datePublished"> Published 2016-09-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>123<br>123<br>123<br>123</p>
-<style>
-    .copy{
-        position:relative;
-        z-index:10;
-        color:#000;
-        font-size:13px;
-        margin:0px 11px -98px 0px;
-        text-align:right;
-    }
-    .copy a{
-        color:rgb(153,153,153);
-    }
-</style>
-
-<div><br><div class="copy"><br>    <a href="/2016/09/16/test-code/p1979.pas" title="Download Source">Download Source</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>p1979.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span>	</div><div class="line">	n,i,p,d,ans:int;</div><div class="line">	t:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">	flag:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">	flag[v]:=true;</div><div class="line">	<span class="keyword">if</span> flag[t[v]] <span class="keyword">then</span> p:=t[v]</div><div class="line">	<span class="keyword">else</span> dfs(t[v]);</div><div class="line">	<span class="keyword">if</span> p=v <span class="keyword">then</span> ans:=min(ans,d+<span class="number">1</span>);</div><div class="line">	inc(d);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">	<span class="keyword">read</span>(n);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(t[i]);</div><div class="line">	ans:=maxlongint;</div><div class="line">	fillchar(flag,sizeof(flag),false);</div><div class="line">	<span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">		d:=<span class="number">0</span>;p:=<span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> flag[i] <span class="keyword">then</span> dfs(i);</div><div class="line">	<span class="keyword">end</span>;</div><div class="line">	<span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2016/09/15/noip-2014-8-2-mouse/" title="NOIP模拟赛 打地鼠游戏" itemprop="url">NOIP模拟赛 打地鼠游戏</a>
   </h1>
   <p class="article-author">By
@@ -167,7 +92,21 @@
 </header>
     <div class="article-content">
         
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>伟大的2320学长特别喜欢打地鼠游戏，这个游戏开始后，会在地板上冒出一些地鼠来，你可以用榔头去敲击这些地鼠，每个地鼠被敲击后，将会增加相应的游戏分值。可是，所有地鼠只会在地上出现一段时间（而且消失后再也不会出现），每个地鼠都在0时刻冒出，但停留的时间可能是不同的，而且每个地鼠被敲击后增加的游戏分值也可能是不同。<br>最近2320学长经常玩这个游戏，以至于敲击每个地鼠只要1秒。他在想如何敲击能使总分最大。<br>
+        <style>
+    .copy{
+        position:relative;
+        z-index:10;
+        color:#000;
+        font-size:13px;
+        margin:0px 11px -98px 0px;
+        text-align:right;
+    }
+    .copy a{
+        color:rgb(153,153,153);
+    }
+</style>
+
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>伟大的2320学长特别喜欢打地鼠游戏，这个游戏开始后，会在地板上冒出一些地鼠来，你可以用榔头去敲击这些地鼠，每个地鼠被敲击后，将会增加相应的游戏分值。可是，所有地鼠只会在地上出现一段时间（而且消失后再也不会出现），每个地鼠都在0时刻冒出，但停留的时间可能是不同的，而且每个地鼠被敲击后增加的游戏分值也可能是不同。<br>最近2320学长经常玩这个游戏，以至于敲击每个地鼠只要1秒。他在想如何敲击能使总分最大。<br>
         
         
         <p class="article-more-link">
@@ -187,7 +126,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/DP/">DP</a><a href="/tags/堆/">堆</a><a href="/tags/贪心/">贪心</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/堆/">堆</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/DP/">DP</a><a href="/tags/贪心/">贪心</a>
   </div>
 
 </div>
@@ -263,7 +202,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/BFS/">BFS</a><a href="/tags/图论/">图论</a><a href="/tags/平面图/">平面图</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/图论/">图论</a><a href="/tags/BFS/">BFS</a><a href="/tags/平面图/">平面图</a>
   </div>
 
 </div>
@@ -385,7 +324,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/堆/">堆</a><a href="/tags/链表/">链表</a>
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/堆/">堆</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/链表/">链表</a>
   </div>
 
 </div>
@@ -712,6 +651,69 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/11/NOIP模拟赛-梦幻布丁/" title="NOIP模拟赛 梦幻布丁" itemprop="url">NOIP模拟赛 梦幻布丁</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-11T03:48:48.000Z" itemprop="datePublished"> Published 2016-09-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>N个布丁摆成一行,进行M次操作.每次将某个颜色的布丁全部变成另一种颜色的,然后再询问当前一共有多少段颜色.例如颜色分别为1,2,2,1的四个布丁一共有3段颜色.</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行给出N,M表示布丁的个数和好友的操作次数. 第二行N个数A1,A2…An表示第i个布丁的颜色从第三行起有M行,对于每个操作,若第一个数字是1表示要对颜色进行改变，其后的两个整数X,Y表示将所有颜色为X的变为Y，X可能等于Y. 若第一个数字为2表示要进行询问当前有多少段颜色，这时你应该输出一个整数. 0</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>针对第二类操作即询问，依次输出当前有多少段颜色.<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/11/NOIP模拟赛-梦幻布丁/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/链表/">链表</a><a href="/tags/启发式合并/">启发式合并</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -730,7 +732,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>59</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>58</sup></a></li>
 		  
 		
 		  
