@@ -1192,6 +1192,60 @@ article .article-content .right {
 .copy a {
   color: #999;
 }
+.animated ul ul li a:hover {
+  color: #000;
+  background: #fff;
+}
+.article-info h1 a:hover {
+  color: #000 !important;
+}
+.article-author a:hover {
+  color: #000;
+}
+.article-info h1 a {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 2px;
+}
+.article-info h1 a:after {
+  content: '';
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0px;
+  background: transparent;
+  -webkit-transition: width 0.5s ease, background-color 0.5s ease;
+  -moz-transition: width 0.5s ease, background-color 0.5s ease;
+  -o-transition: width 0.5s ease, background-color 0.5s ease;
+  -ms-transition: width 0.5s ease, background-color 0.5s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+.article-info h1 a:hover:after {
+  width: 100%;
+  background: #00f;
+}
+.article-info h1 a {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 2px;
+}
+.article-info h1 a:after {
+  content: '';
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0px;
+  background: transparent;
+  -webkit-transition: width 0.5s ease, background-color 0.5s ease;
+  -moz-transition: width 0.5s ease, background-color 0.5s ease;
+  -o-transition: width 0.5s ease, background-color 0.5s ease;
+  -ms-transition: width 0.5s ease, background-color 0.5s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+.article-info h1 a:hover:after {
+  width: 100%;
+  background: #555;
+}
 footer.article-footer {
   background: #fafafa;
   padding: 0 4%;
