@@ -1192,6 +1192,9 @@ article .article-content .right {
 .copy a {
   color: #999;
 }
+.copy a:hover {
+  color: #000;
+}
 .animated ul ul li a:hover {
   color: #000;
   background: #fff;
