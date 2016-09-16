@@ -4,13 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[test]]></title>
-      <url>https://cothrax.github.io/2016/09/16/test/</url>
-      <content type="html"><![CDATA[<p>Mdf</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Hexo用原生html伪装复制源码的feature]]></title>
       <url>https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/</url>
       <content type="html"><![CDATA[<h2 id="优化源码复制"><a href="#优化源码复制" class="headerlink" title="优化源码复制"></a>优化源码复制</h2><p>之前在【<a href="/2016/08/12/Hexo初体验/" title="Hexo初体验">Hexo初体验</a>】中提到过<strong>代码复制到剪切板</strong>的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：</p>
