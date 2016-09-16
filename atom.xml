@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-16T05:33:57.518Z</updated>
+  <updated>2016-09-16T05:30:33.587Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[object Object]</title>
+    <link href="https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/prob/"/>
+    <id>https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/prob/</id>
+    <published>2016-09-16T06:07:53.206Z</published>
+    <updated>2016-09-16T05:30:33.587Z</updated>
+    
+    <content type="html"><![CDATA[<style>
+    .copy{
+        position:relative;
+        z-index:10;
+        color:#000;
+        font-size:13px;
+        margin:0px 11px -98px 0px;
+        text-align:right;
+    }
+    .copy a{
+        color:rgb(153,153,153);
+    }
+</style>
+
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><a id="more"></a>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><p>&gt;</p>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>&gt;</p>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><div><br><div class="copy"><br>    <br></div><br><div><br><code>delphi *.pas</code><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;style&gt;
+    .copy{
+        position:relative;
+        z-index:10;
+        color:#000;
+        font-size:13px;
+        margin:0px 11px -98px 0px;
+        text-align:right;
+    }
+    .copy a{
+        color:rgb(153,153,153);
+    }
+&lt;/style&gt;
+
+&lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo用原生html伪装复制源码的feature</title>
+    <link href="https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/"/>
+    <id>https://cothrax.github.io/2016/09/16/hexo-ways-to-copy-code/</id>
+    <published>2016-09-16T05:39:30.000Z</published>
+    <updated>2016-09-16T06:14:29.626Z</updated>
+    
+    <content type="html"><![CDATA[<style>
+    .copy{
+        position:relative;
+        z-index:10;
+        color:#000;
+        font-size:13px;
+        margin:0px 11px -98px 0px;
+        text-align:right;
+    }
+    .copy a{
+        color:rgb(153,153,153);
+    }
+</style>
+
+<h2 id="优化源码复制"><a href="#优化源码复制" class="headerlink" title="优化源码复制"></a>优化源码复制</h2><p>之前在<a href="/2016/08/12/Hexo初体验/" title="Hexo初体验">Hexo初体验</a>中提到过<strong>代码复制到剪切板</strong>的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：</p>
+<ol>
+<li>便于管理源码</li>
+<li>方便复习模板题</li>
+<li><del>显示逼格</del>（雾）<a id="more"></a>
+</li>
+</ol>
+<p>但在代码块外面显示一个蓝色链接实在太丑太直接：</p>
+<blockquote>
+<img src="/2016/09/16/hexo-ways-to-copy-code/codeblock.jpg" alt="codeblock.jpg" title="">
+</blockquote>
+<p>于是今天我拿css伪装一下，代码如下：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line"><span class="code">    .copy&#123;</span></div><div class="line"><span class="code">        position:relative;</span></div><div class="line"><span class="code">        z-index:10;</span></div><div class="line"><span class="code">        color:#000;</span></div><div class="line"><span class="code">        font-size:13px;</span></div><div class="line"><span class="code">        margin:0px 11px -98px 0px;</span></div><div class="line"><span class="code">        text-align:right;</span></div><div class="line"><span class="code">    &#125;</span></div><div class="line"><span class="code">    .copy a&#123;</span></div><div class="line"><span class="code">        color:rgb(153,153,153);</span></div><div class="line"><span class="code">    &#125;</span></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;div&gt;</div><div class="line">&lt;div class="copy"&gt;</div><div class="line"><span class="code">    &#123;% asset_link *.pas &#123;Plain Text&#125; %&#125;</span></div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div&gt;</div><div class="line">&#123;% codeblock lang:delphi *.pas %&#125;</div><div class="line">//code here</div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line">&lt;/div&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<blockquote>
+<img src="/2016/09/16/hexo-ways-to-copy-code/new.png" alt="new.png" title="">
+</blockquote>
+<p>其实照着这个思路，可以通过直接<strong>插入js</strong>来实现copy to clipboard的函数，有时间再试一试。</p>
+<h2 id="我的prob模板"><a href="#我的prob模板" class="headerlink" title="我的prob模板"></a>我的prob模板</h2><p>附一份用来写题解的scaffold以供参考</p>
+<div><br><div class="copy"><br>    <a href="/2016/09/16/hexo-ways-to-copy-code/prob.md" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight markdown"><figcaption><span>prob.md</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">tags: [OI]</div><div class="line"><span class="section">categories: Problem Set</span></div><div class="line">---</div><div class="line">&lt;style&gt;</div><div class="line"><span class="code">    .copy&#123;</span></div><div class="line"><span class="code">        position:relative;</span></div><div class="line"><span class="code">        z-index:10;</span></div><div class="line"><span class="code">        color:#000;</span></div><div class="line"><span class="code">        font-size:13px;</span></div><div class="line"><span class="code">        margin:0px 11px -98px 0px;</span></div><div class="line"><span class="code">        text-align:right;</span></div><div class="line"><span class="code">    &#125;</span></div><div class="line"><span class="code">    .copy a&#123;</span></div><div class="line"><span class="code">        color:rgb(153,153,153);</span></div><div class="line"><span class="code">    &#125;</span></div><div class="line">&lt;/style&gt;</div><div class="line"><span class="section">## 描述</span></div><div class="line">&lt;!--more--&gt;</div><div class="line"><span class="section">## 格式</span></div><div class="line"><span class="section">### 输入格式</span></div><div class="line"><span class="section">### 输出格式</span></div><div class="line"><span class="section">## 样例</span></div><div class="line"><span class="section">### 样例输入</span></div><div class="line"><span class="quote">&gt;</span></div><div class="line">### 样例输出</div><div class="line"><span class="quote">&gt;</span></div><div class="line">## 提示​</div><div class="line"><span class="section">## 题解</span></div><div class="line">&lt;div&gt;</div><div class="line">&lt;div class="copy"&gt;</div><div class="line"><span class="code">    &#123;% asset_link *.pas &#123;Plain Text&#125; %&#125;</span></div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div&gt;</div><div class="line">&#123;% codeblock lang:delphi *.pas %&#125;</div><div class="line">//code here</div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line">&lt;/div&gt;&lt;/div&gt;</div></pre></td></tr></table></figure><br><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;style&gt;
+    .copy{
+        position:relative;
+        z-index:10;
+        color:#000;
+        font-size:13px;
+        margin:0px 11px -98px 0px;
+        text-align:right;
+    }
+    .copy a{
+        color:rgb(153,153,153);
+    }
+&lt;/style&gt;
+
+&lt;h2 id=&quot;优化源码复制&quot;&gt;&lt;a href=&quot;#优化源码复制&quot; class=&quot;headerlink&quot; title=&quot;优化源码复制&quot;&gt;&lt;/a&gt;优化源码复制&lt;/h2&gt;&lt;p&gt;之前在&lt;a href=&quot;/2016/08/12/Hexo初体验/&quot; title=&quot;Hexo初体验&quot;&gt;Hexo初体验&lt;/a&gt;中提到过&lt;strong&gt;代码复制到剪切板&lt;/strong&gt;的替代方案，就是用一个link链接到源码文件，这样做对于一个OIer来说，好处有三：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;便于管理源码&lt;/li&gt;
+&lt;li&gt;方便复习模板题&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;显示逼格&lt;/del&gt;（雾）
+    
+    </summary>
+    
+      <category term="Tinkering Note" scheme="https://cothrax.github.io/categories/Tinkering-Note/"/>
+    
+    
+      <category term="Hexo" scheme="https://cothrax.github.io/tags/Hexo/"/>
+    
+      <category term="Css" scheme="https://cothrax.github.io/tags/Css/"/>
+    
+      <category term="Html" scheme="https://cothrax.github.io/tags/Html/"/>
+    
+  </entry>
   
   <entry>
     <title>NOIP模拟赛 打地鼠游戏</title>
@@ -86,13 +217,13 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
     
   </entry>
   
@@ -170,9 +301,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="平面图" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E9%9D%A2%E5%9B%BE/"/>
     
@@ -268,9 +399,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
     
       <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
@@ -588,9 +719,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
@@ -734,9 +865,9 @@
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
       <category term="生成树" scheme="https://cothrax.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91/"/>
+    
+      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
@@ -1129,9 +1260,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="NOI" scheme="https://cothrax.github.io/tags/NOI/"/>
     
@@ -1306,11 +1437,11 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="差分序列" scheme="https://cothrax.github.io/tags/%E5%B7%AE%E5%88%86%E5%BA%8F%E5%88%97/"/>
     
@@ -1319,252 +1450,6 @@
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
       <category term="单调栈" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 2014-5-24</title>
-    <link href="https://cothrax.github.io/2016/09/03/NOIP%E6%A8%A1%E6%8B%9F%E8%B5%9B-2014-5-24/"/>
-    <id>https://cothrax.github.io/2016/09/03/NOIP模拟赛-2014-5-24/</id>
-    <published>2016-09-03T14:32:15.000Z</published>
-    <updated>2016-09-04T04:36:56.186Z</updated>
-    
-    <content type="html"><![CDATA[<p>三道USACO的题目</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">题目名</th>
-<th style="text-align:center">护花</th>
-<th style="text-align:center">修建草坪</th>
-<th style="text-align:center">虫洞</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">源文件</td>
-<td style="text-align:center">flower.cpp/c/pas</td>
-<td style="text-align:center">mowlawn.cpp/c/pas</td>
-<td style="text-align:center">wormhole.cpp/c/pas</td>
-</tr>
-<tr>
-<td style="text-align:center">输入文件</td>
-<td style="text-align:center">flower.in</td>
-<td style="text-align:center">mowlawn.in</td>
-<td style="text-align:center">wormhole.in</td>
-</tr>
-<tr>
-<td style="text-align:center">输出文件</td>
-<td style="text-align:center">flower.out</td>
-<td style="text-align:center">mowlawn.out</td>
-<td style="text-align:center">Wormhole.out</td>
-</tr>
-<tr>
-<td style="text-align:center">时间限制</td>
-<td style="text-align:center">1000MS</td>
-<td style="text-align:center">1000MS</td>
-<td style="text-align:center">1000MS</td>
-</tr>
-<tr>
-<td style="text-align:center">内存限制</td>
-<td style="text-align:center">256MB</td>
-<td style="text-align:center">256MB</td>
-<td style="text-align:center">256MB</td>
-</tr>
-<tr>
-<td style="text-align:center">测试点</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">10</td>
-</tr>
-<tr>
-<td style="text-align:center">测试点分值</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">10</td>
-</tr>
-</tbody>
-</table>
-<h1 id="P1-护花"><a href="#P1-护花" class="headerlink" title="P1 护花"></a>P1 护花</h1><p>约翰留下他的N(N&lt;=100000)只奶牛上山采木．他离开的时候，她们像往常一样悠闲地在草场里吃草．可是，当他回来的时候，他看到了一幕惨剧：牛们正躲在他的花园里，啃食着他心爱的美丽花朵！为了使接下来花朵的损失最小，约翰赶紧采取行动，把牛们送回牛棚． 牛们从1到N编号．第i只牛所在的位置距离牛棚Ti(1≤Ti≤2000000)分钟的路程，而在约翰开始送她回牛棚之前，她每分钟会啃食Di(1≤Di≤100)朵鲜花．无论多么努力，约翰一次只能送一只牛回棚．而运送第第i只牛事实上需要2Ti分钟，因为来回都需要时间．<br>写一个程序来决定约翰运送奶牛的顺序，使最终被吞食的花朵数量最小．<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行输入N，之后N行每行输入两个整数Ti和Di</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数，表示最小数量的花朵被吞食</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>6<br>3 1<br>2 5<br>2 3<br>3 2<br>4 1<br>1 6</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>86</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>约翰用6，2，3，4，1，5的顺序来运送他的奶牛 </p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心：考虑牛i和j，如果满足：$$2\times d[i]\cdot t[j]&gt;2\times d[j]\cdot t[i]$$，那么先搬走牛i<br>按这个二元关系qsort就好了。</p>
-<dir style="text-align:right"><a href="/2016/09/03/NOIP模拟赛-2014-5-24/flower.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>flower.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> qword; <span class="comment">//0:t;1:d</span></div><div class="line">    n,i:int;ans,sum:qword;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">com</span><span class="params">(i,j:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span> com:=a[j,<span class="number">0</span>]*a[i,<span class="number">1</span>]&gt;a[i,<span class="number">0</span>]*a[j,<span class="number">1</span>] <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:qword)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(b,e:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=b;j:=e;a[<span class="number">0</span>]:=a[random(e-b)+b];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> com(i,<span class="number">0</span>) <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> com(<span class="number">0</span>,j) <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            swap(a[i,<span class="number">0</span>],a[j,<span class="number">0</span>]);swap(a[i,<span class="number">1</span>],a[j,<span class="number">1</span>]);</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(i,e);</div><div class="line">    <span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(b,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'flower.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'flower.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(a[i,<span class="number">0</span>],a[i,<span class="number">1</span>]);</div><div class="line">        a[i,<span class="number">0</span>]:=a[i,<span class="number">0</span>]*<span class="number">2</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    qsort(<span class="number">1</span>,n);</div><div class="line">    sum:=<span class="number">0</span>;ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> sum:=sum+a[i,<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        sum:=sum-a[i,<span class="number">1</span>];</div><div class="line">        ans:=ans+sum*a[i,<span class="number">0</span>];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="P2-修剪草坪"><a href="#P2-修剪草坪" class="headerlink" title="P2 修剪草坪"></a>P2 修剪草坪</h1><p>在一年前赢得了小镇的最佳草坪比赛后，FJ变得很懒，再也没有修剪过草坪。现在，新一轮的最佳草坪比赛又开始了，FJ希望能够再次夺冠。<br>然而，FJ的草坪非常脏乱，因此，FJ只能够让他的奶牛来完成这项工作。FJ有N<br>(1 &lt;= N &lt;= 100,000)只排成一排的奶牛，编号为1…N。每只奶牛的效率是不同的，奶牛i的效率为E_i(0 &lt;= E_i &lt;= 1,000,000,000)。<br>靠近的奶牛们很熟悉，因此，如果FJ安排超过K（1&lt;=K&lt;=N）只连续的奶牛，那么，这些奶牛就会罢工去开派对:)。<br>因此，现在FJ需要你的帮助，计算FJ可以得到的最大效率，并且该方案中没有连续的超过K只奶牛。</p>
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><ul>
-<li>第一行：空格隔开的两个整数N和K</li>
-<li>第二到N+1行：第i+1行有一个整数E_i</li>
-</ul>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><ul>
-<li>第一行：一个值，表示FJ可以得到的最大的效率值。<!--more-->
-</li>
-</ul>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>5 2<br>1<br>2<br>3<br>4<br>5</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>86</p>
-</blockquote>
-<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>输入解释：<br>FJ有5只奶牛，他们的效率为1，2，3，4，5。他们希望选取效率总和最大的奶牛，但是他不能选取超过2只连续的奶牛<br>【样例输出】<br>12<br>FJ可以选择出了第三只以外的其他奶牛，总的效率为1+2+4+5=12。</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p><strong>划分dp</strong>很容易想：<br>f[i]前i头牛的最大值，sum[i]前缀和<br><span>$f[i]=max\{ f[j-1]+sum[i]-sum[j] \ \ |\ \ i-j\leq m\}$</span><!-- Has MathJax --></p>
-<p>注意预处理i=1..m的$f[i]=sum[i]$<br>复杂度$O(N^2)$，n有些大，我们变形：<br><span>$f[i]=max\{f[j-1]-sum[j]\}+sum[i]$</span><!-- Has MathJax --></p>
-<p>这样用递减的<strong>单调队列</strong>维护值对$(i,f[i-1]-sum[i])$即可</p>
-<dir style="text-align:right"><a href="/2016/09/03/NOIP模拟赛-2014-5-24/mowlawn.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>mowlawn.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,i,h,t:int;</div><div class="line">    a,sum,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int64;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int64;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">push</span><span class="params">(i,x:int64)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (q[t,<span class="number">1</span>]&lt;=x) <span class="keyword">do</span> dec(t);</div><div class="line">    inc(t);q[t,<span class="number">0</span>]:=i;q[t,<span class="number">1</span>]:=x;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">pop</span><span class="params">(i:int64)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">while</span> (h&lt;=t) <span class="keyword">and</span> (i-q[h,<span class="number">0</span>]&gt;m) <span class="keyword">do</span> inc(h);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'mowlawn.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'mowlawn.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">    sum[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> sum[i]:=sum[i-<span class="number">1</span>]+a[i];</div><div class="line">    h:=<span class="number">1</span>;t:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        f[i]:=sum[i];</div><div class="line">        push(i,f[i-<span class="number">1</span>]-sum[i]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//f[i]:=max&#123;f[j-1]-sum[j]&#125;+sum[i]</span></div><div class="line">    <span class="keyword">for</span> i:=m+<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        push(i,f[i-<span class="number">1</span>]-sum[i]);</div><div class="line">        pop(i);</div><div class="line">        f[i]:=q[h,<span class="number">1</span>]+sum[i];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(f[i]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="P3-虫洞"><a href="#P3-虫洞" class="headerlink" title="P3 虫洞"></a>P3 虫洞</h1><p>John在他的农场中闲逛时发现了许多虫洞。虫洞可以看作一条十分奇特的有向边，并可以使你返回到过去的一个时刻（相对你进入虫洞之前）。John的每个农场有M条小路（无向边）连接着N （从1..N标号）块地，并有W个虫洞（有向边）。其中1&lt;=N&lt;=500,1&lt;=M&lt;=2500,1&lt;=W&lt;=200。 现在John想借助这些虫洞来回到过去（出发时刻之前），请你告诉他能办到吗。 John将向你提供F(1&lt;=F&lt;=5)个农场的地图。没有小路会耗费你超过10000秒的时间，当然也没有虫洞回帮你回到超过10000秒以前。</p>
-<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><ul>
-<li>Line 1: 一个整数 F, 表示农场个数。</li>
-<li>Line 1 of each farm: 三个整数 N, M, W。</li>
-<li>Lines 2..M+1 of each farm: 三个数（S, E, T）。表示在标号为S的地与标号为E的地中间有一条用时T秒的小路。</li>
-<li>Lines M+2..M+W+1 of each farm: 三个数（S, E, T）。表示在标号为S的地与标号为E的地中间有一条可以使John到达T秒前的虫洞。</li>
-</ul>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><ul>
-<li>Lines 1..F: 如果John能在这个农场实现他的目标，输出”YES”,否则输出”NO”。<!--more-->
-</li>
-</ul>
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>2<br>3 3 1<br>1 2 2<br>1 3 4<br>2 3 1<br>3 1 3<br>3 2 1<br>1 2 3<br>2 3 4<br>3 1 8</p>
-</blockquote>
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>NO<br>YES</p>
-</blockquote>
-<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>spfa判个负环就可以了，注意审题，小路是无向边。</p>
-<dir style="text-align:right"><a href="/2016/09/03/NOIP模拟赛-2014-5-24/wormhole.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>wormhole.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,w,next:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">6010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">510</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,k,t,i,f0,t0,w0:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t,w:int)</span>;</span></div><div class="line"><span class="keyword">var</span> m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</div><div class="line">    g[m].t:=t;g[m].w:=w;</div><div class="line">    g[m].next:=head[f];head[f]:=m;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spfa</span><span class="params">()</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    i,v,u,h,t:int;</div><div class="line">    cnt,q,d:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">510</span>] <span class="keyword">of</span> int;</div><div class="line">    inq:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">510</span>] <span class="keyword">of</span> boolean;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(d,sizeof(d),<span class="number">0</span>);</div><div class="line">    filldword(cnt,sizeof(cnt) <span class="keyword">div</span> <span class="number">4</span>,<span class="number">1</span>);</div><div class="line">    fillchar(inq,sizeof(inq),true);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> q[i]:=i;</div><div class="line">    h:=<span class="number">1</span>;t:=n+<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> h&lt;&gt;t <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        v:=q[h];</div><div class="line">        i:=head[v];</div><div class="line">        <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            u:=g[i].t;</div><div class="line">            <span class="keyword">if</span> d[u]&gt;d[v]+g[i].w <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                d[u]:=d[v]+g[i].w;</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> inq[u] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                    inc(cnt[u]);</div><div class="line">                    <span class="keyword">if</span> cnt[u]&gt;n <span class="keyword">then</span> <span class="keyword">exit</span>(true);</div><div class="line">                    q[t]:=u;inq[u]:=true;</div><div class="line">                    inc(t);<span class="keyword">if</span> t&gt;<span class="number">510</span> <span class="keyword">then</span> t:=<span class="number">0</span>;</div><div class="line">                <span class="keyword">end</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">            i:=g[i].next;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        inc(h);<span class="keyword">if</span> h&gt;<span class="number">510</span> <span class="keyword">then</span> h:=<span class="number">0</span>;</div><div class="line">        inq[v]:=false;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    spfa:=false;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'wormhole.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'wormhole.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(t);</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        fillchar(head,sizeof(head),<span class="number">0</span>);</div><div class="line">        <span class="keyword">read</span>(n,m,k);</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">read</span>(f0,t0,w0);</div><div class="line">            add(f0,t0,w0);add(t0,f0,w0);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">read</span>(f0,t0,w0);add(f0,t0,-w0);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        <span class="keyword">if</span> spfa <span class="keyword">then</span> writeln(<span class="string">'YES'</span>) <span class="keyword">else</span> writeln(<span class="string">'NO'</span>);</div><div class="line">        dec(t);</div><div class="line">    <span class="keyword">until</span> t=<span class="number">0</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;三道USACO的题目&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;题目名&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;护花&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;修建草坪&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;虫洞&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;源文件&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;flower.cpp/c/pas&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;mowlawn.cpp/c/pas&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;wormhole.cpp/c/pas&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;输入文件&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;flower.in&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;mowlawn.in&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;wormhole.in&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;输出文件&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;flower.out&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;mowlawn.out&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Wormhole.out&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;时间限制&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;1000MS&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;1000MS&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;1000MS&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;内存限制&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;256MB&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;256MB&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;256MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;测试点&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;测试点分值&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;P1-护花&quot;&gt;&lt;a href=&quot;#P1-护花&quot; class=&quot;headerlink&quot; title=&quot;P1 护花&quot;&gt;&lt;/a&gt;P1 护花&lt;/h1&gt;&lt;p&gt;约翰留下他的N(N&amp;lt;=100000)只奶牛上山采木．他离开的时候，她们像往常一样悠闲地在草场里吃草．可是，当他回来的时候，他看到了一幕惨剧：牛们正躲在他的花园里，啃食着他心爱的美丽花朵！为了使接下来花朵的损失最小，约翰赶紧采取行动，把牛们送回牛棚． 牛们从1到N编号．第i只牛所在的位置距离牛棚Ti(1≤Ti≤2000000)分钟的路程，而在约翰开始送她回牛棚之前，她每分钟会啃食Di(1≤Di≤100)朵鲜花．无论多么努力，约翰一次只能送一只牛回棚．而运送第第i只牛事实上需要2Ti分钟，因为来回都需要时间．&lt;br&gt;写一个程序来决定约翰运送奶牛的顺序，使最终被吞食的花朵数量最小．&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="单调队列" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"/>
-    
-      <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
-    
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 czy的后宫</title>
-    <link href="https://cothrax.github.io/2016/09/03/NOIP%E6%A8%A1%E6%8B%9F%E8%B5%9B-czy%E7%9A%84%E5%90%8E%E5%AE%AB/"/>
-    <id>https://cothrax.github.io/2016/09/03/NOIP模拟赛-czy的后宫/</id>
-    <published>2016-09-03T12:48:06.000Z</published>
-    <updated>2016-09-03T12:54:31.718Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>czy要妥善安排他的后宫，他想在机房摆一群妹子，一共有n个位置排成一排，每个位置可以摆妹子也可以不摆妹子。有些类型妹子如果摆在相邻的位置（隔着一个空的位置不算相邻），就不好看了。假定每种妹子数量无限，求摆妹子的方案数。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入有m+1行，第一行有两个用空格隔开的正整数n、m，m表示妹子的种类数。接下来的m行，每行有m个字符1或0,若第i行第j列为1，则表示第i种妹子第j种妹子不能排在相邻的位置，输入保证对称。（提示：同一种妹子可能不能排在相邻位置）。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出只有一个整数，为方案数（这个数字可能很大，请输出方案数除以1000000007的余数。</p>
-<a id="more"></a>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>2 2<br>01<br>10</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>7</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>【样例说明】<br>七种方案为(空，空)、（空，1）、（1、空）、（2、空）、（空、2）、（1,1）、（2,2）。<br>【数据范围】<br>20%的数据，1＜n≤5,0＜m≤10。<br>60%的数据，1＜n≤200,0＜m≤100。<br>100%的数据，1＜n≤1000000000，0＜m≤100。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>DP：f[i,j]第i个以j结尾的方案数<br>$f[i,j]=\sum f[i-1,k]\ \ |\ \ a[j,k]=0$<br>n有点大，递推矩阵快速幂，注意不放的情况</p>
-<dir style="text-align:right"><a href="/2016/09/03/NOIP模拟赛-czy的后宫/harem.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>harem.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    mat=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">101</span>,<span class="number">0</span>..<span class="number">101</span>] <span class="keyword">of</span> qword;</div><div class="line"><span class="keyword">const</span> z:qword=<span class="number">1000000007</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    m,i,j:int;</div><div class="line">    n:int64;ans:qword;</div><div class="line">    a:mat;c:char;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mul</span><span class="params">(a,b:mat)</span>:</span>mat;</div><div class="line"><span class="keyword">var</span> i,j,k:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(mul,sizeof(mul),<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span>    </div><div class="line">            <span class="keyword">for</span> k:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">                mul[i,j]:=(mul[i,j]+a[i,k]*b[k,j]) <span class="keyword">mod</span> z;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mpow</span><span class="params">(a:mat;p:int64)</span>:</span>mat;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(mpow,sizeof(mpow),<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span> mpow[i,i]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> p&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> p <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span> <span class="keyword">then</span> mpow:=mul(mpow,a);</div><div class="line">        a:=mul(a,a);</div><div class="line">        p:=p <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'harem.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'harem.out'</span>);rewrite(output);</div><div class="line">    readln(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">read</span>(c);</div><div class="line">            a[i,j]:=<span class="number">1</span>-ord(c)+ord(<span class="string">'0'</span>);</div><div class="line">            <span class="keyword">if</span> j=m <span class="keyword">then</span> readln;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        a[<span class="number">0</span>,i]:=<span class="number">1</span>;a[i,<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    a:=mpow(a,n);</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        ans:=(ans+a[i,<span class="number">0</span>]) <span class="keyword">mod</span> z;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;czy要妥善安排他的后宫，他想在机房摆一群妹子，一共有n个位置排成一排，每个位置可以摆妹子也可以不摆妹子。有些类型妹子如果摆在相邻的位置（隔着一个空的位置不算相邻），就不好看了。假定每种妹子数量无限，求摆妹子的方案数。&lt;/p&gt;
-&lt;h2 id=&quot;格式&quot;&gt;&lt;a href=&quot;#格式&quot; class=&quot;headerlink&quot; title=&quot;格式&quot;&gt;&lt;/a&gt;格式&lt;/h2&gt;&lt;h3 id=&quot;输入格式&quot;&gt;&lt;a href=&quot;#输入格式&quot; class=&quot;headerlink&quot; title=&quot;输入格式&quot;&gt;&lt;/a&gt;输入格式&lt;/h3&gt;&lt;p&gt;输入有m+1行，第一行有两个用空格隔开的正整数n、m，m表示妹子的种类数。接下来的m行，每行有m个字符1或0,若第i行第j列为1，则表示第i种妹子第j种妹子不能排在相邻的位置，输入保证对称。（提示：同一种妹子可能不能排在相邻位置）。&lt;/p&gt;
-&lt;h3 id=&quot;输出格式&quot;&gt;&lt;a href=&quot;#输出格式&quot; class=&quot;headerlink&quot; title=&quot;输出格式&quot;&gt;&lt;/a&gt;输出格式&lt;/h3&gt;&lt;p&gt;输出只有一个整数，为方案数（这个数字可能很大，请输出方案数除以1000000007的余数。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
-    
-      <category term="快速幂" scheme="https://cothrax.github.io/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
     
   </entry>
   
