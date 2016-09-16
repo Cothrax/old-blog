@@ -79,6 +79,76 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/08/12/Test-Hexo/" title="Test Hexo" itemprop="url">Test Hexo</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-12T02:44:49.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><del>localhost下测试，asset、404都没有用，deploy后就</del>能用啦。</p>
+<p>要用资源文件夹的话：<br><figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h2 id="一张图片"><a href="#一张图片" class="headerlink" title="一张图片"></a>一张图片</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> example.gif TestImage %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<img src="/2016/08/12/Test-Hexo/example.gif" alt="TestImage" title="TestImage">
+<h2 id="一份源码"><a href="#一份源码" class="headerlink" title="一份源码"></a>一份源码</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+/2016/08/12/Test-Hexo/p1523.pas
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<a href="/2016/08/12/Test-Hexo/p1523.pas" title="p1523.pas">p1523.pas</a>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> p1523.pas 标题 %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<a href="/2016/08/12/Test-Hexo/p1523.pas" title="标题">标题</a>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/08/12/Test-Hexo/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tinkering-Note/">Tinkering Note</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/Markdown/">Markdown</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/08/12/Vijos-P1523/" title="[Vijos] P1523 贪吃的九头龙" itemprop="url">[Vijos] P1523 贪吃的九头龙</a>
   </h1>
   <p class="article-author">By
@@ -205,69 +275,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/07/25/Luogu-P1993-小K的农场/" title="[Luogu] P1993 小K的农场" itemprop="url">[Luogu] P1993 小K的农场</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-07-24T16:00:00.000Z" itemprop="datePublished"> Published 2016-07-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小K在MC里面建立很多很多的农场，总共n个，以至于他自己都忘记了每个农场中种植作物的具体数量了，他只记得一些含糊的信息（共m个），以下列三种形式描述：农场a比农场b至少多种植了c个单位的作物，农场a比农场b至多多种植了c个单位的作物，农场a与农场b种植的作物数一样多。但是，由于小K的记忆有些偏差，所以他想要知道存不存在一种情况，使得农场的种植作物数量与他记忆中的所有信息吻合。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包括两个整数n和m，分别表示农场数目和小K记忆中的信息数目。<br>接下来m行：<br>如果每行的第一个数是1，接下来有3个整数a,b,c，表示农场a比农场b至少多种植了c个单位的作物。<br>如果每行的第一个数是2，接下来有3个整数a,b,c，表示农场a比农场b至多多种植了c个单位的作物。<br>如果每行第一个数是3，家下来有2个整数a,b，表示农场a终止的数量和b一样多。 </p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>如果存在某种情况与小K的记忆吻合，输出“Yes”，否则输出“No”。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/07/25/Luogu-P1993-小K的农场/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/图论/">图论</a><a href="/tags/差分约束/">差分约束</a><a href="/tags/负环/">负环</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2016/07/25/Luogu-P1991/" title="[Luogu] P1991 无线通讯网" itemprop="url">[Luogu] P1991 无线通讯网</a>
   </h1>
   <p class="article-author">By
@@ -325,6 +332,69 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/25/Luogu-P1993-小K的农场/" title="[Luogu] P1993 小K的农场" itemprop="url">[Luogu] P1993 小K的农场</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-24T16:00:00.000Z" itemprop="datePublished"> Published 2016-07-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小K在MC里面建立很多很多的农场，总共n个，以至于他自己都忘记了每个农场中种植作物的具体数量了，他只记得一些含糊的信息（共m个），以下列三种形式描述：农场a比农场b至少多种植了c个单位的作物，农场a比农场b至多多种植了c个单位的作物，农场a与农场b种植的作物数一样多。但是，由于小K的记忆有些偏差，所以他想要知道存不存在一种情况，使得农场的种植作物数量与他记忆中的所有信息吻合。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包括两个整数n和m，分别表示农场数目和小K记忆中的信息数目。<br>接下来m行：<br>如果每行的第一个数是1，接下来有3个整数a,b,c，表示农场a比农场b至少多种植了c个单位的作物。<br>如果每行的第一个数是2，接下来有3个整数a,b,c，表示农场a比农场b至多多种植了c个单位的作物。<br>如果每行第一个数是3，家下来有2个整数a,b，表示农场a终止的数量和b一样多。 </p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>如果存在某种情况与小K的记忆吻合，输出“Yes”，否则输出“No”。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/07/25/Luogu-P1993-小K的农场/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/图论/">图论</a><a href="/tags/差分约束/">差分约束</a><a href="/tags/负环/">负环</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/6/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
@@ -343,7 +413,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>58</sup></a></li>
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>59</sup></a></li>
 		  
 		
 		  
