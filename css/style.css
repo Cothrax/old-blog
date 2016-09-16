@@ -1178,6 +1178,20 @@ article .article-content .right {
   margin-left: 1em;
   float: right;
 }
+.article-content p a {
+  color: #2ca6cb;
+}
+.copy {
+  position: relative;
+  z-index: 10;
+  color: #000;
+  font-size: 13px;
+  margin: 0px 11px -98px 0px;
+  text-align: right;
+}
+.copy a {
+  color: #999;
+}
 footer.article-footer {
   background: #fafafa;
   padding: 0 4%;
@@ -2074,10 +2088,10 @@ footer {
   }
 }
 .copyright a {
-  color: #555;
+  color: #2ca6cb;
 }
 .copyright a:hover {
-  color: #555;
+  color: #2ca6cb;
   text-decoration: underline;
 }
 .cc-license {
