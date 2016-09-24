@@ -1,0 +1,623 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>NOIP模拟赛 2014-10-6 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="一道模拟和一道平衡树区间k大没有做
+
+
+
+题目
+思路
+
+
+
+
+catclimb
+dfs
+
+
+disblo
+分组背包+输出方案
+
+
+
+P1 小猫爬山Freda和rainbow饲养了N只小猫，这天，小猫们要去爬山。经历了千辛万苦，小猫们终于爬上了山顶，但是疲倦的它们再也不想徒步走下山了（呜咕&amp;gt;_&amp;lt;）。Freda和rainbow只好花钱让它们坐索道下山。索道上的缆车最大承重量为W，而N只小猫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOIP模拟赛 2014-10-6">
+<meta property="og:url" content="https://cothrax.github.io/2016/09/21/noip-2014-10-6/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="一道模拟和一道平衡树区间k大没有做
+
+
+
+题目
+思路
+
+
+
+
+catclimb
+dfs
+
+
+disblo
+分组背包+输出方案
+
+
+
+P1 小猫爬山Freda和rainbow饲养了N只小猫，这天，小猫们要去爬山。经历了千辛万苦，小猫们终于爬上了山顶，但是疲倦的它们再也不想徒步走下山了（呜咕&amp;gt;_&amp;lt;）。Freda和rainbow只好花钱让它们坐索道下山。索道上的缆车最大承重量为W，而N只小猫">
+<meta property="og:updated_time" content="2016-09-24T12:47:57.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NOIP模拟赛 2014-10-6">
+<meta name="twitter:description" content="一道模拟和一道平衡树区间k大没有做
+
+
+
+题目
+思路
+
+
+
+
+catclimb
+dfs
+
+
+disblo
+分组背包+输出方案
+
+
+
+P1 小猫爬山Freda和rainbow饲养了N只小猫，这天，小猫们要去爬山。经历了千辛万苦，小猫们终于爬上了山顶，但是疲倦的它们再也不想徒步走下山了（呜咕&amp;gt;_&amp;lt;）。Freda和rainbow只好花钱让它们坐索道下山。索道上的缆车最大承重量为W，而N只小猫">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/21/noip-2014-10-6/" title="NOIP模拟赛 2014-10-6" itemprop="url">NOIP模拟赛 2014-10-6</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-21T15:34:24.000Z" itemprop="datePublished"> Published 2016-09-21</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-小猫爬山"><span class="toc-number">1.</span> <span class="toc-text">P1 小猫爬山</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">1.3.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-暗黑破坏神"><span class="toc-number">2.</span> <span class="toc-text">P2 暗黑破坏神</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​-1"><span class="toc-number">2.3.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>一道模拟和一道平衡树区间k大没有做</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">题目</th>
+<th style="text-align:center">思路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">catclimb</td>
+<td style="text-align:center">dfs</td>
+</tr>
+<tr>
+<td style="text-align:center">disblo</td>
+<td style="text-align:center">分组背包+输出方案</td>
+</tr>
+</tbody>
+</table>
+<h1 id="P1-小猫爬山"><a href="#P1-小猫爬山" class="headerlink" title="P1 小猫爬山"></a>P1 小猫爬山</h1><p>Freda和rainbow饲养了N只小猫，这天，小猫们要去爬山。经历了千辛万苦，小猫们终于爬上了山顶，但是疲倦的它们再也不想徒步走下山了（呜咕&gt;_&lt;）。<br>Freda和rainbow只好花钱让它们坐索道下山。索道上的缆车最大承重量为W，而N只小猫的重量分别是C1、C2……CN。当然，每辆缆车上的小猫的重量之和不能超过W。每租用一辆缆车，Freda和rainbow就要付1美元，所以他们想知道，最少需要付多少美元才能把这N只小猫都运送下山？<br><a id="more"></a></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含两个用空格隔开的整数，N和W。<br>接下来N行每行一个整数，其中第i+1行的整数表示第i只小猫的重量C i。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一个整数，最少需要多少美元，也就是最少需要多少辆缆车。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>5 1996<br>1<br>2<br>1994<br>12<br>29</p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>2</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于100%的数据，1&lt;=N&lt;=18，1&lt;=C i &lt;=W&lt;=10^8。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>dfs即可，加上最优性剪枝可过</p>
+<div><br><div class="copy"><br>    <a href="/2016/09/21/noip-2014-10-6/catclimb.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>catclimb.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    a,f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">20</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,cnt,ans:int;w:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(x:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> cnt&gt;=ans <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">if</span> x=n+<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span> ans:=min(ans,cnt);<span class="keyword">exit</span> <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cnt <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> a[x]+f[i]&lt;=w <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            inc(f[i],a[x]);</div><div class="line">            dfs(x+<span class="number">1</span>);</div><div class="line">            dec(f[i],a[x]);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    inc(cnt);inc(f[cnt],a[x]);</div><div class="line">    dfs(x+<span class="number">1</span>);</div><div class="line">    dec(f[cnt],a[x]);dec(cnt);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'catclimb.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'catclimb.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,w);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">    ans:=maxlongint;</div><div class="line">    dfs(<span class="number">1</span>);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h1 id="P2-暗黑破坏神"><a href="#P2-暗黑破坏神" class="headerlink" title="P2 暗黑破坏神"></a>P2 暗黑破坏神</h1><p>无聊中的小x玩起了Diablo I…<br>游戏的主人公有n个魔法<br>每个魔法分为若干个等级，第i个魔法有p[i]个等级(不包括0)<br>每个魔法的每个等级都有一个效果值，一个j级的i种魔法的效果值为w[i][j]<br>魔法升一级需要一本相应的魔法书<br>购买魔法书需要金币，第i个魔法的魔法书价格为c[i]<br>而小x只有m个金币(好孩子不用修改器)<br>你的任务就是帮助小x决定如何购买魔法书才能使所有魔法的效果值之和最大<br>开始时所有魔法为0级 效果值为0<br><!--more--></p>
+<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行 用空格隔开的两个整数n m<br>以下n行 描述n个魔法<br>第i+1行描述 第i个魔法 格式如下<br>c[i] p[i] w[i][1] w[i][2] … w[i][p[i]]</p>
+<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>第一行输出一个整数，即最大效果值。<br>以后n行输出你的方案：<br>第i+1行有一个整数v[i] 表示你决定把第i个魔法学到v[i]级<br>如果有多解 输出花费金币最少的一组<br>如果还多解 输出任意一组</p>
+<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>3 10<br>1 3 1 2 2<br>2 3 2 4 6<br>3 3 2 1 10</p>
+</blockquote>
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>11<br>1<br>0<br>3</p>
+</blockquote>
+<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>1&lt;=n&lt;=100<br>1&lt;=m&lt;=500<br>1&lt;=p[i]&lt;=50<br>1&lt;=c[i]&lt;=10<br>保证输入数据和最终结果在longint范围内</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>分组背包<br>f[i,j]表示前i个花费j的最大值，$k\in[1,p_i]$<br>方程：$$f[i,j]:=max{f[i,j],f[i-1,j-k*c[i]]+w[i,k]}$$<br>至于输出方案，向前迭代即可。</p>
+<div><br><div class="copy"><br>    <a href="/2016/09/21/noip-2014-10-6/diablo.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>diablo.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    p,c:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int;</div><div class="line">    w:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>,<span class="number">0</span>..<span class="number">51</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>,<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,i,j,k,ans:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'diablo.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'diablo.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(c[i],p[i]);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> p[i] <span class="keyword">do</span> <span class="keyword">read</span>(w[i,j]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    f[<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> k:=<span class="number">0</span> <span class="keyword">to</span> min(j <span class="keyword">div</span> c[i],p[i]) <span class="keyword">do</span></div><div class="line">                f[i,j]:=max(f[i,j],f[i-<span class="number">1</span>,j-k*c[i]]+w[i,k]);</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> f[n,i]&gt;ans <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            ans:=f[n,i];j:=i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=n <span class="keyword">downto</span> <span class="number">1</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> k:=<span class="number">0</span> <span class="keyword">to</span> min(j <span class="keyword">div</span> c[i],p[i]) <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> f[i,j]=f[i-<span class="number">1</span>,j-k*c[i]]+w[i,k] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                g[i]:=k;j:=j-k*c[i];break;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">    writeln(ans);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> writeln(g[i]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/背包/">背包</a><a href="/tags/DFS/">DFS</a><a href="/tags/搜索/">搜索</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/09/21/noip-2014-10-6/" data-title="NOIP模拟赛 2014-10-6 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/09/22/noip-2014-10-5/" title="NOIP模拟赛 2014-10-5">
+  <strong>上一篇：</strong><br/>
+  <span>
+  NOIP模拟赛 2014-10-5</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/09/20/noip-2014-10-4/"  title="NOIP模拟赛 2014-10-4">
+ <strong>下一篇：</strong><br/> 
+ <span>NOIP模拟赛 2014-10-4
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-小猫爬山"><span class="toc-number">1.</span> <span class="toc-text">P1 小猫爬山</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">1.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">1.3.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.4.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-暗黑破坏神"><span class="toc-number">2.</span> <span class="toc-text">P2 暗黑破坏神</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#格式-1"><span class="toc-number">2.1.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例-1"><span class="toc-number">2.2.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​-1"><span class="toc-number">2.3.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.4.</span> <span class="toc-text">题解</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Problem-Set/" title="Problem Set">Problem Set<sup>64</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tinkering-Note/" title="Tinkering Note">Tinkering Note<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Uncategorized/" title="Uncategorized">Uncategorized<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.83px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10.83px;">CSS</a> <a href="/tags/DFS/" style="font-size: 13.33px;">DFS</a> <a href="/tags/DP/" style="font-size: 19.17px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 11.67px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 17.5px;">JSOI</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/KMP/" style="font-size: 10.83px;">KMP</a> <a href="/tags/LCA/" style="font-size: 12.5px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.83px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10.83px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15.83px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10.83px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.67px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 12.5px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.67px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10px;">分层图</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 10.83px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.67px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/启发式合并/" style="font-size: 10px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.33px;">图论</a> <a href="/tags/堆/" style="font-size: 12.5px;">堆</a> <a href="/tags/字符串/" style="font-size: 12.5px;">字符串</a> <a href="/tags/容斥/" style="font-size: 10px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.67px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平面图/" style="font-size: 10px;">平面图</a> <a href="/tags/并查集/" style="font-size: 11.67px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 11.67px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/打表/" style="font-size: 10px;">打表</a> <a href="/tags/折半枚举/" style="font-size: 11.67px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10px;">拆点</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数学/" style="font-size: 15px;">数学</a> <a href="/tags/数据结构/" style="font-size: 18.33px;">数据结构</a> <a href="/tags/数论/" style="font-size: 12.5px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最短路/" style="font-size: 12.5px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12.5px;">枚举</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.17px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.83px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 10.83px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.17px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 11.67px;">概率期望</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 11.67px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.67px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/离线/" style="font-size: 11.67px;">离线</a> <a href="/tags/线性DP/" style="font-size: 11.67px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 11.67px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 11.67px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/背包/" style="font-size: 14.17px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/负环/" style="font-size: 11.67px;">负环</a> <a href="/tags/贪心/" style="font-size: 15.83px;">贪心</a> <a href="/tags/链表/" style="font-size: 10.83px;">链表</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.67px;">高精度</a>
+    </div>
+  </div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+            
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a> | <a href="/sitemap.xml">Sitemap</a>
+		
+		
+		</p>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+  
+  _st('install','q_DssgtYmx_rY_GdbHmw','2.0.0');
+</script>
+
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
