@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-09-24T12:46:36.058Z</updated>
+  <updated>2016-09-25T07:31:11.277Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Noip2016十连测热身赛 星球联盟</title>
+    <link href="https://cothrax.github.io/2016/09/25/lydsy-noip-2016-pretest/"/>
+    <id>https://cothrax.github.io/2016/09/25/lydsy-noip-2016-pretest/</id>
+    <published>2016-09-25T07:00:05.000Z</published>
+    <updated>2016-09-25T07:31:11.277Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在遥远的S星系中一共有N个星球，编号为1…N。其中的一些星球决定组成联盟，以方便相互间的交流。但是，组成联盟的首要条件就是交通条件。初始时，在这N个星球间有M条太空隧道。每条太空隧道连接两个星球，使得它们能够相互到达。若两个星球属于同一个联盟，则必须存在一条环形线路经过这两个星球，即两个星球间存在两条没有公共隧道的路径。为了壮大联盟的队伍，这些星球将建设P条新的太空隧道。这P条新隧道将按顺序依次建成。一条新轨道建成后，可能会使一些星球属于同一个联盟。你的任务是计算出，在一条新隧道建设完毕后，判断这条新轨道连接的两个星球是否属于同一个联盟，如果属于同一个联盟就计算出这个联盟中有多少个星球。<br><a id="more"></a></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行三个整数N，M和P，分别表示总星球数，初始时太空隧道的数目和即将建设的轨道数目。<br>第2至第M+1行，每行两个整数，表示初始时的每条太空隧道连接的两个星球编号。<br>第M+2行至第M+P+1行，每行两个整数，表示新建的太空隧道连接的两个星球编号。<br>这些太空隧道按照输入的顺序依次建成。<br>对于10%的数据有1≤N,M,P≤100；<br>对于40%的数据有1≤N,M,P≤2000；<br>对于100%的数据有1≤N,M,P≤200000。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共P行。如果这条新的太空隧道连接的两个星球属于同一个联盟，就输出一个整数，表示这两个星球所在联盟<br>的星球数。如果这条新的太空隧道连接的两个星球不属于同一个联盟，就输出”No”（不含引号）。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
+<p>3 2 1<br>1 2<br>1 3<br>2 3    </p>
+</blockquote>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
+<p>3</p>
+</blockquote>
+<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>【样例1说明】<br>新建成的隧道连接2、3两个星球。<br>这条隧道1和2，2和3，1和3之间都存在环形线路。1,2,3同属一个联盟，答案为3</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先吐槽一下第一题，pascal不论用堆排还是快排都是TLE，然后看了下status用pascal的没人a，果断换c++只要sort就水过了。<br>第二次原题来自：<a href="/2016/09/20/noip-2014-10-4/" title="P3">P3</a><br>关于本题：<br>这是一道综合性很强的图论题</p>
+<ol>
+<li>显然联盟是<strong>边双连通分量</strong>（下简称为分量），用<strong>tarjan缩点</strong>，求出原图的分量</li>
+<li>缩点后就图便成了一个<strong>森林</strong>，其中的连通块（下称为树）用<strong>并查集tr</strong>维护</li>
+<li>如果在同一棵树的两个分量之间连一条边，那么这两个分量就合并成了一个大的分量，这个用另一个<strong>并查集bl</strong>维护</li>
+<li>考虑向图中加边<strong>e(u,v)</strong>：<ol>
+<li>如果u和v在同一分量中，输出该分量大小即可</li>
+<li>如果u和v不在同一分量但在同一棵树中，那么添加边e会使得u-&gt;lca-&gt;v的所有分量合并成一个分量，用朴素的方法求<strong>lca</strong>，边求边合并并查集bl</li>
+<li>如果u和v不在同一棵树中，此时不会产生新的分量，而将两棵树合并，我们通过tr维护树的节点个数，然后<strong>启发式合并</strong></li>
+</ol>
+</li>
+</ol>
+<p>注意点：<strong>有重边</strong>，tarjan时对反向边做标记</p>
+<div><br><div class="copy"><br>    <a href="/2016/09/25/lydsy-noip-2016-pretest/c.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>c.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> f,t,next:int;v:boolean <span class="keyword">end</span>;</div><div class="line">    arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</div><div class="line">    st=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    pst=^st;</div><div class="line"><span class="keyword">var</span></div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">800010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,dep,par,dfn,low,dcc,s:arr;</div><div class="line">    tr,bl:st;</div><div class="line">    ins:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> boolean;</div><div class="line">    n,m,q,sz,i,f,t,cc,tim:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(sz);</div><div class="line">    g[sz].f:=f;g[sz].t:=t;g[sz].v:=true;</div><div class="line">    g[sz].next:=head[f];head[f]:=sz;    </div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">tarjan</span><span class="params">(v,p:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(tim);dfn[v]:=tim;low[v]:=tim;</div><div class="line">    inc(t);s[t]:=v;ins[v]:=true;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> g[i].v <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            g[i xor <span class="number">1</span>].v:=false;</div><div class="line">            <span class="keyword">if</span> dfn[u]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                tarjan(u,v);</div><div class="line">                low[v]:=min(low[v],low[u]);</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> ins[u] <span class="keyword">then</span></div><div class="line">                low[v]:=min(low[v],dfn[u]);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> low[v]=dfn[v] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        inc(cc);bl[cc,<span class="number">1</span>]:=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> s[t+<span class="number">1</span>]&lt;&gt;v <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            ins[s[t]]:=false;</div><div class="line">            inc(bl[cc,<span class="number">1</span>]);dcc[s[t]]:=cc;</div><div class="line">            dec(t);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(p:pst;x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> x=p^[x,<span class="number">0</span>] <span class="keyword">then</span> find:=x</div><div class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        p^[x,<span class="number">0</span>]:=find(p,p^[x,<span class="number">0</span>]);</div><div class="line">        find:=p^[x,<span class="number">0</span>];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(p:pst;x,y:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    x:=find(p,x);y:=find(p,y);</div><div class="line">    <span class="keyword">if</span> x=y <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    inc(p^[y,<span class="number">1</span>],p^[x,<span class="number">1</span>]);p^[x,<span class="number">1</span>]:=<span class="number">0</span>;</div><div class="line">    p^[x,<span class="number">0</span>]:=y;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(p:pst;x,y:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span> same:=find(p,x)=find(p,y) <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,p:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,u:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> p&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> union(@tr,v,p);</div><div class="line">    par[v]:=p;dep[v]:=dep[p]+<span class="number">1</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> u&lt;&gt;p <span class="keyword">then</span> dfs(u,v);</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">lca</span><span class="params">(u,v:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> dep[u]&lt;dep[v] <span class="keyword">then</span> swap(u,v);</div><div class="line">    <span class="keyword">while</span> dep[u]&gt;dep[v] <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        union(@bl,u,par[u]);</div><div class="line">        u:=par[u];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">while</span> u&lt;&gt;v <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        union(@bl,u,par[u]);u:=par[u];</div><div class="line">        union(@bl,v,par[v]);v:=par[v];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">merge</span><span class="params">(u,v:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> tr[find(@tr,u),<span class="number">1</span>]&gt;tr[find(@tr,v),<span class="number">1</span>] <span class="keyword">then</span> swap(u,v);</div><div class="line">    add(v,u);add(u,v);dfs(u,v);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'c.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'c.out'</span>);rewrite(output);</div><div class="line">    <span class="comment">//input</span></div><div class="line">    <span class="keyword">read</span>(n,m,q);sz:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f,t);add(f,t);add(t,f);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//tarjan</span></div><div class="line">    tim:=<span class="number">0</span>;t:=<span class="number">0</span>;cc:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">if</span> dfn[i]=<span class="number">0</span> <span class="keyword">then</span> tarjan(i,<span class="number">0</span>);</div><div class="line">    <span class="comment">//init set</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cc <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        tr[i,<span class="number">0</span>]:=i;tr[i,<span class="number">1</span>]:=<span class="number">1</span>;bl[i,<span class="number">0</span>]:=i;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//build tree</span></div><div class="line">    f:=sz;sz:=<span class="number">0</span>;</div><div class="line">    fillchar(head,sizeof(head),<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> f <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> dcc[g[i].f]&lt;&gt;dcc[g[i].t] <span class="keyword">then</span> </div><div class="line">            add(dcc[g[i].f],dcc[g[i].t]);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cc <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> dep[i]=<span class="number">0</span> <span class="keyword">then</span> dfs(i,<span class="number">0</span>);</div><div class="line">    <span class="comment">//query</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> q <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(f,t);</div><div class="line">        f:=dcc[f];t:=dcc[t];</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> same(@tr,f,t) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            merge(f,t);</div><div class="line">            writeln(<span class="string">'No'</span>);</div><div class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> same(@bl,f,t) <span class="keyword">then</span> lca(f,t);</div><div class="line">            writeln(bl[find(@bl,f),<span class="number">1</span>]);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;在遥远的S星系中一共有N个星球，编号为1…N。其中的一些星球决定组成联盟，以方便相互间的交流。但是，组成联盟的首要条件就是交通条件。初始时，在这N个星球间有M条太空隧道。每条太空隧道连接两个星球，使得它们能够相互到达。若两个星球属于同一个联盟，则必须存在一条环形线路经过这两个星球，即两个星球间存在两条没有公共隧道的路径。为了壮大联盟的队伍，这些星球将建设P条新的太空隧道。这P条新隧道将按顺序依次建成。一条新轨道建成后，可能会使一些星球属于同一个联盟。你的任务是计算出，在一条新隧道建设完毕后，判断这条新轨道连接的两个星球是否属于同一个联盟，如果属于同一个联盟就计算出这个联盟中有多少个星球。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
+    
+      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="启发式合并" scheme="https://cothrax.github.io/tags/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/"/>
+    
+      <category term="双连通分量" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>NOIP模拟赛 2014-10-23</title>
@@ -460,9 +520,9 @@
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
-    
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
     
       <category term="生成树" scheme="https://cothrax.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91/"/>
     
@@ -800,9 +860,9 @@
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
     
-      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
-    
       <category term="折半枚举" scheme="https://cothrax.github.io/tags/%E6%8A%98%E5%8D%8A%E6%9E%9A%E4%B8%BE/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
   </entry>
   
@@ -1015,11 +1075,11 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
       <category term="折半枚举" scheme="https://cothrax.github.io/tags/%E6%8A%98%E5%8D%8A%E6%9E%9A%E4%B8%BE/"/>
     
       <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
+    
+      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
@@ -1536,139 +1596,6 @@
       <category term="最大流" scheme="https://cothrax.github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
     
       <category term="二分图" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 2014-7-18</title>
-    <link href="https://cothrax.github.io/2016/09/08/NOIP%E6%A8%A1%E6%8B%9F%E8%B5%9B-2014-7-18/"/>
-    <id>https://cothrax.github.io/2016/09/08/NOIP模拟赛-2014-7-18/</id>
-    <published>2016-09-08T07:37:45.000Z</published>
-    <updated>2016-09-10T14:14:32.444Z</updated>
-    
-    <content type="html"><![CDATA[<p>一共五道题，有一道裸的二分和一个树形背包没有写。</p>
-<table>
-<thead>
-<tr>
-<th>题目</th>
-<th>思路</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>czy的后宫3</td>
-<td>无修改莫队/各种数据结构</td>
-</tr>
-<tr>
-<td>czy的后宫4</td>
-<td>坑爹dp</td>
-</tr>
-<tr>
-<td>蒟蒻czy又被D飞了</td>
-<td>变形背包</td>
-</tr>
-</tbody>
-</table>
-<h1 id="P1-czy的后宫4"><a href="#P1-czy的后宫4" class="headerlink" title="P1 czy的后宫4"></a>P1 czy的后宫4</h1><p>上次czy在机房妥善安排了他的后宫之后，他发现可以将他的妹子分为c种，他经常会考虑这样一个问题：在[l,r]的妹子中间，能挑选出多少不同类型的妹子呢？<br>注意：由于czy非常丧尸，所以他要求在所挑选的妹子类型在[l,r]中出现次数为正偶数，你懂得。<br>问题简述:n个数，m次询问，每次问[l,r]区间有多少个数恰好出现正偶数次<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行3个整数，表示n,c,m<br>第二行n个数，每个数Ai在[1,c]之间，表示一个Ai类型的妹子<br>接下来m行，每行两个整数l,r，表示询问[l,r]这个区间的答案</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>有m行，表示第i次询问的答案</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>5 5 3<br>1 1 2 2 3<br>1 5<br>3 4<br>2 3</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>2<br>1<br>0</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>共有10组测试数据<br>1-4组n,m=500，2000，5000，10000，c=1000<br>5-7组n,m=20000，30000，40000，c=10000<br>8-10组n,m=50000，80000，100000，c=100000<br>数据保证随机生成</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>离线做，裸的无修改莫队</p>
-<dir style="text-align:right"><a href="/2016/09/08/NOIP模拟赛-2014-7-18/harem.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>harem.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,k,b,i,j,l,r,tot:int;</div><div class="line">    q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..<span class="number">3</span>] <span class="keyword">of</span> int;</div><div class="line">    a,ans,cnt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">com</span><span class="params">(i,j:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    com:=(q[i,<span class="number">3</span>]&lt;q[j,<span class="number">3</span>]) <span class="keyword">or</span> ((q[i,<span class="number">3</span>]=q[j,<span class="number">3</span>]) <span class="keyword">and</span> (q[i,<span class="number">2</span>]&lt;q[j,<span class="number">2</span>]));</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(l,r:int)</span>;</span></div><div class="line"><span class="keyword">var</span> </div><div class="line">    tmp:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">3</span>] <span class="keyword">of</span> int;</div><div class="line">    i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=l;j:=r;q[<span class="number">0</span>]:=q[random(r-l)+l];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> com(i,<span class="number">0</span>) <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> com(<span class="number">0</span>,j) <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            tmp:=q[i];q[i]:=q[j];q[j]:=tmp;</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;r <span class="keyword">then</span> qsort(i,r);</div><div class="line">    <span class="keyword">if</span> l&lt;j <span class="keyword">then</span> qsort(l,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">update</span><span class="params">(i,x:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> odd(cnt[i]) <span class="keyword">and</span> (cnt[i]&lt;&gt;<span class="number">0</span>) <span class="keyword">then</span> dec(tot);</div><div class="line">    inc(cnt[i],x);</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> odd(cnt[i]) <span class="keyword">and</span> (cnt[i]&lt;&gt;<span class="number">0</span>) <span class="keyword">then</span> inc(tot);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'harem.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'harem.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,k,m);b:=floor(sqrt(n));</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(q[i,<span class="number">1</span>],q[i,<span class="number">2</span>]);</div><div class="line">        q[i,<span class="number">0</span>]:=i;</div><div class="line">        q[i,<span class="number">3</span>]:=(q[i,<span class="number">1</span>]-<span class="number">1</span>) <span class="keyword">div</span> b+<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    qsort(<span class="number">1</span>,m);</div><div class="line">    l:=<span class="number">1</span>;r:=<span class="number">0</span>;tot:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">for</span> j:=r+<span class="number">1</span> <span class="keyword">to</span> q[i,<span class="number">2</span>] <span class="keyword">do</span> update(a[j],<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> j:=r <span class="keyword">downto</span> q[i,<span class="number">2</span>]+<span class="number">1</span> <span class="keyword">do</span> update(a[j],-<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> j:=l <span class="keyword">to</span> q[i,<span class="number">1</span>]-<span class="number">1</span> <span class="keyword">do</span> update(a[j],-<span class="number">1</span>);</div><div class="line">        <span class="keyword">for</span> j:=l-<span class="number">1</span> <span class="keyword">downto</span> q[i,<span class="number">1</span>] <span class="keyword">do</span> update(a[j],<span class="number">1</span>);</div><div class="line">        l:=q[i,<span class="number">1</span>];r:=q[i,<span class="number">2</span>];</div><div class="line">        ans[q[i,<span class="number">0</span>]]:=tot;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> writeln(ans[i]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="P2-czy的后宫4"><a href="#P2-czy的后宫4" class="headerlink" title="P2 czy的后宫4"></a>P2 czy的后宫4</h1><p>czy有很多妹子，妹子虽然数量很多，但是质量不容乐观，她们的美丽值全部为负数（喜闻乐见）。<br>czy每天都要带N个妹子到机房，她们都有一个独一无二的美丽值，美丽值为-1到-N之间的整数。他想要把这些妹子排成一个波动序列，这样相对“漂亮”（美丽值的绝对值较小）的妹子可以与她旁边的两个美丽值的绝对值较大的妹子形成鲜明的对比，整个序列相对将更加“美观”（不再那么无法直视）。<br>一个序列是波动序列仅当序列中的每个数比周围的两个数都大或都小（如果有的话）。<br>现在czy希望知道，长度为N的波动序列有多少种。两种序列A和B不同当且仅当存在一个i，使得Ai≠Bi。由于这个数目可能很大，你只对它除以P的余数感兴趣。</p>
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件czy.in仅含一行，两个正整数N, P。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出文件czy.out仅含一行，一个非负整数，表示你所求的答案对P取余之后的结果。<br><!--more--></p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>4 7</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>3</p>
-</blockquote>
-<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>说明：共有10种可能的序列，它们是：  1324 1423 2143 2314 2413  3142 3241 3412 4132 4231<br>(忽略负号)<br>【数据规模和约定】<br>对于20%的数据，满足N≤10；<br>对于40%的数据，满足N≤18；<br>对于70%的数据，满足N≤550；<br>对于100%的数据，满足3≤N≤4200，P≤10^9。</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>异常坑的dp：</p>
-<ol>
-<li><p>$f[i,j]$：<span>$a{1..i}$</span><!-- Has MathJax -->的序列以$x\in[1..i]$开头，且<span>$a_1&lt;a_2$</span><!-- Has MathJax -->（序列第一个<strong>上升</strong>）的方案数</p>
-</li>
-<li><p><span>$g[i,j]$</span><!-- Has MathJax -->：<span>$a{1..i}$</span><!-- Has MathJax -->的序列以$x\in[j..i]$开头，且<span>$a_1&gt;a_2$</span><!-- Has MathJax -->（序列第一个<strong>下降</strong>）的方案数</p>
-</li>
-</ol>
-<p>结论：$$f[i,j]=f[i,j-1]+g[i-1,j]$$</p>
-<ol>
-<li>$f[i,j-1]$：把$1..j-1$开头的方案加上去</li>
-<li>$g[i-1,j]$：考虑序列以j开头，要求<span>$a_2&gt;j$</span><!-- Has MathJax -->，则<span>$a_2\in[j+1,i]$</span><!-- Has MathJax -->，从<span>$a_2$</span><!-- Has MathJax -->开始是上升序列，j已经用掉了，剩下<span>$\{1..j-1,j+1..i\}$</span><!-- Has MathJax -->离散为<span>$\{1..i-1\}$</span><!-- Has MathJax -->，原来的j+1离散为1..i-1中的j，所以方案数为$g[i-1,j]$</li>
-</ol>
-<p>f和g是对称的：考虑将f的一个序列a中的$a_i$换成$i-a_i+1$，就对应g中的一个序列。</p>
-<p>于是：$$f[i,j]=f[i,j-1]+f[i-1,i-j]$$</p>
-<dir style="text-align:right"><a href="/2016/09/08/NOIP模拟赛-2014-7-18/czy.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>czy.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,i,j,c,p:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">4210</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'czy.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'czy.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,p);</div><div class="line">    <span class="keyword">if</span> n=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(<span class="number">1</span>);halt <span class="keyword">end</span>;</div><div class="line">    f[<span class="number">1</span>,<span class="number">1</span>]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        c:=i <span class="keyword">and</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[c,j]:=f[c,j-<span class="number">1</span>]+f[c xor <span class="number">1</span>,i-j];</div><div class="line">            <span class="keyword">if</span> f[c,j]&gt;p <span class="keyword">then</span> f[c,j]:=f[c,j] <span class="keyword">mod</span> p;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(f[n <span class="keyword">and</span> <span class="number">1</span>,n]*<span class="number">2</span> <span class="keyword">mod</span> p);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-<h1 id="P5-蒟蒻czy又被D飞了"><a href="#P5-蒟蒻czy又被D飞了" class="headerlink" title="P5 蒟蒻czy又被D飞了"></a>P5 蒟蒻czy又被D飞了</h1><p>机房里的各路巨神天天D蒟蒻CZY，早已是他们的日常任务了。（今天的机房也是很和平呢）<br>这一次他们安排好了一种方式来D蒟蒻Czy。每个人每次都能把Czy D飞一个高度（让Czy的高度+a[i]），由于他们的精力有限，要保留体力应对接下来的战斗，所以他们每个人只会D Czy k[i]次。由于他们每个人的D人能力不同，各有所长，所以他们每个人都在Czy到一定高度h[i]以后良心发现，任由Czy自生自灭，回去玩达尔文进化岛了。<br>所以Czy想知道他的速度是否能达到第二宇宙速度，离开这个可怕的地方。但是Czy太弱了，所以这个问题就交给了未来集训队的你。但是你这么吊，哪里屑解答Czy蒟蒻的问题。于是你打算只告诉他最高会飞到什么高度，让他自己算自己的速度去。</p>
-<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行：1个整数N（1&lt;=N&lt;=100）N表示机房里有多少人今天要D 蒟蒻Czy<br>接下里N行，每行描述一个神犇的信息  a[i] h[i] k[i]</p>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>第1行：1个整数H，表示Czy最高会被神犇们D到哪里去<br><!--more--></p>
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>7<br>8 35 1<br>5 35 1<br>15 35 1<br>8 35 1<br>10 35 1<br>4 35 1<br>2 35 1</p>
-</blockquote>
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>35</p>
-</blockquote>
-<h2 id="提示​-2"><a href="#提示​-2" class="headerlink" title="提示​"></a>提示​</h2><p>对于100%的数据  1&lt;=k[i]&lt;=30，1&lt;=h[i]&lt;=10000,  1&lt;=a[i]&lt;=200 </p>
-<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>带限制的背包</p>
-<dir style="text-align:right"><a href="/2016/09/08/NOIP模拟赛-2014-7-18/fly.pas" title="复制代码">复制代码</a></dir>
-
-<figure class="highlight delphi"><figcaption><span>fly.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">15010</span>] <span class="keyword">of</span> boolean;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">15010</span>] <span class="keyword">of</span> int;</div><div class="line">    a,k,h:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">110</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,j,ans:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(l,r:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,x:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=l;j:=r;x:=h[random(r-l)+l];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> h[i]&lt;x <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> h[j]&gt;x <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            swap(a[i],a[j]);</div><div class="line">            swap(h[i],h[j]);</div><div class="line">            swap(k[i],k[j]);</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;r <span class="keyword">then</span> qsort(i,r);</div><div class="line">    <span class="keyword">if</span> l&lt;j <span class="keyword">then</span> qsort(l,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'fly.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'fly.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i],h[i],k[i]);</div><div class="line">    qsort(<span class="number">1</span>,n);</div><div class="line">    fillchar(f,sizeof(f),false);</div><div class="line">    f[<span class="number">0</span>]:=true;ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        fillchar(g,sizeof(g),<span class="number">0</span>);</div><div class="line">        <span class="keyword">for</span> j:=a[i] <span class="keyword">to</span> h[i] <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> f[j] <span class="keyword">and</span> f[j-a[i]] <span class="keyword">and</span> </div><div class="line">                (g[j-a[i]]&lt;k[i]) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                f[j]:=true;</div><div class="line">                g[j]:=g[j-a[i]]+<span class="number">1</span>;</div><div class="line">                ans:=max(ans,j);            </div><div class="line">            <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一共五道题，有一道裸的二分和一个树形背包没有写。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;题目&lt;/th&gt;
-&lt;th&gt;思路&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;czy的后宫3&lt;/td&gt;
-&lt;td&gt;无修改莫队/各种数据结构&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;czy的后宫4&lt;/td&gt;
-&lt;td&gt;坑爹dp&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;蒟蒻czy又被D飞了&lt;/td&gt;
-&lt;td&gt;变形背包&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;P1-czy的后宫4&quot;&gt;&lt;a href=&quot;#P1-czy的后宫4&quot; class=&quot;headerlink&quot; title=&quot;P1 czy的后宫4&quot;&gt;&lt;/a&gt;P1 czy的后宫4&lt;/h1&gt;&lt;p&gt;上次czy在机房妥善安排了他的后宫之后，他发现可以将他的妹子分为c种，他经常会考虑这样一个问题：在[l,r]的妹子中间，能挑选出多少不同类型的妹子呢？&lt;br&gt;注意：由于czy非常丧尸，所以他要求在所挑选的妹子类型在[l,r]中出现次数为正偶数，你懂得。&lt;br&gt;问题简述:n个数，m次询问，每次问[l,r]区间有多少个数恰好出现正偶数次&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
-    
-      <category term="离线" scheme="https://cothrax.github.io/tags/%E7%A6%BB%E7%BA%BF/"/>
-    
-      <category term="莫队" scheme="https://cothrax.github.io/tags/%E8%8E%AB%E9%98%9F/"/>
     
   </entry>
   
