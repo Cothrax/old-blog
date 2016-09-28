@@ -16,9 +16,9 @@
 <p>3</p>
 </blockquote>
 <h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>【样例1说明】<br>新建成的隧道连接2、3两个星球。<br>这条隧道1和2，2和3，1和3之间都存在环形线路。1,2,3同属一个联盟，答案为3</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先吐槽一下第一题，pascal不论用堆排还是快排都是TLE，然后看了下status用pascal的没人a，果断换c++只要sort就水过了。<br>第二次原题来自：<a href="/2016/09/20/noip-2014-10-4/" title="P3">P3</a><br>关于本题：<br>这是一道综合性很强的图论题</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先吐槽一下第一题，pascal不论用堆排还是快排都是TLE，然后看了下status用pascal的没人a，果断换c++只要sort就水过了。<br>第二次原题来自：<a href="/2016/09/20/noip-2014-10-4/" title="P3">P3</a><br>关于本题：<br>这是一道综合性很强的图论题<br>题意：在一张无向图上动态维护<strong>边双连通分量</strong></p>
 <ol>
-<li>显然联盟是<strong>边双连通分量</strong>（下简称为分量），用<strong>tarjan缩点</strong>，求出原图的分量</li>
+<li>用<strong>tarjan缩点</strong>，求出原图的边双连通分量（下称分量）</li>
 <li>缩点后就图便成了一个<strong>森林</strong>，其中的连通块（下称为树）用<strong>并查集tr</strong>维护</li>
 <li>如果在同一棵树的两个分量之间连一条边，那么这两个分量就合并成了一个大的分量，这个用另一个<strong>并查集bl</strong>维护</li>
 <li>考虑向图中加边<strong>e(u,v)</strong>：<ol>
