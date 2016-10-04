@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[NOIP2016模拟赛 Day 2]]></title>
+      <title><![CDATA[NOIP2016十连测 Day 2]]></title>
       <url>https://cothrax.github.io/2016/10/03/lydsy-noip-2016-test2/</url>
       <content type="html"><![CDATA[<p>160滚粗，T1很db地写了hash，T2没想到二分而暴力询问，inf开的不够大又丢了20分，T3完全不会，暴力20分</p>
 <h1 id="T1-Divisors"><a href="#T1-Divisors" class="headerlink" title="T1 Divisors"></a>T1 Divisors</h1><p>大意：给定m个不同的正整数 <span>$a_1,a_2,...,a_m$</span><!-- Has MathJax -->，对$[0,m]$内每一个k计算：在区间$[1,n]$里有多少正整数是a中恰好k个数的约数。<br>$m≤200;n,a_i≤10^9$ 。<br><a id="more"></a></p>

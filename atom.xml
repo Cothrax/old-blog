@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-10-03T02:15:14.927Z</updated>
+  <updated>2016-10-04T03:51:35.477Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>NOIP2016模拟赛 Day 2</title>
+    <title>NOIP2016十连测 Day 2</title>
     <link href="https://cothrax.github.io/2016/10/03/lydsy-noip-2016-test2/"/>
     <id>https://cothrax.github.io/2016/10/03/lydsy-noip-2016-test2/</id>
     <published>2016-10-03T01:42:00.000Z</published>
-    <updated>2016-10-03T02:15:14.927Z</updated>
+    <updated>2016-10-04T03:51:35.477Z</updated>
     
     <content type="html"><![CDATA[<p>160滚粗，T1很db地写了hash，T2没想到二分而暴力询问，inf开的不够大又丢了20分，T3完全不会，暴力20分</p>
 <h1 id="T1-Divisors"><a href="#T1-Divisors" class="headerlink" title="T1 Divisors"></a>T1 Divisors</h1><p>大意：给定m个不同的正整数 <span>$a_1,a_2,...,a_m$</span><!-- Has MathJax -->，对$[0,m]$内每一个k计算：在区间$[1,n]$里有多少正整数是a中恰好k个数的约数。<br>$m≤200;n,a_i≤10^9$ 。<br><a id="more"></a></p>
