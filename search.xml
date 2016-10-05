@@ -1561,7 +1561,7 @@
 <li>$\overrightarrow{xy}=1$：x吃y</li>
 <li>$\overrightarrow{xy}=2$：y吃x</li>
 </ol>
-<p>这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$<br>那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$<br>表示x吃y，y吃z，那么x被z吃<br>我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]y}$，其中p[x]为x的父亲</p>
+<p>这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$<br>那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$<br>表示x吃y，y吃z，那么x被z吃<br>我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]x}$，其中p[x]为x的父亲</p>
 <p>路径压缩时维护权值：记r为当前子树的根，我们把x接到r上，此时的d[x]变成：<br>$d[x]=\overrightarrow{rx}=\overrightarrow{rp[x]}+\overrightarrow{p[x]x}=d[p[x]]+d[x]$<br>（此时p[x]已经递归处理过了，于是已经满足p[p[x]]=r）</p>
 <p>合并时维护权值：已知$f=\overrightarrow{xy}$，把p[x]接到p[y]上：<br>$d[p[x]]=\overrightarrow{p[y]p[x]}=\overrightarrow{p[y]y}-\overrightarrow{xy}-\overrightarrow{p[x]x}=d[y]-f-d[x]$</p>
 <p>并查集初始化为$p[i]=i,d[i]=0$<br>然后处理命题：</p>

@@ -27,7 +27,7 @@
 第二种说法是“2 X Y”，表示X吃Y。
 
 此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K">
-<meta property="og:updated_time" content="2016-09-04T08:34:59.452Z">
+<meta property="og:updated_time" content="2016-10-05T09:00:22.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[CodeVS] P1074 食物链">
 <meta name="twitter:description" content="描述动物王国中有三类动物 A,B,C，这三类动物的食物链构成了有趣的环形。A吃B，B吃C，C吃A。现有N个动物，以1－N编号。每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。有人用两种说法对这N个动物所构成的食物链关系进行描述：
@@ -174,7 +174,7 @@
 <li>$\overrightarrow{xy}=1$：x吃y</li>
 <li>$\overrightarrow{xy}=2$：y吃x</li>
 </ol>
-<p>这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$<br>那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$<br>表示x吃y，y吃z，那么x被z吃<br>我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]y}$，其中p[x]为x的父亲</p>
+<p>这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$<br>那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$<br>表示x吃y，y吃z，那么x被z吃<br>我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]x}$，其中p[x]为x的父亲</p>
 <p>路径压缩时维护权值：记r为当前子树的根，我们把x接到r上，此时的d[x]变成：<br>$d[x]=\overrightarrow{rx}=\overrightarrow{rp[x]}+\overrightarrow{p[x]x}=d[p[x]]+d[x]$<br>（此时p[x]已经递归处理过了，于是已经满足p[p[x]]=r）</p>
 <p>合并时维护权值：已知$f=\overrightarrow{xy}$，把p[x]接到p[y]上：<br>$d[p[x]]=\overrightarrow{p[y]p[x]}=\overrightarrow{p[y]y}-\overrightarrow{xy}-\overrightarrow{p[x]x}=d[y]-f-d[x]$</p>
 <p>并查集初始化为$p[i]=i,d[i]=0$<br>然后处理命题：</p>
