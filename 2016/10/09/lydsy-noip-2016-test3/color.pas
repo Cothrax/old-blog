@@ -19,9 +19,12 @@ begin
 end;
 
 function mpow(a:mat;k:qword):mat;
-var i:int;
+var i:int;is0:boolean;
 begin
 	fillchar(mpow,sizeof(mpow),0);
+	is0:=true;
+	for i:=1 to p do for j:=1 to p do is0:=is0 and (a[i,j]=0);
+	if is0 then exit;
 	for i:=1 to p do mpow[i,i]:=1;
 	while k>0 do begin
 		if k and 1=1 then mpow:=mul(mpow,a);
@@ -31,6 +34,7 @@ end;
 
 function ipow(a,k:qword):qword;
 begin
+	if a=0 then exit(0);
 	ipow:=1;
 	while k>0 do begin
 		if k and 1=1 then ipow:=ipow*a mod md;
@@ -53,7 +57,7 @@ begin
 	for i:=1 to p do g[i]:=f[n,i]*ipow(c[p,i],md-2)mod md;
 	for i:=1 to p do
 		for j:=1 to p do
-			for k:=max(max(i,j),q) to p do
+			for k:=max(max(i,j),q) to min(n,p) do
 				a[i,j]:=(a[i,j]+c[i,i+j-k]*
 					(c[p-i,k-i]*g[j]mod md))mod md;
 	a:=mpow(a,m-1);
