@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-10-30T03:45:23.059Z</updated>
+  <updated>2016-10-30T05:02:30.383Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NOIP十连测 Day 8</title>
+    <link href="https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/"/>
+    <id>https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/</id>
+    <published>2016-10-30T04:41:39.000Z</published>
+    <updated>2016-10-30T05:02:30.383Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>订正进度(1/3)</p>
+</blockquote>
+<h1 id="P1-神炎皇"><a href="#P1-神炎皇" class="headerlink" title="P1 神炎皇"></a>P1 神炎皇</h1><p>大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b)的个数<br>$n\leq 10^{14}$</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>坑爹数论<br>记$g=gcd(a,b),c=a/g,d=b/g$<br>则$(c+d)g|cdg^2$</p>
+<blockquote>
+<p>定理：若$gcd(c+d)=1$，则$(c+d)|cd$一定不成立</p>
+</blockquote>
+<p>先yy一下，c+d不能被c或d整除，自然也不能被cd整除<br>也可以反证：不妨设$k(c+d)=cd,k\in N*$<br>则$kc+kd=(c-k)d+kd$<br>那么$kc=(c-k)d$<br>因为$gcd(c,d)=1$<br>所以$c=c-k,k=d$无解，与假设矛盾</p>
+<p>于是式子变成了$(c+d)|g$<br>令$k=c+d$，则$g=kp,p\in N*$，又$gk=k^2p\leq n$，那么$k\leq\sqrt{n}$<br>枚举k，则p有$n/k^2$个，下面要求(c,d)的对数</p>
+<blockquote>
+<p>根据辗转相减，$gcd(p,q)=gcd(p-q,q),p&gt;q$</p>
+</blockquote>
+<p>于是gcd(c,d)=1的对数与gcd(c+d,i)=(k,i)=1的对数一一对应，而(k,i)的对数就是$\phi(k)$</p>
+<p>于是，答案为$\sum_{k=2}^{\lfloor\sqrt{n}\rfloor} \phi(k)*\lfloor n/k^2\rfloor$</p>
+<div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/uria.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>uria.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    n,ans,i,sq:int64;</div><div class="line">    phi,p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000010</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000100</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,t,k:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        j:=<span class="number">1</span>;t:=p[j]*i;</div><div class="line">        <span class="keyword">while</span> t&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[t]:=true;</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                phi[t]:=p[j]*phi[i];break</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span></div><div class="line">                phi[t]:=(p[j]-<span class="number">1</span>)*phi[i];</div><div class="line">            inc(j);t:=p[j]*i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="comment">//assign(input,'uria.in');reset(input);</span></div><div class="line">    <span class="comment">//assign(output,'uria.out');rewrite(output);</span></div><div class="line">    <span class="keyword">read</span>(n);sq:=trunc(sqrt(n));</div><div class="line">    foo();halt;</div><div class="line">    euler();ans:=<span class="number">0</span>;i:=<span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(ans,phi[i]*trunc(n/(i*i)));</div><div class="line">        inc(i);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;订正进度(1/3)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;P1-神炎皇&quot;&gt;&lt;a href=&quot;#P1-神炎皇&quot; class=&quot;headerlink&quot; title=&quot;P1 神炎皇&quot;&gt;&lt;/a&gt;P1 神炎皇&lt;/h1&gt;&lt;p&gt;大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b)的个数&lt;br&gt;$n\leq 10^{14}$&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="欧拉函数" scheme="https://cothrax.github.io/tags/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>笔记 欧拉函数</title>
@@ -166,11 +214,11 @@
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
+      <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
       <category term="裴蜀定理" scheme="https://cothrax.github.io/tags/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/"/>
     
       <category term="栈" scheme="https://cothrax.github.io/tags/%E6%A0%88/"/>
-    
-      <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
@@ -219,13 +267,13 @@
     <link href="https://cothrax.github.io/2016/10/16/lydsy-noip-2016-test6/"/>
     <id>https://cothrax.github.io/2016/10/16/lydsy-noip-2016-test6/</id>
     <published>2016-10-16T02:37:45.000Z</published>
-    <updated>2016-10-29T04:08:25.656Z</updated>
+    <updated>2016-10-30T05:01:03.455Z</updated>
     
     <content type="html"><![CDATA[<p>又一场NOIplus模拟赛。<br>第一题同样是暴力，pascal被卡常<br>第三题yy了scc+dfs，忘记判无解的情况，又是捆绑测试，然后爆0</p>
 <blockquote>
 <p>订正进度(2/3)</p>
 </blockquote>
-<h1 id="P1-幻想"><a href="#P1-幻想" class="headerlink" title="P1 幻想"></a>P1 幻想</h1><p>大意：（其实是描述的片段）<br>给定一个不小于 2 的整数 k ,按照如下方式生成一个无限长的序列S (下标从 0 开始)。<br>1.初始时序列只有一个元素 S(0) = 0 。<br>2.对于j=1,2,…,k-1分别把当前序列的每个元素都加上j,得到新的k-1个序列。<br>3.把新的k-1个序列依次接在当前序列后面,得到一个长度为当前序列长度 k 倍的序列。<br>4.把这个序列每一项都变成其除以 k 之后的余数,并把这个序列作为新的当前序列。<br>5.执行无穷次操作 2-4。<br>给定l,r，求$\sum_{i=L}^{R}h(i)\times S_i$<br>其中$h(i)=floor(\dfrac{(i\% 20000116)^2+i+804}{233})$<br>答案对$2^{32}$取模<br>$T≤100 ; 2≤k≤1000 ; 0≤L≤R≤10^16;\sum(R-L)≤10^8$<br>时限2s</p>
+<h1 id="P1-幻想"><a href="#P1-幻想" class="headerlink" title="P1 幻想"></a>P1 幻想</h1><p>大意：（其实是描述的片段）<br>给定一个不小于 2 的整数 k ,按照如下方式生成一个无限长的序列S (下标从 0 开始)。<br>1.初始时序列只有一个元素 S(0) = 0 。<br>2.对于j=1,2,…,k-1分别把当前序列的每个元素都加上j,得到新的k-1个序列。<br>3.把新的k-1个序列依次接在当前序列后面,得到一个长度为当前序列长度 k 倍的序列。<br>4.把这个序列每一项都变成其除以 k 之后的余数,并把这个序列作为新的当前序列。<br>5.执行无穷次操作 2-4。<br>给定l,r，求$\sum_{i=L}^{R}h(i)\times S_i$<br>其中$h(i)=\lfloor\dfrac{(i\% 20000116)^2+i+804}{233}\rfloor$<br>答案对$2^{32}$取模<br>$T≤100 ; 2≤k≤1000 ; 0≤L≤R≤10^16;\sum(R-L)≤10^8$<br>时限2s</p>
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>观察发现S(i)就是i在k进制下，数位和mod k的值，r-l又不是很大，暴力求<br>pascal被卡常<br>附我的草稿</p>
 <blockquote>
@@ -276,7 +324,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;订正进度(2/3)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;P1-幻想&quot;&gt;&lt;a href=&quot;#P1-幻想&quot; class=&quot;headerlink&quot; title=&quot;P1 幻想&quot;&gt;&lt;/a&gt;P1 幻想&lt;/h1&gt;&lt;p&gt;大意：（其实是描述的片段）&lt;br&gt;给定一个不小于 2 的整数 k ,按照如下方式生成一个无限长的序列S (下标从 0 开始)。&lt;br&gt;1.初始时序列只有一个元素 S(0) = 0 。&lt;br&gt;2.对于j=1,2,…,k-1分别把当前序列的每个元素都加上j,得到新的k-1个序列。&lt;br&gt;3.把新的k-1个序列依次接在当前序列后面,得到一个长度为当前序列长度 k 倍的序列。&lt;br&gt;4.把这个序列每一项都变成其除以 k 之后的余数,并把这个序列作为新的当前序列。&lt;br&gt;5.执行无穷次操作 2-4。&lt;br&gt;给定l,r，求$\sum_{i=L}^{R}h(i)\times S_i$&lt;br&gt;其中$h(i)=floor(\dfrac{(i\% 20000116)^2+i+804}{233})$&lt;br&gt;答案对$2^{32}$取模&lt;br&gt;$T≤100 ; 2≤k≤1000 ; 0≤L≤R≤10^16;\sum(R-L)≤10^8$&lt;br&gt;时限2s&lt;/p&gt;
+&lt;h1 id=&quot;P1-幻想&quot;&gt;&lt;a href=&quot;#P1-幻想&quot; class=&quot;headerlink&quot; title=&quot;P1 幻想&quot;&gt;&lt;/a&gt;P1 幻想&lt;/h1&gt;&lt;p&gt;大意：（其实是描述的片段）&lt;br&gt;给定一个不小于 2 的整数 k ,按照如下方式生成一个无限长的序列S (下标从 0 开始)。&lt;br&gt;1.初始时序列只有一个元素 S(0) = 0 。&lt;br&gt;2.对于j=1,2,…,k-1分别把当前序列的每个元素都加上j,得到新的k-1个序列。&lt;br&gt;3.把新的k-1个序列依次接在当前序列后面,得到一个长度为当前序列长度 k 倍的序列。&lt;br&gt;4.把这个序列每一项都变成其除以 k 之后的余数,并把这个序列作为新的当前序列。&lt;br&gt;5.执行无穷次操作 2-4。&lt;br&gt;给定l,r，求$\sum_{i=L}^{R}h(i)\times S_i$&lt;br&gt;其中$h(i)=\lfloor\dfrac{(i\% 20000116)^2+i+804}{233}\rfloor$&lt;br&gt;答案对$2^{32}$取模&lt;br&gt;$T≤100 ; 2≤k≤1000 ; 0≤L≤R≤10^16;\sum(R-L)≤10^8$&lt;br&gt;时限2s&lt;/p&gt;
     
     </summary>
     
@@ -291,9 +339,9 @@
     
       <category term="强连通分量" scheme="https://cothrax.github.io/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
-      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="拓扑排序" scheme="https://cothrax.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
     
@@ -1046,9 +1094,9 @@
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
+    
+      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="递推" scheme="https://cothrax.github.io/tags/%E9%80%92%E6%8E%A8/"/>
     
@@ -1176,11 +1224,11 @@
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
-    
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
       <category term="最大流" scheme="https://cothrax.github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
+    
+      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
@@ -1379,9 +1427,9 @@
     
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
-      <category term="双连通分量" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
-    
       <category term="启发式合并" scheme="https://cothrax.github.io/tags/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/"/>
+    
+      <category term="双连通分量" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
   </entry>
   
@@ -1677,166 +1725,15 @@
     
       <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
     
-      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
-    
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
+    
+      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
       <category term="二分" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     
       <category term="打表" scheme="https://cothrax.github.io/tags/%E6%89%93%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 2014-10-18</title>
-    <link href="https://cothrax.github.io/2016/09/22/noip-2014-10-18/"/>
-    <id>https://cothrax.github.io/2016/09/22/noip-2014-10-18/</id>
-    <published>2016-09-22T15:42:48.000Z</published>
-    <updated>2016-09-24T12:05:45.903Z</updated>
-    
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:center">题目</th>
-<th style="text-align:center">思路</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">jkl</td>
-<td style="text-align:center">贪心乱搞</td>
-</tr>
-<tr>
-<td style="text-align:center">walk</td>
-<td style="text-align:center">倍增</td>
-</tr>
-<tr>
-<td style="text-align:center">mokou</td>
-<td style="text-align:center">mst+遍历</td>
-</tr>
-<tr>
-<td style="text-align:center">submatrix</td>
-<td style="text-align:center">单调栈</td>
-</tr>
-</tbody>
-</table>
-<h1 id="P1-肥得更高"><a href="#P1-肥得更高" class="headerlink" title="P1 肥得更高"></a>P1 肥得更高</h1><p>现在，你有n亩的小麦地需要增产，你拥有一些金坷垃，但是金坷垃极其稀少，掺肥料也只够你撒K次。<br>众所周知，金坷垃能激活土壤深处的氮磷钾，同一块地可以撒多次肥料，但是效果是有略微衰减的。<br>实地考察后你发现，第i亩土地第x次撒肥料增产a[i]-x+1公斤。<br>hzwer将代替你去撒肥料，但是他是个蒟蒻，完全不动大脑，所以你想知道如果他随机撒肥料，最坏情况下小麦将增产多少，最好情况下将增产多少？(他最多只会对第i亩地撒肥料a[i]次)<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数n，K<br>第二行n个整数，第i个整数为a[i]</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出最大值，最小值，空格隔开</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>5 10<br>10 3 3 1 2</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>58 26</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>对于30%的数据n，k&lt;=1000<br>对于70%的数据n，k&lt;=200000<br>对于100%的数据n，k，a[i]&lt;=1000000</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心乱搞<br>显然每次取最小值，每次取出a[i]后，a[i]-=1，可以用cnt[i]记录当前a[j]=i的j的个数<br>至于最大值，拿一个指针指想cnt[i]&gt;0的最大i，每次<code>dec(cnt[i]);inc(cnt[i-1])</code>，模拟k次即可<br>最小值的话，因为根据样例a[i]不能减负数，那么用一个指针指向cnt[i]&gt;0的最小i，然后一次性处理cnt[i]（相当于对a[j]=i的所有地j各撒i此，让a[j]减到0，用等差数列求和），然后向上找可用的i，记录次数直到k次<br>最后一个点会爆int</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/22/noip-2014-10-18/jkl.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>jkl.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    tmp,cnt:<span class="keyword">array</span>[-<span class="number">1000010</span>..<span class="number">1000010</span>] <span class="keyword">of</span> int;</div><div class="line">    n,k,i,j,mn,mx,p:int;ans:int64;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'jkl.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'jkl.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,k);</div><div class="line">    mn:=maxlongint;mx:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(j);inc(cnt[j]);</div><div class="line">        mn:=min(j,mn);mx:=max(j,mx);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    tmp:=cnt;ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">while</span> cnt[mx]=<span class="number">0</span> <span class="keyword">do</span> dec(mx);</div><div class="line">        inc(ans,mx);dec(cnt[mx]);inc(cnt[mx-<span class="number">1</span>]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans,<span class="string">' '</span>);</div><div class="line">    p:=mn;i:=k;ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> i&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">while</span> (tmp[p]=<span class="number">0</span>) <span class="keyword">do</span> inc(p);</div><div class="line">        <span class="comment">//p+p-1+p-2+...1</span></div><div class="line">        dec(tmp[p]);j:=min(i,p);dec(i,j);</div><div class="line">        inc(ans,(p+(p-j+<span class="number">1</span>))*j <span class="keyword">div</span> <span class="number">2</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P2-滑板鞋"><a href="#P2-滑板鞋" class="headerlink" title="P2 滑板鞋"></a>P2 滑板鞋</h1><p>你在魅力之都购买了一双时尚的滑板鞋，你非常兴奋地到处摩擦！<br>hzwer很想问一个问题：按照你的行动方式，你从某个结点摩擦（移动）K步后能到的目的地<br>这显然是一个很简单的问题，但是蒟蒻hzwer总是问个不停，所以你决定写一个程序回答他的询问</p>
-<!--more-->
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个数n，m表示结点个数和询问次数<br>接下来n行，第i个数一个数a[i]表示你在第i个结点的话，下一步会移动到第a[i]个结点<br>接下来m行，每行两个数t,k，蒟蒻hzwer询问如果你当前在第t个结点，k步之后你会到第几个节点</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>m行为每次询问的结果</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>3 2<br>2<br>3<br>2<br>1 2<br>2 4</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>3<br>2</p>
-</blockquote>
-<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>共十个测试点，每个测试点数据规模如下所示</p>
-<ol>
-<li>n=10^2,m=n,k&lt;=10^2</li>
-<li>n=10^3,m=n,k&lt;=10^3</li>
-<li>n=10^4,m=1,k&lt;=10^9</li>
-<li>n=10^5,m=1,k&lt;=10^9</li>
-<li>n=10^5,m=1,k&lt;=10^12</li>
-<li>n=10^5,m=1,k&lt;=10^15</li>
-<li>n=10^5,m=1,k&lt;=10^18</li>
-<li>n=10^5,m=n,k&lt;=10^12</li>
-<li>n=10^5,m=n,k&lt;=10^15<br>10.n=10^5,m=n,k&lt;=10^18</li>
-</ol>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>倍增即可</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/22/noip-2014-10-18/walk.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>walk.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> mx=<span class="number">60</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>,<span class="number">0</span>..mx] <span class="keyword">of</span> int;</div><div class="line">    bin:<span class="keyword">array</span>[<span class="number">0</span>..mx] <span class="keyword">of</span> int64;</div><div class="line">    n,m,t,i,j:int;k:int64;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'walk.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'walk.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(f[i,<span class="number">0</span>]);</div><div class="line">    bin[<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> mx <span class="keyword">do</span> bin[i]:=bin[i-<span class="number">1</span>]*int64(<span class="number">2</span>);</div><div class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> mx <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">            f[i,j]:=f[f[i,j-<span class="number">1</span>],j-<span class="number">1</span>];</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(t,k);</div><div class="line">        <span class="keyword">for</span> j:=mx <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> bin[j]&lt;=k <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                dec(k,bin[j]);t:=f[t,j];</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">        writeln(t);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P3-警察叔叔"><a href="#P3-警察叔叔" class="headerlink" title="P3 警察叔叔"></a>P3 警察叔叔</h1><p>魅力之都是一个有N个路口，M条双向道路连接的城市。警察叔叔绘制了一张特殊的地图，在地图上只保留了N-1条道路，我们称这些道路为【特殊道路】，要保证任意两个路口间有且仅有一条路径，且满足所有保留的道路长度之和最小。<br>现在要在其中一个连接有多条【特殊道路】的路口设立【根据地】，去掉【根据地】所在路口后，就会出现某些路口间无法通过【特殊道路】相互连通的情况，我们认为这时仍然能够通过【特殊道路】连通的路口属于同一个【区域】。警察叔叔希望最后每个【区域】的【特殊道路】总长尽可能平均。警察叔叔找到了hzwer，但是hzwer是个无向图和有向图都无法区分的蒟蒻，请你帮他计算出应该选择哪一个路口作为【根据地】。<br>(尽可能平均即权值最小，设每一块【区域】的路线总长为Length[i]（包括连接【根据地】与该【区域】的边），平均路线长度为Avg=SUM{Length[i]}/区域数，权值d=∑ (Length[i]-Avg)^2</p>
-<!--more-->
-<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行：2个正整数N,M<br>第2..M+1行：每行2个整数u,v和1个实数len，表示u,v之间存在长度为len的边</p>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>第1行：1个整数，最后选择的路口编号（存在多个可选路口时选择编号小的）</p>
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>3 3<br>3 1 5<br>3 2 4<br>1 2 3</p>
-</blockquote>
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>2</p>
-</blockquote>
-<h2 id="提示​-2"><a href="#提示​-2" class="headerlink" title="提示​"></a>提示​</h2><p>对于60%的数据：3 ≤ N ≤ 2,000，N-1 ≤ M ≤ 50,000<br>对于100%的数据：3 ≤ N ≤ 40,000，N-1 ≤ M ≤ 200,000<br>对于100%的数据：0 &lt; len ≤ 100,000,000<br>保证不存在相同距离的线路，两个路口间可能出现多条路径，且任意点对间至少存在一条路径</p>
-<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>首先最小生成树显然<br>然后以1为根，在树上遍历统计以点i为根的子树上的边权和len[i]，在for一遍每个点找出最小值。<br>注意权值不是方差，而是方差×n。</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/22/noip-2014-10-18/mokou.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>mokou.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    edge=<span class="keyword">record</span> t,next:int;w:double <span class="keyword">end</span>;</div><div class="line">    e1=<span class="keyword">record</span> f,t:int;w:double <span class="keyword">end</span>;</div><div class="line"><span class="keyword">const</span> eps=<span class="number">0.0000000001</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    e:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> e1;</div><div class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">80010</span>] <span class="keyword">of</span> edge;</div><div class="line">    head,par,rnk,cnt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">40010</span>] <span class="keyword">of</span> int;</div><div class="line">    len:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">40010</span>] <span class="keyword">of</span> double;</div><div class="line">    n,m,sz,i,ans:int;tmp,sum,mn:double;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int;w:double)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(sz);g[sz].t:=t;g[sz].w:=w;</div><div class="line">    g[sz].next:=head[f];head[f]:=sz;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:e1)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:e1;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(l,r:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j:int;x:double;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=l;j:=r;x:=e[random(r-l)+l].w;</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> e[i].w&lt;x <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> e[j].w&gt;x <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            swap(e[i],e[j]);inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;r <span class="keyword">then</span> qsort(i,r);</div><div class="line">    <span class="keyword">if</span> l&lt;j <span class="keyword">then</span> qsort(l,j);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> find:=x</div><div class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        par[x]:=find(par[x]);find:=par[x];</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(x,y:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    x:=find(x);y:=find(y);</div><div class="line">    <span class="keyword">if</span> x=y <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    <span class="keyword">if</span> rnk[x]&lt;rnk[y] <span class="keyword">then</span> par[x]:=y</div><div class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        par[y]:=x;</div><div class="line">        <span class="keyword">if</span> rnk[x]=rnk[y] <span class="keyword">then</span> inc(rnk[x]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(x,y:int)</span>:</span>boolean;</div><div class="line"><span class="keyword">begin</span> same:=find(x)=find(y) <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span><span class="params">(v,p:int)</span>:</span>double;</div><div class="line"><span class="keyword">var</span> i,u:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    len[v]:=<span class="number">0</span>;cnt[v]:=<span class="number">0</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;inc(cnt[v]);</div><div class="line">        <span class="keyword">if</span> u&lt;&gt;p <span class="keyword">then</span> len[v]:=len[v]+dfs(u,v)+g[i].w;</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    dfs:=len[v];</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">cal</span><span class="params">(v:int)</span>:</span>double;</div><div class="line"><span class="keyword">var</span> i,u:int;avg:double;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> cnt[v]=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">exit</span>(-<span class="number">1</span>);</div><div class="line">    avg:=sum/cnt[v];cal:=<span class="number">0</span>;</div><div class="line">    i:=head[v];</div><div class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        u:=g[i].t;</div><div class="line">        <span class="keyword">if</span> len[u]&lt;len[v] <span class="keyword">then</span></div><div class="line">            cal:=cal+sqr(len[u]+g[i].w-avg);</div><div class="line">        i:=g[i].next;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> v&lt;&gt;<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        cal:=cal+sqr(sum-len[v]-avg);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'mokou.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'mokou.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(e[i].f,e[i].t,e[i].w);</div><div class="line">    qsort(<span class="number">1</span>,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        par[i]:=i;rnk[i]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    sz:=<span class="number">0</span>;sum:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> same(e[i].f,e[i].t) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            union(e[i].f,e[i].t);</div><div class="line">            sum:=sum+e[i].w;</div><div class="line">            add(e[i].f,e[i].t,e[i].w);</div><div class="line">            add(e[i].t,e[i].f,e[i].w);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    mn:=-<span class="number">1</span>;dfs(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        tmp:=cal(i);<span class="keyword">if</span> tmp+<span class="number">1</span>&lt;eps <span class="keyword">then</span> continue;</div><div class="line">        <span class="keyword">if</span> (mn=-<span class="number">1</span>) <span class="keyword">or</span> (tmp&lt;mn) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            mn:=tmp;ans:=i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P4-请客"><a href="#P4-请客" class="headerlink" title="P4 请客"></a>P4 请客</h1><p>chenzeyu97的家可以看成是一个n*m的矩阵，每块区域都有独一无二的海拔高度h（h&gt;0）！其最大值为n*m。现在他要选择一个子矩阵摆放一张桌子，在他眼里，这样摆放桌子的美观度为这个子矩阵的最小值，他想知道，如果他要求摆放桌子的美观度为i，那么可以选择多少种子矩阵呢？对于所有可能的i值（1&lt;=i&lt;=n*m），你都应该得出其方案数，这样你就能顶替蒟蒻hzwer获得被请客的资格！</p>
-<!--more-->
-<h2 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数n，m<br>接下来n行，每行m个整数，描述chenzeyu97的家</p>
-<h3 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h3><p>n*m行，每行一个整数，第i行表示美观度i的方案数</p>
-<h2 id="样例-3"><a href="#样例-3" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>2 3<br>2 5 1<br>6 3 4</p>
-</blockquote>
-<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>6<br>4<br>5<br>1<br>1<br>1</p>
-</blockquote>
-<h2 id="提示​-3"><a href="#提示​-3" class="headerlink" title="提示​"></a>提示​</h2><p>30%的数据1&lt;=n,m&lt;=50<br>100%的数据1&lt;=n,m&lt;=300</p>
-<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>单调栈<br>依然考虑每个点对答案的贡献<br>对于一个点向二维扩展不方便，于是枚举左右边界l和r<br>预处理每一行l..r的最小值mn<br>对行i，记向上的第一个mn[j]小于mn[i]的行为j，向下第一个mn[k]小于mn[i]的行为k，那么i对答案（美观度为mn[i]的数量）的贡献为(i-j)*(i-k)<br>对于j和k可以用单调栈求得</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/22/noip-2014-10-18/submatrix.pas" title="{Plain Text}">{Plain Text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>submatrix.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> int;</div><div class="line">    mn:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>] <span class="keyword">of</span> int;</div><div class="line">    s:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">310</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    ans:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</div><div class="line">    n,m,i,j,k:longint;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">cal</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> t,i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    t:=<span class="number">0</span>;s[<span class="number">0</span>,<span class="number">1</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">while</span> (t&gt;<span class="number">0</span>) <span class="keyword">and</span> (s[t,<span class="number">0</span>]&gt;mn[i]) <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            inc(ans[s[t,<span class="number">0</span>]],(s[t,<span class="number">1</span>]-s[t-<span class="number">1</span>,<span class="number">1</span>])*(i-s[t,<span class="number">1</span>]));</div><div class="line">            dec(t);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        inc(t);s[t,<span class="number">0</span>]:=mn[i];s[t,<span class="number">1</span>]:=i;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">while</span> t&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(ans[s[t,<span class="number">0</span>]],(s[t,<span class="number">1</span>]-s[t-<span class="number">1</span>,<span class="number">1</span>])*(n+<span class="number">1</span>-s[t,<span class="number">1</span>]));</div><div class="line">        dec(t);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'submatrix.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'submatrix.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(a[i,j]);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        filldword(mn,sizeof(mn) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">        <span class="keyword">for</span> j:=i <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">                mn[k]:=min(mn[k],a[k,j]);</div><div class="line">            cal();</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m*n <span class="keyword">do</span> writeln(ans[i]);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;题目&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;思路&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;jkl&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;贪心乱搞&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;walk&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;倍增&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;mokou&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;mst+遍历&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;submatrix&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;单调栈&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;P1-肥得更高&quot;&gt;&lt;a href=&quot;#P1-肥得更高&quot; class=&quot;headerlink&quot; title=&quot;P1 肥得更高&quot;&gt;&lt;/a&gt;P1 肥得更高&lt;/h1&gt;&lt;p&gt;现在，你有n亩的小麦地需要增产，你拥有一些金坷垃，但是金坷垃极其稀少，掺肥料也只够你撒K次。&lt;br&gt;众所周知，金坷垃能激活土壤深处的氮磷钾，同一块地可以撒多次肥料，但是效果是有略微衰减的。&lt;br&gt;实地考察后你发现，第i亩土地第x次撒肥料增产a[i]-x+1公斤。&lt;br&gt;hzwer将代替你去撒肥料，但是他是个蒟蒻，完全不动大脑，所以你想知道如果他随机撒肥料，最坏情况下小麦将增产多少，最好情况下将增产多少？(他最多只会对第i亩地撒肥料a[i]次)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
-    
-      <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
-    
-      <category term="生成树" scheme="https://cothrax.github.io/tags/%E7%94%9F%E6%88%90%E6%A0%91/"/>
-    
-      <category term="单调栈" scheme="https://cothrax.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
     
   </entry>
   
