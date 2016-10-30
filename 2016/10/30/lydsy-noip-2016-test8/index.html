@@ -21,7 +21,7 @@ P1 神炎皇大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b
 <meta property="og:description" content="订正进度(1/3)
 
 P1 神炎皇大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b)的个数$n\leq 10^{14}$">
-<meta property="og:updated_time" content="2016-10-30T05:02:30.383Z">
+<meta property="og:updated_time" content="2016-10-30T05:47:24.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOIP十连测 Day 8">
 <meta name="twitter:description" content="订正进度(1/3)
@@ -116,7 +116,7 @@ P1 神炎皇大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b
 <blockquote>
 <p>定理：若$gcd(c+d)=1$，则$(c+d)|cd$一定不成立</p>
 </blockquote>
-<p>先yy一下，c+d不能被c或d整除，自然也不能被cd整除<br>也可以反证：不妨设$k(c+d)=cd,k\in N*$<br>则$kc+kd=(c-k)d+kd$<br>那么$kc=(c-k)d$<br>因为$gcd(c,d)=1$<br>所以$c=c-k,k=d$无解，与假设矛盾</p>
+<p>先yy一下，c和d的约数都不是c+d的约数，那么c+d的质因子拆分中一定包含不是cd的约数的成分。<br>也可以反证：不妨设$k(c+d)=cd,k\in N*$<br>则$kc+kd=(c-k)d+kd$<br>那么$kc=(c-k)d$<br>因为$gcd(c,d)=1$<br>所以$c=c-k,k=d$无解，与假设矛盾</p>
 <p>于是式子变成了$(c+d)|g$<br>令$k=c+d$，则$g=kp,p\in N*$，又$gk=k^2p\leq n$，那么$k\leq\sqrt{n}$<br>枚举k，则p有$n/k^2$个，下面要求(c,d)的对数</p>
 <blockquote>
 <p>根据辗转相减，$gcd(p,q)=gcd(p-q,q),p&gt;q$</p>
