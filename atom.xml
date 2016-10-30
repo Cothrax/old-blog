@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-10-30T06:06:17.144Z</updated>
+  <updated>2016-10-30T07:41:31.390Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/"/>
     <id>https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/</id>
     <published>2016-10-30T04:41:39.000Z</published>
-    <updated>2016-10-30T06:06:17.144Z</updated>
+    <updated>2016-10-30T07:41:31.390Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>订正进度(1/3)</p>
@@ -36,8 +36,8 @@
 <blockquote>
 <p>根据辗转相减，$gcd(p,q)=gcd(p-q,q),p&gt;q$</p>
 </blockquote>
-<p>于是gcd(c,d)=1的对数与gcd(c+d,i)=(k,i)=1的对数一一对应，而(k,i)的对数就是$\phi(k)$</p>
-<p>于是，答案为$\sum_{k=2}^{\lfloor\sqrt{n}\rfloor} \phi(k)*\lfloor n/k^2\rfloor$</p>
+<p>于是$gcd(c,d)=1$与$gcd(c+d,d)=(k,d)=1$一一对应，而(k,d)的对数就是$\phi(k)$</p>
+<p>于是，答案为$\sum_{k=2}^{\lfloor\sqrt{n}\rfloor} \varphi(k)*\lfloor n/k^2\rfloor$</p>
 <div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/uria.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>uria.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    n,ans,i,sq:int64;</div><div class="line">    phi,p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000010</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000100</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,t,k:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        j:=<span class="number">1</span>;t:=p[j]*i;</div><div class="line">        <span class="keyword">while</span> t&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[t]:=true;</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                phi[t]:=p[j]*phi[i];break</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span></div><div class="line">                phi[t]:=(p[j]-<span class="number">1</span>)*phi[i];</div><div class="line">            inc(j);t:=p[j]*i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="comment">//assign(input,'uria.in');reset(input);</span></div><div class="line">    <span class="comment">//assign(output,'uria.out');rewrite(output);</span></div><div class="line">    <span class="keyword">read</span>(n);sq:=trunc(sqrt(n));</div><div class="line">    foo();halt;</div><div class="line">    euler();ans:=<span class="number">0</span>;i:=<span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(ans,phi[i]*trunc(n/(i*i)));</div><div class="line">        inc(i);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
 ]]></content>
     
@@ -68,23 +68,23 @@
     <link href="https://cothrax.github.io/2016/10/30/note-euler-function/"/>
     <id>https://cothrax.github.io/2016/10/30/note-euler-function/</id>
     <published>2016-10-30T01:30:38.000Z</published>
-    <updated>2016-10-30T03:45:23.059Z</updated>
+    <updated>2016-10-30T07:41:06.855Z</updated>
     
     <content type="html"><![CDATA[<p>noip前复习数论，怎么感觉是在预习Q(AQ)*</p>
 <h1 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h1><ol>
-<li>$p$为素数，$\phi(p)=p-1$</li>
-<li>欧拉定理：若$gcd(a,n)=1$，则$a^{\phi(n)}\equiv 1(mod\ n)$<br>注：这玩意可以用来证明费马小定理</li>
-<li>$p$为素数，$\phi(p^k)=p^k-p^{k-1}$</li>
-<li>若$gcd(p,q)=1$，则$\phi(pq)=\phi(p)\phi(q)$</li>
-<li>任意$n\in N*$，$\phi(n)=\phi(\prod_i p_i^k)=\prod_i p^{k-1}(p_i-1)=n\prod_i(1-1/p_i)$</li>
-<li>对于$n&gt;2$，$2|\phi(n)$</li>
-<li>若$n\ mod\ p=0$，则$\phi(np)=p\cdot \phi(n)$</li>
+<li>$p$为素数，$\varphi(p)=p-1$</li>
+<li>欧拉定理：若$gcd(a,n)=1$，则$a^{\varphi(n)}\equiv 1(mod\ n)$<br>注：这玩意可以用来证明费马小定理</li>
+<li>$p$为素数，$\varphi(p^k)=p^k-p^{k-1}$</li>
+<li>若$gcd(p,q)=1$，则$\varphi(pq)=\varphi(p)\varphi(q)$</li>
+<li>任意$n\in N*$，$\varphi(n)=\varphi(\prod_i p_i^k)=\prod_i p^{k-1}(p_i-1)=n\prod_i(1-1/p_i)$</li>
+<li>对于$n&gt;2$，$2|\varphi(n)$</li>
+<li>若$n\ mod\ p=0$，则$\varphi(np)=p\cdot \varphi(n)$</li>
 </ol>
 <a id="more"></a>
 <p>证明可以看：<a href="/2016/10/30/note-euler-function/eluer-funtion.doc" title="欧拉函数及其证明">欧拉函数及其证明</a></p>
-<h1 id="求单个-phi-n"><a href="#求单个-phi-n" class="headerlink" title="求单个$\phi(n)$"></a>求单个$\phi(n)$</h1><p>根据性质5，质因数分解然后暴力即可，复杂度$O(sqrt{N})$</p>
+<h1 id="求单个-varphi-n"><a href="#求单个-varphi-n" class="headerlink" title="求单个$\varphi(n)$"></a>求单个$\varphi(n)$</h1><p>根据性质5，质因数分解然后暴力即可，复杂度$O(sqrt{N})$</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">phi</span><span class="params">(n:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    phi:=n;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> ceil(sqrt(n)) <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> n <span class="keyword">mod</span> i=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            phi:=phi <span class="keyword">div</span> i*(i-<span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> n <span class="keyword">mod</span> i=<span class="number">0</span> <span class="keyword">do</span> n:=n <span class="keyword">div</span> i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> n&gt;<span class="number">1</span> <span class="keyword">then</span> phi:=phi <span class="keyword">div</span> n*(n-<span class="number">1</span>);</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
-<h1 id="线性筛-phi-n"><a href="#线性筛-phi-n" class="headerlink" title="线性筛$\phi(n)$"></a>线性筛$\phi(n)$</h1><p>由性质4和7得到，若p为素数，则<br><img src="/2016/10/30/note-euler-function/7350.gif" alt="7350.gif" title=""><br>就是在筛素数时顺便求欧拉函数，线性筛与普通筛的区别：<br>例如，对于合数6会在i=2和i=3被筛两次，而线性筛只会筛i=2一次<br>关键就在line16的那个break<br>当$p[j]|i$时，下一个要被筛的合数$p[j+1]\cdot i$能被表示为$(p[j+1]\cdot i’)\cdot p[j]$，因此它可以被更小的素数$p[j]$筛出，即当循环到合数$p[j+1]\cdot i’$时，再去筛它也不迟<br>这样每个数只会被筛一次，因此复杂度$O(N)$</p>
+<h1 id="线性筛-varphi-n"><a href="#线性筛-varphi-n" class="headerlink" title="线性筛$\varphi(n)$"></a>线性筛$\varphi(n)$</h1><p>由性质4和7得到，若p为素数，则<br><img src="/2016/10/30/note-euler-function/7350.gif" alt="7350.gif" title=""><br>就是在筛素数时顺便求欧拉函数，线性筛与普通筛的区别：<br>例如，对于合数6会在i=2和i=3被筛两次，而线性筛只会筛i=2一次<br>关键就在line16的那个break<br>当$p[j]|i$时，下一个要被筛的合数$p[j+1]\cdot i$能被表示为$(p[j+1]\cdot i’)\cdot p[j]$，因此它可以被更小的素数$p[j]$筛出，即当循环到合数$p[j+1]\cdot i’$时，再去筛它也不迟<br>这样每个数只会被筛一次，因此复杂度$O(N)$</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">(n:int)</span>;</span></div><div class="line"><span class="keyword">var</span> </div><div class="line">    i,j,k:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> boolean; <span class="comment">//素数标记</span></div><div class="line">    p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int; <span class="comment">//素数表，规模为k</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(f,sizeof(f),false);</div><div class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> </div><div class="line">            <span class="keyword">begin</span> inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span> <span class="keyword">end</span>;</div><div class="line">        j:=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> i*p[j]&lt;=n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[i*p[j]]:=true;</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                phi[i*p[j]]:=phi[i]*p[j];break</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span></div><div class="line">                phi[i*p[j]]:=phi[i]*(p[j]-<span class="number">1</span>);</div><div class="line">            inc(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
 <p>一坨pascal代码：<a href="/2016/10/30/note-euler-function/1030.pas" title="1030.pas">1030.pas</a></p>
 ]]></content>
@@ -93,13 +93,13 @@
     
       &lt;p&gt;noip前复习数论，怎么感觉是在预习Q(AQ)*&lt;/p&gt;
 &lt;h1 id=&quot;欧拉函数的性质&quot;&gt;&lt;a href=&quot;#欧拉函数的性质&quot; class=&quot;headerlink&quot; title=&quot;欧拉函数的性质&quot;&gt;&lt;/a&gt;欧拉函数的性质&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;$p$为素数，$\phi(p)=p-1$&lt;/li&gt;
-&lt;li&gt;欧拉定理：若$gcd(a,n)=1$，则$a^{\phi(n)}\equiv 1(mod\ n)$&lt;br&gt;注：这玩意可以用来证明费马小定理&lt;/li&gt;
-&lt;li&gt;$p$为素数，$\phi(p^k)=p^k-p^{k-1}$&lt;/li&gt;
-&lt;li&gt;若$gcd(p,q)=1$，则$\phi(pq)=\phi(p)\phi(q)$&lt;/li&gt;
-&lt;li&gt;任意$n\in N*$，$\phi(n)=\phi(\prod_i p_i^k)=\prod_i p^{k-1}(p_i-1)=n\prod_i(1-1/p_i)$&lt;/li&gt;
-&lt;li&gt;对于$n&amp;gt;2$，$2|\phi(n)$&lt;/li&gt;
-&lt;li&gt;若$n\ mod\ p=0$，则$\phi(np)=p\cdot \phi(n)$&lt;/li&gt;
+&lt;li&gt;$p$为素数，$\varphi(p)=p-1$&lt;/li&gt;
+&lt;li&gt;欧拉定理：若$gcd(a,n)=1$，则$a^{\varphi(n)}\equiv 1(mod\ n)$&lt;br&gt;注：这玩意可以用来证明费马小定理&lt;/li&gt;
+&lt;li&gt;$p$为素数，$\varphi(p^k)=p^k-p^{k-1}$&lt;/li&gt;
+&lt;li&gt;若$gcd(p,q)=1$，则$\varphi(pq)=\varphi(p)\varphi(q)$&lt;/li&gt;
+&lt;li&gt;任意$n\in N*$，$\varphi(n)=\varphi(\prod_i p_i^k)=\prod_i p^{k-1}(p_i-1)=n\prod_i(1-1/p_i)$&lt;/li&gt;
+&lt;li&gt;对于$n&amp;gt;2$，$2|\varphi(n)$&lt;/li&gt;
+&lt;li&gt;若$n\ mod\ p=0$，则$\varphi(np)=p\cdot \varphi(n)$&lt;/li&gt;
 &lt;/ol&gt;
     
     </summary>
@@ -918,9 +918,9 @@
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
-      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
-    
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
