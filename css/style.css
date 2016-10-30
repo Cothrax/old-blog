@@ -1185,12 +1185,12 @@ article .article-content .right {
   position: relative;
   z-index: 10;
   color: #000;
-  font-size: 13px;
+  font-size: 12px;
   margin: 0px 11px -98px 0px;
   text-align: right;
 }
 .copy a {
-  color: #999;
+  color: #8e908c;
 }
 .copy a:hover {
   color: #000;
