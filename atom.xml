@@ -539,9 +539,9 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
-      <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
-    
       <category term="容斥" scheme="https://cothrax.github.io/tags/%E5%AE%B9%E6%96%A5/"/>
+    
+      <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
     
   </entry>
   
@@ -1245,11 +1245,11 @@
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
-    
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
       <category term="最大流" scheme="https://cothrax.github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
+    
+      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
