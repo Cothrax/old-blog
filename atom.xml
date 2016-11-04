@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-10-31T14:49:27.138Z</updated>
+  <updated>2016-11-04T08:26:51.439Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,14 +16,56 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>lydsy-noip-2016-test7</title>
+    <link href="https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test7/"/>
+    <id>https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test7/</id>
+    <published>2016-11-04T08:14:18.000Z</published>
+    <updated>2016-11-04T08:26:51.439Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>订正进度(1/3)</p>
+</blockquote>
+<h1 id="T1-约瑟夫游戏"><a href="#T1-约瑟夫游戏" class="headerlink" title="T1 约瑟夫游戏"></a>T1 约瑟夫游戏</h1><p>大意：定义约瑟夫游戏：个人围成一圈,从 1 号开始依次报数,当报到 m 时,报1、2、…、m-1 的人出局,下一个人接着从 1 开始报,保证(n-1)是(m-1)的倍数。最后剩的一个人获胜。<br>求获胜者的编号<br>$2\leq m \leq n\leq 2^{63}-2$</p>
+<a id="more"></a>
+<h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>记f[i]为i个人时的答案，递推：<br>$f[i]=f[i-(m-1)]\%(i-m+1)+m$<br>记$g[i]=f[1+i(m-1)]$<br>则$g[i+1]=f[1+(i+1)(m-1)]=f[1+i(m-1)]\%(1+i(m-1))+m$<br>$\therefore g[i+1]=g[i]\%(1+i(m-1))+m$</p>
+<p>复杂度$O(n/m)$</p>
+<div><br><div class="copy"><br>    <a href="/2016/11/04/lydsy-noip-2016-test7/joseph.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>joseph.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,k,i,j:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000000</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'joseph.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'joseph.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    k:=(n-<span class="number">1</span>) <span class="keyword">div</span> (m-<span class="number">1</span>);</div><div class="line">    f[<span class="number">0</span>]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> k-<span class="number">1</span> <span class="keyword">do</span></div><div class="line">        f[i+<span class="number">1</span>]:=f[i]<span class="keyword">mod</span>(i*(m-<span class="number">1</span>)+<span class="number">1</span>)+m;</div><div class="line">    <span class="keyword">write</span>(f[k]);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>基于递推的方法，打表观察：<br>发现：除了$i=m^a+m-1$外，所有的f[i]=km<br>找出这个规律后直接模拟即可</p>
+<div><br><div class="copy"><br>    <a href="/2016/11/04/lydsy-noip-2016-test7/joseph_tmp.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>joseph_tmp.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    n,m,k,i,j:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000000</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    assign(input,<span class="string">'joseph.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'joseph.out'</span>);rewrite(output);</div><div class="line">    i:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;=n <span class="keyword">do</span> k:=k*m;</div><div class="line">    <span class="keyword">write</span>((n-i <span class="keyword">div</span> m) <span class="keyword">div</span> (m-<span class="number">1</span>)*m);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;订正进度(1/3)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;T1-约瑟夫游戏&quot;&gt;&lt;a href=&quot;#T1-约瑟夫游戏&quot; class=&quot;headerlink&quot; title=&quot;T1 约瑟夫游戏&quot;&gt;&lt;/a&gt;T1 约瑟夫游戏&lt;/h1&gt;&lt;p&gt;大意：定义约瑟夫游戏：个人围成一圈,从 1 号开始依次报数,当报到 m 时,报1、2、…、m-1 的人出局,下一个人接着从 1 开始报,保证(n-1)是(m-1)的倍数。最后剩的一个人获胜。&lt;br&gt;求获胜者的编号&lt;br&gt;$2\leq m \leq n\leq 2^{63}-2$&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="打表" scheme="https://cothrax.github.io/tags/%E6%89%93%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NOIP十连测 Day 8</title>
     <link href="https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/"/>
     <id>https://cothrax.github.io/2016/10/30/lydsy-noip-2016-test8/</id>
     <published>2016-10-30T04:41:39.000Z</published>
-    <updated>2016-10-31T14:49:27.138Z</updated>
+    <updated>2016-11-04T08:13:32.216Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>订正进度(1/3)</p>
+<p>订正进度(3/3)</p>
 </blockquote>
 <h1 id="P1-神炎皇"><a href="#P1-神炎皇" class="headerlink" title="P1 神炎皇"></a>P1 神炎皇</h1><p>大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b)的个数<br>$n\leq 10^{14}$</p>
 <a id="more"></a>
@@ -39,12 +81,44 @@
 <p>于是$gcd(c,d)=1$与$gcd(c+d,d)=(k,d)=1$一一对应，而(k,d)的对数就是$\varphi(k)$</p>
 <p>于是，答案为$\sum_{k=2}^{\lfloor\sqrt{n}\rfloor} \varphi(k)*\lfloor n/k^2\rfloor$</p>
 <div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/uria.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>uria.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    n,ans,i,sq:int64;</div><div class="line">    phi,p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000010</span>] <span class="keyword">of</span> int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000100</span>] <span class="keyword">of</span> boolean;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> i,j,t,k:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span>;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        j:=<span class="number">1</span>;t:=p[j]*i;</div><div class="line">        <span class="keyword">while</span> t&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[t]:=true;</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                phi[t]:=p[j]*phi[i];break</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span></div><div class="line">                phi[t]:=(p[j]-<span class="number">1</span>)*phi[i];</div><div class="line">            inc(j);t:=p[j]*i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="comment">//assign(input,'uria.in');reset(input);</span></div><div class="line">    <span class="comment">//assign(output,'uria.out');rewrite(output);</span></div><div class="line">    <span class="keyword">read</span>(n);sq:=trunc(sqrt(n));</div><div class="line">    foo();halt;</div><div class="line">    euler();ans:=<span class="number">0</span>;i:=<span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span> i&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(ans,phi[i]*trunc(n/(i*i)));</div><div class="line">        inc(i);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h1 id="P2-降雷皇"><a href="#P2-降雷皇" class="headerlink" title="P2 降雷皇"></a>P2 降雷皇</h1><p>大意：给定长度n的序列a，求最长单调不降子序列，以及其方案数<br>$n,a_i\leq 10^5$</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>数据结构优化的dp<br>第一问显然lis，考虑$O(N^2)$的求法</p>
+<p>记f[i]为以a[i]结尾的最长lis长度</p>
+<span>$f[i]=max_{i&lt;j,a[j]\leq a[i]}\{f[j]+1\}$</span><!-- Has MathJax -->
+<p>有另一种思路优化到$O(NlogN)$，但由于第二问的存在，我们考虑数据结构优化<br>可以用树状数组以a[i]为下标，维护f[i]的前缀最大值<br>那么转移时查询[1..a[i]]中的最大的f[j]即可</p>
+<p>第二问：<br>记g[i]为f[i]的方案数</p>
+<span>$g[i]=\sum_{i&lt;j,a[i]&lt;=a[j],f[i]=f[j]+1}g[j]$</span><!-- Has MathJax -->
+<p>这个可以对每以个f[i]维护一颗线段树，以a[i]为下标，维护区间[l,r]内的$\sum g[i]$<br>类似主席树的写法</p>
+<p>这样，复杂度为$O(NlogN)$<br>一个sb错误：Line53的查询参数为x-1</p>
+<div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/hamon.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>hamon.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;ll=int64;node=<span class="keyword">record</span> lc,rc,w:int <span class="keyword">end</span>;</div><div class="line"><span class="keyword">const</span> mx=<span class="number">100000</span>;md=<span class="number">123456789</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    seg:<span class="keyword">array</span>[<span class="number">0</span>..mx*<span class="number">20</span>] <span class="keyword">of</span> node;</div><div class="line">    bit,rt,f,g:<span class="keyword">array</span>[<span class="number">0</span>..mx+<span class="number">10</span>] <span class="keyword">of</span> int;</div><div class="line">    n,sz,i,tp,x,ans,cnt:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> _<span class="title">add</span><span class="params">(x,k:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">while</span> x&lt;=mx <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        bit[x]:=max(bit[x],k);</div><div class="line">        inc(x,x <span class="keyword">and</span> (-x));</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> _<span class="title">query</span><span class="params">(x:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    _query:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> x&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        _query:=max(_query,bit[x]);</div><div class="line">        x:=x <span class="keyword">and</span> (x-<span class="number">1</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(<span class="keyword">var</span> i:int;l,r,x,k:int)</span>;</span></div><div class="line"><span class="keyword">var</span> mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    inc(sz);seg[sz]:=seg[i];i:=sz;</div><div class="line">    seg[i].w:=(ll(seg[i].w)+ll(k))<span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">if</span> l=r <span class="keyword">then</span> <span class="keyword">exit</span>;</div><div class="line">    mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> x&lt;=mid <span class="keyword">then</span> add(seg[i].lc,l,mid,x,k)</div><div class="line">    <span class="keyword">else</span> add(seg[i].rc,mid+<span class="number">1</span>,r,x,k);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">(i,l,r,k:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> mid,lc,rc:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> l=r <span class="keyword">then</span> <span class="keyword">exit</span>(seg[i].w);</div><div class="line">    mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    lc:=seg[i].lc;rc:=seg[i].rc;</div><div class="line">    <span class="keyword">if</span> k&lt;=mid <span class="keyword">then</span> query:=query(lc,l,mid,k)</div><div class="line">    <span class="keyword">else</span> query:=(ll(seg[lc].w)+ll(query(rc,mid+<span class="number">1</span>,r,k)))<span class="keyword">mod</span> md;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'hamon.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'hamon.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,tp);sz:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">read</span>(x);</div><div class="line">        f[i]:=_query(x-<span class="number">1</span>);</div><div class="line">        <span class="keyword">if</span> f[i]=<span class="number">0</span> <span class="keyword">then</span> g[i]:=<span class="number">1</span></div><div class="line">        <span class="keyword">else</span> g[i]:=query(rt[f[i]],<span class="number">1</span>,n,x-<span class="number">1</span>);</div><div class="line">        inc(f[i]);add(rt[f[i]],<span class="number">1</span>,n,x,g[i]);_add(x,f[i]);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;cnt:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> ans:=max(ans,f[i]);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> f[i]=ans <span class="keyword">then</span> cnt:=(cnt+g[i])<span class="keyword">mod</span> md;</div><div class="line">    writeln(ans);<span class="keyword">if</span> tp=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">write</span>(cnt);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h1 id="P3-幻魔皇"><a href="#P3-幻魔皇" class="headerlink" title="P3 幻魔皇"></a>P3 幻魔皇</h1><p>定义斐波那契树：</p>
+<ol>
+<li>根为白色节点</li>
+<li>白色节点有一个黑色子节点</li>
+<li>黑色节点有一个黑色子节点和一个白色子节点</li>
+</ol>
+<p>给定树高n，对于$i\in [1,2n]$求距离为i的白色节点对数，答案对123456789取模<br>$n\leq 5000$</p>
+<h2 id="80分题解"><a href="#80分题解" class="headerlink" title="80分题解"></a>80分题解</h2><p>我的思路：$O(N^3)$ DP<br>f[i,j] 高为i的子树到根距离为j的节点数<br>g[i,j] 高为i的子树中距离为j的节点对数</p>
+<p>f[i,j]=f[i-1,j-1]+f[i-2,j-2]<br>特判新增的白色节点：f[i,1]+=1</p>
+<p>统计到新增的白色节点的部分：g[i,j]=f[i-1,j-2]+f[i-2,j-1]<br>加上原来的：g[i,j]+=g[i-1,j]+g[i-2,j]<br>枚举左右子树i,j：g[i,j+k+3]+=f[i-1,j]*f[i-2,k]</p>
+<p>递推n-2次，然后特判白色根节点：g[n-2,j]+=f[n-2,j-1]<br>答案是g[n-2,1..n*2]</p>
+<p>复杂度的瓶颈在于枚举左右子树的部分，容易发现这一部分的计算实际上是多项式系数向量的卷积，于是可以用fft优化到$O(N^2logN)$，似乎会被卡常，而且这玩意不在noip范围</p>
+<div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel_80.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>raviel_80.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;ll=int64;</div><div class="line"><span class="keyword">const</span></div><div class="line">    md=<span class="number">123456789</span>;mx=<span class="number">5000</span>;</div><div class="line">    nxt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2</span>] <span class="keyword">of</span> int=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>);</div><div class="line"><span class="keyword">var</span></div><div class="line">    f,g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2</span>,-<span class="number">2</span>..mx*<span class="number">2</span>+<span class="number">10</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,j,k,i0,i1,i2:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'raviel.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'raviel.ans'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n);</div><div class="line">    i0:=<span class="number">2</span>;i1:=<span class="number">1</span>;i2:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">2</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        i0:=nxt[i0];i1:=nxt[i1];i2:=nxt[i2];</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i <span class="keyword">do</span> f[i0,j]:=<span class="number">0</span>;</div><div class="line">        <span class="comment">//calc f[i0]</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i <span class="keyword">do</span></div><div class="line">            f[i0,j]:=(f[i1,j-<span class="number">1</span>]+f[i2,j-<span class="number">2</span>])<span class="keyword">mod</span> md;</div><div class="line">        f[i0,<span class="number">1</span>]:=(f[i0,<span class="number">1</span>]+<span class="number">1</span>)<span class="keyword">mod</span> md;</div><div class="line">        <span class="comment">//calc g[i0]</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span> <span class="keyword">do</span></div><div class="line">            g[i0,j]:=(f[i1,j-<span class="number">2</span>]+f[i2,j-<span class="number">1</span>]+g[i1,j]+g[i2,j])<span class="keyword">mod</span> md;</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span> <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span>-j <span class="keyword">do</span></div><div class="line">                g[i0,j+k+<span class="number">3</span>]:=(ll(g[i0,j+k+<span class="number">3</span>])+</div><div class="line">                    ll(f[i1,j])*ll(f[i2,k]))<span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">2</span>*n <span class="keyword">do</span> g[i0,j]:=(g[i0,j]+f[i0,j-<span class="number">1</span>])<span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">2</span>*n <span class="keyword">do</span> <span class="keyword">write</span>(g[i0,i],<span class="string">' '</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h2 id="100分题解"><a href="#100分题解" class="headerlink" title="100分题解"></a>100分题解</h2><p>标算：$O(N^2)$<br>考虑到其实每一棵黑色根节点的树都是同构的，不单独考虑树高直接枚举距离<br>可以发现：到黑色节点距离i的白色节点数是斐波那契数f[i]，记$s[i]=\sum_{i=1}^n f[i]$<br>而深度i的子树中的白色节点数为f[i-2]+1（特判根节点），黑色节点数为f[i-1]<br>分两种情况：记u,v为白色节点对</p>
+<ol>
+<li>lca(u,v)=u或v，那么可以算出lca的范围中的白色节点数s[n-2-i]，对于每个lca，距离为d的节点数为f[j-1]</li>
+<li>lca(u,v)=一黑色节点，$O(N^2)$枚举u和v到lca的距离，类似1处理即可</li>
+</ol>
+<div><br><div class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>raviel.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;ll=int64;</div><div class="line"><span class="keyword">const</span> md=<span class="number">123456789</span>;mx=<span class="number">5000</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    f,s,g:<span class="keyword">array</span>[-<span class="number">1</span>..mx*<span class="number">2</span>+<span class="number">10</span>] <span class="keyword">of</span> int;</div><div class="line">    n,i,j:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'raviel.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'raviel.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n);f[<span class="number">1</span>]:=<span class="number">1</span>;s[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i]:=(f[i-<span class="number">1</span>]+f[i-<span class="number">2</span>]) <span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> s[i]:=(s[i-<span class="number">1</span>]+f[i]) <span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> g[i]:=ll(s[n-<span class="number">2</span>-i]+<span class="number">1</span>)*ll(f[i-<span class="number">1</span>]) <span class="keyword">mod</span> md;</div><div class="line">    f[-<span class="number">1</span>]:=<span class="number">1</span>; <span class="comment">//便于特判根节点</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span></div><div class="line">            g[i+j]:=(ll(g[i+j])+(ll(f[i-<span class="number">2</span>])*ll(f[j-<span class="number">1</span>])<span class="keyword">mod</span> md)*</div><div class="line">                ll(s[n-<span class="number">1</span>-max(i,j)]))<span class="keyword">mod</span> md;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n*<span class="number">2</span> <span class="keyword">do</span> <span class="keyword">write</span>(g[i],<span class="string">' '</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;订正进度(1/3)&lt;/p&gt;
+&lt;p&gt;订正进度(3/3)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;P1-神炎皇&quot;&gt;&lt;a href=&quot;#P1-神炎皇&quot; class=&quot;headerlink&quot; title=&quot;P1 神炎皇&quot;&gt;&lt;/a&gt;P1 神炎皇&lt;/h1&gt;&lt;p&gt;大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b)的个数&lt;br&gt;$n\leq 10^{14}$&lt;/p&gt;
     
@@ -55,7 +129,21 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+    
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
     
@@ -68,7 +156,7 @@
     <link href="https://cothrax.github.io/2016/10/30/note-euler-function/"/>
     <id>https://cothrax.github.io/2016/10/30/note-euler-function/</id>
     <published>2016-10-30T01:30:38.000Z</published>
-    <updated>2016-10-30T07:41:06.855Z</updated>
+    <updated>2016-11-04T08:27:47.706Z</updated>
     
     <content type="html"><![CDATA[<p>noip前复习数论，怎么感觉是在预习Q(AQ)*</p>
 <h1 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h1><ol>
@@ -82,7 +170,7 @@
 </ol>
 <a id="more"></a>
 <p>证明可以看：<a href="/2016/10/30/note-euler-function/eluer-funtion.doc" title="欧拉函数及其证明">欧拉函数及其证明</a></p>
-<h1 id="求单个-varphi-n"><a href="#求单个-varphi-n" class="headerlink" title="求单个$\varphi(n)$"></a>求单个$\varphi(n)$</h1><p>根据性质5，质因数分解然后暴力即可，复杂度$O(sqrt{N})$</p>
+<h1 id="求单个-varphi-n"><a href="#求单个-varphi-n" class="headerlink" title="求单个$\varphi(n)$"></a>求单个$\varphi(n)$</h1><p>根据性质5，质因数分解然后暴力即可，复杂度$O(\sqrt{N})$</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">phi</span><span class="params">(n:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    phi:=n;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> ceil(sqrt(n)) <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> n <span class="keyword">mod</span> i=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            phi:=phi <span class="keyword">div</span> i*(i-<span class="number">1</span>);</div><div class="line">            <span class="keyword">while</span> n <span class="keyword">mod</span> i=<span class="number">0</span> <span class="keyword">do</span> n:=n <span class="keyword">div</span> i;</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> n&gt;<span class="number">1</span> <span class="keyword">then</span> phi:=phi <span class="keyword">div</span> n*(n-<span class="number">1</span>);</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
 <h1 id="线性筛-varphi-n"><a href="#线性筛-varphi-n" class="headerlink" title="线性筛$\varphi(n)$"></a>线性筛$\varphi(n)$</h1><p>由性质4和7得到，若p为素数，则<br><img src="/2016/10/30/note-euler-function/7350.gif" alt="7350.gif" title=""><br>就是在筛素数时顺便求欧拉函数，线性筛与普通筛的区别：<br>例如，对于合数6会在i=2和i=3被筛两次，而线性筛只会筛i=2一次<br>关键就在line16的那个break<br>当$p[j]|i$时，下一个要被筛的合数$p[j+1]\cdot i$能被表示为$(p[j+1]\cdot i’)\cdot p[j]$，因此它可以被更小的素数$p[j]$筛出，即当循环到合数$p[j+1]\cdot i’$时，再去筛它也不迟<br>这样每个数只会被筛一次，因此复杂度$O(N)$</p>
 <figure class="highlight pascal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">(n:int)</span>;</span></div><div class="line"><span class="keyword">var</span> </div><div class="line">    i,j,k:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> boolean; <span class="comment">//素数标记</span></div><div class="line">    p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int; <span class="comment">//素数表，规模为k</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(f,sizeof(f),false);</div><div class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> </div><div class="line">            <span class="keyword">begin</span> inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span> <span class="keyword">end</span>;</div><div class="line">        j:=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span> i*p[j]&lt;=n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            f[i*p[j]]:=true;</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                phi[i*p[j]]:=phi[i]*p[j];break</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span></div><div class="line">                phi[i*p[j]]:=phi[i]*(p[j]-<span class="number">1</span>);</div><div class="line">            inc(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div></pre></td></tr></table></figure>
@@ -333,9 +421,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="强连通分量" scheme="https://cothrax.github.io/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
@@ -531,9 +619,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
@@ -692,9 +780,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
@@ -933,17 +1021,17 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
-      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
-    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -1027,19 +1115,19 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
       <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-    
-      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
       <category term="树链剖分" scheme="https://cothrax.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
@@ -1107,11 +1195,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
@@ -1237,11 +1325,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
+    
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
@@ -1384,9 +1472,9 @@
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
-      <category term="组合数学" scheme="https://cothrax.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
-    
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
+    
+      <category term="组合数学" scheme="https://cothrax.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -1558,203 +1646,6 @@
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="网格DP" scheme="https://cothrax.github.io/tags/%E7%BD%91%E6%A0%BCDP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 2014-10-22</title>
-    <link href="https://cothrax.github.io/2016/09/23/noip-2014-10-22/"/>
-    <id>https://cothrax.github.io/2016/09/23/noip-2014-10-22/</id>
-    <published>2016-09-23T12:07:17.000Z</published>
-    <updated>2016-10-30T06:06:17.208Z</updated>
-    
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:center">题目</th>
-<th style="text-align:center">思路</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">bishop</td>
-<td style="text-align:center">dfs+打表</td>
-</tr>
-<tr>
-<td style="text-align:center">czybm</td>
-<td style="text-align:center">左右取数dp</td>
-</tr>
-<tr>
-<td style="text-align:center">hop</td>
-<td style="text-align:center">图论建模+lca</td>
-</tr>
-</tbody>
-</table>
-<h1 id="P1-传教士"><a href="#P1-传教士" class="headerlink" title="P1 传教士"></a>P1 传教士</h1><p>panzhili王国的疆土恰好是一个矩形，为了管理方便，国王jjs将整个疆土划分成N＊M块大小相同的区域。由于jjs希望他的子民也能信教爱教（”打拳”神教），所以他想安排一些传教士到全国各地去传教。但这些传教士的传教形式非常怪异，他们只在自己据点周围特定的区域内传教且领地意识极其强烈（即任意一个传教士的据点都不能在其他传教士的传教区域内，否则就会发生冲突）。现在我们知道传教士的传教区域为以其据点为中心的两条斜对角线上（如图）。现在jjs请你帮忙找出一个合理的安置方案，使得可以在全国范围内安置尽可能多的传教士而又不至于任意两个传教士会发生冲突。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center">x</th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">x</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">A</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">x</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">x</td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<p>（若A为某传教士的据点，则其传教范围为所有标有X的格子。为不产生冲突，则第二个传教士的据点只能放在上图的空格中。）<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件共一行，包含两个整数N和M，代表国土的大小，n为水平区域数，m为垂直区域数。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出文件仅一行，包含一个整数，即最多可以安置的传教士的数目。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>3 4</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>6</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>说明：样例安置方案如下图所示，X表示为某传教士的据点。<br>XXX<br>OOO<br>OOO<br>XXX<br>对于100%的数据，1&lt;=n,m&lt;=9，且数据规模呈梯度上升。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先暴力dfs打个表<br>由于是对角线，可以用x+y=b和x-y=b（斜率为±1的直线）进行状态转移</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/23/noip-2014-10-22/bishop.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>bishop.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span></div><div class="line">    l,r:<span class="keyword">array</span>[-<span class="number">10</span>..<span class="number">30</span>] <span class="keyword">of</span> boolean;</div><div class="line">    ans,n,m:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(x,y,k:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> y=m+<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span> y:=<span class="number">1</span>;inc(x) <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> x=n+<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span> </div><div class="line">        ans:=max(ans,k);<span class="keyword">exit</span> </div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    dfs(x,y+<span class="number">1</span>,k);</div><div class="line">    <span class="keyword">if</span> r[x+y] <span class="keyword">and</span> l[y-x] <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        r[x+y]:=false;l[y-x]:=false;</div><div class="line">        dfs(x,y+<span class="number">1</span>,k+<span class="number">1</span>);</div><div class="line">        r[x+y]:=true;l[y-x]:=true;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="comment">//read(n,m);</span></div><div class="line">    <span class="keyword">for</span> n:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">9</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">for</span> m:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">9</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            fillchar(l,sizeof(l),true);</div><div class="line">            fillchar(r,sizeof(r),true);</div><div class="line">            ans:=<span class="number">0</span>;</div><div class="line">            dfs(<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">            <span class="keyword">write</span>(ans:<span class="number">3</span>);        </div><div class="line">        <span class="keyword">end</span>;</div><div class="line">        writeln;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div><br><div><br><br>然后找找规律<br>打表后发现：分行列讨论，对角线特判<br><br><div class="copy"><br>    <a href="/2016/09/23/noip-2014-10-22/bishop1.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>bishop1.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> n,m:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'bishop.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'bishop.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,m);</div><div class="line">    <span class="keyword">if</span> n=m <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> n=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">write</span>(<span class="number">1</span>:<span class="number">3</span>) </div><div class="line">        <span class="keyword">else</span> <span class="keyword">write</span>(<span class="number">2</span>*(n-<span class="number">1</span>):<span class="number">3</span>);</div><div class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> odd(m) <span class="keyword">then</span> <span class="keyword">write</span>(n+m-<span class="number">1</span>:<span class="number">3</span>)</div><div class="line">        <span class="keyword">else</span> <span class="keyword">write</span>(m+<span class="number">2</span>*((n-<span class="number">1</span>) <span class="keyword">div</span> <span class="number">2</span>):<span class="number">3</span>);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P2-czy把妹"><a href="#P2-czy把妹" class="headerlink" title="P2 czy把妹"></a>P2 czy把妹</h1><p>Czy是个大丧失，非常喜欢bm。他经常挑战bm的极限，同时b很多的mz。(虽然也许质量不容乐观)<br>这一天，czy又开始了他的极限挑战。在一个数轴上有n个maze,她们都在等待着czy的到来。Czy一开始站在k号妹子的旁边，他需要搞定所有的妹子(由于他向fewdan学会了绝技，所以搞定妹子的时间是无限接近于0的，也就是一瞬间就搞定而不用花额外的时间)。Maze们都很没有耐心，每让她们多等1s,她们就会增加w[i]的不开心值。现在，czy从k号妹子这里出发，以1m/s的速度开始行动，他希望在搞定所有maze的情况下使得她们的不开心值总和最小，于是他找到了即将在NOIP2014 AK的你来帮他解决这个问题。<br><!--more--></p>
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入文件的第一行包含一个整数N，2&lt;=N&lt;=1000，表示maze的数量。<br>第二行包含一个整数V，1&lt;=V&lt;=N，表示开始时czy站在几号maze的旁边.接下来的N行中，每行包含两个用空格隔开的整数D和W，用来描述每个maze，其中0&lt;=D&lt;=1000，0&lt;=W&lt;=1000。D表示MM在数轴上的位置(单位: m)，W表示每秒钟会增加的不开心值。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个整数，最小的不开心值。(答案不超过10^9)</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>4<br>3<br>2 2<br>5 8<br>6 1<br>8 7</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>56</p>
-</blockquote>
-<h2 id="提示​-1"><a href="#提示​-1" class="headerlink" title="提示​"></a>提示​</h2><p>对于40%的数据，1&lt;=n&lt;=7<br>对于100%的数据，1&lt;=n&lt;=1000 0&lt;=D&lt;=1000 0&lt;=w&lt;=1000</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>因为只要路过一个mz必定要干掉，于是已经干掉的妹子构成的是一个连续区间。<br>以k为起点，左右取数的dp<br>状态f[i,j,s]：k以左取i个，右取j个，s=0在现在在左边，s=1现在在右边<br>部分数据预处理，然后转移</p>
-<p>其实和洛谷的关路灯那题一模一样<br>dp时注意数组越界，要加判断i&gt;0和j&gt;0</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/23/noip-2014-10-22/czybm.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>czybm.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">var</span></div><div class="line">    i,j,n,k:int;</div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>,<span class="number">0</span>..<span class="number">1010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</div><div class="line">    d,w,l,r:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1010</span>] <span class="keyword">of</span> int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(l,r:int)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j:int;x:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    i:=l;j:=r;x:=d[random(r-l)+l];</div><div class="line">    <span class="keyword">repeat</span></div><div class="line">        <span class="keyword">while</span> d[i]&lt;x <span class="keyword">do</span> inc(i);</div><div class="line">        <span class="keyword">while</span> d[j]&gt;x <span class="keyword">do</span> dec(j);</div><div class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> i=k <span class="keyword">then</span> k:=j;<span class="keyword">if</span> j=k <span class="keyword">then</span> k:=i;</div><div class="line">            swap(d[i],d[j]);swap(w[i],w[j]);</div><div class="line">            inc(i);dec(j);</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">until</span> i&gt;j;</div><div class="line">    <span class="keyword">if</span> i&lt;r <span class="keyword">then</span> qsort(i,r);</div><div class="line">    <span class="keyword">if</span> l&lt;j <span class="keyword">then</span> qsort(l,j);</div><div class="line"><span class="keyword">end</span>;    </div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'czybm.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'czybm.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,k);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(d[i],w[i]);</div><div class="line">    qsort(<span class="number">1</span>,n);l[k-<span class="number">1</span>]:=<span class="number">0</span>;r[n-k]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=k-<span class="number">2</span> <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span> l[i]:=l[i+<span class="number">1</span>]+w[k-<span class="number">1</span>-i];</div><div class="line">    <span class="keyword">for</span> i:=n-k-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span> r[i]:=r[i+<span class="number">1</span>]+w[k+<span class="number">1</span>+i];</div><div class="line">    filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</div><div class="line">    f[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">0</span>;f[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> k-<span class="number">1</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> n-k <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">            <span class="keyword">if</span> i&gt;<span class="number">0</span> <span class="keyword">then</span> f[i,j,<span class="number">0</span>]:=min(</div><div class="line">                f[i-<span class="number">1</span>,j,<span class="number">0</span>]+(l[i-<span class="number">1</span>]+r[j])*(d[k-i+<span class="number">1</span>]-d[k-i]),</div><div class="line">                f[i-<span class="number">1</span>,j,<span class="number">1</span>]+(l[i-<span class="number">1</span>]+r[j])*(d[k+j]-d[k-i]));</div><div class="line">            <span class="keyword">if</span> j&gt;<span class="number">0</span> <span class="keyword">then</span> f[i,j,<span class="number">1</span>]:=min(</div><div class="line">                f[i,j-<span class="number">1</span>,<span class="number">1</span>]+(l[i]+r[j-<span class="number">1</span>])*(d[k+j]-d[k+j-<span class="number">1</span>]),</div><div class="line">                f[i,j-<span class="number">1</span>,<span class="number">0</span>]+(l[i]+r[j-<span class="number">1</span>])*(d[k+j]-d[k-i]));</div><div class="line">        <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(min(f[k-<span class="number">1</span>,n-k,<span class="number">0</span>],f[k-<span class="number">1</span>,n-k,<span class="number">1</span>]));</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P3-跳跳棋"><a href="#P3-跳跳棋" class="headerlink" title="P3 跳跳棋"></a>P3 跳跳棋</h1><p>Hzwer的跳跳棋是在一条数轴上进行的。棋子只能摆在整点上。每个点不能摆超过一个棋子。<br>某一天，黄金大神和cjy用跳跳棋来做一个简单的游戏：棋盘上有3颗棋子，分别在a，b，c这三个位置。他们要通过最少的跳动把它们的位置移动成x，y，z。（棋子是没有区别的）<br>跳动的规则很简单，任意选一颗棋子，对一颗中轴棋子跳动。跳动后两颗棋子距离不变。一次只允许跳过1颗棋子。<br>写一个程序，首先判断是否可以完成任务。如果可以，输出最少需要的跳动次数。<br><!--more--></p>
-<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含三个整数，表示当前棋子的位置a b c。（互不相同）<br>第二行包含三个整数，表示目标位置x y z。（互不相同）</p>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>如果无解，输出一行NO。<br>如果可以到达，第一行输出YES，第二行输出最少步数。</p>
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>1 2 3<br>0 3 5</p>
-</blockquote>
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>YES<br>2</p>
-</blockquote>
-<h2 id="提示​-2"><a href="#提示​-2" class="headerlink" title="提示​"></a>提示​</h2><p>20% 输入整数的绝对值均不超过10<br>40% 输入整数的绝对值均不超过10000<br>100% 绝对值不超过10^9</p>
-<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>考察状态(a,b,c)，其中$a&lt;b&lt;c$<br>写暴力bfs时可以发现，当将b向外跳得到下一个状态时(a’,b’,c)时a’只可以通过向里跳得到上一个状态，这个状态转移是树形的：</p>
-<ol>
-<li>b向外跳得到两个状态作为儿子</li>
-<li>a/c向里跳得到的是父亲</li>
-</ol>
-<p>而且很容易发现存在根节点为(a,b,c)其中a-b=b-c<br>于是对于起始和目标状态，想要最短步转移，实际上就是找LCA，可以用辗转相除模拟向上走的过程，然后二分处理LCA</p>
-<p>注意点</p>
-<ol>
-<li>要调整到同一深度</li>
-<li>注意inf大小</li>
-</ol>
-<div><br><div class="copy"><br>    <a href="/2016/09/23/noip-2014-10-22/hop.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>hop.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">3</span>] <span class="keyword">of</span> int;</div><div class="line">    pint=^int;</div><div class="line"><span class="keyword">var</span></div><div class="line">    f,t,r1,r2:arr;</div><div class="line">    l,r,mid,ans,c1,c2,i:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></div><div class="line"><span class="keyword">var</span> tmp:int;</div><div class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">sort</span><span class="params">(<span class="keyword">var</span> f:arr)</span>;</span></div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">2</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=i+<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> f[i]&gt;f[j] <span class="keyword">then</span> swap(f[i],f[j]);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">cal</span><span class="params">(f:arr;k:int;p:pint)</span>:</span>arr;</div><div class="line"><span class="keyword">var</span> d1,d2,x:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    d1:=f[<span class="number">2</span>]-f[<span class="number">1</span>];d2:=f[<span class="number">3</span>]-f[<span class="number">2</span>];</div><div class="line">    <span class="keyword">if</span> d1=d2 <span class="keyword">then</span> <span class="keyword">exit</span>(f);</div><div class="line">    <span class="keyword">if</span> d1&gt;d2 <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        x:=min(d1 <span class="keyword">div</span> d2,k);</div><div class="line">        <span class="keyword">if</span> d2*x=d1 <span class="keyword">then</span> dec(x);</div><div class="line">        dec(k,x);inc(p^,x);</div><div class="line">        dec(f[<span class="number">2</span>],x*d2);dec(f[<span class="number">3</span>],x*d2);</div><div class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        x:=min(d2 <span class="keyword">div</span> d1,k);</div><div class="line">        <span class="keyword">if</span> d1*x=d2 <span class="keyword">then</span> dec(x);</div><div class="line">        dec(k,x);inc(p^,x);</div><div class="line">        inc(f[<span class="number">1</span>],x*d1);inc(f[<span class="number">2</span>],x*d1);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> k=<span class="number">0</span> <span class="keyword">then</span> cal:=f <span class="keyword">else</span> cal:=cal(f,k,p);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">equ</span><span class="params">(a,b:arr)</span>:</span>boolean;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span></div><div class="line">        <span class="keyword">if</span> a[i]&lt;&gt;b[i] <span class="keyword">then</span> <span class="keyword">exit</span>(false);</div><div class="line">    equ:=true;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'hop.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'hop.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span> <span class="keyword">read</span>(f[i]);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span> <span class="keyword">do</span> <span class="keyword">read</span>(t[i]);</div><div class="line">    sort(f);c1:=<span class="number">0</span>;r1:=cal(f,maxlongint,@c1);</div><div class="line">    sort(t);c2:=<span class="number">0</span>;r2:=cal(t,maxlongint,@c2);</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> equ(r1,r2) <span class="keyword">then</span> <span class="keyword">begin</span> <span class="keyword">write</span>(<span class="string">'NO'</span>);halt <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> c1&gt;c2 <span class="keyword">then</span> f:=cal(f,c1-c2,@i);</div><div class="line">    <span class="keyword">if</span> c2&gt;c1 <span class="keyword">then</span> t:=cal(t,c2-c1,@i);</div><div class="line">    l:=<span class="number">0</span>;r:=c1+c2;ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> equ(cal(f,mid,@i),cal(t,mid,@i)) <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">            ans:=mid*<span class="number">2</span>;r:=mid-<span class="number">1</span></div><div class="line">        <span class="keyword">end</span> <span class="keyword">else</span> l:=mid+<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    writeln(<span class="string">'YES'</span>);<span class="keyword">write</span>(ans+abs(c1-c2));</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;题目&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;思路&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;bishop&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;dfs+打表&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;czybm&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;左右取数dp&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;hop&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;图论建模+lca&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;P1-传教士&quot;&gt;&lt;a href=&quot;#P1-传教士&quot; class=&quot;headerlink&quot; title=&quot;P1 传教士&quot;&gt;&lt;/a&gt;P1 传教士&lt;/h1&gt;&lt;p&gt;panzhili王国的疆土恰好是一个矩形，为了管理方便，国王jjs将整个疆土划分成N＊M块大小相同的区域。由于jjs希望他的子民也能信教爱教（”打拳”神教），所以他想安排一些传教士到全国各地去传教。但这些传教士的传教形式非常怪异，他们只在自己据点周围特定的区域内传教且领地意识极其强烈（即任意一个传教士的据点都不能在其他传教士的传教区域内，否则就会发生冲突）。现在我们知道传教士的传教区域为以其据点为中心的两条斜对角线上（如图）。现在jjs请你帮忙找出一个合理的安置方案，使得可以在全国范围内安置尽可能多的传教士而又不至于任意两个传教士会发生冲突。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;x&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;x&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;x&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;A&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;x&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;x&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;（若A为某传教士的据点，则其传教范围为所有标有X的格子。为不产生冲突，则第二个传教士的据点只能放在上图的空格中。）&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
-    
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
-      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
-    
-      <category term="二分" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86/"/>
-    
-      <category term="打表" scheme="https://cothrax.github.io/tags/%E6%89%93%E8%A1%A8/"/>
     
   </entry>
   
