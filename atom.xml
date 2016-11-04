@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-11-04T08:31:22.125Z</updated>
+  <updated>2016-11-04T14:31:04.428Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NOIP2016十连测 Day 10</title>
+    <link href="https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test10/"/>
+    <id>https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test10/</id>
+    <published>2016-11-04T13:55:20.000Z</published>
+    <updated>2016-11-04T14:31:04.428Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>订正进度(1/3)</p>
+</blockquote>
+<h1 id="P1-最长不下降子序列"><a href="#P1-最长不下降子序列" class="headerlink" title="P1 最长不下降子序列"></a>P1 最长不下降子序列</h1><p>大意：<br>给定长度n和参数$t_0,A,B,C,D$，定义数列$a_n$：<br>$n=1,a[n]=t_0$<br>$n\geq 2,a[n]=(A\times a_{n-1}^2+B\times a_{n-1}+C)\% D$</p>
+<p>求$a_n$的最长不下降子序列<br>$0\leq t_0,A,B,C\leq150,1\leq D\leq150, 1\leq n\leq10^{12}$<br><a id="more"></a></p>
+<h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>复杂度：$O(D^3logN)$<br>根据鸽巢原理，该数列一定有循环节$T\leq D$，该数列为<span>$\{l+m*T+r\}$</span><!-- Has MathJax -->，l为前面不属于循环节的部分，r为末尾剩余的不完整循环<br>考虑纯循环数列的lis<br>记f[n,i,j]为以a[i]开头，a[nT+j]结尾的lis<br>那么$f[n,i,j]=max_{1\leq k\leq T,a[i]\leq a[j]\leq a[k]}(f[n-1,i,k]+f[1,k,j]-1)$</p>
+<p>这里定义矩阵$C=A\times B$：$$C[i,j]=max_{k=1}^n(A[i,k]+B[k,j]-1)$$</p>
+<p>可以证明该乘法满足结合律，那么可以用矩阵快速幂求解f[n]：<br>$f[n]=f[n-1]\times f[1]=f[1]^n$<br>要求$a[i]\leq a[j]$，则不合法的g[i,j]标记为$-\infty$<br>单位矩阵的对角线上为0，其余为$-\infty$<br>初始矩阵f[1]直接dp求即可</p>
+<p>记l[i]为<span>$\{l\}$</span><!-- Has MathJax -->中满足$a[i]\leq T[i]$的lis<br>记r[i]为<span>$\{r\}$</span><!-- Has MathJax -->中满足$a[i]\geq T[i]$的lis<br>这两个用直接dp求得</p>
+<p>然后枚举中间部分的左右端点<br>$ans=max_{1\leq i,j\leq T}(l[i]+r[i]+g[m-1,i,j])$</p>
+<p>细节：</p>
+<ol>
+<li>两个特判<ol>
+<li>$n\leq l+T$，此时暴力求</li>
+<li>循环节长为1时特判</li>
+</ol>
+</li>
+<li>初始化矩阵时，枚举i,j求i..T+j的lis值，注意必须要以i开头、T+j结尾</li>
+<li>快速幂的指数为m-1</li>
+<li>不要让$-\infty$参与运算，防止出现诡异的错误</li>
+</ol>
+<div><br><div class="copy"><br>    <br></div><br><div><br><figure class="highlight delphi"><figcaption><span>_lis.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">type</span> </div><div class="line">    int=longint;</div><div class="line">    mat=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">155</span>,<span class="number">0</span>..<span class="number">155</span>] <span class="keyword">of</span> int64;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    a,b,c,d,k,i,j,x,til,len,rst:int;</div><div class="line">    l,r,f,s,loc:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2240</span>] <span class="keyword">of</span> int;</div><div class="line">    g:mat;n,m,ans:int64;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bin</span><span class="params">(x,n:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> l,r,mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="comment">//max_j&#123;f[j]&lt;=x&#125;</span></div><div class="line">    l:=<span class="number">1</span>;r:=n;bin:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> f[mid]&lt;=x <span class="keyword">then</span> <span class="keyword">begin</span> bin:=mid;l:=mid+<span class="number">1</span> <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> r:=mid-<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lis</span><span class="params">(dn,up,n,b:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i]:=inf;</div><div class="line">    lis:=<span class="number">0</span>;f[<span class="number">0</span>]:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> (s[b+i]&lt;dn)<span class="keyword">or</span>(s[b+i]&gt;up) <span class="keyword">then</span> continue;</div><div class="line">        j:=bin(s[b+i],lis);</div><div class="line">        f[j+<span class="number">1</span>]:=min(f[j+<span class="number">1</span>],s[b+i]);</div><div class="line">        <span class="keyword">if</span> j=lis <span class="keyword">then</span> inc(lis);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> _<span class="title">lis</span><span class="params">(n,b:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i,j,len:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i]:=inf;</div><div class="line">    f[<span class="number">1</span>]:=s[b+<span class="number">1</span>];len:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        j:=bin(s[b+i],len);</div><div class="line">        <span class="keyword">if</span> j&gt;<span class="number">0</span> <span class="keyword">then</span> f[j+<span class="number">1</span>]:=min(f[j+<span class="number">1</span>],s[b+i]);</div><div class="line">        <span class="keyword">if</span> j=len <span class="keyword">then</span> inc(len);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    _lis:=j+<span class="number">1</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mul</span><span class="params">(<span class="keyword">var</span> a,b:mat)</span>:</span>mat;</div><div class="line"><span class="keyword">var</span> i,j,k:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(mul,sizeof(mul),<span class="number">224</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span> <span class="keyword">if</span> min(a[i,k],b[k,j])&gt;=<span class="number">0</span> <span class="keyword">then</span></div><div class="line">                mul[i,j]:=max(mul[i,j],a[i,k]+b[k,j]-<span class="number">1</span>);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mpow</span><span class="params">(<span class="keyword">var</span> a:mat;p:int64)</span>:</span>mat;</div><div class="line"><span class="keyword">var</span> i:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    fillchar(mpow,sizeof(mpow),<span class="number">224</span>);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span> mpow[i,i]:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> p&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> p <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span> <span class="keyword">then</span> mpow:=mul(mpow,a);</div><div class="line">        a:=mul(a,a);</div><div class="line">        p:=p <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'lis.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'lis.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,s[<span class="number">1</span>],a,b,c,d);k:=<span class="number">1</span>;</div><div class="line">    <span class="comment">//找循环节</span></div><div class="line">    <span class="keyword">while</span> true <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        x:=(a*sqr(s[k])+b*s[k]+c)<span class="keyword">mod</span> d;</div><div class="line">        <span class="keyword">if</span> loc[x]&gt;<span class="number">0</span> <span class="keyword">then</span> break;</div><div class="line">        inc(k);s[k]:=x;loc[x]:=k;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    til:=loc[x]-<span class="number">1</span>;len:=k-loc[x]+<span class="number">1</span>;</div><div class="line">    rst:=(n-til)<span class="keyword">mod</span> len;m:=(n-til)<span class="keyword">div</span> len;</div><div class="line">    <span class="keyword">if</span> n&lt;=k <span class="keyword">then</span> <span class="comment">//不足一个周期特判</span></div><div class="line">        <span class="keyword">begin</span> <span class="keyword">write</span>(lis(-<span class="number">1</span>,d,n,<span class="number">0</span>));halt <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">if</span> len=<span class="number">1</span> <span class="keyword">then</span> <span class="comment">//周期为1特判</span></div><div class="line">        <span class="keyword">begin</span> <span class="keyword">write</span>(m+lis(-<span class="number">1</span>,s[til+<span class="number">1</span>],til,<span class="number">0</span>));halt <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=k+<span class="number">1</span> <span class="keyword">to</span> k+len <span class="keyword">do</span> s[i]:=s[i-len];</div><div class="line">    <span class="comment">//预处理</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        l[i]:=lis(-<span class="number">1</span>,s[til+i],til,<span class="number">0</span>);</div><div class="line">        r[i]:=lis(s[til+i],d,rst,til);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="comment">//矩阵快速幂</span></div><div class="line">    <span class="comment">//g[n,i,j]=max(g[n-1,i,j]+g[1,j,k]) a[i]&lt;=a[j]&lt;=a[k]</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> s[til+i]&gt;s[til+j] <span class="keyword">then</span> g[i,j]:=-inf</div><div class="line">            <span class="keyword">else</span> g[i,j]:=_lis(len-i+j+<span class="number">1</span>,til-<span class="number">1</span>+i);</div><div class="line">    g:=mpow(g,m-<span class="number">1</span>);ans:=<span class="number">0</span>;</div><div class="line">    <span class="comment">//统计答案</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> len <span class="keyword">do</span></div><div class="line">            ans:=max(ans,l[i]+r[j]+g[i,j]);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+
+<h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><p>复杂度：$O(D^2logN)$<br>其实这题可以乱搞：<br>在n比较小时，可以直接暴力生成$O(NlogN)$求LIS<br>而当n足够大时，有如下解法：<br>为叙述方便，记$LIS(dn,up,seq)$为求在数列seq中$seq[i]\in[dn,up]$的LIS值<br>枚举一个循环节中的数T[i]，记$dt=l^2$<br>用<span>$LIS(-\infty,T[i],\{l+dt*T\})+(m-2*l)+LIS(T[i],+\infty,\{dt*T+r\})$</span><!-- Has MathJax --><br>简单来说，就是求l并上$l^2$个T的lis、$l^2$个T并上r的lis，中间部分的lis=循环节数<br>正确性显然<br>细节：注意端点</p>
+<div><br><div class="copy"><br>    <a href="/2016/11/04/lydsy-noip-2016-test10/lis.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>lis.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;ll=int64;</div><div class="line"><span class="keyword">const</span> inf=<span class="number">1000000</span>;mx=<span class="number">100000</span>;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    loc:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">155</span>] <span class="keyword">of</span> int;</div><div class="line">    seq,f:<span class="keyword">array</span>[<span class="number">0</span>..mx+<span class="number">10</span>] <span class="keyword">of</span> int;</div><div class="line">    a,b,c,d,k,x,i:int;n:int64;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bin</span><span class="params">(x,n:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> l,r,mid:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    l:=<span class="number">0</span>;r:=n;bin:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> f[mid]&lt;=x <span class="keyword">then</span> <span class="keyword">begin</span> bin:=mid;l:=mid+<span class="number">1</span> <span class="keyword">end</span></div><div class="line">        <span class="keyword">else</span> r:=mid-<span class="number">1</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lis</span><span class="params">(dn,up,n,b:int)</span>:</span>int;</div><div class="line"><span class="keyword">var</span> i,j:int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i]:=inf;</div><div class="line">    f[<span class="number">0</span>]:=<span class="number">0</span>;lis:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">if</span> (seq[b+i]&lt;dn)<span class="keyword">or</span>(seq[b+i]&gt;up) <span class="keyword">then</span> continue;</div><div class="line">        j:=bin(seq[b+i],lis);</div><div class="line">        f[j+<span class="number">1</span>]:=min(f[j+<span class="number">1</span>],seq[b+i]);</div><div class="line">        <span class="keyword">if</span> j=lis <span class="keyword">then</span> inc(lis);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">solv</span><span class="params">()</span>;</span></div><div class="line"><span class="keyword">var</span> b,r,l,i,dt:int;ans,m:int64;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    b:=loc[x];l:=k-loc[x]+<span class="number">1</span>;</div><div class="line">    m:=(n-b+<span class="number">1</span>)<span class="keyword">div</span> l;r:=(n-b+<span class="number">1</span>)<span class="keyword">mod</span> l;</div><div class="line">    dt:=l*l;</div><div class="line">    <span class="keyword">for</span> i:=k+<span class="number">1</span> <span class="keyword">to</span> k+dt <span class="keyword">do</span> seq[i]:=seq[i-l];</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=b <span class="keyword">to</span> k <span class="keyword">do</span></div><div class="line">        ans:=max(ans,ll(lis(-<span class="number">1</span>,seq[i],b-<span class="number">1</span>+dt,<span class="number">0</span>))+</div><div class="line">            ll(lis(seq[i],d,r+dt,b-<span class="number">1</span>))+m-<span class="number">2</span>*l);</div><div class="line">    <span class="keyword">write</span>(ans);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'lis.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'lis.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(n,seq[<span class="number">1</span>],a,b,c,d);</div><div class="line">    <span class="keyword">if</span> n&lt;=mx <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">            seq[i]:=(a*sqr(seq[i-<span class="number">1</span>])+b*seq[i-<span class="number">1</span>]+c) <span class="keyword">mod</span> d;</div><div class="line">        <span class="keyword">write</span>(lis(-<span class="number">1</span>,d,n,<span class="number">0</span>));halt;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    loc[seq[<span class="number">1</span>]]:=<span class="number">1</span>;k:=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> true <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        x:=(a*sqr(seq[k])+b*seq[k]+c) <span class="keyword">mod</span> d;</div><div class="line">        <span class="keyword">if</span> loc[x]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> break;</div><div class="line">        inc(k);seq[k]:=x;loc[x]:=k;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    solv();</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;订正进度(1/3)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;P1-最长不下降子序列&quot;&gt;&lt;a href=&quot;#P1-最长不下降子序列&quot; class=&quot;headerlink&quot; title=&quot;P1 最长不下降子序列&quot;&gt;&lt;/a&gt;P1 最长不下降子序列&lt;/h1&gt;&lt;p&gt;大意：&lt;br&gt;给定长度n和参数$t_0,A,B,C,D$，定义数列$a_n$：&lt;br&gt;$n=1,a[n]=t_0$&lt;br&gt;$n\geq 2,a[n]=(A\times a_{n-1}^2+B\times a_{n-1}+C)\% D$&lt;/p&gt;
+&lt;p&gt;求$a_n$的最长不下降子序列&lt;br&gt;$0\leq t_0,A,B,C\leq150,1\leq D\leq150, 1\leq n\leq10^{12}$&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
+    
+    
+      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="矩阵快速幂" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+    
+  </entry>
   
   <entry>
     <title>NOIP十连测 Day 7</title>
@@ -129,19 +190,19 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
-      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
-    
-      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -421,17 +482,17 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="强连通分量" scheme="https://cothrax.github.io/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
-      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
       <category term="拓扑排序" scheme="https://cothrax.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="拆点" scheme="https://cothrax.github.io/tags/%E6%8B%86%E7%82%B9/"/>
     
@@ -619,9 +680,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
@@ -675,9 +736,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
@@ -687,9 +748,9 @@
     
       <category term="组合数学" scheme="https://cothrax.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
     
-      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
       <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
+    
+      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="分治" scheme="https://cothrax.github.io/tags/%E5%88%86%E6%B2%BB/"/>
     
@@ -780,9 +841,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
@@ -1017,21 +1078,21 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
-      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
+    
+      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -1111,15 +1172,15 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
@@ -1195,17 +1256,17 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="递推" scheme="https://cothrax.github.io/tags/%E9%80%92%E6%8E%A8/"/>
     
@@ -1325,11 +1386,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
@@ -1472,9 +1533,9 @@
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
-      <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
-    
       <category term="组合数学" scheme="https://cothrax.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -1526,11 +1587,11 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
       <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
     
@@ -1539,113 +1600,6 @@
       <category term="启发式合并" scheme="https://cothrax.github.io/tags/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/"/>
     
       <category term="双连通分量" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP模拟赛 2014-10-23</title>
-    <link href="https://cothrax.github.io/2016/09/24/noip-2014-10-23/"/>
-    <id>https://cothrax.github.io/2016/09/24/noip-2014-10-23/</id>
-    <published>2016-09-24T12:27:30.000Z</published>
-    <updated>2016-10-30T06:06:17.233Z</updated>
-    
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:center">题目</th>
-<th style="text-align:center">思路</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">pour</td>
-<td style="text-align:center">扩展欧几里得</td>
-</tr>
-<tr>
-<td style="text-align:center">stol</td>
-<td style="text-align:center">网格dp</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">?</td>
-</tr>
-</tbody>
-</table>
-<h1 id="P1-Jams倒酒"><a href="#P1-Jams倒酒" class="headerlink" title="P1 Jams倒酒"></a>P1 Jams倒酒</h1><p>Jams是一家酒吧的老板，他的酒吧提供2种体积的啤酒，a ml 和 b ml，分别使用容积为a ml 和 b ml的酒杯来装载。<br>酒吧的生意并不好。Jams发现酒鬼们都很穷，不像他那么土豪。有时，他们会因为负担不起a ml 或者 b ml酒的消费，而不得不离去。因此，Jams决定出手第三种体积的啤酒(较小体积的啤酒)。<br>Jams只有两种杯子，容积分别为 a ml 和 b ml，而且啤酒杯是没有刻度的。他只能通过两种杯子和酒桶间的互相倾倒来得到新的体积的酒。<br>倒酒步骤为:<br>(1) 规定a&gt;=b<br>(2) 酒桶容积无限，酒桶中酒体积无限大。<br>(3) 只能包含三种可能的倒酒操作：<br>1、 将酒桶中的酒倒入容积为b ml的酒杯中；<br>2、 将容积为a ml的酒杯中的酒倒入酒桶；<br>3、 将容积为b ml的酒杯中的酒倒入容积为 a ml的酒杯中。<br>(4) 每次倒酒必须把杯子倒满或者把被倾倒的杯子倒空。<br>Jams希望通过若干次倾倒得到容积为 a ml酒杯中剩下的就体积尽可能小，他请求你帮助他设计倾倒方案。<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>两个整数a,b(0&lt;b&lt;=a&lt;=10^9)</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>第一行一个整数，表示可以得到的最小体积的酒。<br>第二行两个整数Pa和Pb（中间用一个空格分开），分别表示从体积为a ml的酒杯中到处酒的次数和将酒倒入体积为b ml的酒杯的次数。<br>若有多种可能的Pa，Pb满足要求，那么请输出Pa最小的。若Pa最小的时候有多个Pb，那么输出Pb最小的。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>5 3</p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>1<br>1 2</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>倾倒方案为：<br>1、 桶-&gt;B；<br>2、 B-&gt;A；<br>3、 桶-&gt;B;<br>4、 B-&gt;A;<br>5、 A-&gt;桶；<br>6、 B-&gt;A;</p>
-<p>对于20%的数据，pa,pb总和不超过5<br>对于60%的数据，pa&lt;=10^8<br>对于100%的数据，0&lt;b&lt;=a&lt;=10^9</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>记向b倒入y次，从a倒出x次，那么最后a剩余的酒体积为$w=by-ax$<br>要最小化w，由数论显然w最小是$gcd(a,b)$，于是题目变成了解方程$by-ax=gcd(a,b)$<br>令x=-x，上扩展欧几里得即可，最后答案是-x,y<br>至于最优解的调整，已知一组解(x,y)<br>那么任意一组解为$x_t=x+b\cdot t,y_t=y-a\cdot t$<br>答案调整到最大非负整数x</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/24/noip-2014-10-23/pour.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>pour.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> a,b,x,y,g:int;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">gcd</span><span class="params">(a,b:int)</span>:</span>int;</div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> b=<span class="number">0</span> <span class="keyword">then</span> gcd:=a <span class="keyword">else</span> gcd:=gcd(b,a <span class="keyword">mod</span> b);</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">extgcd</span><span class="params">(a,b:int;<span class="keyword">var</span> x,y:int)</span>;</span></div><div class="line"><span class="keyword">begin</span></div><div class="line">    <span class="keyword">if</span> b=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">        x:=<span class="number">1</span>;y:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">        extgcd(b,a <span class="keyword">mod</span> b,y,x);</div><div class="line">        dec(y,(a <span class="keyword">div</span> b)*x);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"><span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'pour.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'pour.out'</span>);rewrite(output);</div><div class="line">    <span class="keyword">read</span>(a,b);</div><div class="line">    g:=gcd(a,b);</div><div class="line">    writeln(g,<span class="string">' '</span>);</div><div class="line">    a:=a <span class="keyword">div</span> g;b:=b <span class="keyword">div</span> g;</div><div class="line">    extgcd(a,b,x,y);</div><div class="line">    <span class="keyword">while</span> x&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        dec(x,b);inc(y,a);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">while</span> x+b&lt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        inc(x,b);dec(y,a);</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(-x,<span class="string">' '</span>,y);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P2-土豪聪要请客"><a href="#P2-土豪聪要请客" class="headerlink" title="P2 土豪聪要请客"></a>P2 土豪聪要请客</h1><p>众所周知，聪哥(ndsf)是个土豪，不过你们不知道的是他的MZ和他的RMB一样滴多……<br>某天土豪聪又赚了10^10000e的RMB，他比较开心，于是准备请客。他在自己在XX星上的别墅里面大摆酒席，想要邀请尽可能多的MZ来参加他的宴会。他将会同MZ一起坐在一个巨大的长方形桌子上。这个桌子能坐下的人数等于他的周长。聪哥要求他的桌子能够放进他的别墅，并且桌子的边必须与别墅的边界平行。给定别墅的平面图，请你求出聪哥最多可以请多少个MZ。<br><!--more--></p>
-<h2 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行n,m。表示别墅的长宽<br>下面n行，每行M个字符，表示一个方块是空的(‘ ’)或是被占用了(‘X’)。<br>聪哥只要他的桌子放在别墅里，并且桌子不能占用任何一个已经占用了的方块。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>一个数，表示聪哥最多可以请几个Maze。</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>4 4<br>X.XX<br>X..X<br>..X.<br>..XX</p>
-</blockquote>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>9</p>
-</blockquote>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>怎么搞都可以的网格dp<br>预处理l[i,j]为点(i,j)向左的连续空位的数量，u[i,j]为(i,j)向上的连续空位的数量<br>记f[i,j,k]为以点(i,j)为右下角，纵向长度为k时的最大横向长度<br>然后转移<br>细节</p>
-<ol>
-<li>循环变量打错m写成n</li>
-<li>滚动数组每次循环时初始化</li>
-</ol>
-<div><br><div class="copy"><br>    <a href="/2016/09/24/noip-2014-10-23/stol.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>stol.pas</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">uses</span> math;</div><div class="line"><span class="keyword">type</span> int=longint;</div><div class="line"><span class="keyword">var</span> </div><div class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">410</span>,<span class="number">0</span>..<span class="number">410</span>] <span class="keyword">of</span> int;</div><div class="line">    l,u:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">410</span>,<span class="number">0</span>..<span class="number">410</span>] <span class="keyword">of</span> int;</div><div class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">410</span>,<span class="number">0</span>..<span class="number">410</span>] <span class="keyword">of</span> char;</div><div class="line">    n,m,i,p,c,j,k,t1,t2,ans:int;</div><div class="line"></div><div class="line"><span class="keyword">begin</span></div><div class="line">    assign(input,<span class="string">'stol.in'</span>);reset(input);</div><div class="line">    assign(output,<span class="string">'stol.out'</span>);rewrite(output);</div><div class="line">    readln(n,m);</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(a[i,j]);</div><div class="line">        readln;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">            <span class="keyword">if</span> a[i,j]=<span class="string">'X'</span> <span class="keyword">then</span> <span class="keyword">begin</span></div><div class="line">                l[i,j]:=<span class="number">0</span>;u[i,j]:=<span class="number">0</span>;</div><div class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></div><div class="line">                l[i,j]:=l[i,j-<span class="number">1</span>]+<span class="number">1</span>;</div><div class="line">                u[i,j]:=u[i-<span class="number">1</span>,j]+<span class="number">1</span>;</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">    ans:=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">        c:=i <span class="keyword">and</span> <span class="number">1</span>;p:=c xor <span class="number">1</span>;</div><div class="line">        fillchar(f[c],sizeof(f[c]),<span class="number">0</span>);</div><div class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></div><div class="line">            <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> u[i,j] <span class="keyword">do</span> <span class="keyword">begin</span></div><div class="line">                t1:=f[c,j-<span class="number">1</span>,k]+<span class="number">1</span>;</div><div class="line">                t2:=min(f[p,j,k-<span class="number">1</span>],l[i,j]);</div><div class="line">                f[c,j,k]:=max(t1,t2);</div><div class="line">                ans:=max(ans,f[c,j,k]*<span class="number">2</span>+k*<span class="number">2</span>);</div><div class="line">            <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line">    <span class="keyword">write</span>(ans-<span class="number">1</span>);</div><div class="line">    close(input);close(output);</div><div class="line"><span class="keyword">end</span>.</div></pre></td></tr></table></figure><br><br></div></div>
-
-<h1 id="P3-最强大脑"><a href="#P3-最强大脑" class="headerlink" title="P3 最强大脑"></a>P3 最强大脑</h1><blockquote>
-<p>还没有做</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;题目&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;思路&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;pour&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;扩展欧几里得&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;stol&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;网格dp&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;?&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;?&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&quot;P1-Jams倒酒&quot;&gt;&lt;a href=&quot;#P1-Jams倒酒&quot; class=&quot;headerlink&quot; title=&quot;P1 Jams倒酒&quot;&gt;&lt;/a&gt;P1 Jams倒酒&lt;/h1&gt;&lt;p&gt;Jams是一家酒吧的老板，他的酒吧提供2种体积的啤酒，a ml 和 b ml，分别使用容积为a ml 和 b ml的酒杯来装载。&lt;br&gt;酒吧的生意并不好。Jams发现酒鬼们都很穷，不像他那么土豪。有时，他们会因为负担不起a ml 或者 b ml酒的消费，而不得不离去。因此，Jams决定出手第三种体积的啤酒(较小体积的啤酒)。&lt;br&gt;Jams只有两种杯子，容积分别为 a ml 和 b ml，而且啤酒杯是没有刻度的。他只能通过两种杯子和酒桶间的互相倾倒来得到新的体积的酒。&lt;br&gt;倒酒步骤为:&lt;br&gt;(1) 规定a&amp;gt;=b&lt;br&gt;(2) 酒桶容积无限，酒桶中酒体积无限大。&lt;br&gt;(3) 只能包含三种可能的倒酒操作：&lt;br&gt;1、 将酒桶中的酒倒入容积为b ml的酒杯中；&lt;br&gt;2、 将容积为a ml的酒杯中的酒倒入酒桶；&lt;br&gt;3、 将容积为b ml的酒杯中的酒倒入容积为 a ml的酒杯中。&lt;br&gt;(4) 每次倒酒必须把杯子倒满或者把被倾倒的杯子倒空。&lt;br&gt;Jams希望通过若干次倾倒得到容积为 a ml酒杯中剩下的就体积尽可能小，他请求你帮助他设计倾倒方案。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    
-      <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="网格DP" scheme="https://cothrax.github.io/tags/%E7%BD%91%E6%A0%BCDP/"/>
     
   </entry>
   
