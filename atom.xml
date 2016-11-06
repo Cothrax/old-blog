@@ -192,17 +192,17 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
-      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
-    
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -688,9 +688,9 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
-      <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
-    
       <category term="容斥" scheme="https://cothrax.github.io/tags/%E5%AE%B9%E6%96%A5/"/>
+    
+      <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
     
   </entry>
   
@@ -1088,9 +1088,9 @@
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
-      <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
-    
       <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
+    
+      <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
@@ -1270,9 +1270,9 @@
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="递推" scheme="https://cothrax.github.io/tags/%E9%80%92%E6%8E%A8/"/>
     
@@ -1400,11 +1400,11 @@
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
+      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
+    
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
       <category term="最大流" scheme="https://cothrax.github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
-    
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
