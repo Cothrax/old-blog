@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-11-08T14:40:33.033Z</updated>
+  <updated>2016-11-08T14:43:36.208Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test10/"/>
     <id>https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test10/</id>
     <published>2016-11-04T13:55:20.000Z</published>
-    <updated>2016-11-08T14:40:33.033Z</updated>
+    <updated>2016-11-08T14:43:36.208Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>订正进度(3/3)</p>
@@ -30,7 +30,7 @@
 <h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><p>复杂度：$O(D^3logN)$<br>根据鸽巢原理，该数列一定有循环节$T\leq D$，该数列为<span>$\{l+m*T+r\}$</span><!-- Has MathJax -->，l为前面不属于循环节的部分，r为末尾剩余的不完整循环<br>考虑纯循环数列的lis<br>记f[n,i,j]为以a[i]开头，a[nT+j]结尾的lis<br>那么$f[n,i,j]=max_{1\leq k\leq T,a[i]\leq a[j]\leq a[k]}(f[n-1,i,k]+f[1,k,j]-1)$</p>
 <p>这里定义矩阵$C=A\times B$：$$C[i,j]=max_{k=1}^n(A[i,k]+B[k,j]-1)$$</p>
 <p>可以证明该乘法满足结合律，那么可以用矩阵快速幂求解f[n]：<br>$f[n]=f[n-1]\times f[1]=f[1]^n$<br>要求$a[i]\leq a[j]$，则不合法的g[i,j]标记为$-\infty$<br>单位矩阵的对角线上为0，其余为$-\infty$<br>初始矩阵f[1]直接dp求即可</p>
-<p>记l[i]为<span>$\{l\}$</span><!-- Has MathJax -->中满足$a[i]\leq T[i]$的lis<br>记r[i]为<span>$\{r\}$</span><!-- Has MathJax -->中满足$a[i]\geq T[i]$的lis<br>这两个用直接dp求得</p>
+<p>记l[i]为<span>$\{l\}$</span><!-- Has MathJax -->中满足上界为T[i]的lis<br>记r[i]为<span>$\{r\}$</span><!-- Has MathJax -->中满足下界为T[i]的lis<br>这两个用直接dp求得</p>
 <p>然后枚举中间部分的左右端点<br>$ans=max_{1\leq i,j\leq T}(l[i]+r[i]+g[m-1,i,j])$</p>
 <p>细节：</p>
 <ol>
