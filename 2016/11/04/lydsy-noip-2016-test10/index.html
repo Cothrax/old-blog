@@ -23,7 +23,7 @@ P1 lis大意：给定长度n和参数$t_0,A,B,C,D$，定义数列$a_n$：$n=1,a[
 
 P1 lis大意：给定长度n和参数$t_0,A,B,C,D$，定义数列$a_n$：$n=1,a[n]=t_0$$n\geq 2,a[n]=(A\times a_{n-1}^2+B\times a_{n-1}+C)\% D$
 求$a_n$的最长不下降子序列$0\leq t_0,A,B,C\leq150,1\leq D\leq150, 1\leq n\leq10^{12}$">
-<meta property="og:updated_time" content="2016-11-08T14:43:36.208Z">
+<meta property="og:updated_time" content="2016-11-08T14:45:12.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOIP2016十连测 Day 10">
 <meta name="twitter:description" content="订正进度(3/3)
@@ -141,7 +141,7 @@ P1 lis大意：给定长度n和参数$t_0,A,B,C,D$，定义数列$a_n$：$n=1,a[
 <ul>
 <li>$v0&gt;l$</li>
 </ul>
-<p>这种情况下体积有上限cV<br>于是直接dp：<br>f[i,j,k] 1..i种物品，大物品有j件，总体积为k的方案是否存在<br>转移：$f[i,j,k]=f[i-1,j,k] or f[i,j-1,k-v[i]]$<br>对于一个w，答案是f[n,0..c,w]<br>可以用bitset优化，但pascal没有所以不讨论</p>
+<p>这种情况下体积有上限cV<br>于是直接dp：<br>f[i,j,k] 1..i种物品，大物品有j件，总体积为k的方案是否存在<br>转移：$f[i,j,k]=f[i-1,j,k]\ or\ f[i,j-1,k-v[i]]$<br>对于一个w，答案是f[n,0..c,w]<br>可以用bitset优化，但pascal没有所以不讨论</p>
 <ul>
 <li>$v0\leq l$</li>
 </ul>
