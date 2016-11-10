@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-11-08T14:47:42.991Z</updated>
+  <updated>2016-11-10T15:57:18.755Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NOIP2016十连测总结</title>
+    <link href="https://cothrax.github.io/2016/11/10/lydsy-noip-2016-summary/"/>
+    <id>https://cothrax.github.io/2016/11/10/lydsy-noip-2016-summary/</id>
+    <published>2016-11-10T15:08:22.000Z</published>
+    <updated>2016-11-10T15:57:18.755Z</updated>
+    
+    <content type="html"><![CDATA[<p>NOIP2016十连测在12天前已经完结，除了几个神坑没有填之外，基本订正完毕。<br>从一个蒟蒻的noiper的角度看，除了god出的前两场，其余均为NOIplus难度。</p>
+<blockquote>
+<p>I good vegetable.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><ol>
+<li><a href="/2016/10/03/lydsy-noip-2016-test2/" title="Test2 T3 speed">Test2 T3 speed</a>：好吧题解都看不懂</li>
+<li><a href="/2016/10/28/lydsy-noip-2016-test9/" title="Test9 T3 mst">Test9 T3 mst</a>：过于noip的计算几何题</li>
+<li><a href="/2016/11/04/lydsy-noip-2016-test7/" title="Test7 T3 tournament">Test7 T3 tournament</a>和<a href="/2016/10/16/lydsy-noip-2016-test6/" title="Test6 T2 goodbye">Test6 T2 goodbye</a>：概率期望的知识要补</li>
+<li><a href="/2016/10/28/lydsy-noip-2016-test5/" title="Test5 T3 travel">Test5 T3 travel</a>：题解好长，想法题，先留着吧</li>
+<li>一些不明白的地方<ol>
+<li><a href="/2016/10/10/lydsy-noip-2016-test4/" title="Test4 T3 ra">Test4 T3 ra</a>的部分分解法和复杂度的分析</li>
+<li><a href="/2016/11/04/lydsy-noip-2016-test7/" title="Test7 T2 password">Test7 T2 password</a>的方程个数的期望</li>
+</ol>
+</li>
+</ol>
+<h2 id="简单题"><a href="#简单题" class="headerlink" title="简单题"></a>简单题</h2><ol>
+<li><a href="/2016/10/02/lydsy-noip-2016-test1/" title="Test1 T1 master">Test1 T1 master</a>：字符串dp</li>
+<li><a href="/2016/10/03/lydsy-noip-2016-test2/" title="Test2 T1 div">Test2 T1 div</a>：乱搞</li>
+<li><a href="/2016/10/10/lydsy-noip-2016-test4/" title="Test4 T1 orisis">Test4 T1 orisis</a>：水</li>
+<li><a href="/2016/10/30/lydsy-noip-2016-test8/" title="Test9 T1 2048">Test9 T1 2048</a>：模拟</li>
+<li><a href="/2016/10/16/lydsy-noip-2016-test6/" title="Test6 T1 fantasy">Test6 T1 fantasy</a>：观察+乱搞（被卡常）</li>
+</ol>
+<h2 id="新知"><a href="#新知" class="headerlink" title="新知"></a>新知</h2><ol>
+<li>数论<ol>
+<li>裴蜀定理：<a href="/2016/10/28/lydsy-noip-2016-test5/" title="Test5 T1 simple">Test5 T1 simple</a></li>
+<li>杜教筛？：<a href="/2016/10/10/lydsy-noip-2016-test4/" title="Test4 T3 ra">Test4 T3 ra</a></li>
+</ol>
+</li>
+<li>dfs序：<a href="/2016/10/28/lydsy-noip-2016-test9/" title="Test10 T3 lca">Test10 T3 lca</a><ul>
+<li>“贡献”的思想，还有<a href="/2016/10/09/lydsy-noip-2016-test3/" title="Test3 T3 seq">Test3 T3 seq</a></li>
+</ul>
+</li>
+<li>容斥dp：<a href="/2016/10/10/lydsy-noip-2016-test4/" title="Test4 T2 obelisk">Test4 T2 obelisk</a></li>
+</ol>
+<h2 id="长见识"><a href="#长见识" class="headerlink" title="长见识"></a>长见识</h2><ol>
+<li>dp类<ol>
+<li>强行单调后二分：<a href="/2016/10/03/lydsy-noip-2016-test2/" title="Test2 T2 market">Test2 T2 market</a></li>
+<li>数据结构优化lis：<a href="/2016/10/30/lydsy-noip-2016-test8/" title="Test8 T2 hamon">Test8 T2 hamon</a></li>
+<li>广义矩阵乘法+快速幂：<a href="/2016/10/28/lydsy-noip-2016-test9/" title="Test10 T1 lis">Test10 T1 lis</a></li>
+<li>最短路处理dp（woc这是图论题）：<a href="/2016/10/28/lydsy-noip-2016-test9/" title="Test10 T2 bag">Test10 T2 bag</a></li>
+</ol>
+</li>
+<li>位运算求交集：<a href="/2016/10/02/lydsy-noip-2016-test1/" title="Test1 T2 tour">Test1 T2 tour</a></li>
+<li>图论<ol>
+<li>增点：<a href="/2016/10/02/lydsy-noip-2016-test1/" title="Test1 T3 walk">Test1 T3 walk</a></li>
+<li>拆点+路径求交+破环成链+dag上dp：<a href="/2016/10/16/lydsy-noip-2016-test6/" title="Test6 T3 reality">Test6 T3 reality</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="脑洞"><a href="#脑洞" class="headerlink" title="脑洞"></a>脑洞</h2><ol>
+<li>神奇二分，化最优解为统计问题：<a href="/2016/10/09/lydsy-noip-2016-test3/" title="Test3 T1 ave">Test3 T1 ave</a></li>
+<li><a href="/2016/10/28/lydsy-noip-2016-test5/" title="Test5 T2 walk">Test5 T2 walk</a>
+<ol>
+<li>如何处理常数：链表、栈</li>
+<li>如何处理gcd：按倍数枚举</li>
+</ol>
+</li>
+<li>自己看吧：<a href="/2016/10/30/lydsy-noip-2016-test8/" title="Test8 T3 raviel">Test8 T3 raviel</a></li>
+<li><a href="/2016/10/30/lydsy-noip-2016-test8/" title="Test9 T2 seq">Test9 T2 seq</a>
+<ol>
+<li>40分可以dp，noip难度类似2015的子串</li>
+<li>结论</li>
+</ol>
+</li>
+<li>可以乱搞：<a href="/2016/10/28/lydsy-noip-2016-test9/" title="Test10 T1 lis">Test10 T1 lis</a></li>
+</ol>
+<h2 id="知识强化"><a href="#知识强化" class="headerlink" title="知识强化"></a>知识强化</h2><ol>
+<li>主席树二维数点：<a href="/2016/10/09/lydsy-noip-2016-test3/" title="Test3 T3 seq">Test3 T3 seq</a></li>
+<li>好像没有了</li>
+</ol>
+<h2 id="数学啊数学"><a href="#数学啊数学" class="headerlink" title="数学啊数学"></a>数学啊数学</h2><ol>
+<li>恶心的组合数学dp：<a href="/2016/10/09/lydsy-noip-2016-test3/" title="Test3 T2 color">Test3 T2 color</a></li>
+<li>坑爹数论：<a href="/2016/10/30/lydsy-noip-2016-test8/" title="Test8 T1 uria">Test8 T1 uria</a></li>
+<li>递推解约瑟夫+<strong>打表</strong>：<a href="/2016/11/04/lydsy-noip-2016-test7/" title="Test7 T1 joseph">Test7 T1 joseph</a></li>
+<li>同余方程组+带权并查集：<a href="/2016/11/04/lydsy-noip-2016-test7/" title="Test7 T2 password">Test7 T2 password</a></li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>可以说这次十连测暴露出了大量的知识盲区，题目的思维深度超出了一个蒟蒻的能力范围。<br>在算法能力方面，这次测试给了我很大的提升，但完全没有达到训练应试能力/代码能力的效果<del>（因为看完题面连暴力都懒得打了orz）</del></p>
+<blockquote>
+<p>while true do inc(rp);</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;NOIP2016十连测在12天前已经完结，除了几个神坑没有填之外，基本订正完毕。&lt;br&gt;从一个蒟蒻的noiper的角度看，除了god出的前两场，其余均为NOIplus难度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I good vegetable.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="???" scheme="https://cothrax.github.io/categories//"/>
+    
+    
+  </entry>
   
   <entry>
     <title>NOIP2016十连测 Day 10</title>
@@ -102,23 +206,23 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
-      <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
+    
+      <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
     
       <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
-      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+      <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
       <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
     
@@ -131,10 +235,10 @@
     <link href="https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test7/"/>
     <id>https://cothrax.github.io/2016/11/04/lydsy-noip-2016-test7/</id>
     <published>2016-11-04T08:14:18.000Z</published>
-    <updated>2016-11-04T08:31:22.125Z</updated>
+    <updated>2016-11-10T15:07:03.467Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>订正进度(1/3)</p>
+<p>订正进度(2/3)</p>
 </blockquote>
 <h1 id="T1-约瑟夫游戏"><a href="#T1-约瑟夫游戏" class="headerlink" title="T1 约瑟夫游戏"></a>T1 约瑟夫游戏</h1><p>大意：定义约瑟夫游戏：个人围成一圈,从 1 号开始依次报数,当报到 m 时,报1、2、…、m-1 的人出局,下一个人接着从 1 开始报,保证(n-1)是(m-1)的倍数。最后剩的一个人获胜。<br>求获胜者的编号<br>$2\leq m \leq n\leq 2^{63}-2$</p>
 <a id="more"></a>
@@ -144,12 +248,27 @@
 
 <h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>基于递推的方法，打表观察：<br>发现：除了$i=m^a+m-1$外，所有的f[i]=km<br>找出这个规律后直接模拟即可</p>
 <div><br><div class="copy"><br>    <a href="/2016/11/04/lydsy-noip-2016-test7/joseph_tmp.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>joseph_tmp.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,m,k,i,j:int;</span><br><span class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000000</span>] <span class="keyword">of</span> int;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">read</span>(n,m);</span><br><span class="line">    assign(input,<span class="string">'joseph.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'joseph.out'</span>);rewrite(output);</span><br><span class="line">    i:=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> i&lt;=n <span class="keyword">do</span> k:=k*m;</span><br><span class="line">    <span class="keyword">write</span>((n-i <span class="keyword">div</span> m) <span class="keyword">div</span> (m-<span class="number">1</span>)*m);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure><br><br></div></div>
+
+<h1 id="T2-密码游戏"><a href="#T2-密码游戏" class="headerlink" title="T2 密码游戏"></a>T2 密码游戏</h1><p>有两个0..m-1的全排列a和b，有n次操作x，每次的结果y=b[a[x]]，之后a排列向前循环一次，即a’[(i+1)%m]=a[i]，每操作m次之后b向前循环一次。<br>现在给定n次操作的x和y，求a和b的初值。如果有多解输出任意一组<br>$2\leq m\leq 26,m^2\leq n\leq 10^5$</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>如果$y[i]=y[j]$<br>则$b[(a[(x[i]+i)\%m]+i/m)\%m]=b[(a[(x[j]+j)\%m]+j/m)\%m]$(*)</p>
+<p>$(a[(x[i]+i)\%m]+i/m)\%m=a[(x[j]+j)\%m]+j/m)\%m$</p>
+<p>$a[(x[i]+i)\%m]-a[(x[j]+j)\%m]\equiv j/m-i/m (\%m)$</p>
+<p>这样就得到的若干形如$a[i]-a[j]\equiv k(\%m)$的形式<br>我们可以用带全并查集处理同余方程，然后设根节点为0，递推出所有的a[i]<br>然后在推出(*)推出b即可<br>注意点：由于题意是操作后移动，上述式子中的i代表的是第i+1次操作</p>
+<p>题解告诉我们，有效方程个数的期望为$(n-m)(m-1)/m$<br>而$m^2\leq n$，则个数$\geq (m-1)^2\geq m-1$<br>所以可以得到m个节点间的关系（也就是最终合并到一颗树上）</p>
+<blockquote>
+<p>挖个坑：个数的期望不知道是怎么算的</p>
+</blockquote>
+<p>注：由于没有大样例，oj又不支持spj，下面的代码仅供参考<br>以及我的草稿</p>
+<blockquote>
+<p>y[i]=y[j]<br>b[(a[(x[i]+i)%m]+i/m)%m]=b[(a[(x[j]+j)%m]+j/m)%m]<br>a[(x[i]+i)%m]-a[(x[j]+j)%m]=j/m-i/m (%m)<br>=&gt;a[i]-a[j]=k (%m)<br>uf-set<br>a[i]-a[j]=k (i-&gt;j)=k<br>w[x-&gt;p[x]]=(x-p[x])%m<br>union(i,j,k)<br>a[0]=0<br>a[0]-p[a[0]]=w[0] =&gt; p[a[0]]=a[0]-w[0]<br>find<br>    w[par[x]]=par[x]-&gt;rt  w[x]=x-&gt;par[x]<br>    x-&gt;rt=w[x]+w[par[x]]=new w[x]<br>union<br>    x-&gt;y=k  w[x]=x-&gt;par[x]  w[y]=y-&gt;par[y]<br>    par[x]-&gt;par[y] = par[x]-&gt;x + x-&gt;y + y-&gt;par[y] =-w[x]+k+w[y]</p>
+</blockquote>
+<div><br><div class="copy"><br>    <a href="/2016/11/04/lydsy-noip-2016-test7/password.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>password.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> int=longint;node=<span class="keyword">record</span> w,nxt:int <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    n,m,sz,i,j,u,v:int;</span><br><span class="line">    lnk:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> node;</span><br><span class="line">    x,y:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">100010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    a,b,ptr,par,w:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">30</span>] <span class="keyword">of</span> int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">insert</span><span class="params">(i,x:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(sz);lnk[sz].w:=x;</span><br><span class="line">    lnk[sz].nxt:=ptr[i];ptr[i]:=sz;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(x:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> find:=x</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        find:=find(par[x]);</span><br><span class="line">        inc(w[x],w[par[x]]);</span><br><span class="line">        par[x]:=find;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(x,y,k:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> px,py:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    px:=find(x);py:=find(y);</span><br><span class="line">    <span class="keyword">if</span> px=py <span class="keyword">then</span> <span class="keyword">exit</span>;</span><br><span class="line">    w[px]:=-w[x]+k+w[y];par[px]:=py;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(x:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> a[x]:=<span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> a[par[x]]=-<span class="number">1</span> <span class="keyword">then</span> dfs(par[x]);</span><br><span class="line">        a[x]:=(a[par[x]]+w[x])<span class="keyword">mod</span> m;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'password.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'password.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n,m);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">read</span>(x[i]);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span> <span class="keyword">read</span>(y[i]);insert(y[i],i) <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span> par[i]:=i;w[i]:=<span class="number">0</span> <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">0</span> <span class="keyword">to</span> m-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        i:=ptr[j];u:=lnk[i].w;i:=lnk[i].nxt;</span><br><span class="line">        <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            v:=lnk[i].w;</span><br><span class="line">            union((x[u]+u)<span class="keyword">mod</span> m,(x[v]+v)<span class="keyword">mod</span> m,</span><br><span class="line">                ((v <span class="keyword">div</span> m-u <span class="keyword">div</span> m)<span class="keyword">mod</span> m+m)<span class="keyword">mod</span> m);</span><br><span class="line">            u:=v;i:=lnk[i].nxt;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    fillchar(a,sizeof(a),<span class="number">255</span>);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">if</span> a[i]=-<span class="number">1</span> <span class="keyword">then</span> dfs(i);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> b[(a[(x[i]+i)<span class="keyword">mod</span> m]+i <span class="keyword">div</span> m)<span class="keyword">mod</span> m]:=y[i];</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">write</span>(a[i],<span class="string">' '</span>);writeln;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> m-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">write</span>(b[i],<span class="string">' '</span>);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure><br><br></div></div>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;订正进度(1/3)&lt;/p&gt;
+&lt;p&gt;订正进度(2/3)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;T1-约瑟夫游戏&quot;&gt;&lt;a href=&quot;#T1-约瑟夫游戏&quot; class=&quot;headerlink&quot; title=&quot;T1 约瑟夫游戏&quot;&gt;&lt;/a&gt;T1 约瑟夫游戏&lt;/h1&gt;&lt;p&gt;大意：定义约瑟夫游戏：个人围成一圈,从 1 号开始依次报数,当报到 m 时,报1、2、…、m-1 的人出局,下一个人接着从 1 开始报,保证(n-1)是(m-1)的倍数。最后剩的一个人获胜。&lt;br&gt;求获胜者的编号&lt;br&gt;$2\leq m \leq n\leq 2^{63}-2$&lt;/p&gt;
     
@@ -160,7 +279,15 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="概率期望" scheme="https://cothrax.github.io/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
@@ -250,11 +377,11 @@
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
-      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
-    
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
       <category term="线性筛" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/"/>
     
@@ -561,15 +688,15 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="强连通分量" scheme="https://cothrax.github.io/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="拓扑排序" scheme="https://cothrax.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
     
@@ -759,9 +886,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
@@ -920,9 +1047,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="树形DP" scheme="https://cothrax.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
@@ -1161,11 +1288,11 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="贪心" scheme="https://cothrax.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
@@ -1255,19 +1382,19 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
       <category term="Hash" scheme="https://cothrax.github.io/tags/Hash/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-    
-      <category term="背包" scheme="https://cothrax.github.io/tags/%E8%83%8C%E5%8C%85/"/>
     
       <category term="树链剖分" scheme="https://cothrax.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
@@ -1341,17 +1468,17 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="BFS" scheme="https://cothrax.github.io/tags/BFS/"/>
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="字符串" scheme="https://cothrax.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
-      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="递推" scheme="https://cothrax.github.io/tags/%E9%80%92%E6%8E%A8/"/>
     
@@ -1471,19 +1598,19 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
-    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
+      <category term="二分答案" scheme="https://cothrax.github.io/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/"/>
     
-      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
       <category term="最大流" scheme="https://cothrax.github.io/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
+    
+      <category term="负环" scheme="https://cothrax.github.io/tags/%E8%B4%9F%E7%8E%AF/"/>
     
       <category term="搜索" scheme="https://cothrax.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
@@ -1625,66 +1752,6 @@
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="容斥" scheme="https://cothrax.github.io/tags/%E5%AE%B9%E6%96%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOIP2016十连测热身赛 星球联盟</title>
-    <link href="https://cothrax.github.io/2016/09/25/lydsy-noip-2016-pretest/"/>
-    <id>https://cothrax.github.io/2016/09/25/lydsy-noip-2016-pretest/</id>
-    <published>2016-09-25T07:00:05.000Z</published>
-    <updated>2016-10-30T06:06:17.014Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在遥远的S星系中一共有N个星球，编号为1…N。其中的一些星球决定组成联盟，以方便相互间的交流。但是，组成联盟的首要条件就是交通条件。初始时，在这N个星球间有M条太空隧道。每条太空隧道连接两个星球，使得它们能够相互到达。若两个星球属于同一个联盟，则必须存在一条环形线路经过这两个星球，即两个星球间存在两条没有公共隧道的路径。为了壮大联盟的队伍，这些星球将建设P条新的太空隧道。这P条新隧道将按顺序依次建成。一条新轨道建成后，可能会使一些星球属于同一个联盟。你的任务是计算出，在一条新隧道建设完毕后，判断这条新轨道连接的两个星球是否属于同一个联盟，如果属于同一个联盟就计算出这个联盟中有多少个星球。<br><a id="more"></a></p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行三个整数N，M和P，分别表示总星球数，初始时太空隧道的数目和即将建设的轨道数目。<br>第2至第M+1行，每行两个整数，表示初始时的每条太空隧道连接的两个星球编号。<br>第M+2行至第M+P+1行，每行两个整数，表示新建的太空隧道连接的两个星球编号。<br>这些太空隧道按照输入的顺序依次建成。<br>对于10%的数据有1≤N,M,P≤100；<br>对于40%的数据有1≤N,M,P≤2000；<br>对于100%的数据有1≤N,M,P≤200000。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共P行。如果这条新的太空隧道连接的两个星球属于同一个联盟，就输出一个整数，表示这两个星球所在联盟<br>的星球数。如果这条新的太空隧道连接的两个星球不属于同一个联盟，就输出”No”（不含引号）。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><blockquote>
-<p>3 2 1<br>1 2<br>1 3<br>2 3    </p>
-</blockquote>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><blockquote>
-<p>3</p>
-</blockquote>
-<h2 id="提示​"><a href="#提示​" class="headerlink" title="提示​"></a>提示​</h2><p>【样例1说明】<br>新建成的隧道连接2、3两个星球。<br>这条隧道1和2，2和3，1和3之间都存在环形线路。1,2,3同属一个联盟，答案为3</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先吐槽一下第一题，pascal不论用堆排还是快排都是TLE，然后看了下status用pascal的没人a，果断换c++只要sort就水过了。<br>第二次原题来自：<a href="/2016/09/20/noip-2014-10-4/" title="P3">P3</a><br>关于本题：<br>这是一道综合性很强的图论题<br>题意：在一张无向图上动态维护<strong>边双连通分量</strong></p>
-<ol>
-<li>用<strong>tarjan缩点</strong>，求出原图的边双连通分量（下称分量）</li>
-<li>缩点后就图便成了一个<strong>森林</strong>，其中的连通块（下称为树）用<strong>并查集tr</strong>维护</li>
-<li>如果在同一棵树的两个分量之间连一条边，那么这两个分量就合并成了一个大的分量，这个用另一个<strong>并查集bl</strong>维护</li>
-<li>考虑向图中加边<strong>e(u,v)</strong>：<ol>
-<li>如果u和v在同一分量中，输出该分量大小即可</li>
-<li>如果u和v不在同一分量但在同一棵树中，那么添加边e会使得u-&gt;lca-&gt;v的所有分量合并成一个分量，用朴素的方法求<strong>lca</strong>，边求边合并并查集bl</li>
-<li>如果u和v不在同一棵树中，此时不会产生新的分量，而将两棵树合并，我们通过tr维护树的节点个数，然后<strong>启发式合并</strong></li>
-</ol>
-</li>
-</ol>
-<p>复杂度：记缩点后森林的规模为K，tarjan为$O(N+M)$，lca部分最坏$O(KP\alpha(K))$，启发式合并最坏$O(KlogK\alpha(K))$，但实际表现还不错。<br>注意点：<strong>有重边</strong>，tarjan时对反向边做标记</p>
-<div><br><div class="copy"><br>    <a href="/2016/09/25/lydsy-noip-2016-pretest/c.pas" title="{plain text}">{plain text}</a><br></div><br><div><br><figure class="highlight delphi"><figcaption><span>c.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> </span><br><span class="line">    int=longint;</span><br><span class="line">    edge=<span class="keyword">record</span> f,t,next:int;v:boolean <span class="keyword">end</span>;</span><br><span class="line">    arr=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    st=<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>,<span class="number">0</span>..<span class="number">1</span>] <span class="keyword">of</span> int;</span><br><span class="line">    pst=^st;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">800010</span>] <span class="keyword">of</span> edge;</span><br><span class="line">    head,dep,par,dfn,low,dcc,s:arr;</span><br><span class="line">    tr,bl:st;</span><br><span class="line">    ins:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">200010</span>] <span class="keyword">of</span> boolean;</span><br><span class="line">    n,m,q,sz,i,f,t,cc,tim:int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(sz);</span><br><span class="line">    g[sz].f:=f;g[sz].t:=t;g[sz].v:=true;</span><br><span class="line">    g[sz].next:=head[f];head[f]:=sz;    </span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">tarjan</span><span class="params">(v,p:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(tim);dfn[v]:=tim;low[v]:=tim;</span><br><span class="line">    inc(t);s[t]:=v;ins[v]:=true;</span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> g[i].v <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            g[i xor <span class="number">1</span>].v:=false;</span><br><span class="line">            <span class="keyword">if</span> dfn[u]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">                tarjan(u,v);</span><br><span class="line">                low[v]:=min(low[v],low[u]);</span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> ins[u] <span class="keyword">then</span></span><br><span class="line">                low[v]:=min(low[v],dfn[u]);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">if</span> low[v]=dfn[v] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">        inc(cc);bl[cc,<span class="number">1</span>]:=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> s[t+<span class="number">1</span>]&lt;&gt;v <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            ins[s[t]]:=false;</span><br><span class="line">            inc(bl[cc,<span class="number">1</span>]);dcc[s[t]]:=cc;</span><br><span class="line">            dec(t);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(p:pst;x:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> x=p^[x,<span class="number">0</span>] <span class="keyword">then</span> find:=x</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        p^[x,<span class="number">0</span>]:=find(p,p^[x,<span class="number">0</span>]);</span><br><span class="line">        find:=p^[x,<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(p:pst;x,y:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    x:=find(p,x);y:=find(p,y);</span><br><span class="line">    <span class="keyword">if</span> x=y <span class="keyword">then</span> <span class="keyword">exit</span>;</span><br><span class="line">    inc(p^[y,<span class="number">1</span>],p^[x,<span class="number">1</span>]);p^[x,<span class="number">1</span>]:=<span class="number">0</span>;</span><br><span class="line">    p^[x,<span class="number">0</span>]:=y;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(p:pst;x,y:int)</span>:</span>boolean;</span><br><span class="line"><span class="keyword">begin</span> same:=find(p,x)=find(p,y) <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,p:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> p&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> union(@tr,v,p);</span><br><span class="line">    par[v]:=p;dep[v]:=dep[p]+<span class="number">1</span>;</span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> u&lt;&gt;p <span class="keyword">then</span> dfs(u,v);</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> tmp:int;</span><br><span class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">lca</span><span class="params">(u,v:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> dep[u]&lt;dep[v] <span class="keyword">then</span> swap(u,v);</span><br><span class="line">    <span class="keyword">while</span> dep[u]&gt;dep[v] <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        union(@bl,u,par[u]);</span><br><span class="line">        u:=par[u];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">while</span> u&lt;&gt;v <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        union(@bl,u,par[u]);u:=par[u];</span><br><span class="line">        union(@bl,v,par[v]);v:=par[v];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">merge</span><span class="params">(u,v:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> tr[find(@tr,u),<span class="number">1</span>]&gt;tr[find(@tr,v),<span class="number">1</span>] <span class="keyword">then</span> swap(u,v);</span><br><span class="line">    add(v,u);add(u,v);dfs(u,v);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'c.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'c.out'</span>);rewrite(output);</span><br><span class="line">    <span class="comment">//input</span></span><br><span class="line">    <span class="keyword">read</span>(n,m,q);sz:=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(f,t);add(f,t);add(t,f);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="comment">//tarjan</span></span><br><span class="line">    tim:=<span class="number">0</span>;t:=<span class="number">0</span>;cc:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">if</span> dfn[i]=<span class="number">0</span> <span class="keyword">then</span> tarjan(i,<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//init set</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cc <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        tr[i,<span class="number">0</span>]:=i;tr[i,<span class="number">1</span>]:=<span class="number">1</span>;bl[i,<span class="number">0</span>]:=i;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="comment">//build tree</span></span><br><span class="line">    f:=sz;sz:=<span class="number">0</span>;</span><br><span class="line">    fillchar(head,sizeof(head),<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> f <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> dcc[g[i].f]&lt;&gt;dcc[g[i].t] <span class="keyword">then</span> </span><br><span class="line">            add(dcc[g[i].f],dcc[g[i].t]);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> cc <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> dep[i]=<span class="number">0</span> <span class="keyword">then</span> dfs(i,<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//query</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> q <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(f,t);</span><br><span class="line">        f:=dcc[f];t:=dcc[t];</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> same(@tr,f,t) <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            merge(f,t);</span><br><span class="line">            writeln(<span class="string">'No'</span>);</span><br><span class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> same(@bl,f,t) <span class="keyword">then</span> lca(f,t);</span><br><span class="line">            writeln(bl[find(@bl,f),<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure><br><br></div></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h2&gt;&lt;p&gt;在遥远的S星系中一共有N个星球，编号为1…N。其中的一些星球决定组成联盟，以方便相互间的交流。但是，组成联盟的首要条件就是交通条件。初始时，在这N个星球间有M条太空隧道。每条太空隧道连接两个星球，使得它们能够相互到达。若两个星球属于同一个联盟，则必须存在一条环形线路经过这两个星球，即两个星球间存在两条没有公共隧道的路径。为了壮大联盟的队伍，这些星球将建设P条新的太空隧道。这P条新隧道将按顺序依次建成。一条新轨道建成后，可能会使一些星球属于同一个联盟。你的任务是计算出，在一条新隧道建设完毕后，判断这条新轨道连接的两个星球是否属于同一个联盟，如果属于同一个联盟就计算出这个联盟中有多少个星球。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Problem Set" scheme="https://cothrax.github.io/categories/Problem-Set/"/>
-    
-    
-      <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
-    
-      <category term="并查集" scheme="https://cothrax.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="LCA" scheme="https://cothrax.github.io/tags/LCA/"/>
-    
-      <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="启发式合并" scheme="https://cothrax.github.io/tags/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/"/>
-    
-      <category term="双连通分量" scheme="https://cothrax.github.io/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/"/>
     
   </entry>
   
