@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-11-12T14:16:24.548Z</updated>
+  <updated>2016-11-12T23:53:26.441Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="https://cothrax.github.io/2016/11/12/xjoi-noip-2016-test1/"/>
     <id>https://cothrax.github.io/2016/11/12/xjoi-noip-2016-test1/</id>
     <published>2016-11-12T13:20:18.000Z</published>
-    <updated>2016-11-12T14:16:24.548Z</updated>
+    <updated>2016-11-12T23:53:26.441Z</updated>
     
     <content type="html"><![CDATA[<p>在大学军的OJ上找点题练手，出题人果然比BZOJ的十连测良心。。</p>
-<h1 id="T1-挖金矿"><a href="#T1-挖金矿" class="headerlink" title="T1 挖金矿"></a>T1 挖金矿</h1><p>大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq n)$的前缀，要最大化所选数的平均值<br>$n\times m\leq 10^5,1\leq a[i,j]\leq 10^9$<br><a id="more"></a></p>
+<h1 id="T1-挖金矿"><a href="#T1-挖金矿" class="headerlink" title="T1 挖金矿"></a>T1 挖金矿</h1><p>大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq m)$的前缀，要最大化所选数的平均值<br>$n\times m\leq 10^5,1\leq a[i,j]\leq 10^9$<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.hzxjhs.com:83/contest/622/problem/1" target="_blank" rel="external">XJOI</a><br><a href="/2016/11/12/xjoi-noip-2016-test1/gold.pas" title="gold.pas">gold.pas</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>关于平均值的题目：</p>
 <ol>
@@ -55,7 +55,7 @@
     <summary type="html">
     
       &lt;p&gt;在大学军的OJ上找点题练手，出题人果然比BZOJ的十连测良心。。&lt;/p&gt;
-&lt;h1 id=&quot;T1-挖金矿&quot;&gt;&lt;a href=&quot;#T1-挖金矿&quot; class=&quot;headerlink&quot; title=&quot;T1 挖金矿&quot;&gt;&lt;/a&gt;T1 挖金矿&lt;/h1&gt;&lt;p&gt;大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq n)$的前缀，要最大化所选数的平均值&lt;br&gt;$n\times m\leq 10^5,1\leq a[i,j]\leq 10^9$&lt;br&gt;
+&lt;h1 id=&quot;T1-挖金矿&quot;&gt;&lt;a href=&quot;#T1-挖金矿&quot; class=&quot;headerlink&quot; title=&quot;T1 挖金矿&quot;&gt;&lt;/a&gt;T1 挖金矿&lt;/h1&gt;&lt;p&gt;大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq m)$的前缀，要最大化所选数的平均值&lt;br&gt;$n\times m\leq 10^5,1\leq a[i,j]\leq 10^9$&lt;br&gt;
     
     </summary>
     
