@@ -20,7 +20,7 @@ T1 挖金矿大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq n
 <meta property="og:description" content="在大学军的OJ上找点题练手，出题人果然比BZOJ的十连测良心。。
 T1 挖金矿大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq n)$的前缀，要最大化所选数的平均值$n\times m\leq 10^5,1\leq a[i,j]\leq 10^9$">
 <meta property="og:image" content="https://cothrax.github.io/2016/11/12/xjoi-noip-2016-test1/g.png">
-<meta property="og:updated_time" content="2016-11-12T14:12:10.403Z">
+<meta property="og:updated_time" content="2016-11-12T14:13:27.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XJOI NOIP2016提高组冲剌题1">
 <meta name="twitter:description" content="在大学军的OJ上找点题练手，出题人果然比BZOJ的十连测良心。。
@@ -113,7 +113,7 @@ T1 挖金矿大意：给定n×m的矩阵，在每一行选长为$k(1\leq k\leq n
 <li>二分统计逆序对：<a href="/2016/10/09/lydsy-noip-2016-test3/" title="十连测Test3-T1">十连测Test3-T1</a></li>
 <li>二分判负环：<a href="/2016/08/30/雅礼中学2015模拟赛-Day3/" title="雅礼2015-T2">雅礼2015-T2</a></li>
 </ol>
-<p>考虑二分答案$x\in [0,\sum a[i,j]]</p>
+<p>考虑二分答案$x\in [0,\sum a[i,j]]$</p>
 <p>将矩阵中的所有数减去x后，将每一列前缀和的最大值加起来</p>
 <p>即$sum=\sum_{i=1}^n max_{1\leq k\leq h}(\sum_{j=1}^k a[i,j])$</p>
 <p>如果$sum\geq 0$，那么x合法</p>

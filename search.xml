@@ -14,7 +14,7 @@
 <li>二分统计逆序对：<a href="/2016/10/09/lydsy-noip-2016-test3/" title="十连测Test3-T1">十连测Test3-T1</a></li>
 <li>二分判负环：<a href="/2016/08/30/雅礼中学2015模拟赛-Day3/" title="雅礼2015-T2">雅礼2015-T2</a></li>
 </ol>
-<p>考虑二分答案$x\in [0,\sum a[i,j]]</p>
+<p>考虑二分答案$x\in [0,\sum a[i,j]]$</p>
 <p>将矩阵中的所有数减去x后，将每一列前缀和的最大值加起来</p>
 <p>即$sum=\sum_{i=1}^n max_{1\leq k\leq h}(\sum_{j=1}^k a[i,j])$</p>
 <p>如果$sum\geq 0$，那么x合法</p>
