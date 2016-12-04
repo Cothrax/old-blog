@@ -385,13 +385,13 @@
     
       <category term="堆" scheme="https://cothrax.github.io/tags/%E5%A0%86/"/>
     
-      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="倍增" scheme="https://cothrax.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+    
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="DFS序" scheme="https://cothrax.github.io/tags/DFS%E5%BA%8F/"/>
     
@@ -810,9 +810,9 @@
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
-      <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
-    
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
     
       <category term="DFS序" scheme="https://cothrax.github.io/tags/DFS%E5%BA%8F/"/>
     
@@ -959,13 +959,13 @@
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="数论" scheme="https://cothrax.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
       <category term="线段树" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+    
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="树结构" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%BB%93%E6%9E%84/"/>
     
@@ -1085,9 +1085,9 @@
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
+    
+      <category term="树状数组" scheme="https://cothrax.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -1284,9 +1284,9 @@
     
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
-      <category term="拓扑排序" scheme="https://cothrax.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
-    
       <category term="数学" scheme="https://cothrax.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="拓扑排序" scheme="https://cothrax.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
     
       <category term="拆点" scheme="https://cothrax.github.io/tags/%E6%8B%86%E7%82%B9/"/>
     
