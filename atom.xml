@@ -56,12 +56,12 @@
     <link href="https://cothrax.github.io/2016/12/03/bzoj-1103/"/>
     <id>https://cothrax.github.io/2016/12/03/bzoj-1103/</id>
     <published>2016-12-03T15:51:52.000Z</published>
-    <updated>2016-12-03T16:05:03.056Z</updated>
+    <updated>2016-12-04T02:35:53.565Z</updated>
     
     <content type="html"><![CDATA[<h2 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h2><p>给定n个节点的树，有m次查询，其间有修改操作</p>
 <ol>
 <li>修改操作：标记某一条边</li>
-<li>查询操作：点u到点1的路径上未标记的点数</li>
+<li>查询操作：点u到点1的路径上未标记的边数</li>
 </ol>
 <p>n,m≤300000</p>
 <a id="more"></a>
@@ -75,7 +75,7 @@
       &lt;h2 id=&quot;大意&quot;&gt;&lt;a href=&quot;#大意&quot; class=&quot;headerlink&quot; title=&quot;大意&quot;&gt;&lt;/a&gt;大意&lt;/h2&gt;&lt;p&gt;给定n个节点的树，有m次查询，其间有修改操作&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;修改操作：标记某一条边&lt;/li&gt;
-&lt;li&gt;查询操作：点u到点1的路径上未标记的点数&lt;/li&gt;
+&lt;li&gt;查询操作：点u到点1的路径上未标记的边数&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;n,m≤300000&lt;/p&gt;
     

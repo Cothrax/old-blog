@@ -23,7 +23,7 @@
       <content type="html"><![CDATA[<h2 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h2><p>给定n个节点的树，有m次查询，其间有修改操作</p>
 <ol>
 <li>修改操作：标记某一条边</li>
-<li>查询操作：点u到点1的路径上未标记的点数</li>
+<li>查询操作：点u到点1的路径上未标记的边数</li>
 </ol>
 <p>n,m≤300000</p>
 <a id="more"></a>
