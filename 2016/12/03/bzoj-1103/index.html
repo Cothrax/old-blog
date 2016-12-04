@@ -11,31 +11,31 @@
     
 
     
-    <meta name="description" content="大意给定n个节点的树，有m次查询，其间有修改操作
+    <meta name="description" content="大意：给定n个节点的树，有m次查询，其间有修改操作
 
 修改操作：标记某一条边
 查询操作：点u到点1的路径上未标记的边数
 
-n,m≤300000">
+n,m&amp;lt;= 300000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bzoj-1103 [POI2007]大都市">
 <meta property="og:url" content="https://cothrax.github.io/2016/12/03/bzoj-1103/index.html">
 <meta property="og:site_name" content="Cothrax">
-<meta property="og:description" content="大意给定n个节点的树，有m次查询，其间有修改操作
+<meta property="og:description" content="大意：给定n个节点的树，有m次查询，其间有修改操作
 
 修改操作：标记某一条边
 查询操作：点u到点1的路径上未标记的边数
 
-n,m≤300000">
-<meta property="og:updated_time" content="2016-12-04T02:35:53.565Z">
+n,m&amp;lt;= 300000">
+<meta property="og:updated_time" content="2016-12-04T09:00:27.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj-1103 [POI2007]大都市">
-<meta name="twitter:description" content="大意给定n个节点的树，有m次查询，其间有修改操作
+<meta name="twitter:description" content="大意：给定n个节点的树，有m次查询，其间有修改操作
 
 修改操作：标记某一条边
 查询操作：点u到点1的路径上未标记的边数
 
-n,m≤300000">
+n,m&amp;lt;= 300000">
 <meta name="twitter:creator" content="@Cothrax">
 
     
@@ -112,16 +112,16 @@ n,m≤300000">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大意"><span class="toc-number">1.</span> <span class="toc-text">大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">2.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">3.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h2><p>给定n个节点的树，有m次查询，其间有修改操作</p>
+		<p>大意：给定n个节点的树，有m次查询，其间有修改操作</p>
 <ol>
 <li>修改操作：标记某一条边</li>
 <li>查询操作：点u到点1的路径上未标记的边数</li>
 </ol>
-<p>n,m≤300000</p>
+<p>n,m&lt;= 300000</p>
 <a id="more"></a>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1103" target="_blank" rel="external">bzoj-1013</a><br><a href="/2016/12/03/bzoj-1103/1103.cpp" title="1103.cpp">1103.cpp</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑修改p对查询q有影响，当且仅当q的p的子树中<br>用树状数组维护dfs序，差分修改即可</p>
@@ -188,7 +188,7 @@ n,m≤300000">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大意"><span class="toc-number">1.</span> <span class="toc-text">大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">2.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">3.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
  
   </div>
 
