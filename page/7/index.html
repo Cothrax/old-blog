@@ -82,6 +82,550 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/09/06/NOIP模拟赛-教主的魔法/" title="NOIP模拟赛 教主的魔法" itemprop="url">NOIP模拟赛 教主的魔法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-06T15:13:22.000Z" itemprop="datePublished"> Published 2016-09-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>教主最近学会了一种神奇的魔法，能够使人长高。于是他准备演示给XMYZ信息组每个英雄看。于是N个英雄们又一次聚集在了一起，这次他们排成了一列，被编号为1、2、……、N。<br>每个人的身高一开始都是不超过1000的正整数。教主的魔法每次可以把闭区间[L, R]（1≤L≤R≤N）内的英雄的身高全部加上一个整数W。（虽然L=R时并不符合区间的书写规范，但我们可以认为是单独增加第L（R）个英雄的身高）<br>CYZ、光哥和ZJQ等人不信教主的邪，于是他们有时候会问WD闭区间 [L, R] 内有多少英雄身高大于等于C，以验证教主的魔法是否真的有效。<br>WD巨懒，于是他把这个回答的任务交给了你。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p> 第1行为两个整数N、Q。Q为问题数与教主的施法数总和。<br> 第2行有N个正整数，第i个数代表第i个英雄的身高。<br> 第3到第Q+2行每行有一个操作：</p>
+<ol>
+<li>若第一个字母为“M”，则紧接着有三个数字L、R、W。表示对闭区间 [L, R] 内所有英雄的身高加上W。</li>
+<li>若第一个字母为“A”，则紧接着有三个数字L、R、C。询问闭区间 [L, R] 内有多少英雄的身高大于等于C。</li>
+</ol>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>对每个“A”询问输出一行，仅含一个整数，表示闭区间 [L, R] 内身高大于等于C的英雄数。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/06/NOIP模拟赛-教主的魔法/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/二分答案/">二分答案</a><a href="/tags/分块/">分块</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/06/NOIP模拟赛-路面修整/" title="NOIP模拟赛 路面修整" itemprop="url">NOIP模拟赛 路面修整</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-06T15:06:43.000Z" itemprop="datePublished"> Published 2016-09-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>FJ打算好好修一下农场中某条凹凸不平的土路。按奶牛们的要求，修好后的路面高度应当单调上升或单调下降，也就是说，高度上升与高度下降的路段不能同时出现在修好的路中。 整条路被分成了N段，N个整数A1, … , AN (1 &lt;= N &lt;= 2,000)依次描述了每一段路的高度(0 &lt;= Ai &lt;= 1,000,000,000)。FJ希望找到一个恰好含N个元素的不上升或不下降序列B1, … , BN，作为修过的路中每个路段的高度。由于将每一段路垫高或挖低一个单位的花费相同，修路的总支出可以表示为： |A1 - B1| + |A2 - B2| + … + |AN - BN| 请你计算一下，FJ在这项工程上的最小支出是多少。FJ向你保证，这个支出不会超过2^31-1。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第1行: 输入1个整数：N<br>第2..N+1行: 第i+1行为1个整数：A_i</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>第1行: 输出1个正整数，表示FJ把路修成高度不上升或高度不下降的最小花费<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/06/NOIP模拟赛-路面修整/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/离散化/">离散化</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/04/CodeVS-P1074/" title="[CodeVS] P1074 食物链" itemprop="url">[CodeVS] P1074 食物链</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-04T07:55:44.000Z" itemprop="datePublished"> Published 2016-09-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>动物王国中有三类动物 A,B,C，这三类动物的食物链构成了有趣的环形。A吃B，B吃C，C吃A。<br>现有N个动物，以1－N编号。每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。<br>有人用两种说法对这N个动物所构成的食物链关系进行描述：</p>
+<ol>
+<li>第一种说法是“1 X Y”，表示X和Y是同类。</li>
+<li>第二种说法是“2 X Y”，表示X吃Y。</li>
+</ol>
+<p>此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。当一句话满足下列三条之一时，这句话就是假话，否则就是真话。</p>
+<ol>
+<li>当前的话与前面的某些真的话冲突，就是假话；</li>
+<li>当前的话中X或Y比N大，就是假话；</li>
+<li>当前的话表示X吃X，就是假话。</li>
+</ol>
+<p>你的任务是根据给定的N（1&lt;=N&lt;=50,000）和K句话（0&lt;=K&lt;=100,000），输出假话的总数。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行是两个整数N和K，以一个空格分隔。<br>以下K行每行是三个正整数D，X，Y，两数之间用一个空格隔开，其中 D 表示说法的种类。</p>
+<ol>
+<li>若D=1，则表示X和Y是同类。</li>
+<li>若D=2，则表示X吃Y。</li>
+</ol>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>只有一个整数，表示假话的数目。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/04/CodeVS-P1074/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/并查集/">并查集</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/NOI/">NOI</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/04/欢乐赛-2014-5-31/" title="欢乐赛 2014-5-31" itemprop="url">欢乐赛 2014-5-31</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-04T03:45:17.000Z" itemprop="datePublished"> Published 2016-09-04</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <table>
+<thead>
+<tr>
+<th style="text-align:center">题目名称</th>
+<th style="text-align:center">水灾</th>
+<th style="text-align:center">某种数列问题</th>
+<th style="text-align:center">密码锁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">源文件</td>
+<td style="text-align:center">sliker.cpp/c/pas</td>
+<td style="text-align:center">jx.cpp/c/pas</td>
+<td style="text-align:center">password.cpp/c/pas</td>
+</tr>
+<tr>
+<td style="text-align:center">输入文件</td>
+<td style="text-align:center">sliker.in</td>
+<td style="text-align:center">jx.in</td>
+<td style="text-align:center">password.in</td>
+</tr>
+<tr>
+<td style="text-align:center">输出文件</td>
+<td style="text-align:center">sliker.out</td>
+<td style="text-align:center">jx.out</td>
+<td style="text-align:center">password.out</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>来源：hzwer.com</p>
+</blockquote>
+<h1 id="P1-水灾"><a href="#P1-水灾" class="headerlink" title="P1 水灾"></a>P1 水灾</h1><p>大雨应经下了几天雨，却还是没有停的样子。土豪CCY刚从外地赚完1e元回来，知道不久除了自己别墅，其他的地方都将会被洪水淹没。<br>CCY所在的城市可以用一个N*M(N,M&lt;=50)的地图表示，地图上有五种符号：“. * X D S”。其中“X”表示石头，水和人都不能从上面经过。“.”表示平原，CCY和洪水都可以经过。“*”表示洪水开始地方（可能有多个地方开始发生洪水）。“D”表示CCY的别墅。“S”表示CCY现在的位置。<br>CCY每分钟可以向相邻位置移动，而洪水将会在CCY移动之后把相邻的没有的土地淹没（从已淹没的土地）。<br>求CCY回到别墅的最少时间。如果聪哥回不了家，就很可能会被淹死，那么他就要膜拜黄金大神涨RP来呼叫直升飞机，所以输出“ORZ hzwer!!!”。<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/04/欢乐赛-2014-5-31/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/DP/">DP</a><a href="/tags/BFS/">BFS</a><a href="/tags/图论/">图论</a><a href="/tags/差分序列/">差分序列</a><a href="/tags/状压DP/">状压DP</a><a href="/tags/搜索/">搜索</a><a href="/tags/单调栈/">单调栈</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/03/NOIP模拟赛-2014-5-24/" title="NOIP模拟赛 2014-5-24" itemprop="url">NOIP模拟赛 2014-5-24</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-03T14:32:15.000Z" itemprop="datePublished"> Published 2016-09-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>三道USACO的题目</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">题目名</th>
+<th style="text-align:center">护花</th>
+<th style="text-align:center">修建草坪</th>
+<th style="text-align:center">虫洞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">源文件</td>
+<td style="text-align:center">flower.cpp/c/pas</td>
+<td style="text-align:center">mowlawn.cpp/c/pas</td>
+<td style="text-align:center">wormhole.cpp/c/pas</td>
+</tr>
+<tr>
+<td style="text-align:center">输入文件</td>
+<td style="text-align:center">flower.in</td>
+<td style="text-align:center">mowlawn.in</td>
+<td style="text-align:center">wormhole.in</td>
+</tr>
+<tr>
+<td style="text-align:center">输出文件</td>
+<td style="text-align:center">flower.out</td>
+<td style="text-align:center">mowlawn.out</td>
+<td style="text-align:center">Wormhole.out</td>
+</tr>
+<tr>
+<td style="text-align:center">时间限制</td>
+<td style="text-align:center">1000MS</td>
+<td style="text-align:center">1000MS</td>
+<td style="text-align:center">1000MS</td>
+</tr>
+<tr>
+<td style="text-align:center">内存限制</td>
+<td style="text-align:center">256MB</td>
+<td style="text-align:center">256MB</td>
+<td style="text-align:center">256MB</td>
+</tr>
+<tr>
+<td style="text-align:center">测试点</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+</tr>
+<tr>
+<td style="text-align:center">测试点分值</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+</tr>
+</tbody>
+</table>
+<h1 id="P1-护花"><a href="#P1-护花" class="headerlink" title="P1 护花"></a>P1 护花</h1><p>约翰留下他的N(N&lt;=100000)只奶牛上山采木．他离开的时候，她们像往常一样悠闲地在草场里吃草．可是，当他回来的时候，他看到了一幕惨剧：牛们正躲在他的花园里，啃食着他心爱的美丽花朵！为了使接下来花朵的损失最小，约翰赶紧采取行动，把牛们送回牛棚． 牛们从1到N编号．第i只牛所在的位置距离牛棚Ti(1≤Ti≤2000000)分钟的路程，而在约翰开始送她回牛棚之前，她每分钟会啃食Di(1≤Di≤100)朵鲜花．无论多么努力，约翰一次只能送一只牛回棚．而运送第第i只牛事实上需要2Ti分钟，因为来回都需要时间．<br>写一个程序来决定约翰运送奶牛的顺序，使最终被吞食的花朵数量最小．<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/03/NOIP模拟赛-2014-5-24/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/DP/">DP</a><a href="/tags/单调队列/">单调队列</a><a href="/tags/图论/">图论</a><a href="/tags/贪心/">贪心</a><a href="/tags/负环/">负环</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/03/NOIP模拟赛-czy的后宫/" title="NOIP模拟赛 czy的后宫" itemprop="url">NOIP模拟赛 czy的后宫</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-03T12:48:06.000Z" itemprop="datePublished"> Published 2016-09-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>czy要妥善安排他的后宫，他想在机房摆一群妹子，一共有n个位置排成一排，每个位置可以摆妹子也可以不摆妹子。有些类型妹子如果摆在相邻的位置（隔着一个空的位置不算相邻），就不好看了。假定每种妹子数量无限，求摆妹子的方案数。</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入有m+1行，第一行有两个用空格隔开的正整数n、m，m表示妹子的种类数。接下来的m行，每行有m个字符1或0,若第i行第j列为1，则表示第i种妹子第j种妹子不能排在相邻的位置，输入保证对称。（提示：同一种妹子可能不能排在相邻位置）。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出只有一个整数，为方案数（这个数字可能很大，请输出方案数除以1000000007的余数。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/03/NOIP模拟赛-czy的后宫/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/矩阵/">矩阵</a><a href="/tags/快速幂/">快速幂</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/02/NOIP模拟赛-mex/" title="NOIP模拟赛 mex" itemprop="url">NOIP模拟赛 mex</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-02T15:25:01.000Z" itemprop="datePublished"> Published 2016-09-02</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><img src="/2016/09/02/NOIP模拟赛-mex/1.png" alt="描述" title="描述">
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><img src="/2016/09/02/NOIP模拟赛-mex/2.png" alt="输入" title="输入">
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><img src="/2016/09/02/NOIP模拟赛-mex/3.png" alt="输出" title="输出">
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/02/NOIP模拟赛-mex/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/线段树/">线段树</a><a href="/tags/离线/">离线</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/09/01/NOIP模拟赛-虫洞/" title="NOIP模拟赛 虫洞" itemprop="url">NOIP模拟赛 虫洞</a>
   </h1>
   <p class="article-author">By
@@ -378,487 +922,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/29/JSOI2016-提高1班-Day3-resistor/" title="[JSOI2016] 提高1班 Day3 resistor" itemprop="url">[JSOI2016] 提高1班 Day3 resistor</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-29T14:53:54.000Z" itemprop="datePublished"> Published 2016-08-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>物理课上老师让小 w 测一个电路板的电阻,小 w 用欧姆表很快就得到了答案。但是,欧姆表巨大的误差是令小 w 无法容忍的,于是他决定用数学方法准确算出总电阻。<br>电路板一共有 N 个连接点,M 个电阻,小 w 需要算出 1 号连接点和 N 号连接点的总电阻。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>多组数据,输入直到文件结束<br>每组数据第一行两个整数 N,M<br>接下来 M 行,每行三个非负整数 X,Y,R,表示电阻连接的两接点和阻值(X 与 Y 可能相等)。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>每组数据输出一行,一个实数,四舍五入到小数点后两位。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/29/JSOI2016-提高1班-Day3-resistor/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/高斯消元/">高斯消元</a><a href="/tags/线性代数/">线性代数</a><a href="/tags/物理/">物理</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/29/JSOI2016-提高1班-Day3-separate/" title="[JSOI2016] 提高1班 Day3 separate" itemprop="url">[JSOI2016] 提高1班 Day3 separate</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-29T09:41:50.000Z" itemprop="datePublished"> Published 2016-08-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>小 w 是扬中的高一新生。俗话说新官上任三把火,作为班长,第一件事自然是要给全班分座位。<br>这可不是一件简单的任务。大家都知道学霸是一种环境不友好型生物,所以在一个组里,学霸会对同组的学渣造成巨大伤害。<br>具体来说,我们定义一个组的不和谐度为本组的最高成绩与最低成绩差的平方。如一个组内的分数为 4 7 10 1,那么不和谐度为(10-1)^2=81。<br>现在,班主任给小 w 全班的成绩和要求分的组数,求全班所有小组的不和谐度<strong>之和</strong>的最小值。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>多组测试数据。<br>每组测试数据,第一行两个整数 N,M,N 是全班人数,M 是组数<br>第二行 N 个整数表示全班成绩。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>每组测试数据,一行一个整数 S 表示全班所有小组的不和谐度<strong>之和</strong>的最小值。<br>答案保证在 32 位有符号整型范围内。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/29/JSOI2016-提高1班-Day3-separate/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/DP/">DP</a><a href="/tags/斜率优化/">斜率优化</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/28/雅礼中学2015模拟赛-chain/" title="雅礼中学2015模拟赛 chain" itemprop="url">雅礼中学2015模拟赛 chain</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-28T13:44:36.000Z" itemprop="datePublished"> Published 2016-08-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>PCY 最近在努力地学习生物。看到食物链这一节的时候,他迷茫了。<br>生态系统中的生物种类众多,亦于生态系统分别扮演着不同的角色,但根据它们能量和物质中所引起的作用,可以被分类为生产者、消费者和分解者三个类别。最底层是“生产者”,是以阳光来行使光合作用,自行用水和二氧化碳等无机物合成有机物的绿色植物;再上层是各级“消费者”,要依赖生产者供应物质和能量;当消费者死亡以后,“分解者”会以他们的尸体为食物。<br>生物必修二曾写道,“两个营养级之间的能量传递效率为 10% ~ 20%”。<br>PCY 说,“那些错综复杂的食物网我根本看不清楚”,于是我们将问题简化,每一个物种只存在唯一一个的捕食者(形成捕食关系),给出这些捕食关系,和每个物种所拥有的能量。求出整个食物网中食物链的数量和处在最高营养级的物种的能量。(某一物种的能量 = 摄入食物的能量 * 传递效率 + 自身能量),不考虑能量损耗,为了避免精度误差,能量效率按均为整数计算。也就是说,一个物种被吃了以后他的能量就成了他的数倍了。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行为 n ,代表物种数量(物种按 1 … n 编号)<br>接下来 n - 1 行,每一行三个整数 x,y,z ,代表 y 被 x 捕食,且两个物种之间能量传递的效率为<br>z(1 &lt;= x, y &lt;= n,x ≠ y)<br>接下来 n 行,每行一个整数 w ,代表 1 … n 号物种的能量</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共两行,第一行一个整数,代表食物链的总数,第二行一个整数,代表最高营养级的物种的能量。能量对 32416190071 取模。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/28/雅礼中学2015模拟赛-chain/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/DP/">DP</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/栈/">栈</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/28/雅礼中学2015模拟赛-prefix/" title="雅礼中学2015模拟赛 prefix" itemprop="url">雅礼中学2015模拟赛 prefix</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-28T11:50:39.000Z" itemprop="datePublished"> Published 2016-08-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>PCY 学生物学累了。突然看到地上有一本笔记本。<br>上面写着“ isdashagaydashisorisdashnot … ”之类的字眼,独具慧眼的他发现这些字符串中有着大<br>秘密!类似“ isdash ”这样的前缀在字符串中出现的次数不止一次!他觉得这其中一定有蹊跷,于是<br>开始一个一个数前缀出现的次数。<br>虽然他早已经从逐字符匹配转换到了多行同时匹配模式,但是这小小的练习本上几十万个字符还<br>是让他措手不及。你能帮助他吗?他想知道所有长度为偶数的前缀在整个字符串出现的次数和。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>共一行,一个字符串 s</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共一行,输出一个整数,代表长度为偶数的前缀在整个字符串出现的次数和。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/28/雅礼中学2015模拟赛-prefix/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/字符串/">字符串</a><a href="/tags/KMP/">KMP</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/28/JSOI2016-提高1班-Day3-message/" title="[JSOI2016] 提高1班 Day3 message" itemprop="url">[JSOI2016] 提高1班 Day3 message</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-28T10:23:48.000Z" itemprop="datePublished"> Published 2016-08-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>体育老师又向班主任打小报告了。<br>悲剧的是体育老师并不记得是哪些人在体育课上捣乱，他只记得捣乱的人在队里是连续的一段，并且他知道一共有多少人捣乱以及这些人的身高比较信息。他向班主任提供了这些信息，希望能找出捣乱的人。<br>作为班主任的得力小助手，这任务自然又落到了小w的头上。<br>小w记得全班体育课的队形以及各个位置上人的身高，他要找出捣乱的是哪一段人。当然他知道可能找到不止一段人，请按从小至大的顺序输出所有可能。<br>身高比较信息：体育老师记得的是相对身高，比如他记得他告诉班主任捣乱的人身高分别是1 4 4 3 2 1，那么我们能知道第一个人比第二个人矮，第二个人和第三个人一样高等等诸如此类。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行两个整数N，K。N表示全班人数，K表示捣乱的人数。<br>第二行至第N+1行每行一个正整数表示各个人的身高。<br>第N+2行至第N+K+1行每行一个正整数表示捣乱的人的身高信息。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>第一行一个整数T表示可能的方案数。<br>第二行至第T+1行每行一个数表示每段的起始位置。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/28/JSOI2016-提高1班-Day3-message/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/JSOI/">JSOI</a><a href="/tags/KMP/">KMP</a><a href="/tags/树状数组/">树状数组</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/28/雅礼中学2015模拟赛-motor/" title="雅礼中学2015模拟赛 motor" itemprop="url">雅礼中学2015模拟赛 motor</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-28T03:45:25.000Z" itemprop="datePublished"> Published 2016-08-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在你的强力援助下,PCY 成功完成了之前的所有任务,他觉得,现在正是出去浪的大好时光。于是,他来到高速公路上,找到一辆摩的前往几千公里以外他心仪的那家黄焖鸡米饭。由于 PCY 的品味异于常人,途经几百个城市的黄焖鸡米饭他都不屑一顾,他只愿意前往他心中最好的那家,但是为了一碗二十块钱的黄焖鸡米饭,他不愿意花上几千块的路费,他希望路费尽量少。高速路上的警察叔叔被他的行为所打动,于是在多方协调下,最多 K 条城市之间的高速收费站愿意免费为 PCY 放行(可以任意选择)。<br>显然,PCY 已经筋疲力尽,不想再动用自己的数学天才来计算他可以花费的最小路费,因此他希望你可以帮他最后一次,他说他可以请你吃大碗的黄焖鸡米饭,还可以加一瓶豆奶。<br>现在给你 N 个城市(编号为 0 … N - 1 ), M 条道路,和每条高速公路的花费 Wi ,以及题目所描述的 K。PCY 想从城市 S 到城市 T, 因为他对 T 城市的黄焖鸡米饭情有独钟。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行,三个整数 N,M,K ,如题意所描述<br>第二行,两个整数 S,T ,代表出发城市和目标城市编号<br>接下来 M 行,每行三个整数 X,Y,W ,代表 X 和 Y 城市之间的高速公路收费为 W 元</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>共一行,输出一个整数,代表 PCY 最少需要花费的路费。<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/28/雅礼中学2015模拟赛-motor/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/图论/">图论</a><a href="/tags/堆/">堆</a><a href="/tags/最短路/">最短路</a><a href="/tags/分层图/">分层图</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/25/雅礼中学2015模拟赛-Day1/" title="雅礼中学2015模拟赛 Day1" itemprop="url">雅礼中学2015模拟赛 Day1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-25T12:11:35.000Z" itemprop="datePublished"> Published 2016-08-25</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <table>
-<thead>
-<tr>
-<th>题目名称</th>
-<th>源程序</th>
-<th>输入/输出</th>
-<th>空间限制</th>
-<th>时间限制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>小W的动漫</td>
-<td>t1.c/cpp/pas</td>
-<td>t1.in/out</td>
-<td>256MB</td>
-<td>1s</td>
-</tr>
-<tr>
-<td>PS的烦恼</td>
-<td>t2.c/cpp/pas</td>
-<td>t2.in/out</td>
-<td>256MB</td>
-<td>1s</td>
-</tr>
-<tr>
-<td>小A做CF</td>
-<td>t3.c/cpp/pas</td>
-<td>t3.in/out</td>
-<td>256MB</td>
-<td>1s</td>
-</tr>
-</tbody>
-</table>
-<p>三道数学题orz</p>
-<h1 id="P1-小W的动漫"><a href="#P1-小W的动漫" class="headerlink" title="P1 小W的动漫"></a>P1 小W的动漫</h1><p>小W最近迷上了日本动漫，每天都有无数部动漫的更新等着他去看，所以他必须将所有的动漫排个顺序，当然，虽然有无数部动漫，但除了1号动漫，每部动漫都有且仅有一部动漫是它的前传（父亲），也就是说，所有的动漫形成一个树形结构。而动漫的顺序必须满足一下两个限制：</p>
-<ol>
-<li>一部动漫的所有后继（子孙）都必须排在它的后面；</li>
-<li>对于同一部动漫的续集（孩子），小W喜爱度高的须排在前面。</li>
-</ol>
-<p>光排序小W还不爽，他想知道一共有多少种排序方案，并且输出它mod 10007的答案。</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行表示T表示数据组数。接下来每组数据第一行n表示有多少部动漫等待排序，接下来n行每行第一个数tot表示这部动漫有多少部续集，接下来tot个数按照小W喜爱从大到小给出它的续集的编号。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>每组数据一行数ans，表示答案mod 10007的结果。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2016/08/25/雅礼中学2015模拟赛-Day1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数论/">数论</a><a href="/tags/组合数学/">组合数学</a><a href="/tags/树形DP/">树形DP</a><a href="/tags/高精度/">高精度</a><a href="/tags/数学/">数学</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/6/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next<span></span></a>
@@ -874,7 +937,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">Archives</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -882,7 +945,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 14.67px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/tags/DP/" style="font-size: 19.33px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 16.67px;">JSOI</a> <a href="/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10.67px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15.33px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/POI/" style="font-size: 10px;">POI</a> <a href="/tags/SCOI/" style="font-size: 10px;">SCOI</a> <a href="/tags/Treap/" style="font-size: 10px;">Treap</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.67px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14px;">位运算</a> <a href="/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18px;">图论</a> <a href="/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/打表/" style="font-size: 10.67px;">打表</a> <a href="/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10.67px;">拆点</a> <a href="/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数学/" style="font-size: 17.33px;">数学</a> <a href="/tags/数据结构/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/最大流/" style="font-size: 10.67px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最短路/" style="font-size: 15.33px;">最短路</a> <a href="/tags/枚举/" style="font-size: 12px;">枚举</a> <a href="/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 14px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 11.33px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/tags/离线/" style="font-size: 12px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 11.33px;">网络流</a> <a href="/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/负环/" style="font-size: 12px;">负环</a> <a href="/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 11.33px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.33px;">高精度</a>
+       <a href="/tags/BFS/" style="font-size: 13.13px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.63px;">Bash</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 14.38px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 11.88px;">DFS序</a> <a href="/tags/DP/" style="font-size: 19.38px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/HNOI/" style="font-size: 10px;">HNOI</a> <a href="/tags/Hash/" style="font-size: 13.13px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.88px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 16.88px;">JSOI</a> <a href="/tags/KMP/" style="font-size: 10.63px;">KMP</a> <a href="/tags/LCA/" style="font-size: 13.75px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.63px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 10.63px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/POI/" style="font-size: 10.63px;">POI</a> <a href="/tags/SCOI/" style="font-size: 10px;">SCOI</a> <a href="/tags/Treap/" style="font-size: 10px;">Treap</a> <a href="/tags/USACO/" style="font-size: 10.63px;">USACO</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/WC/" style="font-size: 10px;">WC</a> <a href="/tags/主席树/" style="font-size: 10.63px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.63px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10.63px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.88px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 13.75px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.88px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.63px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.63px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.63px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.25px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.25px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.63px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/启发式合并/" style="font-size: 10.63px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.13px;">图论</a> <a href="/tags/堆/" style="font-size: 12.5px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.25px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.25px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.63px;">平面图</a> <a href="/tags/并查集/" style="font-size: 13.75px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 11.88px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.63px;">想法题</a> <a href="/tags/打表/" style="font-size: 10.63px;">打表</a> <a href="/tags/折半枚举/" style="font-size: 11.25px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10.63px;">拆点</a> <a href="/tags/拓扑排序/" style="font-size: 10.63px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.13px;">搜索</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数据结构/" style="font-size: 18.75px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.25px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 10.63px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最短路/" style="font-size: 15.63px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.88px;">枚举</a> <a href="/tags/栈/" style="font-size: 10.63px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.38px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.63px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.13px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.38px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.25px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 13.13px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.63px;">欧拉函数</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.25px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.25px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 11.88px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.63px;">离散化</a> <a href="/tags/离线/" style="font-size: 11.88px;">离线</a> <a href="/tags/线性DP/" style="font-size: 13.75px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.25px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.13px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 11.25px;">网络流</a> <a href="/tags/背包/" style="font-size: 15px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/负环/" style="font-size: 11.88px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 11.25px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.63px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.25px;">高精度</a>
     </div>
   </div>
 
