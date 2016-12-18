@@ -1,0 +1,511 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>bzoj-1500 [NOI2005]维修数列 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="Limit:M≤20000任何时刻数列中最多含有500000个数，数列中任何一个数字均在[-1000,1000]内。插入的数字总数不超过4000000个，输入文件大小不超过20MBytes。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj-1500 [NOI2005]维修数列">
+<meta property="og:url" content="https://cothrax.github.io/2016/12/18/bzoj-1500/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="Limit:M≤20000任何时刻数列中最多含有500000个数，数列中任何一个数字均在[-1000,1000]内。插入的数字总数不超过4000000个，输入文件大小不超过20MBytes。">
+<meta property="og:image" content="http://www.lydsy.com/JudgeOnline/images/1500_1.jpg">
+<meta property="og:updated_time" content="2016-12-18T05:21:13.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bzoj-1500 [NOI2005]维修数列">
+<meta name="twitter:description" content="Limit:M≤20000任何时刻数列中最多含有500000个数，数列中任何一个数字均在[-1000,1000]内。插入的数字总数不超过4000000个，输入文件大小不超过20MBytes。">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:cothrax.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/18/bzoj-1500/" title="bzoj-1500 [NOI2005]维修数列" itemprop="url">bzoj-1500 [NOI2005]维修数列</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-18T05:15:33.000Z" itemprop="datePublished"> Published 2016-12-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
+		
+		</div>
+		
+		<p><img src="http://www.lydsy.com/JudgeOnline/images/1500_1.jpg" alt=""><br>Limit:<br>M≤20000<br>任何时刻数列中最多含有500000个数，数列中任何一个数字均在[-1000,1000]内。<br>插入的数字总数不超过4000000个，输入文件大小不超过20MBytes。<br><a id="more"></a></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1500" target="_blank" rel="external">bzoj-1500</a><br><a href="/2016/12/18/bzoj-1500/1500.cpp" title="1500.cpp">1500.cpp</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>Splay模板题<br>关于max-sum，由于Splay的中序序列即该序列：</p>
+<ol>
+<li>lmx[x]子树x中序序列的最大前缀和</li>
+<li>rmx[x]子树x中序序列的最大前缀和</li>
+<li>sub[x]子树x中序序列的最大子段和</li>
+</ol>
+<p>更新见upd函数<br>summary</p>
+<ol>
+<li>下标，注意splay中虚拟节点的左端点占一位</li>
+<li>翻转时要维护max-sum</li>
+<li>内存回收：开一个stack</li>
+<li>初始值：lmx[0]=rmx[0]=0,sub[0]=-INF</li>
+<li>max-sum子段不为空，因此make-same中当w[x]为负时，sub[x]=max(w[x],sum[x])，而lmx[x]=rmx[x]=max(0,sum[x])</li>
+<li>维护make-same标记时，由于涉及权值修改，要判断t!=0</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><figcaption><span>1500.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> L(x) c[x][0]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R(x) c[x][1]</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">namespace</span> spt&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">5e5</span>+<span class="number">10</span>,INF=<span class="number">1e7</span>;</span><br><span class="line">    <span class="keyword">int</span> c[N][<span class="number">2</span>],par[N],siz[N]=&#123;<span class="number">0</span>&#125;,sz=<span class="number">0</span>,rt=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> sub[N],lmx[N],rmx[N],w[N],sum[N];</span><br><span class="line">    <span class="keyword">bool</span> rev[N],tag[N];</span><br><span class="line">    <span class="keyword">int</span> loc[N],a[N];</span><br><span class="line">    <span class="keyword">namespace</span> mem&#123;</span><br><span class="line">        <span class="keyword">int</span> stk[N*<span class="number">2</span>],t=N;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)stk[i]=N-i;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ext</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> stk[--t];&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;stk[t++]=x;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rec</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!x)<span class="keyword">return</span>;</span><br><span class="line">            ins(x);rec(L(x));rec(R(x));</span><br><span class="line">            L(x)=R(x)=par[x]=tag[x]=rev[x]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        siz[x]=siz[L(x)]+siz[R(x)]+<span class="number">1</span>;</span><br><span class="line">        sum[x]=sum[L(x)]+sum[R(x)]+w[x];</span><br><span class="line">        lmx[x]=max(lmx[L(x)],sum[L(x)]+lmx[R(x)]+w[x]);</span><br><span class="line">        rmx[x]=max(rmx[R(x)],sum[R(x)]+rmx[L(x)]+w[x]);</span><br><span class="line">        sub[x]=max(max(sub[L(x)],sub[R(x)]),lmx[R(x)]+rmx[L(x)]+w[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pushdn</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>&amp;&amp;rev[x];i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> t=c[x][i];rev[t]^=<span class="number">1</span>;</span><br><span class="line">            swap(L(t),R(t));swap(lmx[t],rmx[t]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>&amp;&amp;tag[x];i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> t=c[x][i];<span class="keyword">if</span>(!t)<span class="keyword">continue</span>;</span><br><span class="line">            w[t]=w[x];tag[t]=<span class="number">1</span>;</span><br><span class="line">            lmx[t]=rmx[t]=max(<span class="number">0</span>,sum[t]=w[t]*siz[t]);</span><br><span class="line">            sub[t]=max(sum[t],w[t]);</span><br><span class="line">        &#125;rev[x]=tag[x]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> &amp;k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> y=par[x],z=par[y],l=c[y][<span class="number">0</span>]!=x,r=l^<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(y==k)k=x;<span class="keyword">else</span> c[z][c[z][<span class="number">0</span>]!=y]=x;</span><br><span class="line">        par[c[x][r]]=y;par[y]=x;par[x]=z;</span><br><span class="line">        c[y][l]=c[x][r];c[x][r]=y;</span><br><span class="line">        upd(y);upd(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> &amp;k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(x!=k)&#123;</span><br><span class="line">            <span class="keyword">int</span> y=par[x],z=par[y];</span><br><span class="line">            <span class="keyword">if</span>(y!=k)&#123;</span><br><span class="line">                <span class="keyword">if</span>(L(y)==x^L(z)==y)rotate(x,k);</span><br><span class="line">                <span class="keyword">else</span> rotate(y,k);</span><br><span class="line">            &#125;rotate(x,k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> rk)</span></span>&#123;</span><br><span class="line">        pushdn(x);</span><br><span class="line">        <span class="keyword">if</span>(siz[L(x)]+<span class="number">1</span>==rk)<span class="keyword">return</span> x;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(siz[L(x)]&gt;=rk)<span class="keyword">return</span> find(L(x),rk);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> find(R(x),rk-siz[L(x)]<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l&gt;r)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>,x=loc[mid];</span><br><span class="line">        <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">            par[x]=loc[p];c[loc[p]][l&gt;p]=x;</span><br><span class="line">            w[x]=a[l];upd(x);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        build(l,mid<span class="number">-1</span>,mid);build(mid+<span class="number">1</span>,r,mid);</span><br><span class="line">        par[x]=loc[p];c[loc[p]][mid&gt;p]=x;</span><br><span class="line">        w[x]=a[mid];upd(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x=find(rt,l),y=find(rt,r+<span class="number">2</span>);</span><br><span class="line">        splay(x,rt);splay(y,R(rt));</span><br><span class="line">        <span class="keyword">return</span> L(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> opt&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">            mem::init();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n+<span class="number">1</span>;i++)loc[i]=mem::ext();</span><br><span class="line">            sub[<span class="number">0</span>]=a[<span class="number">0</span>]=a[n+<span class="number">1</span>]=-INF;</span><br><span class="line">            rt=loc[(n+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>];build(<span class="number">0</span>,n+<span class="number">1</span>,n+<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">rever</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x=split(l,r);</span><br><span class="line">            <span class="keyword">if</span>(tag[x])<span class="keyword">return</span>;</span><br><span class="line">            rev[x]^=<span class="number">1</span>;</span><br><span class="line">            swap(L(x),R(x));swap(lmx[x],rmx[x]);</span><br><span class="line">            upd(par[x]);upd(rt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x=split(l,r);</span><br><span class="line">            <span class="keyword">return</span> sum[x];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x=split(l,r);</span><br><span class="line">            L(par[x])=<span class="number">0</span>;upd(par[x]);upd(rt);</span><br><span class="line">            mem::rec(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x=split(l,r);tag[x]=<span class="number">1</span>;w[x]=k;</span><br><span class="line">            lmx[x]=rmx[x]=max(<span class="number">0</span>,sum[x]=w[x]*siz[x]);</span><br><span class="line">            sub[x]=max(sum[x],w[x]);</span><br><span class="line">            upd(par[x]);upd(rt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> tot)</span></span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++)<span class="built_in">scanf</span>(<span class="string">"%d "</span>,&amp;a[i]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++)loc[i]=mem::ext();</span><br><span class="line">            split(l+<span class="number">1</span>,l);</span><br><span class="line">            loc[tot]=R(rt);build(<span class="number">0</span>,tot<span class="number">-1</span>,tot);</span><br><span class="line">            upd(loc[tot]);upd(rt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> sub[rt];&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> spt::opt;</span><br><span class="line">    freopen(<span class="string">"in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);freopen(<span class="string">"out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">int</span> n,m;<span class="built_in">scanf</span>(<span class="string">"%d %d\n"</span>,&amp;n,&amp;m);</span><br><span class="line">    init(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="keyword">char</span> s[<span class="number">10</span>];<span class="keyword">int</span> p,t,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">        <span class="keyword">if</span>(s[<span class="number">2</span>]!=<span class="string">'X'</span>)<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p,&amp;t);</span><br><span class="line">        <span class="keyword">if</span>(s[<span class="number">2</span>]==<span class="string">'K'</span>)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</span><br><span class="line">        <span class="keyword">switch</span>(s[<span class="number">0</span>])&#123;</span><br><span class="line">            <span class="keyword">case</span>'I':ins(p,t);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span>'D':del(p,p+t<span class="number">-1</span>);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span>'R':rever(p,p+t<span class="number">-1</span>);<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span>'G':<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(p,p+t<span class="number">-1</span>));<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">switch</span>(s[<span class="number">2</span>])&#123;</span><br><span class="line">                    <span class="keyword">case</span>'K':modify(p,p+t<span class="number">-1</span>,k);<span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span>'X':<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,get());<span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/数据结构/">数据结构</a><a href="/tags/NOI/">NOI</a><a href="/tags/平衡树/">平衡树</a><a href="/tags/Splay/">Splay</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/12/18/bzoj-1500/" data-title="bzoj-1500 [NOI2005]维修数列 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/12/18/bzoj-3173/"  title="bzoj-3173 [Tjoi2013]最长上升子序列">
+ <strong>下一篇：</strong><br/> 
+ <span>bzoj-3173 [Tjoi2013]最长上升子序列
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">Archives</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 13.13px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.63px;">Bash</a> <a href="/tags/CQOI/" style="font-size: 10px;">CQOI</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 14.38px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 11.88px;">DFS序</a> <a href="/tags/DP/" style="font-size: 19.38px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/HNOI/" style="font-size: 10.63px;">HNOI</a> <a href="/tags/Hash/" style="font-size: 13.13px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.88px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 16.88px;">JSOI</a> <a href="/tags/KMP/" style="font-size: 10.63px;">KMP</a> <a href="/tags/LCA/" style="font-size: 13.75px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.63px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 11.88px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/POI/" style="font-size: 10.63px;">POI</a> <a href="/tags/SCOI/" style="font-size: 10.63px;">SCOI</a> <a href="/tags/Splay/" style="font-size: 11.25px;">Splay</a> <a href="/tags/TJOI/" style="font-size: 10px;">TJOI</a> <a href="/tags/Treap/" style="font-size: 11.88px;">Treap</a> <a href="/tags/USACO/" style="font-size: 10.63px;">USACO</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/WC/" style="font-size: 10px;">WC</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/主席树/" style="font-size: 10.63px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.63px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10.63px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.88px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 13.75px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.88px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.63px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.63px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.63px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.25px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.25px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.63px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/启发式合并/" style="font-size: 10.63px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.13px;">图论</a> <a href="/tags/堆/" style="font-size: 12.5px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.25px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.25px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 13.75px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.63px;">平面图</a> <a href="/tags/并查集/" style="font-size: 13.75px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 11.88px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.63px;">想法题</a> <a href="/tags/打表/" style="font-size: 10.63px;">打表</a> <a href="/tags/折半枚举/" style="font-size: 11.25px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10.63px;">拆点</a> <a href="/tags/拓扑排序/" style="font-size: 10.63px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.13px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.63px;">数位DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数据结构/" style="font-size: 18.75px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.25px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 10.63px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最短路/" style="font-size: 15.63px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.88px;">枚举</a> <a href="/tags/栈/" style="font-size: 10.63px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.38px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.63px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.13px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.38px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.25px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 13.13px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.63px;">欧拉函数</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.25px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.25px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 11.88px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.63px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.5px;">离线</a> <a href="/tags/线性DP/" style="font-size: 13.75px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.25px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.13px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 11.25px;">网络流</a> <a href="/tags/背包/" style="font-size: 15px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/负环/" style="font-size: 11.88px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 11.88px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.63px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.25px;">高精度</a>
+    </div>
+  </div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
