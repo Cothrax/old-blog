@@ -1,0 +1,522 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>【网络流24题】最长递增子序列问题 | Cothrax</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Cothrax">
+    
+
+    
+    <meta name="description" content="给定正整数序列x1,….. , xn  。
+
+计算其最长递增子序列的长度s。
+计算从给定的序列中最多可取出多少个长度为s的递增子序列。
+如果允许在取出的序列中多次使用x1和xn，则从给定序列中最多可取出多少个长度为s的递增子序列，如果可以取无限个则输出-1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【网络流24题】最长递增子序列问题">
+<meta property="og:url" content="https://cothrax.github.io/2016/12/23/flow24-alis/index.html">
+<meta property="og:site_name" content="Cothrax">
+<meta property="og:description" content="给定正整数序列x1,….. , xn  。
+
+计算其最长递增子序列的长度s。
+计算从给定的序列中最多可取出多少个长度为s的递增子序列。
+如果允许在取出的序列中多次使用x1和xn，则从给定序列中最多可取出多少个长度为s的递增子序列，如果可以取无限个则输出-1">
+<meta property="og:updated_time" content="2016-12-23T13:38:10.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【网络流24题】最长递增子序列问题">
+<meta name="twitter:description" content="给定正整数序列x1,….. , xn  。
+
+计算其最长递增子序列的长度s。
+计算从给定的序列中最多可取出多少个长度为s的递增子序列。
+如果允许在取出的序列中多次使用x1和xn，则从给定序列中最多可取出多少个长度为s的递增子序列，如果可以取无限个则输出-1">
+<meta name="twitter:creator" content="@Cothrax">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Cothrax" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/icon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Cothrax">Cothrax</a></h1>
+				<h2 class="blog-motto">I don&#39;t need a subtitle.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:cothrax.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/23/flow24-alis/" title="【网络流24题】最长递增子序列问题" itemprop="url">【网络流24题】最长递增子序列问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Cothrax" target="_blank" itemprop="author">Cothrax</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-23T13:16:11.000Z" itemprop="datePublished"> Published 2016-12-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
+		
+		</div>
+		
+		<p>给定正整数序列x1,….. , xn  。</p>
+<ol>
+<li>计算其最长递增子序列的长度s。</li>
+<li>计算从给定的序列中最多可取出多少个长度为s的递增子序列。</li>
+<li>如果允许在取出的序列中多次使用x1和xn，则从给定序列中最多可取出多少个长<br>度为s的递增子序列，如果可以取无限个则输出-1</li>
+</ol>
+<a id="more"></a>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><a href="/2016/12/23/flow24-alis/alis.cpp" title="alis.cpp">alis.cpp</a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>黑书例题<br>第一问dp求f[i]以i开头的lis，用树状数组优化，或者直接暴力<br>第二问，拆点，根据f[i]分层建图，然后最大流即可<br>第三问就是把第二问建的图中，把1和n对应的那条边容量改成+∞，然后在跑一次最大流<br>lis=1时输出-1<br>lis=2且a[1]&lt;=a[n]时输出-1</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><figcaption><span>alis.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1010</span>,INF=<span class="number">1E7</span>;</span><br><span class="line"><span class="keyword">int</span> n,lis=<span class="number">0</span>,a[N],f[N];</span><br><span class="line"><span class="keyword">namespace</span> bit&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">1.1E5</span>;<span class="keyword">int</span> v[M];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(;x&lt;M;x+=x&amp;(-x))v[x]=max(v[x],k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;x;x=x&amp;(x<span class="number">-1</span>))ret=max(ret,v[x]);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> bit;</span><br><span class="line">    <span class="comment">//f[i] max-len begin_with_a[i]</span></span><br><span class="line">    <span class="comment">//f[i]=max(f[j])+1 (j&gt;i&amp;&amp;a[j]&gt;a[i])</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        add(M-a[i],f[i]=ask(M-a[i])+<span class="number">1</span>);</span><br><span class="line">        lis=max(lis,f[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> edge&#123;<span class="keyword">int</span> v,cap,nxt;&#125;g[N*<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> head[N],sz=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">void</span> _add(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> cap)&#123;</span><br><span class="line">    g[++sz].v=v;g[sz].cap=cap;</span><br><span class="line">    g[sz].nxt=head[u];head[u]=sz;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> cap)</span></span><br><span class="line"></span>&#123;_add(u,v,cap);_add(v,u,<span class="number">0</span>);&#125;</span><br><span class="line"><span class="keyword">int</span> q[N],d[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> dest)</span></span>&#123;</span><br><span class="line">    fill(d,d+N,INF);d[s]=<span class="number">0</span>;q[<span class="number">0</span>]=s;<span class="keyword">int</span> u,v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">0</span>,t=<span class="number">1</span>;h!=t;h=(h+<span class="number">1</span>)%N)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u=q[h]];i;i=g[i].nxt)</span><br><span class="line">            <span class="keyword">if</span>(g[i].cap&amp;&amp;d[v=g[i].v]==INF)</span><br><span class="line">                d[v]=d[u]+<span class="number">1</span>,q[t++]=v,t%=N;</span><br><span class="line">    <span class="keyword">return</span> d[dest]!=INF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> t,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(u==t)<span class="keyword">return</span> f;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>,v;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=g[i].nxt)</span><br><span class="line">        <span class="keyword">if</span>(d[v=g[i].v]==d[u]+<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp=dfs(v,t,min(f-ret,g[i].cap));</span><br><span class="line">            g[i].cap-=tmp;g[i^<span class="number">1</span>].cap+=tmp;ret+=tmp;</span><br><span class="line">            <span class="keyword">if</span>(f==ret)<span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mf</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(bfs(s,t))ret+=dfs(s,t,INF);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    fill(head,head+N,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">if</span>(a[i]&lt;=a[j]&amp;&amp;f[i]==f[j]+<span class="number">1</span>)add(i+n,j,INF);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)add(i,i+n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(f[i]==<span class="number">1</span>)add(i+n,t,INF);</span><br><span class="line">        <span class="keyword">if</span>(f[i]==lis)add(s,i,INF);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    freopen(<span class="string">"in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);freopen(<span class="string">"out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    dp();<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lis);</span><br><span class="line">    <span class="keyword">int</span> s=n*<span class="number">2</span>,t=s+<span class="number">1</span>;</span><br><span class="line">    init(s,t);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,mf(s,t));</span><br><span class="line">    <span class="keyword">if</span>(lis==<span class="number">1</span>||lis==<span class="number">2</span>&amp;&amp;a[<span class="number">0</span>]&lt;=a[n<span class="number">-1</span>])<span class="built_in">printf</span>(<span class="string">"-1"</span>);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        init(s,t);add(<span class="number">0</span>,n,INF);add(n<span class="number">-1</span>,<span class="number">2</span>*n<span class="number">-1</span>,INF);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,mf(s,t));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Problem-Set/">Problem Set</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/OI/">OI</a><a href="/tags/DP/">DP</a><a href="/tags/图论/">图论</a><a href="/tags/线性DP/">线性DP</a><a href="/tags/网络流/">网络流</a><a href="/tags/最大流/">最大流</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cothrax.github.io/2016/12/23/flow24-alis/" data-title="【网络流24题】最长递增子序列问题 | Cothrax" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/23/bzoj-2400/" title="bzoj-2400 Spoj 839 Optimal Marks">
+  <strong>上一篇：</strong><br/>
+  <span>
+  bzoj-2400 Spoj 839 Optimal Marks</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/23/flow24-interv/"  title="【网络流24题】最长k可重区间集问题">
+ <strong>下一篇：</strong><br/> 
+ <span>【网络流24题】最长k可重区间集问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-number">1.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">Archives</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 13.13px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.63px;">Bash</a> <a href="/tags/CQOI/" style="font-size: 10px;">CQOI</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DFS/" style="font-size: 15px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 11.88px;">DFS序</a> <a href="/tags/DP/" style="font-size: 19.38px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/HNOI/" style="font-size: 10.63px;">HNOI</a> <a href="/tags/Hash/" style="font-size: 13.13px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.88px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/IOI/" style="font-size: 10px;">IOI</a> <a href="/tags/JSOI/" style="font-size: 16.88px;">JSOI</a> <a href="/tags/KMP/" style="font-size: 10.63px;">KMP</a> <a href="/tags/LCA/" style="font-size: 13.75px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.63px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NOI/" style="font-size: 11.88px;">NOI</a> <a href="/tags/NOIP/" style="font-size: 15px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/POI/" style="font-size: 10.63px;">POI</a> <a href="/tags/SCOI/" style="font-size: 10.63px;">SCOI</a> <a href="/tags/SDOI/" style="font-size: 10px;">SDOI</a> <a href="/tags/Splay/" style="font-size: 11.25px;">Splay</a> <a href="/tags/TJOI/" style="font-size: 10px;">TJOI</a> <a href="/tags/Treap/" style="font-size: 11.88px;">Treap</a> <a href="/tags/USACO/" style="font-size: 10.63px;">USACO</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/WC/" style="font-size: 10px;">WC</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/主席树/" style="font-size: 10.63px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.63px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10.63px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 16.88px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14.38px;">位运算</a> <a href="/tags/倍增/" style="font-size: 11.88px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.63px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.63px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.63px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.25px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.25px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.63px;">双连通分量</a> <a href="/tags/可持久化/" style="font-size: 10px;">可持久化</a> <a href="/tags/启发式合并/" style="font-size: 10.63px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.13px;">图论</a> <a href="/tags/堆/" style="font-size: 12.5px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.25px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.25px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 13.75px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.63px;">平面图</a> <a href="/tags/并查集/" style="font-size: 13.75px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 11.88px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.63px;">想法题</a> <a href="/tags/打表/" style="font-size: 10.63px;">打表</a> <a href="/tags/折半枚举/" style="font-size: 11.25px;">折半枚举</a> <a href="/tags/拆点/" style="font-size: 10.63px;">拆点</a> <a href="/tags/拓扑排序/" style="font-size: 10.63px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.13px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.63px;">数位DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数据结构/" style="font-size: 18.75px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.25px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 11.88px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10.63px;">最小割</a> <a href="/tags/最短路/" style="font-size: 15.63px;">最短路</a> <a href="/tags/枚举/" style="font-size: 11.88px;">枚举</a> <a href="/tags/栈/" style="font-size: 10.63px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.38px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.63px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.13px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.38px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.25px;">树链剖分</a> <a href="/tags/概率期望/" style="font-size: 13.13px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.63px;">欧拉函数</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.25px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.25px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 11.88px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.63px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.5px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14.38px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.25px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.13px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 14.38px;">网络流</a> <a href="/tags/背包/" style="font-size: 15px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/补图/" style="font-size: 10px;">补图</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/负环/" style="font-size: 11.88px;">负环</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10.63px;">费用流</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 11.88px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.63px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.25px;">高精度</a>
+    </div>
+  </div>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 404 <br/>
+			Cothrax Not Found.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/cothrax" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/Cothrax" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/cothrax-lee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:clarklee.me@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Cothrax">Cothrax</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-82408259-1', 'cothrax.github.io');  
+ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
