@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-12-24T10:26:56.439Z</updated>
+  <updated>2016-12-24T10:34:02.431Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,9 +20,15 @@
     <link href="https://cothrax.github.io/2016/12/24/the-end/"/>
     <id>https://cothrax.github.io/2016/12/24/the-end/</id>
     <published>2016-12-24T03:04:22.000Z</published>
-    <updated>2016-12-24T10:26:56.439Z</updated>
+    <updated>2016-12-24T10:34:02.431Z</updated>
     
-    <content type="html"><![CDATA[<p>这次真的结束了，NOIP2016{ruby 跪烂|被草}，310分不忍直视，在JS勉强混个一等。<br><strong>不到一年的OI时光</strong>，从第一个hello world、第一场contest、第一篇blog，直至第一场NOIP，然后就结束了。<br>毕竟已经高二了，大概APIO、CTSC、NOI都是遥不可及的梦想吧。</p>
+    <content type="html"><![CDATA[<style>
+    rt{
+        font-size:70%;
+    }
+</style>
+
+<p>这次真的结束了，NOIP2016<ruby>跪烂<rp> (</rp><rt>bèi cào</rt><rp>) </rp></ruby>，310分不忍直视，在JS勉强混个一等。<br><strong>不到一年的OI时光</strong>，从第一个hello world、第一场contest、第一篇blog，直至第一场NOIP，然后就结束了。<br>毕竟已经高二了，大概APIO、CTSC、NOI都是遥不可及的梦想吧。</p>
 <blockquote>
 <p>还没长大就老了。</p>
 </blockquote>
@@ -30,7 +36,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;这次真的结束了，NOIP2016{ruby 跪烂|被草}，310分不忍直视，在JS勉强混个一等。&lt;br&gt;&lt;strong&gt;不到一年的OI时光&lt;/strong&gt;，从第一个hello world、第一场contest、第一篇blog，直至第一场NOIP，然后就结束了。&lt;br&gt;毕竟
+      &lt;style&gt;
+    rt{
+        font-size:70%;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;这次真的结束了，NOIP2016&lt;ruby&gt;跪烂&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;bèi cào&lt;/rt&gt;&lt;rp&gt;) &lt;/rp&gt;&lt;/ruby&gt;，310分不忍直视，在JS
     
     </summary>
     
