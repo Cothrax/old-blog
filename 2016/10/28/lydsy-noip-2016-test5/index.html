@@ -109,7 +109,7 @@ P1 Simple给定$n,m,q\in N*$，求$[1,q]内，$$\not\exists x,y\in N,c=nx+my$的
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-Simple"><span class="toc-number">1.</span> <span class="toc-text">P1 Simple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-Travel"><span class="toc-number">2.</span> <span class="toc-text">P3 Travel</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-Simple"><span class="toc-number">1.</span> <span class="toc-text">P1 Simple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-Walk"><span class="toc-number">2.</span> <span class="toc-text">P2 Walk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-Travel"><span class="toc-number">3.</span> <span class="toc-text">P3 Travel</span></a></li></ol>
 		
 		</div>
 		
@@ -121,99 +121,28 @@ P1 Simple给定$n,m,q\in N*$，求$[1,q]内，$$\not\exists x,y\in N,c=nx+my$的
 <a id="more"></a>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>从反面入手，求可以表示成$nx+my,n,m\in N$的c的个数<br>根据裴蜀定理，$c=nx+my$有解当且仅当$gcd(n,m)|c$<br>记$g=gcd(n,m)$<br>这样解的范围被缩小到$[1,n/g]$，$n=n/g,m=m/g$，此时n和m互质<br>然后根据数论知识，不能被表示成$nx+my,n,m\in N*$的最大整数为$nm-n-m$</p>
 <p>那么考虑$[1,nm]$的数，其中能表示为$ym-xn,y\in[0,n-1]$的数一定满足题意：<br>由扩展欧几里得可知，已知$ym+(-x)n=c$的一组解$(-x,y)$，那么它的所有解为$(-x+t\cdot m,y-t\cdot n)$，其中必定有一个是负数<br>这样枚举[0,n-1]统计即可。</p>
-<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/28/lydsy-noip-2016-test5/simple.pas" title="{plain text}">{plain text}</a><br></div><br>```delphi simple.pas<br>uses math;<br>type int=longint;<br>var n,m,q,g,l,r,ans:int64;i,j,t:int;<br>function gcd(a,b:int64):int64;<br>begin if b=0 then gcd:=a else gcd:=gcd(b,a mod b) end;<br>function cldv(n,m:int64):int64;<br>begin<br>    cldv:=n div m;<br>    if n mod m&lt;&gt;0 then inc(cldv);<br>end;</p>
-<p>begin<br>    //assign(input,’simple.in’);reset(input);<br>    //assign(output,’simple.out’);rewrite(output);<br>    read(t);<br>    repeat<br>        read(n,m,q);g:=gcd(n,m);<br>        ans:=q;q:=q div g;dec(ans,q);<br>        n:=n div g;m:=m div g;<br>        for i:=0 to n-1 do begin<br>            l:=max(1,cldv(i<em>m-q,n));<br>            r:=trunc((i</em>m-1)/n);<br>            inc(ans,max(r-l+1,0));<br>        end;<br>        writeln(ans);<br>        dec(t);<br>    until t=0;<br>    close(input);close(output);<br>end.</p>
-<pre><code>
-# P2 Walk
-大意：给定n个节点的树，边长为1，边权为w，定义一条路径的权值为路径上所有边权的最大公约数，对于任意$i\in[1,n]$,求树上所有长度为i的简单路径中权值最大的是多少。
-
-## 题解
-大暴力，枚举答案，每次都重新构图，跑树（森林）上最长链
-一点总结：
-1. 关于gcd的处理：枚举gcd，那么权为gcd倍数的边都是合法的
-2. 关于复杂度的分析：每条边e(u,v)=w只有在枚举值为w的约数时才会被遍历，理论复杂度为$O(N\sqrt{N})$
-3. 关于常数
-  - 用链表维护边集，将边权相等的边串起来
-  - 用栈维护点集，在加边时将端点入栈
-  - 清空临时的边集数组时，由于只有在栈内的点的head值被修改，遍历栈中的点即可
-  - 标记数组：当前为第idx次遍历，用flag[u]=idx表示u以被访问，避免每次清空数组
-4. 关于树上最长链：之前在学树形dp时用过一种比较复杂的方法，记录一个点的最长链、次长链、链经过的子节点，两次dp得到；更简单的方法见代码
-5. 关于一些sb错误
-  - 栈要开2*n
-  - 混淆栈中元素和栈下标
-
-&lt;div style=&quot;display:none;&quot; class=&quot;copy&quot;&gt;
-    <a href="/2016/10/28/lydsy-noip-2016-test5/walk.pas" title="{plain text}">{plain text}</a>
-&lt;/div&gt;
-```delphi walk.pas
-uses math;
-type 
-    int=longint;
-    edge=record v,next:int end;
-    e1=record u,v,next:int end;
-var 
-    g:array[0..800010] of edge;
-    e:array[0..400010] of e1;
-    head,flag,ans:array[0..400010] of int;
-    stk:array[0..800010] of int;
-    ptr:array[0..1000010] of int;
-    sz,k,mx,n,i,j,l,u,v,w,idx,len,t:int;
-
-procedure add(u,v:int);
-begin
-    inc(sz);g[sz].v:=v;
-    g[sz].next:=head[u];head[u]:=sz;
-end;
-procedure _add(u,v,w:int);
-begin
-    inc(k);e[k].u:=u;e[k].v:=v;
-    e[k].next:=ptr[w];ptr[w]:=k;
-end;
-
-function dfs(u:int):int;
-var v,i,tmp:int;
-begin
-    flag[u]:=idx;i:=head[u];dfs:=0;
-    while i&lt;&gt;0 do begin
-        v:=g[i].v;
-        if flag[v]&lt;idx then begin
-            tmp:=dfs(v);
-            len:=max(len,dfs+tmp+1);
-            dfs:=max(dfs,tmp+1);
-        end;
-        i:=g[i].next;
-    end;
-end;
-
-begin
-    assign(input,&#39;ex_walk3.in&#39;);reset(input);
-    assign(output,&#39;walk.out&#39;);rewrite(output);
-    read(n);k:=0;mx:=0;
-    for i:=1 to n-1 do begin
-        read(u,v,w);_add(u,v,w);mx:=max(mx,w);
-    end;
-    idx:=0;len:=0;
-    for i:=1 to mx do begin
-        sz:=0;inc(idx);l:=i;t:=0;
-        while l&lt;=mx do begin
-            j:=ptr[l];inc(l,i);
-            while j&lt;&gt;0 do begin
-                add(e[j].u,e[j].v);add(e[j].v,e[j].u);
-                inc(t,2);stk[t-1]:=e[j].u;stk[t]:=e[j].v;
-                j:=e[j].next;
-            end;
-        end;
-        len:=0;
-        for j:=1 to t do if flag[stk[j]]&lt;idx then dfs(stk[j]);
-        for j:=1 to t do head[stk[j]]:=0;
-        ans[len]:=i;
-    end;
-    for i:=n-1 downto 1 do
-        ans[i]:=max(ans[i],ans[i+1]);
-    for i:=1 to n do writeln(ans[i]);
-    close(input);close(output);
-end.
-</code></pre><h1 id="P3-Travel"><a href="#P3-Travel" class="headerlink" title="P3 Travel"></a>P3 Travel</h1><blockquote>
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/28/lydsy-noip-2016-test5/simple.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>simple.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">var</span> n,m,q,g,l,r,ans:int64;i,j,t:int;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gcd</span><span class="params">(a,b:int64)</span>:</span>int64;</span><br><span class="line"><span class="keyword">begin</span> <span class="keyword">if</span> b=<span class="number">0</span> <span class="keyword">then</span> gcd:=a <span class="keyword">else</span> gcd:=gcd(b,a <span class="keyword">mod</span> b) <span class="keyword">end</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cldv</span><span class="params">(n,m:int64)</span>:</span>int64;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    cldv:=n <span class="keyword">div</span> m;</span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">mod</span> m&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> inc(cldv);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//assign(input,'simple.in');reset(input);</span></span><br><span class="line">    <span class="comment">//assign(output,'simple.out');rewrite(output);</span></span><br><span class="line">    <span class="keyword">read</span>(t);</span><br><span class="line">    <span class="keyword">repeat</span></span><br><span class="line">        <span class="keyword">read</span>(n,m,q);g:=gcd(n,m);</span><br><span class="line">        ans:=q;q:=q <span class="keyword">div</span> g;dec(ans,q);</span><br><span class="line">        n:=n <span class="keyword">div</span> g;m:=m <span class="keyword">div</span> g;</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            l:=max(<span class="number">1</span>,cldv(i*m-q,n));</span><br><span class="line">            r:=trunc((i*m-<span class="number">1</span>)/n);</span><br><span class="line">            inc(ans,max(r-l+<span class="number">1</span>,<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        writeln(ans);</span><br><span class="line">        dec(t);</span><br><span class="line">    <span class="keyword">until</span> t=<span class="number">0</span>;</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+<h1 id="P2-Walk"><a href="#P2-Walk" class="headerlink" title="P2 Walk"></a>P2 Walk</h1><p>大意：给定n个节点的树，边长为1，边权为w，定义一条路径的权值为路径上所有边权的最大公约数，对于任意$i\in[1,n]$,求树上所有长度为i的简单路径中权值最大的是多少。</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>大暴力，枚举答案，每次都重新构图，跑树（森林）上最长链<br>一点总结：</p>
+<ol>
+<li>关于gcd的处理：枚举gcd，那么权为gcd倍数的边都是合法的</li>
+<li>关于复杂度的分析：每条边e(u,v)=w只有在枚举值为w的约数时才会被遍历，理论复杂度为$O(N\sqrt{N})$</li>
+<li>关于常数<ul>
+<li>用链表维护边集，将边权相等的边串起来</li>
+<li>用栈维护点集，在加边时将端点入栈</li>
+<li>清空临时的边集数组时，由于只有在栈内的点的head值被修改，遍历栈中的点即可</li>
+<li>标记数组：当前为第idx次遍历，用flag[u]=idx表示u以被访问，避免每次清空数组</li>
+</ul>
+</li>
+<li>关于树上最长链：之前在学树形dp时用过一种比较复杂的方法，记录一个点的最长链、次长链、链经过的子节点，两次dp得到；更简单的方法见代码</li>
+<li>关于一些sb错误<ul>
+<li>栈要开2*n</li>
+<li>混淆栈中元素和栈下标</li>
+</ul>
+</li>
+</ol>
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/28/lydsy-noip-2016-test5/walk.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>walk.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> </span><br><span class="line">    int=longint;</span><br><span class="line">    edge=<span class="keyword">record</span> v,next:int <span class="keyword">end</span>;</span><br><span class="line">    e1=<span class="keyword">record</span> u,v,next:int <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">800010</span>] <span class="keyword">of</span> edge;</span><br><span class="line">    e:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> e1;</span><br><span class="line">    head,flag,ans:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">400010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    stk:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">800010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    ptr:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1000010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    sz,k,mx,n,i,j,l,u,v,w,idx,len,t:int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(u,v:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(sz);g[sz].v:=v;</span><br><span class="line">    g[sz].next:=head[u];head[u]:=sz;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="function"><span class="keyword">procedure</span> _<span class="title">add</span><span class="params">(u,v,w:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(k);e[k].u:=u;e[k].v:=v;</span><br><span class="line">    e[k].next:=ptr[w];ptr[w]:=k;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span><span class="params">(u:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">var</span> v,i,tmp:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    flag[u]:=idx;i:=head[u];dfs:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        v:=g[i].v;</span><br><span class="line">        <span class="keyword">if</span> flag[v]&lt;idx <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            tmp:=dfs(v);</span><br><span class="line">            len:=max(len,dfs+tmp+<span class="number">1</span>);</span><br><span class="line">            dfs:=max(dfs,tmp+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'ex_walk3.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'walk.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n);k:=<span class="number">0</span>;mx:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(u,v,w);_add(u,v,w);mx:=max(mx,w);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    idx:=<span class="number">0</span>;len:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> mx <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        sz:=<span class="number">0</span>;inc(idx);l:=i;t:=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> l&lt;=mx <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            j:=ptr[l];inc(l,i);</span><br><span class="line">            <span class="keyword">while</span> j&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">                add(e[j].u,e[j].v);add(e[j].v,e[j].u);</span><br><span class="line">                inc(t,<span class="number">2</span>);stk[t-<span class="number">1</span>]:=e[j].u;stk[t]:=e[j].v;</span><br><span class="line">                j:=e[j].next;</span><br><span class="line">            <span class="keyword">end</span>;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        len:=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> t <span class="keyword">do</span> <span class="keyword">if</span> flag[stk[j]]&lt;idx <span class="keyword">then</span> dfs(stk[j]);</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> t <span class="keyword">do</span> head[stk[j]]:=<span class="number">0</span>;</span><br><span class="line">        ans[len]:=i;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=n-<span class="number">1</span> <span class="keyword">downto</span> <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">        ans[i]:=max(ans[i],ans[i+<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> writeln(ans[i]);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+<h1 id="P3-Travel"><a href="#P3-Travel" class="headerlink" title="P3 Travel"></a>P3 Travel</h1><blockquote>
 <p>挖个坑</p>
 </blockquote>
   
@@ -278,7 +207,7 @@ end.
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-Simple"><span class="toc-number">1.</span> <span class="toc-text">P1 Simple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-Travel"><span class="toc-number">2.</span> <span class="toc-text">P3 Travel</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-Simple"><span class="toc-number">1.</span> <span class="toc-text">P1 Simple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-Walk"><span class="toc-number">2.</span> <span class="toc-text">P2 Walk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-Travel"><span class="toc-number">3.</span> <span class="toc-text">P3 Travel</span></a></li></ol>
  
   </div>
 

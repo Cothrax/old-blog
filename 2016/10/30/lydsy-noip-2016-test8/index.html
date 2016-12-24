@@ -103,7 +103,7 @@ P1 神炎皇大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-神炎皇"><span class="toc-number">1.</span> <span class="toc-text">P1 神炎皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-幻魔皇"><span class="toc-number">2.</span> <span class="toc-text">P3 幻魔皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80分题解"><span class="toc-number">2.1.</span> <span class="toc-text">80分题解</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-神炎皇"><span class="toc-number">1.</span> <span class="toc-text">P1 神炎皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-降雷皇"><span class="toc-number">2.</span> <span class="toc-text">P2 降雷皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-幻魔皇"><span class="toc-number">3.</span> <span class="toc-text">P3 幻魔皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80分题解"><span class="toc-number">3.1.</span> <span class="toc-text">80分题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#100分题解"><span class="toc-number">3.2.</span> <span class="toc-text">100分题解</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -123,103 +123,18 @@ P1 神炎皇大意：给定n，求满足$a+b\leq n$且$(a+b)|ab$的有序对(a,b
 </blockquote>
 <p>于是$gcd(c,d)=1$与$gcd(c+d,d)=(k,d)=1$一一对应，而(k,d)的对数就是$\varphi(k)$</p>
 <p>于是，答案为$\sum_{k=2}^{\lfloor\sqrt{n}\rfloor} \varphi(k)*\lfloor n/k^2\rfloor$</p>
-<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/uria.pas" title="{plain text}">{plain text}</a><br></div><br>```delphi uria.pas<br>type int=longint;<br>var<br>    n,ans,i,sq:int64;<br>    phi,p:array[0..10000010] of int;<br>    f:array[0..10000100] of boolean;</p>
-<p>procedure euler();<br>var i,j,t,k:int;<br>begin<br>    phi[1]:=1;k:=0;<br>    for i:=2 to sq do begin<br>        if not f[i] then begin<br>            inc(k);p[k]:=i;phi[i]:=i-1;<br>        end;<br>        j:=1;t:=p[j]<em>i;<br>        while t&lt;=sq do begin<br>            f[t]:=true;<br>            if i mod p[j]=0 then begin<br>                phi[t]:=p[j]</em>phi[i];break<br>            end else<br>                phi[t]:=(p[j]-1)<em>phi[i];<br>            inc(j);t:=p[j]</em>i;<br>        end;<br>    end;<br>end;</p>
-<p>begin<br>    //assign(input,’uria.in’);reset(input);<br>    //assign(output,’uria.out’);rewrite(output);<br>    read(n);sq:=trunc(sqrt(n));<br>    foo();halt;<br>    euler();ans:=0;i:=2;<br>    while i&lt;=sq do begin<br>        inc(ans,phi[i]<em>trunc(n/(i</em>i)));<br>        inc(i);<br>    end;<br>    write(ans);<br>    close(input);close(output);<br>end.</p>
-<pre><code>
-# P2 降雷皇
-大意：给定长度n的序列a，求最长单调不降子序列，以及其方案数
-$n,a_i\leq 10^5$
-
-## 题解
-数据结构优化的dp
-第一问显然lis，考虑$O(N^2)$的求法
-
-记f[i]为以a[i]结尾的最长lis长度
-
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/uria.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>uria.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    n,ans,i,sq:int64;</span><br><span class="line">    phi,p:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">10000100</span>] <span class="keyword">of</span> boolean;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">euler</span><span class="params">()</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,j,t,k:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    phi[<span class="number">1</span>]:=<span class="number">1</span>;k:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> sq <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> f[i] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(k);p[k]:=i;phi[i]:=i-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        j:=<span class="number">1</span>;t:=p[j]*i;</span><br><span class="line">        <span class="keyword">while</span> t&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            f[t]:=true;</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">mod</span> p[j]=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">                phi[t]:=p[j]*phi[i];<span class="keyword">break</span></span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span></span><br><span class="line">                phi[t]:=(p[j]-<span class="number">1</span>)*phi[i];</span><br><span class="line">            inc(j);t:=p[j]*i;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//assign(input,'uria.in');reset(input);</span></span><br><span class="line">    <span class="comment">//assign(output,'uria.out');rewrite(output);</span></span><br><span class="line">    <span class="keyword">read</span>(n);sq:=trunc(sqrt(n));</span><br><span class="line">    foo();halt;</span><br><span class="line">    euler();ans:=<span class="number">0</span>;i:=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> i&lt;=sq <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        inc(ans,phi[i]*trunc(n/(i*i)));</span><br><span class="line">        inc(i);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(ans);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+<h1 id="P2-降雷皇"><a href="#P2-降雷皇" class="headerlink" title="P2 降雷皇"></a>P2 降雷皇</h1><p>大意：给定长度n的序列a，求最长单调不降子序列，以及其方案数<br>$n,a_i\leq 10^5$</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>数据结构优化的dp<br>第一问显然lis，考虑$O(N^2)$的求法</p>
+<p>记f[i]为以a[i]结尾的最长lis长度</p>
 <span>$f[i]=max_{i&lt;j,a[j]\leq a[i]}\{f[j]+1\}$</span><!-- Has MathJax -->
-有另一种思路优化到$O(NlogN)$，但由于第二问的存在，我们考虑数据结构优化
-可以用树状数组以a[i]为下标，维护f[i]的前缀最大值
-那么转移时查询[1..a[i]]中的最大的f[j]即可
-
-第二问：
-记g[i]为f[i]的方案数
-
+<p>有另一种思路优化到$O(NlogN)$，但由于第二问的存在，我们考虑数据结构优化<br>可以用树状数组以a[i]为下标，维护f[i]的前缀最大值<br>那么转移时查询[1..a[i]]中的最大的f[j]即可</p>
+<p>第二问：<br>记g[i]为f[i]的方案数</p>
 <span>$g[i]=\sum_{i&lt;j,a[i]&lt;=a[j],f[i]=f[j]+1}g[j]$</span><!-- Has MathJax -->
-
-这个可以对每以个f[i]维护一颗线段树，以a[i]为下标，维护区间[l,r]内的$\sum g[i]$
-类似主席树的写法
-
-这样，复杂度为$O(NlogN)$
-一个sb错误：Line53的查询参数为x-1
-
-&lt;div style=&quot;display:none;&quot; class=&quot;copy&quot;&gt;
-    <a href="/2016/10/30/lydsy-noip-2016-test8/hamon.pas" title="{plain text}">{plain text}</a>
-&lt;/div&gt;
-```delphi hamon.pas
-uses math;
-type int=longint;ll=int64;node=record lc,rc,w:int end;
-const mx=100000;md=123456789;
-var
-    seg:array[0..mx*20] of node;
-    bit,rt,f,g:array[0..mx+10] of int;
-    n,sz,i,tp,x,ans,cnt:int;
-
-procedure _add(x,k:int);
-begin
-    while x&lt;=mx do begin
-        bit[x]:=max(bit[x],k);
-        inc(x,x and (-x));
-    end;
-end;
-function _query(x:int):int;
-begin
-    _query:=0;
-    while x&gt;0 do begin
-        _query:=max(_query,bit[x]);
-        x:=x and (x-1);
-    end;
-end;
-
-procedure add(var i:int;l,r,x,k:int);
-var mid:int;
-begin
-    inc(sz);seg[sz]:=seg[i];i:=sz;
-    seg[i].w:=(ll(seg[i].w)+ll(k))mod md;
-    if l=r then exit;
-    mid:=(l+r) shr 1;
-    if x&lt;=mid then add(seg[i].lc,l,mid,x,k)
-    else add(seg[i].rc,mid+1,r,x,k);
-end;
-function query(i,l,r,k:int):int;
-var mid,lc,rc:int;
-begin
-    if l=r then exit(seg[i].w);
-    mid:=(l+r) shr 1;
-    lc:=seg[i].lc;rc:=seg[i].rc;
-    if k&lt;=mid then query:=query(lc,l,mid,k)
-    else query:=(ll(seg[lc].w)+ll(query(rc,mid+1,r,k)))mod md;
-end;
-
-begin
-    assign(input,&#39;hamon.in&#39;);reset(input);
-    assign(output,&#39;hamon.out&#39;);rewrite(output);
-    read(n,tp);sz:=0;
-    for i:=1 to n do begin
-        read(x);
-        f[i]:=_query(x-1);
-        if f[i]=0 then g[i]:=1
-        else g[i]:=query(rt[f[i]],1,n,x-1);
-        inc(f[i]);add(rt[f[i]],1,n,x,g[i]);_add(x,f[i]);
-    end;
-    ans:=0;cnt:=0;
-    for i:=1 to n do ans:=max(ans,f[i]);
-    for i:=1 to n do
-        if f[i]=ans then cnt:=(cnt+g[i])mod md;
-    writeln(ans);if tp=1 then write(cnt);
-    close(input);close(output);
-end.
-</code></pre><h1 id="P3-幻魔皇"><a href="#P3-幻魔皇" class="headerlink" title="P3 幻魔皇"></a>P3 幻魔皇</h1><p>定义斐波那契树：</p>
+<p>这个可以对每以个f[i]维护一颗线段树，以a[i]为下标，维护区间[l,r]内的$\sum g[i]$<br>类似主席树的写法</p>
+<p>这样，复杂度为$O(NlogN)$<br>一个sb错误：Line53的查询参数为x-1</p>
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/hamon.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>hamon.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;ll=int64;node=<span class="keyword">record</span> lc,rc,w:int <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">const</span> mx=<span class="number">100000</span>;md=<span class="number">123456789</span>;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    seg:<span class="keyword">array</span>[<span class="number">0</span>..mx*<span class="number">20</span>] <span class="keyword">of</span> node;</span><br><span class="line">    bit,rt,f,g:<span class="keyword">array</span>[<span class="number">0</span>..mx+<span class="number">10</span>] <span class="keyword">of</span> int;</span><br><span class="line">    n,sz,i,tp,x,ans,cnt:int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> _<span class="title">add</span><span class="params">(x,k:int)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">while</span> x&lt;=mx <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        bit[x]:=max(bit[x],k);</span><br><span class="line">        inc(x,x <span class="keyword">and</span> (-x));</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> _<span class="title">query</span><span class="params">(x:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    _query:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> x&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        _query:=max(_query,bit[x]);</span><br><span class="line">        x:=x <span class="keyword">and</span> (x-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(<span class="keyword">var</span> i:int;l,r,x,k:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> mid:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(sz);seg[sz]:=seg[i];i:=sz;</span><br><span class="line">    seg[i].w:=(ll(seg[i].w)+ll(k))<span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">if</span> l=r <span class="keyword">then</span> <span class="keyword">exit</span>;</span><br><span class="line">    mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> x&lt;=mid <span class="keyword">then</span> add(seg[i].lc,l,mid,x,k)</span><br><span class="line">    <span class="keyword">else</span> add(seg[i].rc,mid+<span class="number">1</span>,r,x,k);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">(i,l,r,k:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">var</span> mid,lc,rc:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> l=r <span class="keyword">then</span> <span class="keyword">exit</span>(seg[i].w);</span><br><span class="line">    mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</span><br><span class="line">    lc:=seg[i].lc;rc:=seg[i].rc;</span><br><span class="line">    <span class="keyword">if</span> k&lt;=mid <span class="keyword">then</span> query:=query(lc,l,mid,k)</span><br><span class="line">    <span class="keyword">else</span> query:=(ll(seg[lc].w)+ll(query(rc,mid+<span class="number">1</span>,r,k)))<span class="keyword">mod</span> md;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'hamon.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'hamon.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n,tp);sz:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(x);</span><br><span class="line">        f[i]:=_query(x-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> f[i]=<span class="number">0</span> <span class="keyword">then</span> g[i]:=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span> g[i]:=query(rt[f[i]],<span class="number">1</span>,n,x-<span class="number">1</span>);</span><br><span class="line">        inc(f[i]);add(rt[f[i]],<span class="number">1</span>,n,x,g[i]);_add(x,f[i]);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    ans:=<span class="number">0</span>;cnt:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> ans:=max(ans,f[i]);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> f[i]=ans <span class="keyword">then</span> cnt:=(cnt+g[i])<span class="keyword">mod</span> md;</span><br><span class="line">    writeln(ans);<span class="keyword">if</span> tp=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">write</span>(cnt);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+<h1 id="P3-幻魔皇"><a href="#P3-幻魔皇" class="headerlink" title="P3 幻魔皇"></a>P3 幻魔皇</h1><p>定义斐波那契树：</p>
 <ol>
 <li>根为白色节点</li>
 <li>白色节点有一个黑色子节点</li>
@@ -231,45 +146,14 @@ end.
 <p>统计到新增的白色节点的部分：g[i,j]=f[i-1,j-2]+f[i-2,j-1]<br>加上原来的：g[i,j]+=g[i-1,j]+g[i-2,j]<br>枚举左右子树i,j：g[i,j+k+3]+=f[i-1,j]*f[i-2,k]</p>
 <p>递推n-2次，然后特判白色根节点：g[n-2,j]+=f[n-2,j-1]<br>答案是g[n-2,1..n*2]</p>
 <p>复杂度的瓶颈在于枚举左右子树的部分，容易发现这一部分的计算实际上是多项式系数向量的卷积，于是可以用fft优化到$O(N^2logN)$，似乎会被卡常，而且这玩意不在noip范围</p>
-<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel_80.pas" title="{plain text}">{plain text}</a><br></div><br>```delphi raviel_80.pas<br>type int=longint;ll=int64;<br>const<br>    md=123456789;mx=5000;<br>    nxt:array[0..2] of int=(1,2,0);<br>var<br>    f,g:array[0..2,-2..mx*2+10] of int;<br>    n,i,j,k,i0,i1,i2:int;</p>
-<p>begin<br>    assign(input,’raviel.in’);reset(input);<br>    assign(output,’raviel.ans’);rewrite(output);<br>    read(n);<br>    i0:=2;i1:=1;i2:=0;<br>    for i:=1 to n-2 do begin<br>        i0:=nxt[i0];i1:=nxt[i1];i2:=nxt[i2];<br>        for j:=1 to i do f[i0,j]:=0;<br>        //calc f[i0]<br>        for j:=1 to i do<br>            f[i0,j]:=(f[i1,j-1]+f[i2,j-2])mod md;<br>        f[i0,1]:=(f[i0,1]+1)mod md;<br>        //calc g[i0]<br>        for j:=1 to i<em>2 do<br>            g[i0,j]:=(f[i1,j-2]+f[i2,j-1]+g[i1,j]+g[i2,j])mod md;<br>        for j:=1 to i</em>2 do<br>            for k:=1 to i<em>2-j do<br>                g[i0,j+k+3]:=(ll(g[i0,j+k+3])+<br>                    ll(f[i1,j])</em>ll(f[i2,k]))mod md;<br>    end;<br>    for j:=1 to 2<em>n do g[i0,j]:=(g[i0,j]+f[i0,j-1])mod md;<br>    for i:=1 to 2</em>n do write(g[i0,i],’ ‘);<br>    close(input);close(output);<br>end.</p>
-<pre><code>
-## 100分题解
-标算：$O(N^2)$
-考虑到其实每一棵黑色根节点的树都是同构的，不单独考虑树高直接枚举距离
-可以发现：到黑色节点距离i的白色节点数是斐波那契数f[i]，记$s[i]=\sum_{i=1}^n f[i]$
-而深度i的子树中的白色节点数为f[i-2]+1（特判根节点），黑色节点数为f[i-1]
-分两种情况：记u,v为白色节点对
-1. lca(u,v)=u或v，那么可以算出lca的范围中的白色节点数s[n-2-i]，对于每个lca，距离为d的节点数为f[j-1]
-2. lca(u,v)=一黑色节点，$O(N^2)$枚举u和v到lca的距离，类似1处理即可
-
-&lt;div style=&quot;display:none;&quot; class=&quot;copy&quot;&gt;
-    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel.pas" title="{plain text}">{plain text}</a>
-&lt;/div&gt;
-```delphi raviel.pas
-uses math;
-type int=longint;ll=int64;
-const md=123456789;mx=5000;
-var
-    f,s,g:array[-1..mx*2+10] of int;
-    n,i,j:int;
-
-begin
-    assign(input,&#39;raviel.in&#39;);reset(input);
-    assign(output,&#39;raviel.out&#39;);rewrite(output);
-    read(n);f[1]:=1;s[0]:=0;
-    for i:=2 to n do f[i]:=(f[i-1]+f[i-2]) mod md;
-    for i:=1 to n do s[i]:=(s[i-1]+f[i]) mod md;
-    for i:=1 to n-1 do g[i]:=ll(s[n-2-i]+1)*ll(f[i-1]) mod md;
-    f[-1]:=1; //便于特判根节点
-    for i:=1 to n-1 do
-        for j:=1 to n-1 do
-            g[i+j]:=(ll(g[i+j])+(ll(f[i-2])*ll(f[j-1])mod md)*
-                ll(s[n-1-max(i,j)]))mod md;
-    for i:=1 to n*2 do write(g[i],&#39; &#39;);
-    close(input);close(output);
-end.
-</code></pre>  
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel_80.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>raviel_80.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> int=longint;ll=int64;</span><br><span class="line"><span class="keyword">const</span></span><br><span class="line">    md=<span class="number">123456789</span>;mx=<span class="number">5000</span>;</span><br><span class="line">    nxt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2</span>] <span class="keyword">of</span> int=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    f,g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">2</span>,-<span class="number">2</span>..mx*<span class="number">2</span>+<span class="number">10</span>] <span class="keyword">of</span> int;</span><br><span class="line">    n,i,j,k,i0,i1,i2:int;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'raviel.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'raviel.ans'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n);</span><br><span class="line">    i0:=<span class="number">2</span>;i1:=<span class="number">1</span>;i2:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">2</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        i0:=nxt[i0];i1:=nxt[i1];i2:=nxt[i2];</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i <span class="keyword">do</span> f[i0,j]:=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//calc f[i0]</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i <span class="keyword">do</span></span><br><span class="line">            f[i0,j]:=(f[i1,j-<span class="number">1</span>]+f[i2,j-<span class="number">2</span>])<span class="keyword">mod</span> md;</span><br><span class="line">        f[i0,<span class="number">1</span>]:=(f[i0,<span class="number">1</span>]+<span class="number">1</span>)<span class="keyword">mod</span> md;</span><br><span class="line">        <span class="comment">//calc g[i0]</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">            g[i0,j]:=(f[i1,j-<span class="number">2</span>]+f[i2,j-<span class="number">1</span>]+g[i1,j]+g[i2,j])<span class="keyword">mod</span> md;</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">            <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> i*<span class="number">2</span>-j <span class="keyword">do</span></span><br><span class="line">                g[i0,j+k+<span class="number">3</span>]:=(ll(g[i0,j+k+<span class="number">3</span>])+</span><br><span class="line">                    ll(f[i1,j])*ll(f[i2,k]))<span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">2</span>*n <span class="keyword">do</span> g[i0,j]:=(g[i0,j]+f[i0,j-<span class="number">1</span>])<span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">2</span>*n <span class="keyword">do</span> <span class="keyword">write</span>(g[i0,i],<span class="string">' '</span>);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+<h2 id="100分题解"><a href="#100分题解" class="headerlink" title="100分题解"></a>100分题解</h2><p>标算：$O(N^2)$<br>考虑到其实每一棵黑色根节点的树都是同构的，不单独考虑树高直接枚举距离<br>可以发现：到黑色节点距离i的白色节点数是斐波那契数f[i]，记$s[i]=\sum_{i=1}^n f[i]$<br>而深度i的子树中的白色节点数为f[i-2]+1（特判根节点），黑色节点数为f[i-1]<br>分两种情况：记u,v为白色节点对</p>
+<ol>
+<li>lca(u,v)=u或v，那么可以算出lca的范围中的白色节点数s[n-2-i]，对于每个lca，距离为d的节点数为f[j-1]</li>
+<li>lca(u,v)=一黑色节点，$O(N^2)$枚举u和v到lca的距离，类似1处理即可</li>
+</ol>
+<p><div style="display:none;" class="copy"><br>    <a href="/2016/10/30/lydsy-noip-2016-test8/raviel.pas" title="{plain text}">{plain text}</a><br></div><br><figure class="highlight delphi"><figcaption><span>raviel.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;ll=int64;</span><br><span class="line"><span class="keyword">const</span> md=<span class="number">123456789</span>;mx=<span class="number">5000</span>;</span><br><span class="line"><span class="keyword">var</span></span><br><span class="line">    f,s,g:<span class="keyword">array</span>[-<span class="number">1</span>..mx*<span class="number">2</span>+<span class="number">10</span>] <span class="keyword">of</span> int;</span><br><span class="line">    n,i,j:int;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'raviel.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'raviel.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n);f[<span class="number">1</span>]:=<span class="number">1</span>;s[<span class="number">0</span>]:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[i]:=(f[i-<span class="number">1</span>]+f[i-<span class="number">2</span>]) <span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> s[i]:=(s[i-<span class="number">1</span>]+f[i]) <span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> g[i]:=ll(s[n-<span class="number">2</span>-i]+<span class="number">1</span>)*ll(f[i-<span class="number">1</span>]) <span class="keyword">mod</span> md;</span><br><span class="line">    f[-<span class="number">1</span>]:=<span class="number">1</span>; <span class="comment">//便于特判根节点</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">            g[i+j]:=(ll(g[i+j])+(ll(f[i-<span class="number">2</span>])*ll(f[j-<span class="number">1</span>])<span class="keyword">mod</span> md)*</span><br><span class="line">                ll(s[n-<span class="number">1</span>-max(i,j)]))<span class="keyword">mod</span> md;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n*<span class="number">2</span> <span class="keyword">do</span> <span class="keyword">write</span>(g[i],<span class="string">' '</span>);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -331,7 +215,7 @@ end.
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-神炎皇"><span class="toc-number">1.</span> <span class="toc-text">P1 神炎皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-幻魔皇"><span class="toc-number">2.</span> <span class="toc-text">P3 幻魔皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80分题解"><span class="toc-number">2.1.</span> <span class="toc-text">80分题解</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#P1-神炎皇"><span class="toc-number">1.</span> <span class="toc-text">P1 神炎皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P2-降雷皇"><span class="toc-number">2.</span> <span class="toc-text">P2 降雷皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解-1"><span class="toc-number">2.1.</span> <span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#P3-幻魔皇"><span class="toc-number">3.</span> <span class="toc-text">P3 幻魔皇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#80分题解"><span class="toc-number">3.1.</span> <span class="toc-text">80分题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#100分题解"><span class="toc-number">3.2.</span> <span class="toc-text">100分题解</span></a></li></ol></li></ol>
  
   </div>
 

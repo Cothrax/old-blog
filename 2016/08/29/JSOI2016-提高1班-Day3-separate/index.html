@@ -97,7 +97,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">5.</span> <span class="toc-text">水解</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">5.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">6.</span> <span class="toc-text">正解</span></a></li></ol>
 		
 		</div>
 		
@@ -114,112 +114,29 @@
 <h2 id="水解"><a href="#水解" class="headerlink" title="水解"></a>水解</h2><p>首先，题意有点问题，“之和”二字是我后加的。<br>先qsort，很容易想到<strong>dp</strong>，记f[i,j]为1..j个人分i组的最小值<br>$f[i,j]=f[i-1,k-1]+(a[k]-a[j])^2$<br>把状态维（1..j个人）放在第二个位置确实不爽，但这是为了用<strong>滚动数组</strong>。<br>复杂度$O(MN^2)$，80分到手。</p>
 <dir style="display:none"><a href="/2016/08/29/JSOI2016-提高1班-Day3-separate/separate.pas" title="复制代码">复制代码</a></dir>
 
-<p>```delphi separate.pas<br>uses math;<br>type int=longint;<br>const inf=1000000000;<br>var<br>    n,m,i,j,k,p,c,t,t0:int;<br>    a:array[0..5010] of int;<br>    f:array[0..1,0..5010] of int;</p>
-<p>procedure swap(var a,b:int);<br>var tmp:int;<br>begin tmp:=a;a:=b;b:=tmp end;</p>
-<p>procedure qsort(b,e:int);<br>var i,j,x:int;<br>begin<br>    i:=b;j:=e;x:=a[random(e-b)+b];<br>    repeat<br>        while a[i]<x do="" inc(i);="" while="" a[j]="">x do dec(j);<br>        if i&lt;=j then begin<br>            swap(a[i],a[j]);<br>            inc(i);dec(j);<br>        end;<br>    until i&gt;j;<br>    if i&lt;e then qsort(i,e);<br>    if b&lt;j then qsort(b,j);<br>end;</x></p>
-<p>begin<br>    assign(input,’separate.in’);reset(input);<br>    assign(output,’separate.ans’);rewrite(output);<br>    read(t0);<br>    for t:=1 to t0 do begin<br>        read(n,m);<br>        for i:=1 to n do read(a[i]);<br>        qsort(1,n);<br>        filldword(f,sizeof(f) div 4,inf);<br>        f[0,0]:=0;p:=1;c:=0;<br>        for i:=1 to m do begin<br>            swap(p,c);<br>            filldword(f[c],sizeof(f[c]) div 4,inf);<br>            for j:=1 to n do<br>                for k:=1 to j do<br>                    f[c,j]:=min(f[c,j],f[p,k-1]+sqr(a[k]-a[j]));<br>        end;<br>        writeln(‘Case ‘,t,’: ‘,f[c,n]);<br>    end;<br>    close(input);close(output);<br>end.</p>
-<pre><code>
-## 正解
-斜率优化dp，详见神犇的讲解：http://www.cnblogs.com/ka200812/archive/2012/08/03/2621345.html
+<figure class="highlight delphi"><figcaption><span>separate.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,m,i,j,k,p,c,t,t0:int;</span><br><span class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">5010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">5010</span>] <span class="keyword">of</span> int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> tmp:int;</span><br><span class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(b,e:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,j,x:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    i:=b;j:=e;x:=a[random(e-b)+b];</span><br><span class="line">    <span class="keyword">repeat</span></span><br><span class="line">        <span class="keyword">while</span> a[i]&lt;x <span class="keyword">do</span> inc(i);</span><br><span class="line">        <span class="keyword">while</span> a[j]&gt;x <span class="keyword">do</span> dec(j);</span><br><span class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            swap(a[i],a[j]);</span><br><span class="line">            inc(i);dec(j);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">until</span> i&gt;j;</span><br><span class="line">    <span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(i,e);</span><br><span class="line">    <span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(b,j);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'separate.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'separate.ans'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(t0);</span><br><span class="line">    <span class="keyword">for</span> t:=<span class="number">1</span> <span class="keyword">to</span> t0 <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(n,m);</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</span><br><span class="line">        qsort(<span class="number">1</span>,n);</span><br><span class="line">        filldword(f,sizeof(f) <span class="keyword">div</span> <span class="number">4</span>,inf);</span><br><span class="line">        f[<span class="number">0</span>,<span class="number">0</span>]:=<span class="number">0</span>;p:=<span class="number">1</span>;c:=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            swap(p,c);</span><br><span class="line">            filldword(f[c],sizeof(f[c]) <span class="keyword">div</span> <span class="number">4</span>,inf);</span><br><span class="line">            <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> </span><br><span class="line">                <span class="keyword">for</span> k:=<span class="number">1</span> <span class="keyword">to</span> j <span class="keyword">do</span></span><br><span class="line">                    f[c,j]:=min(f[c,j],f[p,k-<span class="number">1</span>]+sqr(a[k]-a[j]));</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        writeln(<span class="string">'Case '</span>,t,<span class="string">': '</span>,f[c,n]);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>斜率优化dp，详见神犇的讲解：<a href="http://www.cnblogs.com/ka200812/archive/2012/08/03/2621345.html" target="_blank" rel="external">http://www.cnblogs.com/ka200812/archive/2012/08/03/2621345.html</a></p>
+<p>关于本题，我简单推一遍：<br>$$f[i,j]=min(f[i-1,k-1]+(a[k]-a[j])^2)$$<br>设<span>$k&gt;t$</span><!-- Has MathJax -->，若从k转移更优，则：<br>$$f[i-1,k-1]+(a[k]-a[j])^2&lt;f[i-1,t-1]+(a[t]-a[j])^2$$<br>变形后：$$\dfrac{(f[i-1,k-1]+a[k]^2)-(f[i-1,t-1]+a[t]^2)}{a[k]-a[t]}&lt;2a[j]$$<br>记$$x(k)=a[k],y(k)=f[i-1,k-1]+a[k]^2$$<br>则上式变形为：$$\dfrac{y(k)-y(t)}{x(k)-x(t)}&lt;2a[j]$$<br>把k和t看成点，左边就是$kt$的斜率，记为$g(k,t)$，当$g(k,t)&lt;2a[j]$时k优于t</p>
+<p>用<strong>单调队列</strong>维护：<br><strong>从头出队</strong>：满足上面的情况，t出队</p>
+<p><strong>从尾出队</strong>：设<span>$k&lt;t&lt;l$</span><!-- Has MathJax -->，若<span>$g(l,t)&lt;g(t,k)$</span><!-- Has MathJax -->，那么t一定不是最优解，分类讨论：</p>
+<ol>
+<li>若<span>$g(t,k)&lt;2a[j]$</span><!-- Has MathJax -->，那么t不比k优</li>
+<li>若<span>$g(t,k)&gt;2a[j]$</span><!-- Has MathJax -->，则<span>$g(l,t)&lt;2a[j]$</span><!-- Has MathJax -->，l比t优</li>
+</ol>
+<p>所以存在上述情况，t出队</p>
+<p>注意点：</p>
+<ol>
+<li>g(k,t)和g(t,k)是不等价的（虽然算出来是一样的），因为我们默认<strong>k&gt;t</strong>，<strong>要保证x坐标递增</strong>（所以数组a要qsort，单调队列中的标号也是递增的）</li>
+<li>当i&gt;j时f[i,j]是不存在的</li>
+<li>注意端点，方程不能写成<span>$f[i-1,k]+(a[k+1]-a[j])^2$</span><!-- Has MathJax -->，因为有可能k=n，而又有多组数据，会wa。</li>
+<li>算坐标时longint会爆</li>
+<li>最好把上面推导中的小于改成<strong>小于等于</strong>，原因是什么我也不知道</li>
+</ol>
+<p>在ubuntu下测最后一点tle，试了一下标程也是，那开个inline吧==。</p>
+<dir style="display:none"><a href="/2016/08/29/JSOI2016-提高1班-Day3-separate/0separate.pas" title="复制代码">复制代码</a></dir>
 
-关于本题，我简单推一遍：
-$$f[i,j]=min(f[i-1,k-1]+(a[k]-a[j])^2)$$
-设<span>$k&gt;t$</span><!-- Has MathJax -->，若从k转移更优，则：
-$$f[i-1,k-1]+(a[k]-a[j])^2&lt;f[i-1,t-1]+(a[t]-a[j])^2$$
-变形后：$$\dfrac{(f[i-1,k-1]+a[k]^2)-(f[i-1,t-1]+a[t]^2)}{a[k]-a[t]}&lt;2a[j]$$
-记$$x(k)=a[k],y(k)=f[i-1,k-1]+a[k]^2$$
-则上式变形为：$$\dfrac{y(k)-y(t)}{x(k)-x(t)}&lt;2a[j]$$
-把k和t看成点，左边就是$kt$的斜率，记为$g(k,t)$，当$g(k,t)&lt;2a[j]$时k优于t
-
-用**单调队列**维护：
-**从头出队**：满足上面的情况，t出队
-
-**从尾出队**：设<span>$k&lt;t&lt;l$</span><!-- Has MathJax -->，若<span>$g(l,t)&lt;g(t,k)$</span><!-- Has MathJax -->，那么t一定不是最优解，分类讨论：
-1. 若<span>$g(t,k)&lt;2a[j]$</span><!-- Has MathJax -->，那么t不比k优
-2. 若<span>$g(t,k)&gt;2a[j]$</span><!-- Has MathJax -->，则<span>$g(l,t)&lt;2a[j]$</span><!-- Has MathJax -->，l比t优
-
-所以存在上述情况，t出队
-
-注意点：
-1. g(k,t)和g(t,k)是不等价的（虽然算出来是一样的），因为我们默认**k&gt;t**，**要保证x坐标递增**（所以数组a要qsort，单调队列中的标号也是递增的）
-2. 当i&gt;j时f[i,j]是不存在的
-3. 注意端点，方程不能写成<span>$f[i-1,k]+(a[k+1]-a[j])^2$</span><!-- Has MathJax -->，因为有可能k=n，而又有多组数据，会wa。
-4. 算坐标时longint会爆
-5. 最好把上面推导中的小于改成**小于等于**，原因是什么我也不知道
-
-在ubuntu下测最后一点tle，试了一下标程也是，那开个inline吧==。
-
-&lt;dir style=&quot;display:none&quot;&gt;<a href="/2016/08/29/JSOI2016-提高1班-Day3-separate/0separate.pas" title="复制代码">复制代码</a>&lt;/dir&gt;
-
-```delphi separate.pas
-{$inline on}
-uses math;
-type int=longint;
-var 
-    n,m,i,j,h,t,t0,t1,p,c:int;
-    a,q:array[0..5010] of int;
-    x,y:array[0..5010] of qword;
-    f:array[0..1,0..5010] of int;
-
-procedure swap(var a,b:int);
-var tmp:int;
-begin tmp:=a;a:=b;b:=tmp end;
-
-procedure qsort(b,e:int);
-var i,j,x:int;
-begin
-    i:=b;j:=e;x:=a[random(e-b)+b];
-    repeat
-        while a[i]&lt;x do inc(i);
-        while a[j]&gt;x do dec(j);
-        if i&lt;=j then begin
-            swap(a[i],a[j]);
-            inc(i);dec(j);
-        end;
-    until i&gt;j;
-    if i&lt;e then qsort(i,e);
-    if b&lt;j then qsort(b,j);
-end;
-
-function better(i,j,k:int):boolean;inline;
-begin
-    //i&gt;j&gt;k, g[i,j]&lt;=g[j,k]
-    better:=(y[i]-y[j])*(x[j]-x[k])&lt;=(y[j]-y[k])*(x[i]-x[j]);
-end;
-
-function check(i,j,k:int):boolean;inline;
-begin
-    //j&gt;k,g[j,k]&lt;=2*a[i]
-    check:=(y[j]-y[k])&lt;=2*a[i]*(x[j]-x[k]);
-end;
-
-begin
-    assign(input,&#39;separate.in&#39;);reset(input);
-    assign(output,&#39;separate.out&#39;);rewrite(output);
-    read(t0);
-    for t1:=1 to t0 do begin
-        read(n,m);
-        for i:=1 to n do read(a[i]);
-        qsort(1,n);
-        for i:=1 to n do f[1,i]:=sqr(a[i]-a[1]);
-        p:=0;c:=1;
-        for i:=2 to m do begin
-            p:=1-p;c:=1-c;
-            h:=0;t:=0;q[h]:=i-1;
-            for j:=i to n do begin
-                x[j]:=a[j];
-                y[j]:=f[p,j-1]+sqr(a[j]);
-                while (h&lt;t) and better(j,q[t],q[t-1]) do dec(t);
-                inc(t);q[t]:=j;
-                while (h&lt;t) and check(j,q[h+1],q[h]) do inc(h);
-                f[c,j]:=f[p,q[h]-1]+sqr(a[q[h]]-a[j]);
-            end;
-        end;
-        writeln(&#39;Case &#39;,t1,&#39;: &#39;,f[c,n]);
-    end;
-    close(input);close(output);
-end.
-</code></pre>  
+<figure class="highlight delphi"><figcaption><span>separate.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;$inline on&#125;</span></span><br><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,m,i,j,h,t,t0,t1,p,c:int;</span><br><span class="line">    a,q:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">5010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    x,y:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">5010</span>] <span class="keyword">of</span> qword;</span><br><span class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">5010</span>] <span class="keyword">of</span> int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> tmp:int;</span><br><span class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">qsort</span><span class="params">(b,e:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,j,x:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    i:=b;j:=e;x:=a[random(e-b)+b];</span><br><span class="line">    <span class="keyword">repeat</span></span><br><span class="line">        <span class="keyword">while</span> a[i]&lt;x <span class="keyword">do</span> inc(i);</span><br><span class="line">        <span class="keyword">while</span> a[j]&gt;x <span class="keyword">do</span> dec(j);</span><br><span class="line">        <span class="keyword">if</span> i&lt;=j <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            swap(a[i],a[j]);</span><br><span class="line">            inc(i);dec(j);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">until</span> i&gt;j;</span><br><span class="line">    <span class="keyword">if</span> i&lt;e <span class="keyword">then</span> qsort(i,e);</span><br><span class="line">    <span class="keyword">if</span> b&lt;j <span class="keyword">then</span> qsort(b,j);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">better</span><span class="params">(i,j,k:int)</span>:</span>boolean;<span class="keyword">inline</span>;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//i&gt;j&gt;k, g[i,j]&lt;=g[j,k]</span></span><br><span class="line">    better:=(y[i]-y[j])*(x[j]-x[k])&lt;=(y[j]-y[k])*(x[i]-x[j]);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">(i,j,k:int)</span>:</span>boolean;<span class="keyword">inline</span>;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="comment">//j&gt;k,g[j,k]&lt;=2*a[i]</span></span><br><span class="line">    check:=(y[j]-y[k])&lt;=<span class="number">2</span>*a[i]*(x[j]-x[k]);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'separate.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'separate.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(t0);</span><br><span class="line">    <span class="keyword">for</span> t1:=<span class="number">1</span> <span class="keyword">to</span> t0 <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(n,m);</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">read</span>(a[i]);</span><br><span class="line">        qsort(<span class="number">1</span>,n);</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[<span class="number">1</span>,i]:=sqr(a[i]-a[<span class="number">1</span>]);</span><br><span class="line">        p:=<span class="number">0</span>;c:=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            p:=<span class="number">1</span>-p;c:=<span class="number">1</span>-c;</span><br><span class="line">            h:=<span class="number">0</span>;t:=<span class="number">0</span>;q[h]:=i-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> j:=i <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">                x[j]:=a[j];</span><br><span class="line">                y[j]:=f[p,j-<span class="number">1</span>]+sqr(a[j]);</span><br><span class="line">                <span class="keyword">while</span> (h&lt;t) <span class="keyword">and</span> better(j,q[t],q[t-<span class="number">1</span>]) <span class="keyword">do</span> dec(t);</span><br><span class="line">                inc(t);q[t]:=j;</span><br><span class="line">                <span class="keyword">while</span> (h&lt;t) <span class="keyword">and</span> check(j,q[h+<span class="number">1</span>],q[h]) <span class="keyword">do</span> inc(h);</span><br><span class="line">                f[c,j]:=f[p,q[h]-<span class="number">1</span>]+sqr(a[q[h]]-a[j]);</span><br><span class="line">            <span class="keyword">end</span>;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        writeln(<span class="string">'Case '</span>,t1,<span class="string">': '</span>,f[c,n]);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -281,7 +198,7 @@ end.
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">5.</span> <span class="toc-text">水解</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">5.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">6.</span> <span class="toc-text">正解</span></a></li></ol>
  
   </div>
 
