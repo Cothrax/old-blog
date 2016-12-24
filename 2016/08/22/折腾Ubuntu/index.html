@@ -118,26 +118,72 @@
 <li>经过前面的步骤，能进选择界面了，然后按F6，把<code>nomodeset</code>选上，就可以install Ubuntu了。<a id="more"></a>
 </li>
 </ol>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="GMONE"><a href="#GMONE" class="headerlink" title="GMONE"></a>GMONE</h3><p>noi_linux的桌面是gnome，而ubuntu 14默认桌面的unity。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gnome</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="GMONE"><a href="#GMONE" class="headerlink" title="GMONE"></a>GMONE</h3><p>noi_linux的桌面是gnome，而ubuntu 14默认桌面的unity。</p>
+<pre><code class="bash">apt-get install gnome
+</code></pre>
 <p>然后注销，在登陆时选一下就可以了。</p>
 <h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><p>每次都要sudo很不爽，于是切换到root，passwd后设置新的root密码，su后输入密码就可以了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br><span class="line">su</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">sudo passwd
+su
+</code></pre>
 <p><strong>下文的命令都是以root执行的</strong></p>
-<p>还可以切换回普通用户，两个都可以<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">su user_name</span><br></pre></td></tr></table></figure></p>
-<h3 id="改hosts"><a href="#改hosts" class="headerlink" title="改hosts"></a>改hosts</h3><p>科学上网可以用vpn，当然如果需求比较低的话，性价比最高的是hosts<br>linux的hosts的位置是<code>/etc/hosts</code><br>记得刷新dns<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/networking restart</span><br></pre></td></tr></table></figure></p>
+<p>还可以切换回普通用户，两个都可以</p>
+<pre><code class="bash">exit
+su user_name
+</code></pre>
+<h3 id="改hosts"><a href="#改hosts" class="headerlink" title="改hosts"></a>改hosts</h3><p>科学上网可以用vpn，当然如果需求比较低的话，性价比最高的是hosts<br>linux的hosts的位置是<code>/etc/hosts</code><br>记得刷新dns</p>
+<pre><code class="bash">/etc/init.d/networking restart
+</code></pre>
 <h3 id="安装Node-js等"><a href="#安装Node-js等" class="headerlink" title="安装Node.js等"></a>安装Node.js等</h3><p>这篇日志发自Ubuntu，要用Hexo就需要Node.js</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get update  </span><br><span class="line">apt-get install -y python-software-properties software-properties-common  </span><br><span class="line">add-apt-repository ppa:chris-lea/node.js</span><br><span class="line">apt-get update  </span><br><span class="line">apt-get install nodejs</span><br></pre></td></tr></table></figure>
-<h4 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry http://registry.cnpmjs.org</span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure>
-<h4 id="装GIT和HEXO"><a href="#装GIT和HEXO" class="headerlink" title="装GIT和HEXO"></a>装GIT和HEXO</h4><p><code>-g</code>选项指默认安装到<code>/usr/lib/node_modules/npm</code>下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git-core</span><br><span class="line">npm install -g hexo</span><br><span class="line">npm install -g hexo-math</span><br></pre></td></tr></table></figure></p>
-<h4 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h4><p>然后似乎报了<code>TypeError: Object #&lt;Object&gt; has no method &#39;parse&#39;</code>错误，google了一下好像是因为node版本低了，于是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean <span class="_">-f</span></span><br><span class="line">npm install -g n</span><br><span class="line">n stable</span><br></pre></td></tr></table></figure></p>
-<h3 id="添加path"><a href="#添加path" class="headerlink" title="添加path"></a>添加path</h3><p>因为没有忘记加<code>-g</code>，报<code>Hexo command not found</code>，于是手动将hexo的bin加到path里，gedit打开后添加<code>PATH=$PATH:$HOME/bin:/home/cothrax/Hexo/node_modules/hexo/bin</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
-<h3 id="设置命令别名"><a href="#设置命令别名" class="headerlink" title="设置命令别名"></a>设置命令别名</h3><p>有些命令很长每次都要敲不方便，于是再<code>~/</code>下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch .bash_aliases</span><br><span class="line">gedit .bash_aliases</span><br><span class="line"><span class="built_in">source</span> .bash_aliases</span><br></pre></td></tr></table></figure></p>
-<p>编辑时写入alias，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> chrome=<span class="string">'chromium-browser &amp;'</span></span><br><span class="line"><span class="built_in">alias</span> ff=<span class="string">'firefox &amp;'</span></span><br><span class="line"><span class="built_in">alias</span> en=<span class="string">'firefox https://app.yinxiang.com/Home.action &amp;'</span></span><br><span class="line"><span class="built_in">alias</span> opdir=<span class="string">'nautilus'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>每次都要敲很长的路径名，不如设一下环境变量，同样在<code>~/.bash_aliases</code>写入，如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> BLOG=<span class="string">'/home/wd/Hexo/'</span></span><br><span class="line"><span class="built_in">export</span> POST=<span class="string">'/home/wd/Hexo/source/_posts/'</span></span><br></pre></td></tr></table></figure></p>
+<pre><code class="bash">apt-get update  
+apt-get install -y python-software-properties software-properties-common  
+add-apt-repository ppa:chris-lea/node.js
+apt-get update  
+apt-get install nodejs
+</code></pre>
+<h4 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h4><pre><code class="bash">npm config set registry http://registry.cnpmjs.org
+npm info express
+</code></pre>
+<h4 id="装GIT和HEXO"><a href="#装GIT和HEXO" class="headerlink" title="装GIT和HEXO"></a>装GIT和HEXO</h4><p><code>-g</code>选项指默认安装到<code>/usr/lib/node_modules/npm</code>下</p>
+<pre><code class="bash">apt-get install git-core
+npm install -g hexo
+npm install -g hexo-math
+</code></pre>
+<h4 id="更新node-js"><a href="#更新node-js" class="headerlink" title="更新node.js"></a>更新node.js</h4><p>然后似乎报了<code>TypeError: Object #&lt;Object&gt; has no method &#39;parse&#39;</code>错误，google了一下好像是因为node版本低了，于是</p>
+<pre><code class="bash">npm cache clean -f
+npm install -g n
+n stable
+</code></pre>
+<h3 id="添加path"><a href="#添加path" class="headerlink" title="添加path"></a>添加path</h3><p>因为没有忘记加<code>-g</code>，报<code>Hexo command not found</code>，于是手动将hexo的bin加到path里，gedit打开后添加<code>PATH=$PATH:$HOME/bin:/home/cothrax/Hexo/node_modules/hexo/bin</code></p>
+<pre><code class="bash">gedit ~/.bash_profile
+source ~/.bash_profile
+</code></pre>
+<h3 id="设置命令别名"><a href="#设置命令别名" class="headerlink" title="设置命令别名"></a>设置命令别名</h3><p>有些命令很长每次都要敲不方便，于是再<code>~/</code>下：</p>
+<pre><code class="bash">touch .bash_aliases
+gedit .bash_aliases
+source .bash_aliases
+</code></pre>
+<p>编辑时写入alias，比如：</p>
+<pre><code class="bash">alias chrome=&#39;chromium-browser &amp;&#39;
+alias ff=&#39;firefox &amp;&#39;
+alias en=&#39;firefox https://app.yinxiang.com/Home.action &amp;&#39;
+alias opdir=&#39;nautilus&#39;
+</code></pre>
+<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>每次都要敲很长的路径名，不如设一下环境变量，同样在<code>~/.bash_aliases</code>写入，如：</p>
+<pre><code class="bash">export BLOG=&#39;/home/wd/Hexo/&#39;
+export POST=&#39;/home/wd/Hexo/source/_posts/&#39;
+</code></pre>
 <h3 id="安装Brother打印机驱动"><a href="#安装Brother打印机驱动" class="headerlink" title="安装Brother打印机驱动"></a>安装Brother打印机驱动</h3><p>Brother提供了LINUX版本的驱动，到官网找Driver Install Tool，或者google设备号就能找到。<br>比如我的港版L2700D在：<a href="http://support.brother.com/g/b/downloadlist.aspx?c=hk&amp;lang=en&amp;prod=mfcl2700d_as&amp;os=128" target="_blank" rel="external">http://support.brother.com/g/b/downloadlist.aspx?c=hk&amp;lang=en&amp;prod=mfcl2700d_as&amp;os=128</a><br>然后root身份运行脚本就可以了，先输入设备好查询deb包，然后N个y同意协议，然后问你要不要specify device URI，选n就好了（不是那是什么），然后test page就打印出来了。</p>
-<h3 id="切换应用程序快捷键"><a href="#切换应用程序快捷键" class="headerlink" title="切换应用程序快捷键"></a>切换应用程序快捷键</h3><p>gnome compiz下这个快捷键似乎坏了，系统设置里选了也没用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install compizconfig-settings-manager</span><br></pre></td></tr></table></figure></p>
+<h3 id="切换应用程序快捷键"><a href="#切换应用程序快捷键" class="headerlink" title="切换应用程序快捷键"></a>切换应用程序快捷键</h3><p>gnome compiz下这个快捷键似乎坏了，系统设置里选了也没用。</p>
+<pre><code class="bash">sudo apt-get install compizconfig-settings-manager
+</code></pre>
 <p>应用程序-&gt;系统工具-&gt;Preference -&gt; CompizConfig Setting Manager，点左侧 窗口管理，勾选右面的“static application switch”</p>
-<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>装了14想升到16，于是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get dist-upgrade</span><br><span class="line">sudo reboot</span><br><span class="line">sudo update-manager –d</span><br></pre></td></tr></table></figure></p>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>装了14想升到16，于是</p>
+<pre><code class="bash">sudo apt-get update
+sudo apt-get dist-upgrade
+sudo reboot
+sudo update-manager –d
+</code></pre>
 <p>当然以上操作也可以在图形界面下完成，系统工具里有软件包更新，Administration里有软件更新器<br>然后重启后，再进ubuntu时黑屏了，都做好重装的准备了，然后在win下把easybcd的ubuntu引导删掉重加一下就好了。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="USB容量丢失"><a href="#USB容量丢失" class="headerlink" title="USB容量丢失"></a>USB容量丢失</h3><p>原来30G的U盘做了启动盘后还剩1.03G囧。<br>找Win下的磁盘管理却不能删除卷，然后用<a href="http://www.diskgenius.cn/download.php" target="_blank" rel="external">Disk Genius</a>解决啦。</p>
   

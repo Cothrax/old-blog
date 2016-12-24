@@ -1182,18 +1182,8 @@ article .article-content .right {
   color: #2ca6cb;
 }
 .copy {
-  position: relative;
-  z-index: 10;
-  color: #000;
-  font-size: 12px;
-  margin: 0px 11px -98px 0px;
-  text-align: right;
-}
-.copy a {
-  color: #8e908c;
-}
-.copy a:hover {
-  color: #000;
+  position: absolute;
+  display: none;
 }
 .animated ul ul li a:hover {
   color: #000;

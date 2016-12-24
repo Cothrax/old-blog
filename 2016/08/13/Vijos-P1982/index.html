@@ -124,7 +124,34 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><strong>划分DP+滚动数组</strong><br>f[t,i,j] 在a[1..i]中取t份，与b[1..j]匹配的方法数。<br>注意初始化f[0,i,0]=1</p>
 <dir style="display:none"><a href="/2016/08/13/Vijos-P1982/p1982.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>p1982.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">const</span> z=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,m,k,i,i0,i1,j,t,l:int;</span><br><span class="line">    f:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>,<span class="number">0</span>..<span class="number">1010</span>,<span class="number">0</span>..<span class="number">210</span>] <span class="keyword">of</span> int;</span><br><span class="line">    a,b:ansistring;</span><br><span class="line"><span class="keyword">begin</span> <span class="comment">&#123;Main&#125;</span></span><br><span class="line">    readln(n,m,k);</span><br><span class="line">    readln(a);readln(b);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span> <span class="keyword">to</span> n <span class="keyword">do</span> f[<span class="number">0</span>,i,<span class="number">0</span>]:=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        i0:=i <span class="keyword">mod</span> <span class="number">2</span>;i1:=(i+<span class="number">1</span>) <span class="keyword">mod</span> <span class="number">2</span>;</span><br><span class="line">        fillchar(f[i0],sizeof(f[i0]),<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span></span><br><span class="line">            <span class="keyword">for</span> t:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">                f[i0,j,t]:=f[i0,j-<span class="number">1</span>,t];</span><br><span class="line">                l:=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> a[j-l]=b[t-l] <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">                    <span class="keyword">if</span> l&gt;=min(j,t) <span class="keyword">then</span> <span class="keyword">break</span>;</span><br><span class="line">                    f[i0,j,t]:=(f[i0,j,t]+f[i1,j-l-<span class="number">1</span>,t-l-<span class="number">1</span>]) <span class="keyword">mod</span> z;</span><br><span class="line">                    inc(l);</span><br><span class="line">                <span class="keyword">end</span>;</span><br><span class="line">            <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(f[k <span class="keyword">mod</span> <span class="number">2</span>,n,m]);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<p><code>delphi p1982.pas
+uses math;
+type int=longint;
+const z=1000000007;
+var 
+    n,m,k,i,i0,i1,j,t,l:int;
+    f:array[0..1,0..1010,0..210] of int;
+    a,b:ansistring;
+begin {Main}
+    readln(n,m,k);
+    readln(a);readln(b);
+    for i:=0 to n do f[0,i,0]:=1;
+    for i:=1 to k do begin
+        i0:=i mod 2;i1:=(i+1) mod 2;
+        fillchar(f[i0],sizeof(f[i0]),0);
+        for j:=1 to n do
+            for t:=1 to m do begin
+                f[i0,j,t]:=f[i0,j-1,t];
+                l:=0;
+                while a[j-l]=b[t-l] do begin
+                    if l&gt;=min(j,t) then break;
+                    f[i0,j,t]:=(f[i0,j,t]+f[i1,j-l-1,t-l-1]) mod z;
+                    inc(l);
+                end;
+            end;
+    end;
+    write(f[k mod 2,n,m]);
+end.</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">

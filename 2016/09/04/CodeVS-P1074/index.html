@@ -112,7 +112,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系并查集"><span class="toc-number">5.1.</span> <span class="toc-text">关系并查集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带权并查集"><span class="toc-number">5.2.</span> <span class="toc-text">带权并查集</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系并查集"><span class="toc-number">5.1.</span> <span class="toc-text">关系并查集</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -167,29 +167,88 @@
 </ol>
 <dir style="display:none"><a href="/2016/09/04/CodeVS-P1074/p2024.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>p2024.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,k,ans,i,t,a,b:longint;</span><br><span class="line">    par,rank:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">150010</span>] <span class="keyword">of</span> longint;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(x:longint)</span>:</span>longint;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> find:=x</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        par[x]:=find(par[x]);</span><br><span class="line">        find:=par[x];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">unite</span><span class="params">(x,y:longint)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> x=y <span class="keyword">then</span> <span class="keyword">exit</span>;</span><br><span class="line">    <span class="keyword">if</span> rank[x]&gt;rank[y] <span class="keyword">then</span> par[y]:=x</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        par[x]:=y;</span><br><span class="line">        <span class="keyword">if</span> rank[x]=rank[y] <span class="keyword">then</span> inc(rank[y]);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(x,y:longint)</span>:</span>boolean;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    same:=(find(x)=find(y));</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">read</span>(n,k);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> <span class="number">3</span>*n <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        par[i]:=i;</span><br><span class="line">        rank[i]:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    ans:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(t,a,b);</span><br><span class="line">        <span class="keyword">if</span> (max(a,b)&gt;n) <span class="keyword">or</span> (min(a,b)&lt;<span class="number">1</span>) <span class="keyword">then</span> <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> t=<span class="number">1</span> <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> same(a,b+n) <span class="keyword">or</span> same(a,b+<span class="number">2</span>*n) <span class="keyword">then</span> <span class="keyword">continue</span>;</span><br><span class="line">            unite(a,b);</span><br><span class="line">            unite(a+n,b+n);</span><br><span class="line">            unite(a+<span class="number">2</span>*n,b+<span class="number">2</span>*n);</span><br><span class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> same(a,b) <span class="keyword">or</span> same(a,b+<span class="number">2</span>*n) <span class="keyword">then</span> <span class="keyword">continue</span>;</span><br><span class="line">            unite(a,b+n);</span><br><span class="line">            unite(a+n,b+<span class="number">2</span>*n);</span><br><span class="line">            unite(a+<span class="number">2</span>*n,b);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        inc(ans);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(k-ans);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-<h3 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h3><p>今天再看这道题，发现带权并查集的方法更通用一些。<br>我们定义向量$\overrightarrow{xy}$表示动物x和动物y的关系（<strong>模3意义下</strong>）：</p>
-<ol>
-<li>$\overrightarrow{xy}=0$：同类</li>
-<li>$\overrightarrow{xy}=1$：x吃y</li>
-<li>$\overrightarrow{xy}=2$：y吃x</li>
-</ol>
-<p>这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$<br>那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$<br>表示x吃y，y吃z，那么x被z吃<br>我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]x}$，其中p[x]为x的父亲</p>
-<p>路径压缩时维护权值：记r为当前子树的根，我们把x接到r上，此时的d[x]变成：<br>$d[x]=\overrightarrow{rx}=\overrightarrow{rp[x]}+\overrightarrow{p[x]x}=d[p[x]]+d[x]$<br>（此时p[x]已经递归处理过了，于是已经满足p[p[x]]=r）</p>
-<p>合并时维护权值：已知$f=\overrightarrow{xy}$，把p[x]接到p[y]上：<br>$d[p[x]]=\overrightarrow{p[y]p[x]}=\overrightarrow{p[y]y}-\overrightarrow{xy}-\overrightarrow{p[x]x}=d[y]-f-d[x]$</p>
-<p>并查集初始化为$p[i]=i,d[i]=0$<br>然后处理命题：</p>
-<ol>
-<li>如果not same(x,y)，将它们合并$union(x,y,\overrightarrow{xy})$</li>
-<li>如果same(x,y)那么判断：<ol>
-<li>命题1：$d[y]\not\equiv d[x]\ (mod\ 3)$则矛盾</li>
-<li>命题2：由于$\overrightarrow{xy}=1=\overrightarrow{py}-\overrightarrow{px}=d[y]-d[x]$，所以$d[y]-d[x]\not\equiv 1\ (mod\ 3)$则矛盾</li>
-</ol>
-</li>
-</ol>
-<dir style="display:none"><a href="/2016/09/04/CodeVS-P1074/1074.pas" title="复制代码">复制代码</a></dir>
+<p>```delphi p2024.pas<br>uses math;<br>var<br>    n,k,ans,i,t,a,b:longint;<br>    par,rank:array[0..150010] of longint;</p>
+<p>function find(x:longint):longint;<br>begin<br>    if par[x]=x then find:=x<br>    else begin<br>        par[x]:=find(par[x]);<br>        find:=par[x];<br>    end;<br>end;</p>
+<p>procedure unite(x,y:longint);<br>begin<br>    if x=y then exit;<br>    if rank[x]&gt;rank[y] then par[y]:=x<br>    else begin<br>        par[x]:=y;<br>        if rank[x]=rank[y] then inc(rank[y]);<br>    end;<br>end;</p>
+<p>function same(x,y:longint):boolean;<br>begin<br>    same:=(find(x)=find(y));<br>end;</p>
+<p>begin<br>    read(n,k);<br>    for i:=1 to 3<em>n do begin<br>        par[i]:=i;<br>        rank[i]:=0;<br>    end;<br>    ans:=0;<br>    for i:=1 to k do begin<br>        read(t,a,b);<br>        if (max(a,b)&gt;n) or (min(a,b)&lt;1) then continue;<br>        if t=1 then begin<br>            if same(a,b+n) or same(a,b+2</em>n) then continue;<br>            unite(a,b);<br>            unite(a+n,b+n);<br>            unite(a+2<em>n,b+2</em>n);<br>        end else begin<br>            if same(a,b) or same(a,b+2<em>n) then continue;<br>            unite(a,b+n);<br>            unite(a+n,b+2</em>n);<br>            unite(a+2*n,b);<br>        end;<br>        inc(ans);<br>    end;<br>    write(k-ans);<br>end.</p>
+<pre><code>
+### 带权并查集
+今天再看这道题，发现带权并查集的方法更通用一些。
+我们定义向量$\overrightarrow{xy}$表示动物x和动物y的关系（**模3意义下**）：
+1. $\overrightarrow{xy}=0$：同类
+2. $\overrightarrow{xy}=1$：x吃y
+3. $\overrightarrow{xy}=2$：y吃x
 
-<figure class="highlight delphi"><figcaption><span>1074.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,k,i,a,b,c,ans:int;</span><br><span class="line">    par,d:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">50010</span>] <span class="keyword">of</span> int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">(x:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">var</span> old:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> par[x]=x <span class="keyword">then</span> <span class="keyword">exit</span>(x)</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        old:=par[x];</span><br><span class="line">        par[x]:=find(par[x]);</span><br><span class="line">        d[x]:=(d[x]+d[old]) <span class="keyword">mod</span> <span class="number">3</span>;</span><br><span class="line">        find:=par[x];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">union</span><span class="params">(x,y,f:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> px,py:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    px:=find(x);py:=find(y);</span><br><span class="line">    par[px]:=py;</span><br><span class="line">    d[px]:=(d[y]-f-d[x]+<span class="number">3</span>) <span class="keyword">mod</span> <span class="number">3</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">same</span><span class="params">(x,y:int)</span>:</span>boolean;</span><br><span class="line"><span class="keyword">begin</span> same:=find(x)=find(y) <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">read</span>(n,k);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        par[i]:=i;</span><br><span class="line">        d[i]:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    ans:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(a,b,c);</span><br><span class="line">        <span class="keyword">if</span> (b&gt;n) <span class="keyword">or</span> (c&gt;n) <span class="keyword">then</span> inc(ans)</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a=<span class="number">2</span>) <span class="keyword">and</span> (b=c) <span class="keyword">then</span> inc(ans)</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> same(b,c) <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (a=<span class="number">1</span>) <span class="keyword">and</span> (d[b]&lt;&gt;d[c]) <span class="keyword">then</span> inc(ans);</span><br><span class="line">            <span class="keyword">if</span> (a=<span class="number">2</span>) <span class="keyword">and</span> ((d[c]-d[b]+<span class="number">3</span>) <span class="keyword">mod</span> <span class="number">3</span>&lt;&gt;<span class="number">1</span>) <span class="keyword">then</span> inc(ans);</span><br><span class="line">        <span class="keyword">end</span> <span class="keyword">else</span> union(b,c,a-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(ans);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-  
+这样定义是满足向量性质的，比如$\overrightarrow{xy}=1,\overrightarrow{yz}=1$
+那么$\overrightarrow{xz}=\overrightarrow{xy}+\overrightarrow{yz}=2$
+表示x吃y，y吃z，那么x被z吃
+我们定义并查集元素的权：$d[x]=\overrightarrow{p[x]x}$，其中p[x]为x的父亲
+
+路径压缩时维护权值：记r为当前子树的根，我们把x接到r上，此时的d[x]变成：
+$d[x]=\overrightarrow{rx}=\overrightarrow{rp[x]}+\overrightarrow{p[x]x}=d[p[x]]+d[x]$
+（此时p[x]已经递归处理过了，于是已经满足p[p[x]]=r）
+
+合并时维护权值：已知$f=\overrightarrow{xy}$，把p[x]接到p[y]上：
+$d[p[x]]=\overrightarrow{p[y]p[x]}=\overrightarrow{p[y]y}-\overrightarrow{xy}-\overrightarrow{p[x]x}=d[y]-f-d[x]$
+
+并查集初始化为$p[i]=i,d[i]=0$
+然后处理命题：
+1. 如果not same(x,y)，将它们合并$union(x,y,\overrightarrow{xy})$
+2. 如果same(x,y)那么判断：
+   1. 命题1：$d[y]\not\equiv d[x]\ (mod\ 3)$则矛盾
+   2. 命题2：由于$\overrightarrow{xy}=1=\overrightarrow{py}-\overrightarrow{px}=d[y]-d[x]$，所以$d[y]-d[x]\not\equiv 1\ (mod\ 3)$则矛盾
+
+&lt;dir style=&quot;display:none&quot;&gt;<a href="/2016/09/04/CodeVS-P1074/1074.pas" title="复制代码">复制代码</a>&lt;/dir&gt;
+
+```delphi 1074.pas
+type int=longint;
+var 
+    n,k,i,a,b,c,ans:int;
+    par,d:array[0..50010] of int;
+
+function find(x:int):int;
+var old:int;
+begin
+    if par[x]=x then exit(x)
+    else begin
+        old:=par[x];
+        par[x]:=find(par[x]);
+        d[x]:=(d[x]+d[old]) mod 3;
+        find:=par[x];
+    end;
+end;
+
+procedure union(x,y,f:int);
+var px,py:int;
+begin
+    px:=find(x);py:=find(y);
+    par[px]:=py;
+    d[px]:=(d[y]-f-d[x]+3) mod 3;
+end;
+
+function same(x,y:int):boolean;
+begin same:=find(x)=find(y) end;
+
+begin
+    read(n,k);
+    for i:=1 to n do begin
+        par[i]:=i;
+        d[i]:=0;
+    end;
+    ans:=0;
+    for i:=1 to k do begin
+        read(a,b,c);
+        if (b&gt;n) or (c&gt;n) then inc(ans)
+        else if (a=2) and (b=c) then inc(ans)
+        else if same(b,c) then begin
+            if (a=1) and (d[b]&lt;&gt;d[c]) then inc(ans);
+            if (a=2) and ((d[c]-d[b]+3) mod 3&lt;&gt;1) then inc(ans);
+        end else union(b,c,a-1);
+    end;
+    write(ans);
+end.
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -251,7 +310,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系并查集"><span class="toc-number">5.1.</span> <span class="toc-text">关系并查集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带权并查集"><span class="toc-number">5.2.</span> <span class="toc-text">带权并查集</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示​"><span class="toc-number">4.</span> <span class="toc-text">提示​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">5.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系并查集"><span class="toc-number">5.1.</span> <span class="toc-text">关系并查集</span></a></li></ol></li></ol>
  
   </div>
 

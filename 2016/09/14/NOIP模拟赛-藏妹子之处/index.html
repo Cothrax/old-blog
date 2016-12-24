@@ -135,7 +135,25 @@
 </ol>
 <dir style="display:none"><a href="/2016/09/14/NOIP模拟赛-藏妹子之处/excel.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>excel.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">type</span> int=longint;</span><br><span class="line"><span class="keyword">const</span> inf=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">var</span> n,m,i,j,mi,mx:int;ans:qword;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    assign(input,<span class="string">'excel.in'</span>);reset(input);</span><br><span class="line">    assign(output,<span class="string">'excel.out'</span>);rewrite(output);</span><br><span class="line">    <span class="keyword">read</span>(n,m,mi,mx);</span><br><span class="line">    ans:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">3</span> <span class="keyword">to</span> n <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">3</span> <span class="keyword">to</span> m <span class="keyword">do</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">2</span>*(i+j-<span class="number">2</span>)&gt;=mi) <span class="keyword">and</span> (<span class="number">2</span>*(i+j-<span class="number">2</span>)&lt;=mx) <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">                ans:=ans+<span class="number">6</span>*(i-<span class="number">2</span>)*(j-<span class="number">2</span>)*(n-i+<span class="number">1</span>)*(m-j+<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> ans&gt;inf <span class="keyword">then</span> ans:=ans <span class="keyword">mod</span> inf;</span><br><span class="line">            <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(ans);</span><br><span class="line">    close(input);close(output);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<p><code>delphi excel.pas
+uses math;
+type int=longint;
+const inf=1000000007;
+var n,m,i,j,mi,mx:int;ans:qword;
+begin
+    assign(input,&#39;excel.in&#39;);reset(input);
+    assign(output,&#39;excel.out&#39;);rewrite(output);
+    read(n,m,mi,mx);
+    ans:=0;
+    for i:=3 to n do
+        for j:=3 to m do
+            if (2*(i+j-2)&gt;=mi) and (2*(i+j-2)&lt;=mx) then begin
+                ans:=ans+6*(i-2)*(j-2)*(n-i+1)*(m-j+1);
+                if ans&gt;inf then ans:=ans mod inf;
+            end;
+    write(ans);
+    close(input);close(output);
+end.</code></p>
   
 	</div>
 		<footer class="article-footer clearfix">

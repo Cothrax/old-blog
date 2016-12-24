@@ -97,7 +97,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入1"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出1"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制​"><span class="toc-number">4.</span> <span class="toc-text">限制​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">5.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来源"><span class="toc-number">6.</span> <span class="toc-text">来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">7.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">8.</span> <span class="toc-text">正解</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入1"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出1"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制​"><span class="toc-number">4.</span> <span class="toc-text">限制​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">5.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来源"><span class="toc-number">6.</span> <span class="toc-text">来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">7.</span> <span class="toc-text">水解</span></a></li></ol>
 		
 		</div>
 		
@@ -123,27 +123,227 @@
 <p>然后从根开始dfs，对一节点v，$count[v]+=\sum count[u]\ |\ u=child(v)$<br>count[1]不考虑，若count[i]=路径总数tot，那么i在路径的交上。</p>
 <dir style="display:none"><a href="/2016/08/13/Vijos-P1983/P1983.pas" title="复制代码">复制代码</a></dir>
 
-<figure class="highlight delphi"><figcaption><span>P1983.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">    int=longint; </span><br><span class="line">    edge=<span class="keyword">record</span> f,t,w,next:int <span class="keyword">end</span>;</span><br><span class="line">    ask=<span class="keyword">record</span> f,t,w,lca:int <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">600010</span>] <span class="keyword">of</span> edge;</span><br><span class="line">    head,dep,count:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    par,dist:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>,<span class="number">0</span>..<span class="number">20</span>] <span class="keyword">of</span> int;</span><br><span class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>] <span class="keyword">of</span> ask;</span><br><span class="line">    n,m,logn,i,j,f0,t0,w0,l,r,mid,ans:int;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t,w:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> m:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</span><br><span class="line">    g[m].f:=f;g[m].t:=t;g[m].w:=w;</span><br><span class="line">    g[m].next:=head[f];head[f]:=m;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs</span><span class="params">(v,p,d,w:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    dep[v]:=d;par[v,<span class="number">0</span>]:=p;dist[v,<span class="number">0</span>]:=w;</span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> dep[u]=<span class="number">0</span> <span class="keyword">then</span> dfs(u,v,d+<span class="number">1</span>,g[i].w);</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">lca</span><span class="params">(u,v,id:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> dep[u]&lt;dep[v] <span class="keyword">then</span> <span class="keyword">begin</span> i:=u;u:=v;v:=i <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=logn <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> dep[par[u,i]]&gt;=dep[v] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(a[id].w,dist[u,i]);</span><br><span class="line">            u:=par[u,i];</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">if</span> u=v <span class="keyword">then</span> <span class="keyword">begin</span> a[id].lca:=u;<span class="keyword">exit</span> <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=logn <span class="keyword">downto</span> <span class="number">0</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> par[u,i]&lt;&gt;par[v,i] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(a[id].w,dist[u,i]+dist[v,i]);</span><br><span class="line">            u:=par[u,i];v:=par[v,i];</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    a[id].w:=a[id].w+dist[u,<span class="number">0</span>]+dist[v,<span class="number">0</span>];</span><br><span class="line">    a[id].lca:=par[u,<span class="number">0</span>];</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs2</span><span class="params">(v:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> u&lt;&gt;par[v,<span class="number">0</span>] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            dfs2(u);</span><br><span class="line">            inc(count[v],count[u]);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">(x:int)</span>:</span>boolean;</span><br><span class="line"><span class="keyword">var</span> i,j,w,tot:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    fillchar(count,sizeof(count),<span class="number">0</span>);</span><br><span class="line">    w:=<span class="number">0</span>;tot:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> a[i].w&gt;x <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(count[a[i].f]);</span><br><span class="line">            inc(count[a[i].t]);</span><br><span class="line">            dec(count[a[i].lca],<span class="number">2</span>);</span><br><span class="line">            w:=max(w,a[i].w-x);inc(tot);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">if</span> tot=<span class="number">0</span> <span class="keyword">then</span> <span class="keyword">exit</span>(true);</span><br><span class="line">    </span><br><span class="line">    dfs2(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">2</span> <span class="keyword">to</span> n <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> (count[i]=tot) <span class="keyword">and</span> (dist[i,<span class="number">0</span>]&gt;=w) <span class="keyword">then</span> <span class="keyword">exit</span>(true);</span><br><span class="line">    check:=false;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">read</span>(n,m);</span><br><span class="line">    logn:=floor(ln(n)/ln(<span class="number">2</span>));</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(f0,t0,w0);</span><br><span class="line">        add(f0,t0,w0);add(t0,f0,w0);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(a[i].f,a[i].t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//倍增数组和LCA</span></span><br><span class="line">    filldword(dist,sizeof(dist) <span class="keyword">div</span> <span class="number">4</span>,inf);</span><br><span class="line">    fillchar(par,sizeof(par),<span class="number">0</span>);</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,inf);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> logn <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">1</span> <span class="keyword">to</span> n <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">            par[j,i]:=par[par[j,i-<span class="number">1</span>],i-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> par[j,i]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">                dist[j,i]:=dist[j,i-<span class="number">1</span>]+dist[par[j,i-<span class="number">1</span>],i-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> lca(a[i].f,a[i].t,i);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//二分</span></span><br><span class="line">    l:=<span class="number">0</span>;r:=inf;</span><br><span class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> check(mid) <span class="keyword">then</span> <span class="keyword">begin</span> ans:=mid;r:=mid-<span class="number">1</span> <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> l:=mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(ans);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p><strong>二分+树链剖分+差分序列</strong>，不就是用树链剖分代替了倍增吗，因为直接维护序列就不用dfs了，于是速度会快很多。<br><strong>差分序列</strong>就是把<strong>区间修改</strong>变成对应的<strong>单点修改</strong>，然后可以通过求<strong>前缀和</strong>来计算需要的信息。<br>典型的例子是黄学长做的 noip2012-借教室 那一题：<a href="http://hzwer.com/2959.html" target="_blank" rel="external">去围观</a><br>关于树链剖分可以看神犇的讲解：<a href="http://blog.sina.com.cn/s/blog_7a1746820100wp67.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_7a1746820100wp67.html</a></p>
-<p>关于本题：<br>先树链剖分，顺便求LCA，算出所有运输计划的路径长<br>然后二分时间<br>和水解类似的，把所有大于给定时间的路径求交，然后扫一遍，找可行的边建虫洞。<br>只不过求交直接在剖分得到的树链上做差分序列。</p>
-<p>说明一下我用的<strong>变量</strong></p>
-<ul>
-<li><p>以节点编号为下标</p>
-<blockquote>
-<p>par 直接父节点<br>chd 同一重链上的儿子<br>dep 深度<br>siz 子树上的节点数<br>w 与父节点的连边在树链序列中的编号<br>top 所在重链的顶端节点<br><strong>dist 到根1的距离</strong></p>
-</blockquote>
-</li>
-<li><p>以树链序列中编号为下标的</p>
-<blockquote>
-<p>ev 树链序列，大小为k（最终等于n-1）<br>count 统计次数的差分序列</p>
-</blockquote>
-</li>
-</ul>
-<p>注意编号不要弄混，以及差分时注意<strong>端点</strong>的问题</p>
-<dir style="display:none"><a href="/2016/08/13/Vijos-P1983/pp1983.pas" title="复制代码">复制代码</a></dir>
+<p>```delphi P1983.pas<br>uses math;<br>const inf=1000000000;<br>type<br>    int=longint;<br>    edge=record f,t,w,next:int end;<br>    ask=record f,t,w,lca:int end;<br>var<br>    g:array[0..600010] of edge;<br>    head,dep,count:array[0..300010] of int;<br>    par,dist:array[0..300010,0..20] of int;<br>    a:array[0..300010] of ask;<br>    n,m,logn,i,j,f0,t0,w0,l,r,mid,ans:int;</p>
+<p>procedure add(f,t,w:int);<br>var m:int;<br>begin<br>    inc(head[0]);m:=head[0];<br>    g[m].f:=f;g[m].t:=t;g[m].w:=w;<br>    g[m].next:=head[f];head[f]:=m;<br>end;</p>
+<p>procedure dfs(v,p,d,w:int);<br>var i,u:int;<br>begin<br>    dep[v]:=d;par[v,0]:=p;dist[v,0]:=w;<br>    i:=head[v];<br>    while i&lt;&gt;0 do begin<br>        u:=g[i].t;<br>        if dep[u]=0 then dfs(u,v,d+1,g[i].w);<br>        i:=g[i].next;<br>    end;<br>end;</p>
+<p>procedure lca(u,v,id:int);<br>var i:int;<br>begin<br>    if dep[u]<dep[v] 0="" then="" begin="" i:="u;u:=v;v:=i" end;="" for="" downto="" do="" if="" dep[par[u,i]]="">=dep[v] then begin<br>            inc(a[id].w,dist[u,i]);<br>            u:=par[u,i];<br>        end;<br>    if u=v then begin a[id].lca:=u;exit end;<br>    for i:=logn downto 0 do<br>        if par[u,i]&lt;&gt;par[v,i] then begin<br>            inc(a[id].w,dist[u,i]+dist[v,i]);<br>            u:=par[u,i];v:=par[v,i];<br>        end;<br>    a[id].w:=a[id].w+dist[u,0]+dist[v,0];<br>    a[id].lca:=par[u,0];<br>end;</dep[v]></p>
+<p>procedure dfs2(v:int);<br>var i,u:int;<br>begin<br>    i:=head[v];<br>    while i&lt;&gt;0 do begin<br>        u:=g[i].t;<br>        if u&lt;&gt;par[v,0] then begin<br>            dfs2(u);<br>            inc(count[v],count[u]);<br>        end;<br>        i:=g[i].next;<br>    end;<br>end;</p>
+<p>function check(x:int):boolean;<br>var i,j,w,tot:int;<br>begin<br>    fillchar(count,sizeof(count),0);<br>    w:=0;tot:=0;<br>    for i:=1 to m do<br>        if a[i].w&gt;x then begin<br>            inc(count[a[i].f]);<br>            inc(count[a[i].t]);<br>            dec(count[a[i].lca],2);<br>            w:=max(w,a[i].w-x);inc(tot);<br>        end;<br>    if tot=0 then exit(true);</p>
+<pre><code>dfs2(1);
+for i:=2 to n do
+    if (count[i]=tot) and (dist[i,0]&gt;=w) then exit(true);
+check:=false;
+</code></pre><p>end;</p>
+<p>begin<br>    read(n,m);<br>    logn:=floor(ln(n)/ln(2));<br>    for i:=1 to n-1 do begin<br>        read(f0,t0,w0);<br>        add(f0,t0,w0);add(t0,f0,w0);<br>    end;<br>    for i:=1 to m do read(a[i].f,a[i].t);</p>
+<pre><code>//倍增数组和LCA
+filldword(dist,sizeof(dist) div 4,inf);
+fillchar(par,sizeof(par),0);
+dfs(1,0,1,inf);
+for i:=1 to logn do
+    for j:=1 to n do begin
+        par[j,i]:=par[par[j,i-1],i-1];
+        if par[j,i]&lt;&gt;0 then
+            dist[j,i]:=dist[j,i-1]+dist[par[j,i-1],i-1];
+    end;
+for i:=1 to m do lca(a[i].f,a[i].t,i);
 
-<figure class="highlight delphi"><figcaption><span>pp1983.pas</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uses</span> math;</span><br><span class="line"><span class="keyword">const</span> inf=<span class="number">1000000000</span>;</span><br><span class="line"><span class="keyword">type</span></span><br><span class="line">    int=longint; </span><br><span class="line">    edge=<span class="keyword">record</span> f,t,w,next:int <span class="keyword">end</span>;</span><br><span class="line">    ask=<span class="keyword">record</span> f,t,w:int <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">    n,m,i,j,f0,t0,w0,l,r,mid,ans:int;</span><br><span class="line">    g:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">600010</span>] <span class="keyword">of</span> edge;</span><br><span class="line">    head:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    a:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>] <span class="keyword">of</span> ask;</span><br><span class="line">    <span class="comment">//剖分变量</span></span><br><span class="line">    k:int;</span><br><span class="line">    par,chd,dep,w,siz,top,dist,</span><br><span class="line">    ev,cnt:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">300010</span>] <span class="keyword">of</span> int;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">add</span><span class="params">(f,t,w:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> m:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(head[<span class="number">0</span>]);m:=head[<span class="number">0</span>];</span><br><span class="line">    g[m].f:=f;g[m].t:=t;g[m].w:=w;</span><br><span class="line">    g[m].next:=head[f];head[f]:=m;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">//算出dep,siz,chd,par,dist</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs1</span><span class="params">(v,p:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    dep[v]:=dep[p]+<span class="number">1</span>;par[v]:=p;siz[v]:=<span class="number">1</span>;chd[v]:=<span class="number">0</span>;</span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> u&lt;&gt;p <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            dist[u]:=dist[v]+g[i].w;</span><br><span class="line">            dfs1(u,v);</span><br><span class="line">            inc(siz[v],siz[u]);</span><br><span class="line">            <span class="keyword">if</span> siz[u]&gt;siz[chd[v]] <span class="keyword">then</span> chd[v]:=u;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//算出w,top,ev</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">dfs2</span><span class="params">(v,tp:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> i,u:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    inc(k);ev[k]:=dist[v]-dist[par[v]];w[v]:=k;top[v]:=tp;</span><br><span class="line">    <span class="keyword">if</span> chd[v]&lt;&gt;<span class="number">0</span> <span class="keyword">then</span> dfs2(chd[v],tp);</span><br><span class="line">    i:=head[v];</span><br><span class="line">    <span class="keyword">while</span> i&lt;&gt;<span class="number">0</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        u:=g[i].t;</span><br><span class="line">        <span class="keyword">if</span> (u&lt;&gt;par[v]) <span class="keyword">and</span> (u&lt;&gt;chd[v]) <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            dfs2(u,u);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        i:=g[i].next;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> a,b:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> tmp:int;</span><br><span class="line"><span class="keyword">begin</span> tmp:=a;a:=b;b:=tmp <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">lca</span><span class="params">(u,v:int)</span>:</span>int;</span><br><span class="line"><span class="keyword">var</span> tu,tv:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">while</span> true <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> dep[u]&gt;dep[v] <span class="keyword">then</span> swap(u,v);</span><br><span class="line">        tu:=top[u];tv:=top[v];</span><br><span class="line">        <span class="keyword">if</span> tu=tv <span class="keyword">then</span> <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> dep[tu]&lt;dep[tv] <span class="keyword">then</span> v:=par[tv] <span class="keyword">else</span> u:=par[tu];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    lca:=u;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改路径的cnt</span></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">modify</span><span class="params">(u,v:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> tu,tv:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">while</span> true <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> dep[u]&gt;dep[v] <span class="keyword">then</span> swap(u,v);</span><br><span class="line">        tu:=top[u];tv:=top[v];</span><br><span class="line">        <span class="keyword">if</span> tu=tv <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(cnt[w[u]+<span class="number">1</span>]);</span><br><span class="line">            dec(cnt[w[v]+<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">        <span class="keyword">if</span> dep[tu]&lt;dep[tv] <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            inc(cnt[w[tv]+<span class="number">1</span>]);</span><br><span class="line">            dec(cnt[w[v]+<span class="number">1</span>]);</span><br><span class="line">            v:=par[tv];</span><br><span class="line">        <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">            inc(cnt[w[tu]+<span class="number">1</span>]);</span><br><span class="line">            dec(cnt[w[u]+<span class="number">1</span>]);</span><br><span class="line">            u:=par[tu];</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">(x:int)</span>:</span>boolean;</span><br><span class="line"><span class="keyword">var</span> i,tot,maxw,cur:int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    fillchar(cnt,sizeof(cnt),<span class="number">0</span>);</span><br><span class="line">    tot:=<span class="number">0</span>;maxw:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> a[i].w&gt;x <span class="keyword">then</span> <span class="keyword">begin</span></span><br><span class="line">            modify(a[i].f,a[i].t);</span><br><span class="line">            inc(tot);</span><br><span class="line">            maxw:=max(maxw,a[i].w-x);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line">    cur:=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> k <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        inc(cur,cnt[i]);</span><br><span class="line">        <span class="keyword">if</span> (cur=tot) <span class="keyword">and</span> (ev[i]&gt;=maxw) <span class="keyword">then</span> <span class="keyword">exit</span>(true);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    check:=false;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">read</span>(n,m);</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> n-<span class="number">1</span> <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">read</span>(f0,t0,w0);</span><br><span class="line">        add(f0,t0,w0);add(t0,f0,w0);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">read</span>(a[i].f,a[i].t);</span><br><span class="line">    <span class="comment">//树链剖分</span></span><br><span class="line">    k:=<span class="number">0</span>;dfs1(<span class="number">1</span>,<span class="number">1</span>);dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//LCA</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span> <span class="keyword">to</span> m <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        j:=lca(a[i].f,a[i].t);</span><br><span class="line">        a[i].w:=dist[a[i].f]+dist[a[i].t]-<span class="number">2</span>*dist[j]; <span class="comment">//路径长</span></span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//二分</span></span><br><span class="line">    l:=<span class="number">0</span>;r:=inf;</span><br><span class="line">    <span class="keyword">while</span> l&lt;=r <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        mid:=(l+r) <span class="keyword">shr</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> check(mid) <span class="keyword">then</span> <span class="keyword">begin</span> ans:=mid;r:=mid-<span class="number">1</span> <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> l:=mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">write</span>(ans);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-<p>树链修改还可以用<strong>指针</strong>写，好像短一些<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">modify</span><span class="params">(u,v:int)</span>;</span></span><br><span class="line"><span class="keyword">var</span> p:^int;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">while</span> top[u]&lt;&gt;top[v] <span class="keyword">do</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> dep[top[u]]&lt;dep[top[v]] <span class="keyword">then</span> p:=@v <span class="keyword">else</span> p:=@u;</span><br><span class="line">        inc(cnt[w[par[p^]]]);</span><br><span class="line">        dec(cnt[w[p^]]);</span><br><span class="line">        p^:=par[top[p^]];</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">if</span> dep[u]&gt;dep[v] <span class="keyword">then</span> swap(u,v);</span><br><span class="line">    inc(cnt[w[u]+<span class="number">1</span>]);</span><br><span class="line">    dec(cnt[w[v]+<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+//二分
+l:=0;r:=inf;
+while l&lt;=r do begin
+    mid:=(l+r) shr 1;
+    if check(mid) then begin ans:=mid;r:=mid-1 end
+    else l:=mid+1;
+end;
+write(ans);
+</code></pre><p>end.</p>
+<pre><code>
+## 正解
+**二分+树链剖分+差分序列**，不就是用树链剖分代替了倍增吗，因为直接维护序列就不用dfs了，于是速度会快很多。
+**差分序列**就是把**区间修改**变成对应的**单点修改**，然后可以通过求**前缀和**来计算需要的信息。
+典型的例子是黄学长做的 noip2012-借教室 那一题：[去围观](http://hzwer.com/2959.html)
+关于树链剖分可以看神犇的讲解：http://blog.sina.com.cn/s/blog_7a1746820100wp67.html
+
+关于本题：
+先树链剖分，顺便求LCA，算出所有运输计划的路径长
+然后二分时间
+和水解类似的，把所有大于给定时间的路径求交，然后扫一遍，找可行的边建虫洞。
+只不过求交直接在剖分得到的树链上做差分序列。
+
+说明一下我用的**变量**
+- 以节点编号为下标
+&gt; par 直接父节点
+chd 同一重链上的儿子
+dep 深度
+siz 子树上的节点数
+w 与父节点的连边在树链序列中的编号
+top 所在重链的顶端节点
+**dist 到根1的距离**
+
+- 以树链序列中编号为下标的
+&gt; ev 树链序列，大小为k（最终等于n-1）
+count 统计次数的差分序列
+
+注意编号不要弄混，以及差分时注意**端点**的问题
+
+&lt;dir style=&quot;display:none&quot;&gt;<a href="/2016/08/13/Vijos-P1983/pp1983.pas" title="复制代码">复制代码</a>&lt;/dir&gt;
+
+```delphi pp1983.pas
+uses math;
+const inf=1000000000;
+type
+    int=longint; 
+    edge=record f,t,w,next:int end;
+    ask=record f,t,w:int end;
+var 
+    n,m,i,j,f0,t0,w0,l,r,mid,ans:int;
+    g:array[0..600010] of edge;
+    head:array[0..300010] of int;
+    a:array[0..300010] of ask;
+    //剖分变量
+    k:int;
+    par,chd,dep,w,siz,top,dist,
+    ev,cnt:array[0..300010] of int;
+
+procedure add(f,t,w:int);
+var m:int;
+begin
+    inc(head[0]);m:=head[0];
+    g[m].f:=f;g[m].t:=t;g[m].w:=w;
+    g[m].next:=head[f];head[f]:=m;
+end;
+//算出dep,siz,chd,par,dist
+procedure dfs1(v,p:int);
+var i,u:int;
+begin
+    dep[v]:=dep[p]+1;par[v]:=p;siz[v]:=1;chd[v]:=0;
+    i:=head[v];
+    while i&lt;&gt;0 do begin
+        u:=g[i].t;
+        if u&lt;&gt;p then begin
+            dist[u]:=dist[v]+g[i].w;
+            dfs1(u,v);
+            inc(siz[v],siz[u]);
+            if siz[u]&gt;siz[chd[v]] then chd[v]:=u;
+        end;
+        i:=g[i].next;
+    end;
+end;
+
+//算出w,top,ev
+procedure dfs2(v,tp:int);
+var i,u:int;
+begin
+    inc(k);ev[k]:=dist[v]-dist[par[v]];w[v]:=k;top[v]:=tp;
+    if chd[v]&lt;&gt;0 then dfs2(chd[v],tp);
+    i:=head[v];
+    while i&lt;&gt;0 do begin
+        u:=g[i].t;
+        if (u&lt;&gt;par[v]) and (u&lt;&gt;chd[v]) then begin
+            dfs2(u,u);
+        end;
+        i:=g[i].next;
+    end;
+end;
+
+procedure swap(var a,b:int);
+var tmp:int;
+begin tmp:=a;a:=b;b:=tmp end;
+
+function lca(u,v:int):int;
+var tu,tv:int;
+begin
+    while true do begin
+        if dep[u]&gt;dep[v] then swap(u,v);
+        tu:=top[u];tv:=top[v];
+        if tu=tv then break;
+        if dep[tu]&lt;dep[tv] then v:=par[tv] else u:=par[tu];
+    end;
+    lca:=u;
+end;
+
+//修改路径的cnt
+procedure modify(u,v:int);
+var tu,tv:int;
+begin
+    while true do begin
+        if dep[u]&gt;dep[v] then swap(u,v);
+        tu:=top[u];tv:=top[v];
+        if tu=tv then begin
+            inc(cnt[w[u]+1]);
+            dec(cnt[w[v]+1]);
+            break;
+        end;
+        if dep[tu]&lt;dep[tv] then begin
+            inc(cnt[w[tv]+1]);
+            dec(cnt[w[v]+1]);
+            v:=par[tv];
+        end else begin
+            inc(cnt[w[tu]+1]);
+            dec(cnt[w[u]+1]);
+            u:=par[tu];
+        end;
+    end;
+end;
+
+function check(x:int):boolean;
+var i,tot,maxw,cur:int;
+begin
+    fillchar(cnt,sizeof(cnt),0);
+    tot:=0;maxw:=0;
+    for i:=1 to m do
+        if a[i].w&gt;x then begin
+            modify(a[i].f,a[i].t);
+            inc(tot);
+            maxw:=max(maxw,a[i].w-x);
+        end;
+    cur:=0;
+    for i:=1 to k do begin
+        inc(cur,cnt[i]);
+        if (cur=tot) and (ev[i]&gt;=maxw) then exit(true);
+    end;
+    check:=false;
+end;
+
+begin
+    read(n,m);
+    for i:=1 to n-1 do begin
+        read(f0,t0,w0);
+        add(f0,t0,w0);add(t0,f0,w0);
+    end;
+    for i:=1 to m do read(a[i].f,a[i].t);
+    //树链剖分
+    k:=0;dfs1(1,1);dfs2(1,1);
+
+    //LCA
+    for i:=1 to m do begin
+        j:=lca(a[i].f,a[i].t);
+        a[i].w:=dist[a[i].f]+dist[a[i].t]-2*dist[j]; //路径长
+    end;
+
+    //二分
+    l:=0;r:=inf;
+    while l&lt;=r do begin
+        mid:=(l+r) shr 1;
+        if check(mid) then begin ans:=mid;r:=mid-1 end
+        else l:=mid+1;
+    end;
+    write(ans);
+end.
+</code></pre><p>树链修改还可以用<strong>指针</strong>写，好像短一些</p>
+<pre><code class="delphi">procedure modify(u,v:int);
+var p:^int;
+begin
+    while top[u]&lt;&gt;top[v] do begin
+        if dep[top[u]]&lt;dep[top[v]] then p:=@v else p:=@u;
+        inc(cnt[w[par[p^]]]);
+        dec(cnt[w[p^]]);
+        p^:=par[top[p^]];
+    end;
+    if dep[u]&gt;dep[v] then swap(u,v);
+    inc(cnt[w[u]+1]);
+    dec(cnt[w[v]+1]);
+end;
+</code></pre>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -206,7 +406,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入1"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出1"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制​"><span class="toc-number">4.</span> <span class="toc-text">限制​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">5.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来源"><span class="toc-number">6.</span> <span class="toc-text">来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">7.</span> <span class="toc-text">水解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解"><span class="toc-number">8.</span> <span class="toc-text">正解</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入格式"><span class="toc-number">2.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">2.2.</span> <span class="toc-text">输出格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样例"><span class="toc-number">3.</span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入1"><span class="toc-number">3.1.</span> <span class="toc-text">样例输入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出1"><span class="toc-number">3.2.</span> <span class="toc-text">样例输出1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#限制​"><span class="toc-number">4.</span> <span class="toc-text">限制​</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提示"><span class="toc-number">5.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#来源"><span class="toc-number">6.</span> <span class="toc-text">来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#水解"><span class="toc-number">7.</span> <span class="toc-text">水解</span></a></li></ol>
  
   </div>
 
