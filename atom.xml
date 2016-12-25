@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-12-25T03:36:20.555Z</updated>
+  <updated>2016-12-25T05:30:17.363Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,15 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>The End.</title>
+    <title>The End &amp; A New Beginning</title>
     <link href="https://cothrax.github.io/2016/12/24/the-end/"/>
     <id>https://cothrax.github.io/2016/12/24/the-end/</id>
     <published>2016-12-24T03:04:22.000Z</published>
-    <updated>2016-12-25T03:36:20.555Z</updated>
+    <updated>2016-12-25T05:30:17.363Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
-        font-size:70%;
+        font-size:60%;
     }
 </style>
 
@@ -32,17 +32,25 @@
 <blockquote>
 <p>还没长大就老了。</p>
 </blockquote>
+<a id="more"></a>
+<h2 id="OI小结"><a href="#OI小结" class="headerlink" title="OI小结"></a>OI小结</h2><p>至少在剩下的高中时光中不会再搞算法竞赛了，至于以后，或许会成为ACM酱油。<br>列了一下黄学长的<a href="/2016/12/24/the-end/省选算法.xlsx" title="算法表">算法表</a>，发现还有好多不会啊。。。</p>
+<img src="/2016/12/24/the-end/1.png" alt="省选算法1" title="省选算法1">
+<img src="/2016/12/24/the-end/2.png" alt="省选算法2" title="省选算法2">
+<h2 id="胡策"><a href="#胡策" class="headerlink" title="胡策"></a>胡策</h2><p>所有说，要滚回去读文化课了，扔掉OI后就会有大量的<ruby>空余<rp> (</rp><rt>kāi chē</rt><rp>) </rp></ruby>时间，大概会玩一些<ruby>有趣<rp> (</rp><rt>chě dàn</rt><rp>) </rp></ruby>的东西，比如搞搞AI，弄弄Linux什么的。<br>打算旁听Coursera的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>，对$\alpha$-Dog的有点兴趣，虽然线代什么的一窍不通。<br>最后，祝各位集训队爷、Au爷、国家队爷圣诞快乐。<br>我知道你会看的。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;style&gt;
     rt{
-        font-size:70%;
+        font-size:60%;
     }
 &lt;/style&gt;
 
-&lt;p&gt;这次真的结束了，NOIP2016&lt;ruby&gt;跪烂&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;bèi cào&lt;/rt&gt;&lt;rp&gt;) &lt;/rp&gt;&lt;/ruby&gt;，310分不忍直视，在JS
+&lt;p&gt;这次真的结束了，NOIP2016&lt;ruby&gt;跪烂&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;bèi cào&lt;/rt&gt;&lt;rp&gt;) &lt;/rp&gt;&lt;/ruby&gt;，310分不忍直视，在JS勉强混个一等。&lt;br&gt;&lt;strong&gt;不到一年的OI时光&lt;/strong&gt;，从第一个hello world、第一场contest、第一篇blog，直至第一场NOIP，然后就结束了。&lt;br&gt;毕竟已经高二了，大概APIO、CTSC、NOI都是遥不可及的梦想吧。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;还没长大就老了。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -86,9 +94,9 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
@@ -338,13 +346,13 @@
     
       <category term="OI" scheme="https://cothrax.github.io/tags/OI/"/>
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
+    
+      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
       <category term="TJOI" scheme="https://cothrax.github.io/tags/TJOI/"/>
     
@@ -468,9 +476,9 @@
     
       <category term="NOI" scheme="https://cothrax.github.io/tags/NOI/"/>
     
-      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
-    
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
+    
+      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
   </entry>
   
@@ -506,9 +514,9 @@
     
       <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
-      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
-    
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
+    
+      <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
       <category term="HNOI" scheme="https://cothrax.github.io/tags/HNOI/"/>
     
@@ -541,9 +549,9 @@
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="SCOI" scheme="https://cothrax.github.io/tags/SCOI/"/>
-    
       <category term="数位DP" scheme="https://cothrax.github.io/tags/%E6%95%B0%E4%BD%8DDP/"/>
+    
+      <category term="SCOI" scheme="https://cothrax.github.io/tags/SCOI/"/>
     
   </entry>
   
@@ -973,9 +981,9 @@
     
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
+    
+      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="POI" scheme="https://cothrax.github.io/tags/POI/"/>
     
@@ -1010,9 +1018,9 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
-      <category term="想法题" scheme="https://cothrax.github.io/tags/%E6%83%B3%E6%B3%95%E9%A2%98/"/>
-    
       <category term="HNOI" scheme="https://cothrax.github.io/tags/HNOI/"/>
+    
+      <category term="想法题" scheme="https://cothrax.github.io/tags/%E6%83%B3%E6%B3%95%E9%A2%98/"/>
     
   </entry>
   
