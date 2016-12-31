@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-12-31T09:18:16.888Z</updated>
+  <updated>2016-12-31T11:39:28.756Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2016-12-31T09:18:16.888Z</updated>
+    <updated>2016-12-31T11:39:28.756Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>-Week1笔记，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。<br><a id="more"></a></p>
 <h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><ol>
@@ -91,7 +91,7 @@
     <link href="https://cothrax.github.io/2016/12/24/the-end/"/>
     <id>https://cothrax.github.io/2016/12/24/the-end/</id>
     <published>2016-12-24T03:04:22.000Z</published>
-    <updated>2016-12-30T14:19:48.898Z</updated>
+    <updated>2016-12-31T11:36:56.118Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -135,7 +135,7 @@
     <link href="https://cothrax.github.io/2016/12/23/bzoj-2400/"/>
     <id>https://cothrax.github.io/2016/12/23/bzoj-2400/</id>
     <published>2016-12-23T13:21:16.000Z</published>
-    <updated>2016-12-30T14:19:49.252Z</updated>
+    <updated>2016-12-31T11:39:28.906Z</updated>
     
     <content type="html"><![CDATA[<p>定义无向图中的一条边的值为：这条边连接的两个点的值的异或值。<br>定义一个无向图的值为：这个无向图所有边的值的和。<br>给你一个有n个结点m条边的无向图。其中的一些点的值是给定的，而其余的点的值由你决定（但要求均为非负数），使得这个无向图的值最小。在无向图的值最小的前提下，使得无向图中所有点的值的和最小。<br>n&lt;=500，m&lt;=2000<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2400" target="_blank" rel="external">bzoj-2400</a><br><a href="/2016/12/23/bzoj-2400/graph.cpp" title="graph.cpp">graph.cpp</a></p>
@@ -178,7 +178,7 @@
     <link href="https://cothrax.github.io/2016/12/23/flow24-alis/"/>
     <id>https://cothrax.github.io/2016/12/23/flow24-alis/</id>
     <published>2016-12-23T13:16:11.000Z</published>
-    <updated>2016-12-30T14:19:49.241Z</updated>
+    <updated>2016-12-31T11:39:28.857Z</updated>
     
     <content type="html"><![CDATA[<p>给定正整数序列x1,….. , xn  。</p>
 <ol>
@@ -223,7 +223,7 @@
     <link href="https://cothrax.github.io/2016/12/23/flow24-interv/"/>
     <id>https://cothrax.github.io/2016/12/23/flow24-interv/</id>
     <published>2016-12-23T13:05:10.000Z</published>
-    <updated>2016-12-30T14:19:49.242Z</updated>
+    <updated>2016-12-31T11:39:28.860Z</updated>
     
     <content type="html"><![CDATA[<p>给定实直线L上n个开区间组成的集合I，和一个正整数k，试设计一个算法，从开区<br>间集合I 中选取出开区间集合S属于I，使得在实直线L的任何一点x，S 中包含点x 的开区间个数不超过k，且$\sum|z|,z\in S$，达到最大。这样的集合S称为开区间集合I的最长k可重区间集。<br>$\sum|z|$属于S称为最长k可重区间集的长度。<br>对于给定的开区间集合I和正整数k，计算开区间集合I的最长k可重区间集的长度。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://hzwer.com/5842.html" target="_blank" rel="external">hzwer</a><br><a href="/2016/12/23/flow24-interv/interv.cpp" title="interv.cpp">interv.cpp</a></p>
@@ -262,7 +262,7 @@
     <link href="https://cothrax.github.io/2016/12/23/bzoj-3698/"/>
     <id>https://cothrax.github.io/2016/12/23/bzoj-3698/</id>
     <published>2016-12-23T12:40:54.000Z</published>
-    <updated>2016-12-30T14:19:49.239Z</updated>
+    <updated>2016-12-31T11:39:28.847Z</updated>
     
     <content type="html"><![CDATA[<p>XWW给你出了这么一个难题：XWW给你一个N*N的正实数矩阵A，满足XWW性。<br>称一个N*N的矩阵满足XWW性当且仅当：（1）A[N][N]=0；（2）矩阵中每行的最后一个元素等于该行前N-1个数的和；（3）矩阵中每列的最后一个元素等于该列前N-1个数的和。<br>现在你要给A中的数进行取整操作（可以是上取整或者下取整），使得最后的A矩阵仍然满足XWW性。同时XWW还要求A中的元素之和尽量大。<br>N≤100<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3698" target="_blank" rel="external">bzoj-3698</a><br><a href="/2016/12/23/bzoj-3698/3698.cpp" title="3698.cpp">3698.cpp</a></p>
@@ -302,7 +302,7 @@
     <link href="https://cothrax.github.io/2016/12/23/bzoj-1877/"/>
     <id>https://cothrax.github.io/2016/12/23/bzoj-1877/</id>
     <published>2016-12-23T12:35:46.000Z</published>
-    <updated>2016-12-30T14:19:49.249Z</updated>
+    <updated>2016-12-31T11:39:28.898Z</updated>
     
     <content type="html"><![CDATA[<p> 现在给出一张学校附近的地图，这张地图中包含N个十字路口和M条街道，Elaxia只能从 一个十字路口跑向另外一个十字路口，街道之间只在十字路口处相交。Elaxia每天从寝室出发 跑到学校，保证寝室编号为1，学校编号为N。 Elaxia的晨跑计划是按周期（包含若干天）进行的，由于他不喜欢走重复的路线，所以 在一个周期内，每天的晨跑路线都不会相交（在十字路口处），寝室和学校不算十字路 口。Elaxia耐力不太好，他希望在一个周期内跑的路程尽量短，但是又希望训练周期包含的天 数尽量长。 除了练空手道，Elaxia其他时间都花在了学习和找MM上面，所有他想请你帮忙为他设计 一套满足他要求的晨跑计划。<br>N ≤ 200，M ≤ 20000<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1877" target="_blank" rel="external">bzoj-1877</a><br><a href="/2016/12/23/bzoj-1877/1877.cpp" title="1877.cpp">1877.cpp</a></p>
@@ -323,8 +323,6 @@
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
-      <category term="SDOI" scheme="https://cothrax.github.io/tags/SDOI/"/>
-    
       <category term="费用流" scheme="https://cothrax.github.io/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/"/>
     
   </entry>
@@ -334,7 +332,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-1500/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-1500/</id>
     <published>2016-12-18T05:15:33.000Z</published>
-    <updated>2016-12-30T14:19:49.246Z</updated>
+    <updated>2016-12-31T11:43:13.271Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://www.lydsy.com/JudgeOnline/images/1500_1.jpg" alt=""><br>Limit:<br>M≤20000<br>任何时刻数列中最多含有500000个数，数列中任何一个数字均在[-1000,1000]内。<br>插入的数字总数不超过4000000个，输入文件大小不超过20MBytes。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1500" target="_blank" rel="external">bzoj-1500</a><br><a href="/2016/12/18/bzoj-1500/1500.cpp" title="1500.cpp">1500.cpp</a></p>
@@ -367,8 +365,6 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="NOI" scheme="https://cothrax.github.io/tags/NOI/"/>
-    
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
       <category term="Splay" scheme="https://cothrax.github.io/tags/Splay/"/>
@@ -380,7 +376,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-3173/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-3173/</id>
     <published>2016-12-18T05:06:47.000Z</published>
-    <updated>2016-12-30T14:19:49.236Z</updated>
+    <updated>2016-12-31T11:39:28.831Z</updated>
     
     <content type="html"><![CDATA[<p>给定一个序列，初始为空。现在我们将1到N的数字插入到序列中，每次将一个数字插入到一个特定的位置x_i。每插入一个数字，我们都想知道此时最长上升子序列长度是多少？<br>n&lt;=100000<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3173" target="_blank" rel="external">bzoj-3173</a><br><a href="/2016/12/18/bzoj-3173/3173.cpp" title="3173.cpp">3173.cpp</a></p>
@@ -411,8 +407,6 @@
     
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
     
-      <category term="TJOI" scheme="https://cothrax.github.io/tags/TJOI/"/>
-    
   </entry>
   
   <entry>
@@ -420,7 +414,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-3506/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-3506/</id>
     <published>2016-12-18T04:57:17.000Z</published>
-    <updated>2016-12-30T14:19:49.238Z</updated>
+    <updated>2016-12-31T11:39:28.841Z</updated>
     
     <content type="html"><![CDATA[<p>给定一个长n的数列，有n次操作，第i次为：<br>找到i..n中最小的数，记它的下标为k，翻转区间[i,k]<br>并输出k值<br>n≤100000</p>
 <a id="more"></a>
@@ -447,8 +441,6 @@
     
       <category term="Splay" scheme="https://cothrax.github.io/tags/Splay/"/>
     
-      <category term="CQOI" scheme="https://cothrax.github.io/tags/CQOI/"/>
-    
   </entry>
   
   <entry>
@@ -456,7 +448,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-3223/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-3223/</id>
     <published>2016-12-18T04:51:40.000Z</published>
-    <updated>2016-12-30T14:19:49.236Z</updated>
+    <updated>2016-12-31T11:39:28.833Z</updated>
     
     <content type="html"><![CDATA[<p>维护长n一个数列$a_n$，初始为$a_i=i$，支持m次区间翻转，输出翻转后的结果<br>N,M&lt;=100000<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3223" target="_blank" rel="external">bzoj-3223</a><br><a href="/2016/12/18/bzoj-3223/3223.cpp" title="3223.cpp">3223.cpp</a></p>
@@ -491,7 +483,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-1503/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-1503/</id>
     <published>2016-12-18T04:44:45.000Z</published>
-    <updated>2016-12-30T14:19:49.247Z</updated>
+    <updated>2016-12-31T11:39:28.890Z</updated>
     
     <content type="html"><![CDATA[<p>维护一个集合，支持如下操作：</p>
 <ol>
@@ -525,8 +517,6 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="NOI" scheme="https://cothrax.github.io/tags/NOI/"/>
-    
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
@@ -538,7 +528,7 @@
     <link href="https://cothrax.github.io/2016/12/18/bzoj-1588/"/>
     <id>https://cothrax.github.io/2016/12/18/bzoj-1588/</id>
     <published>2016-12-18T04:35:23.000Z</published>
-    <updated>2016-12-30T14:19:49.248Z</updated>
+    <updated>2016-12-31T11:42:03.110Z</updated>
     
     <content type="html"><![CDATA[<p>Tiger最近被公司升任为营业部经理，他上任后接受公司交给的第一项任务便是统计并分析公司成立以来的营业情况。<br>Tiger拿出了公司的账本，账本上记录了公司成立以来每天的营业额。分析营业情况是一项相当复杂的工作。由于节假日，大减价或者是其他情况的时候，营业额会出现一定的波动，当然一定的波动是能够接受的，但是在某些时候营业额突变得很高或是很低，这就证明公司此时的经营状况出现了问题。经济管理学上定义了一种最小波动值来衡量这种情况： 该天的最小波动值 当最小波动值越大时，就说明营业情况越不稳定。<br>而分析整个公司的从成立到现在营业情况是否稳定，只需要把每一天的最小波动值加起来就可以了。你的任务就是编写一个程序帮助Tiger来计算这一个值。 第一天的最小波动值为第一天的营业额。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1588" target="_blank" rel="external">bzoj-1588</a><br><a href="/2016/12/18/bzoj-1588/1588.cpp" title="1588.cpp">1588.cpp</a><br><a href="/2016/12/18/bzoj-1588/1588_lnk.cpp" title="1588_lnk.cpp">1588_lnk.cpp</a></p>
@@ -567,8 +557,6 @@
     
       <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
     
-      <category term="HNOI" scheme="https://cothrax.github.io/tags/HNOI/"/>
-    
   </entry>
   
   <entry>
@@ -576,7 +564,7 @@
     <link href="https://cothrax.github.io/2016/12/10/bzoj-1026/"/>
     <id>https://cothrax.github.io/2016/12/10/bzoj-1026/</id>
     <published>2016-12-10T12:20:17.000Z</published>
-    <updated>2016-12-30T14:19:48.837Z</updated>
+    <updated>2016-12-31T11:39:28.236Z</updated>
     
     <content type="html"><![CDATA[<p>windy定义了一种windy数。不含前导零且相邻两个数字之差至少为2的正整数被称为windy数。 windy想知道，<br>在A和B之间，包括A和B，总共有多少个windy数？<br>100%的数据，满足 1 &lt;= A &lt;= B &lt;= 2000000000 。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1026" target="_blank" rel="external">bzoj-1026</a><br><a href="/2016/12/10/bzoj-1026/1026.cpp" title="1026.cpp">1026.cpp</a></p>
@@ -598,8 +586,6 @@
     
       <category term="数位DP" scheme="https://cothrax.github.io/tags/%E6%95%B0%E4%BD%8DDP/"/>
     
-      <category term="SCOI" scheme="https://cothrax.github.io/tags/SCOI/"/>
-    
   </entry>
   
   <entry>
@@ -607,7 +593,7 @@
     <link href="https://cothrax.github.io/2016/12/10/bzoj-1833/"/>
     <id>https://cothrax.github.io/2016/12/10/bzoj-1833/</id>
     <published>2016-12-10T12:12:39.000Z</published>
-    <updated>2016-12-30T14:19:49.248Z</updated>
+    <updated>2016-12-31T11:39:28.896Z</updated>
     
     <content type="html"><![CDATA[<p>给定两个正整数a和b，求在[a,b]中的所有整数中，每个数码(digit)各出现了多少次。<br>100%的数据中，a&lt;=b&lt;=10^12。<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1833" target="_blank" rel="external">bzoj-1833</a><br><a href="/2016/12/10/bzoj-1833/1833.cpp" title="1833.cpp">1833.cpp</a></p>
@@ -632,8 +618,6 @@
     
       <category term="数位DP" scheme="https://cothrax.github.io/tags/%E6%95%B0%E4%BD%8DDP/"/>
     
-      <category term="ZJOI" scheme="https://cothrax.github.io/tags/ZJOI/"/>
-    
   </entry>
   
   <entry>
@@ -641,7 +625,7 @@
     <link href="https://cothrax.github.io/2016/12/09/bzoj-2595/"/>
     <id>https://cothrax.github.io/2016/12/09/bzoj-2595/</id>
     <published>2016-12-09T14:25:55.000Z</published>
-    <updated>2016-12-30T14:19:49.234Z</updated>
+    <updated>2016-12-31T11:45:58.199Z</updated>
     
     <content type="html"><![CDATA[<p>从未来过绍兴的小 D 有幸参加了 Winter Camp 2008,他被这座历史名城的秀丽风景所吸引,强烈要求游览绍兴及其周边的所有景点。<br>主办者将绍兴划分为 N 行 M 列(N×M)个方块,如下图(8×8):</p>
 <table>
@@ -930,8 +914,6 @@
     
       <category term="斯坦纳树" scheme="https://cothrax.github.io/tags/%E6%96%AF%E5%9D%A6%E7%BA%B3%E6%A0%91/"/>
     
-      <category term="WC" scheme="https://cothrax.github.io/tags/WC/"/>
-    
   </entry>
   
   <entry>
@@ -939,7 +921,7 @@
     <link href="https://cothrax.github.io/2016/12/09/bzoj-2004/"/>
     <id>https://cothrax.github.io/2016/12/09/bzoj-2004/</id>
     <published>2016-12-09T11:21:31.000Z</published>
-    <updated>2016-12-30T14:19:49.250Z</updated>
+    <updated>2016-12-31T11:39:28.901Z</updated>
     
     <content type="html"><![CDATA[<p>小Z所在的城市有N个公交车站，排列在一条长(N-1)km的直线上，从左到右依次编号为1到N，相邻公交车站间的距<br>离均为1km。 作为公交车线路的规划者，小Z调查了市民的需求，决定按下述规则设计线路：</p>
 <ol>
@@ -986,7 +968,7 @@
     <link href="https://cothrax.github.io/2016/12/09/bzoj-1097/"/>
     <id>https://cothrax.github.io/2016/12/09/bzoj-1097/</id>
     <published>2016-12-09T11:11:26.000Z</published>
-    <updated>2016-12-30T14:19:48.838Z</updated>
+    <updated>2016-12-31T11:39:28.240Z</updated>
     
     <content type="html"><![CDATA[<p>大意：给定n个节点，m条边的带权无向图，要最小化这样一条路径的代价：</p>
 <ol>
@@ -1024,8 +1006,6 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
-      <category term="POI" scheme="https://cothrax.github.io/tags/POI/"/>
-    
   </entry>
   
   <entry>
@@ -1033,7 +1013,7 @@
     <link href="https://cothrax.github.io/2016/12/09/bzoj-2734/"/>
     <id>https://cothrax.github.io/2016/12/09/bzoj-2734/</id>
     <published>2016-12-09T11:06:32.000Z</published>
-    <updated>2016-12-30T14:19:49.235Z</updated>
+    <updated>2016-12-31T11:42:21.751Z</updated>
     
     <content type="html"><![CDATA[<p>约束条件：若x在集合s中，则2x和3x不能在该集合中。<br>对于任意一个正整数 n≤100000，如何求出{1, 2,…, n} 的满足上述约束条件的子集的个数（只需输出对 1,000,000,001 取模的结果）。<br>n≤20</p>
 <a id="more"></a>
@@ -1055,8 +1035,6 @@
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
-      <category term="HNOI" scheme="https://cothrax.github.io/tags/HNOI/"/>
-    
       <category term="想法题" scheme="https://cothrax.github.io/tags/%E6%83%B3%E6%B3%95%E9%A2%98/"/>
     
   </entry>
@@ -1066,7 +1044,7 @@
     <link href="https://cothrax.github.io/2016/12/09/bzoj-2064/"/>
     <id>https://cothrax.github.io/2016/12/09/bzoj-2064/</id>
     <published>2016-12-09T10:59:59.000Z</published>
-    <updated>2016-12-30T14:19:49.251Z</updated>
+    <updated>2016-12-31T11:39:28.903Z</updated>
     
     <content type="html"><![CDATA[<p> 中国历史上上分分和和次数非常多。。通读中国历史的WJMZBMR表示毫无压力。 同时经常搞OI的他把这个变成了一个数学模型。 假设中国的国土总和是不变的。 每个国家都可以用他的国土面积代替， 又两种可能，一种是两个国家合并为1个，那么新国家的面积为两者之和。 一种是一个国家分裂为2个，那么2个新国家的面积之和为原国家的面积。 WJMZBMR现在知道了很遥远的过去中国的状态，又知道了中国现在的状态，想知道至少要几次操作（分裂和合并各算一次操作），能让中国从当时状态到达现在的状态。<br>$n1,n2\leq 10$<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://hzwer.com/2001.html" target="_blank" rel="external">hzwer</a><br><a href="/2016/12/09/bzoj-2064/2064.cpp" title="2064.cpp">2064.cpp</a></p>
