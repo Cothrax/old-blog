@@ -25,7 +25,7 @@
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>梯度下降法（Gradient Descent Algorithm），通过偏导数作为增量迭代更新当前值，逼近极值点。</p>
 <ol>
 <li>初始时为$\theta_0=0,\theta_1=0$</li>
-<li>通过增量不断更新当前位置，直到找到极小值点，其中$\alpha$为学习速率（Learning Rate），通俗的理解为步长<br>$$\theta_j=\theta_j-\alpha\cdot \dfrac{\partical\ J(\theta_0,\theta_1)}{\partial\ \theta_j}$$</li>
+<li>通过增量不断更新当前位置，直到找到极小值点，其中$\alpha$为学习速率（Learning Rate），通俗的理解为步长<br>$$\theta_j=\theta_j-\alpha\cdot \dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_j}$$</li>
 <li>直到当前$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_j}=0$达到极值点，而由于$J(\theta_0,\theta_1)$是一个凸函数，这意味着它有唯一一个极小值点，这个点也是全局的最小值点。</li>
 </ol>
 <p>由于每次迭代时都用到了所有样本数据，这种算法被称为批量（Batch）梯度下降法。</p>
