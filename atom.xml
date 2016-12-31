@@ -135,7 +135,7 @@
     <link href="https://cothrax.github.io/2016/12/23/bzoj-2400/"/>
     <id>https://cothrax.github.io/2016/12/23/bzoj-2400/</id>
     <published>2016-12-23T13:21:16.000Z</published>
-    <updated>2016-12-31T11:39:28.906Z</updated>
+    <updated>2016-12-31T13:56:59.080Z</updated>
     
     <content type="html"><![CDATA[<p>定义无向图中的一条边的值为：这条边连接的两个点的值的异或值。<br>定义一个无向图的值为：这个无向图所有边的值的和。<br>给你一个有n个结点m条边的无向图。其中的一些点的值是给定的，而其余的点的值由你决定（但要求均为非负数），使得这个无向图的值最小。在无向图的值最小的前提下，使得无向图中所有点的值的和最小。<br>n&lt;=500，m&lt;=2000<br><a id="more"></a></p>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2400" target="_blank" rel="external">bzoj-2400</a><br><a href="/2016/12/23/bzoj-2400/graph.cpp" title="graph.cpp">graph.cpp</a></p>
