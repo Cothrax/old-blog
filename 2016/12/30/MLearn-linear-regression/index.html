@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/index.html">
 <meta property="og:site_name" content="Cothrax's Blog">
 <meta property="og:description" content="Machine Learning-Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。">
-<meta property="og:updated_time" content="2016-12-31T01:41:53.872Z">
+<meta property="og:updated_time" content="2016-12-31T01:54:17.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「笔记」梯度下降 & 线性回归">
 <meta name="twitter:description" content="Machine Learning-Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。">
@@ -123,6 +123,7 @@
 <li>通过增量不断更新当前位置，直到找到极小值点，其中$\alpha$为学习速率（Learning Rate），通俗的理解为步长<br>$$\theta_j=\theta_j-\alpha\cdot \dfrac{\partical\ J(\theta_0,\theta_1)}{\partial\ \theta_j}$$</li>
 <li>直到当前$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_j}=0$达到极值点，而由于$J(\theta_0,\theta_1)$是一个凸函数，这意味着它有唯一一个极小值点，这个点也是全局的最小值点。</li>
 </ol>
+<p>由于每次迭代时都用到了所有样本数据，这种算法被称为批量（Batch）梯度下降法。</p>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>我们可以将推一推偏导数的公式，得到：</p>
 <ul>
 <li>$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_0}=\dfrac{1}{m}(m\theta_0+\theta_1\sum x_i-\sum y_i)$</li>

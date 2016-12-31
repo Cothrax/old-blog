@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2016-12-31T01:41:53.872Z</updated>
+  <updated>2016-12-31T01:54:17.237Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2016-12-31T01:41:53.872Z</updated>
+    <updated>2016-12-31T01:54:17.237Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>-Week1笔记，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。<br><a id="more"></a></p>
 <h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><ol>
@@ -44,6 +44,7 @@
 <li>通过增量不断更新当前位置，直到找到极小值点，其中$\alpha$为学习速率（Learning Rate），通俗的理解为步长<br>$$\theta_j=\theta_j-\alpha\cdot \dfrac{\partical\ J(\theta_0,\theta_1)}{\partial\ \theta_j}$$</li>
 <li>直到当前$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_j}=0$达到极值点，而由于$J(\theta_0,\theta_1)$是一个凸函数，这意味着它有唯一一个极小值点，这个点也是全局的最小值点。</li>
 </ol>
+<p>由于每次迭代时都用到了所有样本数据，这种算法被称为批量（Batch）梯度下降法。</p>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>我们可以将推一推偏导数的公式，得到：</p>
 <ul>
 <li>$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_0}=\dfrac{1}{m}(m\theta_0+\theta_1\sum x_i-\sum y_i)$</li>
