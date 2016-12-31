@@ -553,6 +553,7 @@ header nav ul li a:hover {
   max-height: 40em;
 }
 .search {
+  display: none;
   padding: 0.1em 0 0 1em;
 }
 .search input {
@@ -580,6 +581,9 @@ header nav ul li a:hover {
 }
 .search label {
   display: none;
+}
+header div {
+  font-family: "covered_by_your_graceregular";
 }
 /* index layout */
 #container {
