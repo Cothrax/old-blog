@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[「笔记」多变量线性回归]]></title>
-      <url>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2-md/</url>
+      <url>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</url>
       <content type="html"><![CDATA[<p>Machine Learning Week 2 笔记<br>要期末考，坑留到假期再填吧：</p>
 <ol>
 <li>优化后的梯度下降实现（Octave）</li>
