@@ -4,23 +4,23 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>「笔记」梯度下降 &amp; 线性回归 | Cothrax&#39;s Blog</title>
+    <title>「笔记」单变量线性回归 | Cothrax&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Cothrax">
     
 
     
-    <meta name="description" content="Machine Learning-Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。">
+    <meta name="description" content="Machine Learning Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「笔记」梯度下降 & 线性回归">
+<meta property="og:title" content="「笔记」单变量线性回归">
 <meta property="og:url" content="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/index.html">
 <meta property="og:site_name" content="Cothrax's Blog">
-<meta property="og:description" content="Machine Learning-Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。">
-<meta property="og:updated_time" content="2016-12-31T11:39:28.756Z">
+<meta property="og:description" content="Machine Learning Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。">
+<meta property="og:updated_time" content="2017-01-07T14:57:42.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「笔记」梯度下降 & 线性回归">
-<meta name="twitter:description" content="Machine Learning-Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。">
+<meta name="twitter:title" content="「笔记」单变量线性回归">
+<meta name="twitter:description" content="Machine Learning Week1笔记，第一个简单的ML算法。梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。">
 <meta name="twitter:creator" content="@Cothrax">
 
     
@@ -81,7 +81,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/12/30/MLearn-linear-regression/" title="「笔记」梯度下降 &amp; 线性回归" itemprop="url">「笔记」梯度下降 &amp; 线性回归</a>
+      <a href="/2016/12/30/MLearn-linear-regression/" title="「笔记」单变量线性回归" itemprop="url">「笔记」单变量线性回归</a>
   </h1>
   <p class="article-author">By
        
@@ -97,11 +97,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置技能"><span class="toc-number">1.</span> <span class="toc-text">前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习"><span class="toc-number">1.1.</span> <span class="toc-text">机器学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性回归"><span class="toc-number">1.2.</span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏导数"><span class="toc-number">1.3.</span> <span class="toc-text">偏导数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">2.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">2.2.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置技能"><span class="toc-number">1.</span> <span class="toc-text">前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习"><span class="toc-number">1.1.</span> <span class="toc-text">机器学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单变量线性回归"><span class="toc-number">1.2.</span> <span class="toc-text">单变量线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏导数"><span class="toc-number">1.3.</span> <span class="toc-text">偏导数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">2.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">2.2.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>-Week1笔记，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化线性回归中的二元代价函数。<br><a id="more"></a></p>
+		<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。<br><a id="more"></a></p>
 <h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><ol>
 <li>监督学习（Supervised Learning）：给定一组样本数据，以及其对应的正确输出，预测输入与输出之间的关系。<ol>
 <li>回归（Regression）：以连续函数预测输出值</li>
@@ -110,11 +110,11 @@
 </li>
 <li>无监督学习（Unsuperivised Learning）：给定一组样本数据，在没有对应输出的情况下，将数据分类。</li>
 </ol>
-<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><ol>
+<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><ol>
 <li>样本数据（Training Set）：$m$个离散的点$(x_i,y_i)$</li>
 <li>假设（Hypothesis）：$h_{\theta}(x)=\theta_0+\theta_1x$</li>
 <li>代价函数（Cost Function）：$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
-<li>线性回归（Linear Regression）：即最小化$J(\theta_0,\theta_1)$，即根据样本数据近似地预测输入与输出间的线性关系。</li>
+<li>单变量线性回归（Univariate Linear Regression）：即最小化$J(\theta_0,\theta_1)$，即根据样本数据近似地预测输入与输出间的线性关系。</li>
 </ol>
 <h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><ol>
 <li>对一个二元函数$f(\theta_0,\theta_1)$，把其他变量看做常数，对其中一个变量求导，记做$\dfrac{\partial\ f(\theta_0,\theta_1)}{\partial\ \theta_j}$</li>
@@ -166,7 +166,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/" data-title="「笔记」梯度下降 &amp; 线性回归 | Cothrax&#39;s Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/" data-title="「笔记」单变量线性回归 | Cothrax&#39;s Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -179,6 +179,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2017/01/07/MLearn-linear-regression-2-md/" title="「笔记」多变量线性回归">
+  <strong>上一篇：</strong><br/>
+  <span>
+  「笔记」多变量线性回归</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/12/24/the-end/"  title="The End &amp; A New Beginning">
@@ -198,7 +206,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置技能"><span class="toc-number">1.</span> <span class="toc-text">前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习"><span class="toc-number">1.1.</span> <span class="toc-text">机器学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性回归"><span class="toc-number">1.2.</span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏导数"><span class="toc-number">1.3.</span> <span class="toc-text">偏导数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">2.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">2.2.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前置技能"><span class="toc-number">1.</span> <span class="toc-text">前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习"><span class="toc-number">1.1.</span> <span class="toc-text">机器学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单变量线性回归"><span class="toc-number">1.2.</span> <span class="toc-text">单变量线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏导数"><span class="toc-number">1.3.</span> <span class="toc-text">偏导数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">2.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-number">2.2.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol>
  
   </div>
 
@@ -209,7 +217,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">Archives</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -220,7 +228,7 @@
     <p class="asidetitle">Tag Cloud</p>
     <div id="myCanvasContainer" class="tagcloudlist">
        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-          <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/tags/DP/" style="font-size: 20px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/tags/偏导数/" style="font-size: 10px;">偏导数</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/tags/梯度下降/" style="font-size: 10px;">梯度下降</a> <a href="/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线性回归/" style="font-size: 10px;">线性回归</a> <a href="/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 12px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.33px;">高精度</a>
+          <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/tags/DP/" style="font-size: 20px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/tags/偏导数/" style="font-size: 10px;">偏导数</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/tags/机器学习/" style="font-size: 10.67px;">机器学习</a> <a href="/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/tags/梯度下降/" style="font-size: 10px;">梯度下降</a> <a href="/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/tags/正规方程/" style="font-size: 10px;">正规方程</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 10.67px;">线性代数</a> <a href="/tags/线性回归/" style="font-size: 10.67px;">线性回归</a> <a href="/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 12px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.33px;">高精度</a>
        </canvas>
     </div>
   </div>
@@ -271,7 +279,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
 		<a href="/about" target="_blank" title="Cothrax">Cothrax</a>
 		
