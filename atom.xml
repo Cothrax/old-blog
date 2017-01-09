@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-07T15:02:23.466Z</updated>
+  <updated>2017-01-09T04:09:49.262Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-07T15:02:23.466Z</updated>
+    <updated>2017-01-09T04:09:49.262Z</updated>
     
     <content type="html"><![CDATA[<p>Machine Learning Week 2 笔记<br>要期末考，坑留到假期再填吧：</p>
 <ol>
@@ -45,7 +45,6 @@
 <li>特征放缩&amp;均值归一：将样本数据进行线性变换约束到一个较小的范围内<ul>
 <li>$x_j^{(i)}=\dfrac{x_j^{(i)}-avg(x_j)}{max(x_j)-min(x_j)}$</li>
 <li>缩小x的范围即可以缩小$\theta$的迭代次数，优化算法效率</li>
-<li>由于是线性变换，不会影响极小值点$\theta$的取值</li>
 </ul>
 </li>
 <li>调整$\alpha$的取值<ul>
