@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-09T04:09:49.262Z</updated>
+  <updated>2017-01-11T13:31:43.027Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,63 +16,76 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>「笔记」多变量线性回归</title>
+    <title>「Week2」多变量线性回归</title>
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-09T04:09:49.262Z</updated>
+    <updated>2017-01-11T13:31:43.027Z</updated>
     
-    <content type="html"><![CDATA[<p>Machine Learning Week 2 笔记<br>要期末考，坑留到假期再填吧：</p>
-<ol>
-<li>优化后的梯度下降实现（Octave）</li>
-<li>正规方程推导，伪逆相关补充</li>
-<li>Octave还没学完</li>
-<li>Homework和Quiz</li>
-</ol>
+    <content type="html"><![CDATA[<blockquote>
+<p>Machine Learning Week 2 笔记</p>
+</blockquote>
+<p>Week2以<strong>多变量线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化版本要简洁优雅很多。</p>
 <a id="more"></a>
-<h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><ol>
-<li>由于涉及多变量的表示，这里用$(x^{(i)},y^{(i)})$表示一个样本数据，其中$x^{(i)}=\begin{bmatrix}x^{(i)}_0&amp;\cdots&amp;x^{(i)}_n\end{bmatrix}^T$，其中$x_0=1$；那么$x^{(i)}_j$即第i组数据的第j个变量值</li>
-<li>记$\theta=\begin{bmatrix}\theta_0&amp;\cdots&amp;\theta_n\end{bmatrix}^T$，那么$h_{\theta}(x)=\sum_{i=0}^n\theta_ix_i=\theta^Tx$</li>
-<li>求解方法：与<a href="/2016/12/30/MLearn-linear-regression/" title="单变量">单变量</a>的情况是相同的，可以直接用梯度下降逼近极值点<ol>
-<li>$J(\theta)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
-<li>$\dfrac{\partial\ J(\theta)}{\partial\ \theta_j}=\dfrac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})\cdot x^{(i)}_j$</li>
-<li>$\theta_j=\theta_j-\alpha\cdot \dfrac{\partial\ J(\theta)}{\partial\ \theta_j}$</li>
-</ol>
-</li>
-</ol>
-<h3 id="梯度下降优化"><a href="#梯度下降优化" class="headerlink" title="梯度下降优化"></a>梯度下降优化</h3><p>在Week1中，我DIY了OI风格的线性回归代码，下面来看看如何让它跑得更快一些。</p>
+<h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与单变量不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。</p>
+<h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
 <ol>
-<li>特征放缩&amp;均值归一：将样本数据进行线性变换约束到一个较小的范围内<ul>
-<li>$x_j^{(i)}=\dfrac{x_j^{(i)}-avg(x_j)}{max(x_j)-min(x_j)}$</li>
-<li>缩小x的范围即可以缩小$\theta$的迭代次数，优化算法效率</li>
-</ul>
-</li>
-<li>调整$\alpha$的取值<ul>
-<li>取$\epsilon$作为增量的阀值，就像我在Week1所做的那样。</li>
-<li><strong>$J(\theta)$对迭代次数的函数</strong>是否收敛，也是调整$\alpha$的依据，如果是发散的，说明需要减小$\alpha$</li>
-</ul>
-</li>
+<li>有$m$组样本数据和$n$个自变量，$x^{(i)}_j$为第i组数据中的第j个自变量</li>
+<li>参数向量：$x^{(i)}=\begin{bmatrix}x^{(i)}_0 &amp; \cdots &amp; x^{(i)}_n\end{bmatrix}$，为了方便处理常数项，记$x^{(i)}_0=1$</li>
+<li>参数矩阵：$X=\begin{bmatrix}x^{(1)} &amp; \cdots &amp; x^{(m)}\end{bmatrix}^T\in\mathbb{R}^{m\times (n+1)}$</li>
+<li>因变量：$y=\begin{bmatrix}y^{(1)} &amp; \cdots &amp; y^{(m)}\end{bmatrix}^T$</li>
+<li>求解系数：$\theta=\begin{bmatrix}\theta_{0} &amp; \cdots &amp; \theta_{n}\end{bmatrix}^T$</li>
 </ol>
-<h3 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h3><p>用一个多项式函数去拟合样本数据。</p>
-<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3><p>正规方程（Normal Equation）：另一种简洁的求解多参线性回归的方法。<br>规定：</p>
+<p>那么：</p>
 <ol>
-<li><span>$X=\begin{bmatrix}x^{(1)}_0 &amp; \cdots &amp; x^{(1)}_n \\ \vdots &amp; \ddots &amp; \vdots \\ x^{(m)}_0 &amp; \cdots &amp; x^{(m)}_n\end{bmatrix}\in \mathbb{R}^{m\times(n+1)}$</span><!-- Has MathJax --></li>
-<li><span>$y=\begin{bmatrix}y^{(1)} &amp;\cdots &amp; y^{(m)}\end{bmatrix}^T\in\mathbb{R}^{m}$</span><!-- Has MathJax -->
+<li>假设函数：$h_{\theta}(x^{(i)})=\sum_{j=1}^mx^{(i)}_j\theta_j=(x^{(i)})^T\theta$，那么$h_{\theta}(X)=X\theta\in\mathbb{R}^m$</li>
+<li>代价函数：$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2=\dfrac{1}{2m}(X\theta-y)^T(X\theta-y)$</li>
+<li>偏导数：$\delta_j=\dfrac{\partial\ J(\theta)}{\partial\ \theta_j}$，$\delta=\begin{bmatrix}\delta_0 &amp; \cdots &amp; \delta_n\end{bmatrix}^T$，那么$\delta=\dfrac{1}{m}X^T(X\theta-y)$</li>
+</ol>
+<h3 id="梯度下降优化"><a href="#梯度下降优化" class="headerlink" title="梯度下降优化"></a>梯度下降优化</h3><p>梯度下降法的算法效率与迭代次数有密切关系，那么希望函数$J(\theta)$更“规整”，以便在更少的迭代次数内得到近似解。因此，引入<strong>均值归一</strong>和<strong>特征放缩</strong>：<br>$$x^{(i)}_j=\dfrac{x^{(i)}_j-avg(x_j)}{max(x_j)-min(x_j)}$$</p>
+<p>特别的，不对$x_0$做任何处理。<br>这样，变量的值都被近似地约束在了$[-1,1]$，这样对精度会有些许影响，但对迭代效率有很大的提升。</p>
+<p>除了用跨度（最大值-最小值）进行放缩，还可以用<strong>标准化</strong>的思路：<br>记$\sigma$为$x_j$的标准差，$\mu$为$x_j$的期望值（此时看做$x_j$的平均值）<br>$$x^{(i)}_j=\dfrac{x^{(i)}_j-\mu}{\sigma}$$</p>
+<h3 id="Octave实现"><a href="#Octave实现" class="headerlink" title="Octave实现"></a>Octave实现</h3><ol>
+<li>由于实现了均值归一和特征放缩，期望在$10^4$数量级的迭代后得到解，所以确定迭代次数$iters$，而不是像Week1那样设定阀值$\epsilon$。</li>
+<li>放缩之后，得到的$\theta$与原数据是不一样的，有两种思路解决这个问题：<ol>
+<li>在每次预测之前，对输入的自变量值做相同的变换，再带入求值</li>
+<li>由于线性函数形式简单，可以通过变形得到原来的$\theta$。</li>
+</ol>
 </li>
 </ol>
-<p>那么，$\theta$参数向量可以直接求出：<br>$$\theta=(X^TX)^{-1}X^Ty$$</p>
-<p>在Octave中，只需要一行代码：<code>theta=pinv(X&#39;*X)*X&#39;*y;</code></p>
+<p>考虑单变量时：<br><span>$$y=\theta_0+\theta_1\dfrac{x-avg}{rag}\Rightarrow
+\begin{cases}
+\theta_0&apos;=\theta_0-\dfrac{avg}{rag} \\
+\theta_1&apos;=\dfrac{\theta_1}{rag}
+\end{cases}$$</span><!-- Has MathJax --><br>推广到多元，可以得到<br><span>$$\begin{cases}
+\theta_j&apos;=\theta_j-\sum_{i=1}^{n}\dfrac{avg_i}{rag_i} &amp;j=0\\
+\theta_j&apos;=\dfrac{\theta_j}{rag_i} &amp; j\in[1,n] 
+\end{cases}$$</span><!-- Has MathJax --></p>
+<figure class="highlight matlab"><figcaption><span>all.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[X,y]</span>=<span class="title">generateDat</span><span class="params">(m,n,lim)</span>;</span></span><br><span class="line">    X=<span class="built_in">rand</span>(m,n)*lim;</span><br><span class="line">    y=<span class="built_in">rand</span>(m,<span class="number">1</span>)*lim;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theta</span>=<span class="title">gradientDes</span><span class="params">(X,y,alpha,iters)</span>;</span></span><br><span class="line">    <span class="comment">%feature scaling</span></span><br><span class="line">    [m,n]=<span class="built_in">size</span>(X);</span><br><span class="line">    rag=max(X)-min(X);rag(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">1</span>;</span><br><span class="line">    avg=sum(X)/<span class="built_in">size</span>(X,<span class="number">1</span>);avg(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">0</span>;</span><br><span class="line">    X=(X.-avg)./rag;</span><br><span class="line">    <span class="comment">%gradient descent</span></span><br><span class="line">    theta=<span class="built_in">zeros</span>(n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:iters</span><br><span class="line">        tmp=X*theta-y;</span><br><span class="line">        theta-=(X'*tmp)*alpha/m;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="comment">%theta calculation</span></span><br><span class="line">    theta(<span class="number">1</span>,<span class="number">1</span>)-=(avg./rag)*theta;</span><br><span class="line">    theta./=rag';</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">1000</span>,<span class="number">10</span>,<span class="number">200</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    <span class="built_in">disp</span>(gradientDes(X,y,<span class="number">1</span>,<span class="number">1e4</span>));</span><br></pre></td></tr></table></figure>
+<p>从OI的角度看，<code>gradientDes</code>函数的复杂度为$O(n*m*iters)$，但由于矩阵运算会采用并行计算，实际速度会更快一些。</p>
+<h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p>正规方程是线性回归的一种代数解法，$X,y,\theta$的含义同上文，可以直接用一个方程求解线性回归：<br>$$\theta=(X^TX)^{-1}X^Ty$$</p>
+<h3 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h3><p>一个不严格的推导过程。<br><span>$$\begin{align*}
+\dfrac{d}{d(\theta)}J(\theta)&amp;=0\\ 
+2X^T(y-X\theta) &amp;=0 \\ 
+2X^T &amp;= 2X^TX\theta\\ 
+\theta &amp;= (X^TX)^{-1}X^Ty
+\end{align*}$$</span><!-- Has MathJax --></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>一个函数即可<br><figure class="highlight matlab"><figcaption><span>normalEqu.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theta</span>=<span class="title">normalEqu</span><span class="params">(X,y)</span>;</span></span><br><span class="line">    theta=pinv(X'*X)*X'*y;</span><br></pre></td></tr></table></figure></p>
+<h3 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h3><ol>
+<li>不考虑并行计算，矩乘的复杂度为$O(n^3)$，在$n$较大时是不够优秀的。</li>
+<li>考虑到参数矩阵$X$存在不可逆的情况，照Ng的讲法，可能是$m&lt;n$或是存在冗余自变量导致的。但实际上，在不可逆时，<code>normalEqu</code>依然能给出正确的答案，这涉及到<code>pinv</code>“伪逆”的概念。由于身为中学生线代知识有限，略过。</li>
+</ol>
+<h3 id="有趣的东西"><a href="#有趣的东西" class="headerlink" title="有趣的东西"></a>有趣的东西</h3><p>在单变量时，把图画出来看看效果。<br><figure class="highlight matlab"><figcaption><span>linearReg.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">20</span>,<span class="number">1</span>,<span class="number">200</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    theta=gradientDes(X,y,<span class="number">1</span>,<span class="number">1e4</span>);<span class="comment">%disp(theta);</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">size</span>(X,<span class="number">2</span>)==<span class="number">2</span></span><br><span class="line">        param=[<span class="number">1</span> <span class="number">0</span>;<span class="number">1</span> <span class="number">200</span>];</span><br><span class="line">        plot(</span><br><span class="line">            X(:,<span class="number">2</span>),y,<span class="string">'om;(x,y);'</span>,</span><br><span class="line">            param(:,<span class="number">2</span>),param*theta,<span class="string">'b;h(x);'</span></span><br><span class="line">            );</span><br><span class="line">        xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);title(<span class="string">'linearReg'</span>);</span><br><span class="line">        print -dpng <span class="string">'Figure1.png'</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<img src="/2017/01/07/MLearn-linear-regression-2/Figure1.png" alt="linearReg" title="linearReg">
+<p>不过，这只能说明，Octave的<code>rand</code>函数效果太好了。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Machine Learning Week 2 笔记&lt;br&gt;要期末考，坑留到假期再填吧：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;优化后的梯度下降实现（Octave）&lt;/li&gt;
-&lt;li&gt;正规方程推导，伪逆相关补充&lt;/li&gt;
-&lt;li&gt;Octave还没学完&lt;/li&gt;
-&lt;li&gt;Homework和Quiz&lt;/li&gt;
-&lt;/ol&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;Machine Learning Week 2 笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Week2以&lt;strong&gt;多变量线性回归&lt;/strong&gt;为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。&lt;br&gt;相比我DIY的OI风格的Gradient Descent，Octave实现的向量化版本要简洁优雅很多。&lt;/p&gt;
     
     </summary>
     
@@ -90,35 +103,37 @@
   </entry>
   
   <entry>
-    <title>「笔记」单变量线性回归</title>
+    <title>「Week1」单变量线性回归</title>
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2017-01-07T14:57:42.088Z</updated>
+    <updated>2017-01-11T13:31:34.439Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。<br><a id="more"></a></p>
-<h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><ol>
+    <content type="html"><![CDATA[<blockquote>
+<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记</p>
+</blockquote>
+<p>线性回归，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。<br><a id="more"></a></p>
+<h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><p>机器学习（Machine Learning）：让计算机在非特定编程的条件下做出正确反应。</p>
+<ol>
 <li>监督学习（Supervised Learning）：给定一组样本数据，以及其对应的正确输出，预测输入与输出之间的关系。<ol>
 <li>回归（Regression）：以连续函数预测输出值</li>
 <li>分类（Classification）：以离散值预测输出值</li>
 </ol>
 </li>
-<li>无监督学习（Unsuperivised Learning）：给定一组样本数据，在没有对应输出的情况下，将数据分类。</li>
+<li>无监督学习（Unsuperivised Learning）：给定一组样本数据，在没有对应输出的情况下，将数据分类（聚类问题）。</li>
 </ol>
-<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><ol>
-<li>样本数据（Training Set）：$m$个离散的点$(x_i,y_i)$</li>
+<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>单变量线性回归（Univariate Linear Regression）：寻找一个因变量$y$与一个自变量$x$之间近似的线性函数关系$h_(\theta)(x)$。</p>
+<ol>
+<li>样本数据（Training Set）：$m$组离散的数据$(x_i,y_i)$</li>
 <li>假设（Hypothesis）：$h_{\theta}(x)=\theta_0+\theta_1x$</li>
 <li>代价函数（Cost Function）：$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
-<li>单变量线性回归（Univariate Linear Regression）：即最小化$J(\theta_0,\theta_1)$，即根据样本数据近似地预测输入与输出间的线性关系。</li>
 </ol>
-<h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><ol>
-<li>对一个二元函数$f(\theta_0,\theta_1)$，把其他变量看做常数，对其中一个变量求导，记做$\dfrac{\partial\ f(\theta_0,\theta_1)}{\partial\ \theta_j}$</li>
-<li>对于线性回归中的代价函数而言：<ul>
+<p>这样，通过最小化$J(\theta_0,\theta_1)$来求解单变量线性回归，在平面坐标系内，把样本数据看做坐标的话，其几何意义为求出样本数据的拟合直线。</p>
+<h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><p>对一个二元函数$f(\theta_0,\theta_1)$，把其他变量看做常数，对其中一个变量求导，记做$\dfrac{\partial\ f(\theta_0,\theta_1)}{\partial\ \theta_j}$<br>对于线性回归中的代价函数而言：</p>
+<ul>
 <li>$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_0}=\dfrac{1}{m}\sum_{i=1}^m(h_{\theta}(x_i)-y_i)$</li>
 <li>$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_1}=\dfrac{1}{m}\sum_{i=1}^m(h_{\theta}(x_i)-y_i)\cdot x_i$</li>
 </ul>
-</li>
-</ol>
 <p>这也就是为什么$J(\theta_0,\theta_1)$前面的系数有一个$\dfrac{1}{2}$，对二次项求导时，系数消掉了。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>梯度下降法（Gradient Descent Algorithm），通过偏导数作为增量迭代更新当前值，逼近极值点。</p>
 <ol>
@@ -143,7 +158,10 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning&lt;/a&gt; Week1笔记，第一个简单的ML算法。&lt;br&gt;梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。&lt;br&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning&lt;/a&gt; Week1笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;线性回归，第一个简单的ML算法。&lt;br&gt;梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。&lt;br&gt;
     
     </summary>
     
@@ -477,9 +495,9 @@
     
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
-      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
-    
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
     
   </entry>
   
@@ -591,9 +609,9 @@
     
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
-    
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
     
   </entry>
   
@@ -627,9 +645,9 @@
     
       <category term="链表" scheme="https://cothrax.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
-      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
-    
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+      <category term="Treap" scheme="https://cothrax.github.io/tags/Treap/"/>
     
   </entry>
   
