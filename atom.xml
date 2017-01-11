@@ -108,7 +108,7 @@
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2017-01-11T13:31:34.439Z</updated>
+    <updated>2017-01-11T14:35:21.892Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记</p>
@@ -123,7 +123,7 @@
 </li>
 <li>无监督学习（Unsuperivised Learning）：给定一组样本数据，在没有对应输出的情况下，将数据分类（聚类问题）。</li>
 </ol>
-<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>单变量线性回归（Univariate Linear Regression）：寻找一个因变量$y$与一个自变量$x$之间近似的线性函数关系$h_(\theta)(x)$。</p>
+<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>单变量线性回归（Univariate Linear Regression）：寻找一个因变量$y$与一个自变量$x$之间近似的线性函数关系$h_{\theta}(x)$。</p>
 <ol>
 <li>样本数据（Training Set）：$m$组离散的数据$(x_i,y_i)$</li>
 <li>假设（Hypothesis）：$h_{\theta}(x)=\theta_0+\theta_1x$</li>
