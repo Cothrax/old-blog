@@ -23,7 +23,7 @@ Week2以多变量线性回归为中心，介绍了梯度下降的优化、向量
 Week2以多变量线性回归为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。相比我DIY的OI风格的Gradient Descent，Octave实现的向量化版本要简洁优雅很多。">
 <meta property="og:image" content="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/Figure2.png">
 <meta property="og:image" content="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/Figure1.png">
-<meta property="og:updated_time" content="2017-01-11T14:23:26.236Z">
+<meta property="og:updated_time" content="2017-01-11T15:05:27.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Week2」多变量线性回归">
 <meta name="twitter:description" content="Machine Learning Week 2 笔记
@@ -118,7 +118,7 @@ Week2以多变量线性回归为中心，介绍了梯度下降的优化、向量
 <h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
 <ol>
 <li>有$m$组样本数据和$n$个自变量，$x^{(i)}_j$为第i组数据中的第j个自变量</li>
-<li>参数向量：$x^{(i)}=\begin{bmatrix}x^{(i)}_0 &amp; \cdots &amp; x^{(i)}_n\end{bmatrix}$，为了方便处理常数项，记$x^{(i)}_0=1$</li>
+<li>参数向量：$x^{(i)}=\begin{bmatrix}x^{(i)}_0 &amp; \cdots &amp; x^{(i)}_n\end{bmatrix}^T$，为了方便处理常数项，记$x^{(i)}_0=1$</li>
 <li>参数矩阵：$X=\begin{bmatrix}x^{(1)} &amp; \cdots &amp; x^{(m)}\end{bmatrix}^T\in\mathbb{R}^{m\times (n+1)}$</li>
 <li>因变量：$y=\begin{bmatrix}y^{(1)} &amp; \cdots &amp; y^{(m)}\end{bmatrix}^T$</li>
 <li>求解系数：$\theta=\begin{bmatrix}\theta_{0} &amp; \cdots &amp; \theta_{n}\end{bmatrix}^T$</li>

@@ -15,7 +15,7 @@
 <h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
 <ol>
 <li>有$m$组样本数据和$n$个自变量，$x^{(i)}_j$为第i组数据中的第j个自变量</li>
-<li>参数向量：$x^{(i)}=\begin{bmatrix}x^{(i)}_0 &amp; \cdots &amp; x^{(i)}_n\end{bmatrix}$，为了方便处理常数项，记$x^{(i)}_0=1$</li>
+<li>参数向量：$x^{(i)}=\begin{bmatrix}x^{(i)}_0 &amp; \cdots &amp; x^{(i)}_n\end{bmatrix}^T$，为了方便处理常数项，记$x^{(i)}_0=1$</li>
 <li>参数矩阵：$X=\begin{bmatrix}x^{(1)} &amp; \cdots &amp; x^{(m)}\end{bmatrix}^T\in\mathbb{R}^{m\times (n+1)}$</li>
 <li>因变量：$y=\begin{bmatrix}y^{(1)} &amp; \cdots &amp; y^{(m)}\end{bmatrix}^T$</li>
 <li>求解系数：$\theta=\begin{bmatrix}\theta_{0} &amp; \cdots &amp; \theta_{n}\end{bmatrix}^T$</li>
