@@ -11,7 +11,7 @@
 </blockquote>
 <p>Week2以<strong>多变量线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化<a href="/2017/01/07/MLearn-linear-regression-2/0.zip" title="版本">版本</a>要简洁优雅很多。</p>
 <a id="more"></a>
-<h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与单变量不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。</p>
+<h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与单变量不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。<br>多项式回归（Polynomial Regression）：即探究因变量与自变量之间的多项式函数关系，如果把不同次项看多是多个变量的话，就规约为了多变量线性回归。</p>
 <h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
 <ol>
 <li>有$m$组样本数据和$n$个自变量，$x^{(i)}_j$为第i组数据中的第j个自变量</li>
