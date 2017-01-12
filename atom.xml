@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-12T09:54:09.512Z</updated>
+  <updated>2017-01-12T10:01:42.790Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-12T09:54:09.512Z</updated>
+    <updated>2017-01-12T10:01:42.790Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Machine Learning Week 2 笔记</p>
 </blockquote>
-<p>Week2以<strong>多变量线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化版本要简洁优雅很多。</p>
+<p>Week2以<strong>多变量线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化<a href="/2017/01/07/MLearn-linear-regression-2/0.zip" title="版本">版本</a>要简洁优雅很多。</p>
 <a id="more"></a>
 <h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与单变量不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。</p>
 <h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
@@ -85,7 +85,7 @@
       &lt;blockquote&gt;
 &lt;p&gt;Machine Learning Week 2 笔记&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Week2以&lt;strong&gt;多变量线性回归&lt;/strong&gt;为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。&lt;br&gt;相比我DIY的OI风格的Gradient Descent，Octave实现的向量化版本要简洁优雅很多。&lt;/p&gt;
+&lt;p&gt;Week2以&lt;strong&gt;多变量线性回归&lt;/strong&gt;为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。&lt;br&gt;相比我DIY的OI风格的Gradient Descent，Octave实现的向量化&lt;a href=&quot;/2017/01/07/MLearn-linear-regression-2/0.zip&quot; title=&quot;版本&quot;&gt;版本&lt;/a&gt;要简洁优雅很多。&lt;/p&gt;
     
     </summary>
     
