@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-11T15:05:27.645Z</updated>
+  <updated>2017-01-12T04:01:26.450Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-11T15:05:27.645Z</updated>
+    <updated>2017-01-12T04:01:26.450Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Machine Learning Week 2 笔记</p>
@@ -61,9 +61,9 @@
 \theta_j&apos;=\theta_j-\sum_{i=1}^{n}\dfrac{avg_i}{rag_i} &amp;j=0\\
 \theta_j&apos;=\dfrac{\theta_j}{rag_i} &amp; j\in[1,n] 
 \end{cases}$$</span><!-- Has MathJax --></p>
-<figure class="highlight matlab"><figcaption><span>all.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[X,y]</span>=<span class="title">generateDat</span><span class="params">(m,n,lim)</span>;</span></span><br><span class="line">    X=<span class="built_in">rand</span>(m,n)*lim;</span><br><span class="line">    y=<span class="built_in">rand</span>(m,<span class="number">1</span>)*lim;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theta</span>=<span class="title">gradientDes</span><span class="params">(X,y,alpha,iters)</span>;</span></span><br><span class="line">    <span class="comment">%feature scaling</span></span><br><span class="line">    [m,n]=<span class="built_in">size</span>(X);</span><br><span class="line">    rag=max(X)-min(X);rag(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">1</span>;</span><br><span class="line">    avg=sum(X)/<span class="built_in">size</span>(X,<span class="number">1</span>);avg(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">0</span>;</span><br><span class="line">    X=(X.-avg)./rag;</span><br><span class="line">    <span class="comment">%gradient descent</span></span><br><span class="line">    theta=<span class="built_in">zeros</span>(n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span>:iters</span><br><span class="line">        tmp=X*theta-y;</span><br><span class="line">        theta-=(X'*tmp)*alpha/m;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="comment">%theta calculation</span></span><br><span class="line">    theta(<span class="number">1</span>,<span class="number">1</span>)-=(avg./rag)*theta;</span><br><span class="line">    theta./=rag';</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">1000</span>,<span class="number">10</span>,<span class="number">200</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    <span class="built_in">disp</span>(gradientDes(X,y,<span class="number">1.5</span>,<span class="number">2e2</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><figcaption><span>all.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[X,y]</span>=<span class="title">generateDat</span><span class="params">(m,n,lim)</span>;</span></span><br><span class="line">    theta=<span class="built_in">randn</span>(n,<span class="number">1</span>)*lim;</span><br><span class="line">    X=<span class="built_in">rand</span>(m,n)*lim;</span><br><span class="line">    y=X*theta+<span class="built_in">randn</span>(m,<span class="number">1</span>)*(lim^<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">theta</span>=<span class="title">gradientDes</span><span class="params">(X,y,alpha,iters)</span>;</span></span><br><span class="line">    <span class="comment">%feature scaling</span></span><br><span class="line">    [m,n]=<span class="built_in">size</span>(X);</span><br><span class="line">    rag=max(X)-min(X);rag(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">1</span>;</span><br><span class="line">    avg=sum(X)/<span class="built_in">size</span>(X,<span class="number">1</span>);avg(<span class="number">1</span>,<span class="number">1</span>)=<span class="number">0</span>;</span><br><span class="line">    X=(X.-avg)./rag;</span><br><span class="line">    <span class="comment">%gradient descent</span></span><br><span class="line">    theta=<span class="built_in">zeros</span>(n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span>:iters</span><br><span class="line">        tmp=X*theta-y;</span><br><span class="line">        theta-=(X'*tmp)*alpha/m;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">    <span class="comment">%theta calculation</span></span><br><span class="line">    theta(<span class="number">1</span>,<span class="number">1</span>)-=(avg./rag)*theta;</span><br><span class="line">    theta./=rag';</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">100</span>,<span class="number">5</span>,<span class="number">100</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    <span class="built_in">disp</span>(gradientDes(X,y,<span class="number">1.5</span>,<span class="number">2e2</span>));</span><br></pre></td></tr></table></figure>
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>从OI的角度看，<code>gradientDes</code>函数的复杂度为$O(n*m*iters)$，但由于矩阵运算会采用并行计算，实际速度会更快一些。<br>再将$J(\theta)$的收敛过程绘制成图像。<br><img src="/2017/01/07/MLearn-linear-regression-2/Figure2.png" alt="J(theta)" title="J(theta)"></p>
-<p>会发现在<code>generateDat(10,5,200)</code>下，开始$J(\theta)$收敛得很快，在之后图像则接近水平，而如果减小iters，得到的$\theta$在小数位上不够精确。<br>也就是说，由于逼近极值点后偏导数趋向于0，之后大部分很多的迭代都浪费在了精度上。<br>当然由于是用<code>rand</code>生成的数据，也有这方面的因素。</p>
+<p>会发现在<code>generateDat(100,5,100)</code>下，开始$J(\theta)$收敛得很快，在之后图像则接近水平，而如果减小iters，得到的$\theta$在小数位上不够精确。<br>也就是说，由于逼近极值点后偏导数趋向于0，之后大部分很多的迭代都浪费在了精度上。</p>
 <h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p>正规方程是线性回归的一种代数解法，$X,y,\theta$的含义同上文，可以直接用一个方程求解线性回归：<br>$$\theta=(X^TX)^{-1}X^Ty$$</p>
 <h3 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h3><p>一个不严格的推导过程。<br><span>$$\begin{align*}
 \dfrac{d}{d(\theta)}J(\theta)&amp;=0\\ 
@@ -76,9 +76,8 @@
 <li>不考虑并行计算，矩乘的复杂度为$O(n^3)$，在$n$较大时是不够优秀的。</li>
 <li>考虑到参数矩阵$X$存在不可逆的情况，照Ng的讲法，可能是$m&lt;n$或是存在冗余自变量导致的。但实际上，在不可逆时，<code>normalEqu</code>依然能给出正确的答案，这涉及到<code>pinv</code>“伪逆”的概念。由于身为中学生线代知识有限，略过。</li>
 </ol>
-<h3 id="有趣的东西"><a href="#有趣的东西" class="headerlink" title="有趣的东西"></a>有趣的东西</h3><p>在单变量时，把图画出来看看效果。<br><figure class="highlight matlab"><figcaption><span>linearReg.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">20</span>,<span class="number">1</span>,<span class="number">200</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    theta=gradientDes(X,y,<span class="number">1</span>,<span class="number">1e4</span>);<span class="comment">%disp(theta);</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">size</span>(X,<span class="number">2</span>)==<span class="number">2</span></span><br><span class="line">        param=[<span class="number">1</span> <span class="number">0</span>;<span class="number">1</span> <span class="number">200</span>];</span><br><span class="line">        plot(</span><br><span class="line">            X(:,<span class="number">2</span>),y,<span class="string">'om;(x,y);'</span>,</span><br><span class="line">            param(:,<span class="number">2</span>),param*theta,<span class="string">'b;h(x);'</span></span><br><span class="line">            );</span><br><span class="line">        xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);title(<span class="string">'linearReg'</span>);</span><br><span class="line">        print -dpng <span class="string">'Figure1.png'</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="有趣的东西"><a href="#有趣的东西" class="headerlink" title="有趣的东西"></a>有趣的东西</h3><p>在单变量时，把图画出来看看效果。<br><figure class="highlight matlab"><figcaption><span>linearReg.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">100</span>,<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    theta=gradientDes(X,y,<span class="number">1.5</span>,<span class="number">2e2</span>);</span><br><span class="line">    <span class="built_in">disp</span>([theta normalEqu(X,y)]);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">size</span>(X,<span class="number">2</span>)==<span class="number">2</span></span><br><span class="line">        param=[<span class="number">1</span> <span class="number">0</span>;<span class="number">1</span> <span class="number">100</span>];</span><br><span class="line">        figure(<span class="number">2</span>);</span><br><span class="line">        plot(</span><br><span class="line">            X(:,<span class="number">2</span>),y,<span class="string">'om;(x,y);'</span>,</span><br><span class="line">            param(:,<span class="number">2</span>),param*theta,<span class="string">'b;h(x);'</span></span><br><span class="line">            );</span><br><span class="line">        xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);title(<span class="string">'linearReg'</span>);</span><br><span class="line">        print -dpng <span class="string">'Figure1.png'</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
 <img src="/2017/01/07/MLearn-linear-regression-2/Figure1.png" alt="linearReg" title="linearReg">
-<p>不过，这只能说明，Octave的<code>rand</code>函数效果太好了。</p>
 ]]></content>
     
     <summary type="html">
@@ -299,9 +298,9 @@
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="线性DP" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7DP/"/>
     
@@ -492,9 +491,9 @@
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
@@ -999,9 +998,9 @@
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
@@ -1091,11 +1090,11 @@
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
+    
       <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
