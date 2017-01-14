@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-12T12:33:13.902Z</updated>
+  <updated>2017-01-14T15:29:47.735Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -16,18 +16,120 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>「Week2」多变量线性回归</title>
+    <title>「Week3」逻辑回归</title>
+    <link href="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/"/>
+    <id>https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/</id>
+    <published>2017-01-14T11:44:52.000Z</published>
+    <updated>2017-01-14T15:29:47.735Z</updated>
+    
+    <content type="html"><![CDATA[<style>
+    rt{
+        font-size:60%;
+    }
+</style>
+
+<blockquote>
+<p>Machine Learning Week 3 笔记</p>
+</blockquote>
+<p><strong>逻辑回归（Logistic Regression）</strong>虽然被叫做“回归”，但实际上是一种分类算法。通过构造新的函数，分类问题也可以应用梯度下降求解。Andrew针对求凸函数极值给出了一种<ruby>高级<rp> (</rp><rt>cū bào</rt><rp>) </rp></ruby>的优化，还介绍了用于解决过拟合（Overfitting）的<strong>正则化</strong>（Regularization）。<br><a id="more"></a><br>$\theta,x^{(i)},y^{(i)},h_{\theta}(x),J(\theta)$的含义同<a href="/2017/01/07/MLearn-linear-regression-2/" title="Week2">Week2</a>。</p>
+<blockquote>
+<p>Under Construction - 代码很快就会补上</p>
+</blockquote>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="二元逻辑回归"><a href="#二元逻辑回归" class="headerlink" title="二元逻辑回归"></a>二元逻辑回归</h3><p>正如引言所说，二元逻辑回归是一类分类问题，和线性回归不同的是，其因变量y只有两个值0或者1，即根据自变量x将数据分为两类。</p>
+<p><strong>构造新的假设函数</strong>：<br>$$h_{\theta}(x)=\dfrac{1}{1+e^{-\theta^Tx}}$$<br>这个函数大概长这样（以$\theta^Tx$为自变量）：<br><img src="/2017/01/14/MLearn-logistic-regression/hx.png" alt="hx.png" title=""><br>$h_{\theta}(x)=P(y=1;x;\theta)\in(0,1)$，即在给定$\theta$下，$x$属于分类1的概率。<br>容易发现：<br><span>$$\begin{cases}
+h_{\theta}(x)&gt;0.5 &amp; \text{ if } \theta^Tx&gt;0\\ 
+h_{\theta}(x)&lt;0.5 &amp; \text{ if } \theta^Tx&lt;0
+\end{cases}$$</span><!-- Has MathJax --><br>此时就存在一个x取值的集合，使得$\theta^Tx=0$，这个集合就被称为决策边界（Decision Boundary），在边界的两侧分别代表x属于不同的分类。</p>
+<p>在逻辑回归中，最小二乘法类型的代价函数$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$不再适用，因为$h_{\theta}(x)$的含义已经变化，实际上，这样得到的代价函数不是凸函数，这意味着不能通过梯度下降来找到最小值。</p>
+<p><strong>构造新的代价函数</strong>：<br><span>$$\begin{align*}
+g_{\theta}(x)&amp;=\begin{cases}-ln(h_{\theta}(x)) &amp; \text{ if } y=1\\ 
+-ln(1-h_{\theta}(x)) &amp; \text{ if } y=0
+\end{cases}
+\\ 
+&amp;=-y* ln(h_{\theta}(x))-(1-y)*ln(1-h_{\theta}(x))\\
+J(\theta)&amp;=\sum_{i=1}^mg_{\theta}(x^{(i)})&amp;
+\end{align*}$$</span><!-- Has MathJax --><br>这个函数大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
+<p>当如果$y=1,h_{\theta}(x)\to 0$，即x有很大可能属于分类0，此时将得到$J(\theta)\to+\infty$的惩罚项，反之亦然。<br><ruby>可以证明<rp> (</rp><rt>cǐ chǔ shěng lüè</rt><rp>) </rp></ruby>，这个代价函数是一个凸函数。</p>
+<p><strong>$J(\theta)$的偏导数：</strong><br>为了实现梯度下降，求出代价函数的偏导数：<br>$$\dfrac{\partial J(\theta)}{\theta_j}=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j$$<br>会发现实际上，逻辑回归的偏导数与线性回归是相同的，但值得注意的是，$h_{\theta}(x)$的含义不再相同。</p>
+<h3 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h3><p>除了用梯度下降求一个凸函数的极值，还有其他更复杂的版本：共轭下降法、BFGS、L-BFGS。<br>这些方法以中学数学水平是难以理解的。<br>不过有一种方法高级优化方法，就是……<br>直接调用octave的<code>fminunc</code>函数……</p>
+<p><strong>首先，需要一个自定义函数<code>costFunction</code></strong><br><figure class="highlight matlab"><figcaption><span>costFunction.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[jVal, gradient]</span> = <span class="title">costFunction</span><span class="params">(theta)</span></span></span><br><span class="line">    jVal = [...code to compute J(theta)...];</span><br><span class="line">    gradient = [...code to compute derivative of J(theta)...];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>然后直接调用它就好了</strong><br><figure class="highlight matlab"><figcaption><span>main.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%option： 给定梯度（偏导数）,最大迭代数</span></span><br><span class="line">options = optimset(<span class="string">'GradObj'</span>, <span class="string">'on'</span>, <span class="string">'MaxIter'</span>, <span class="number">100</span>);</span><br><span class="line">initialTheta = <span class="built_in">zeros</span>(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">%return: 极值点, 极值, 是否收敛</span></span><br><span class="line">[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);</span><br></pre></td></tr></table></figure></p>
+<h3 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h3><p>将数据分为n个类别而不只是两类，即因变量<span>$y\in U=\{0,1,...,n-1\}$</span><!-- Has MathJax --><br>在这种情况下，需要n个分类器：<br>第$i$个为：将$i$看做1，将<span>$U-\{i\}$</span><!-- Has MathJax -->看做是0，跑二元逻辑回归，记它得到的假设函数为$p_i(x)$<br>那么对于一个新数据x，取$max_{i}(p_i(x))$作为输出结果。</p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="欠拟合-过拟合"><a href="#欠拟合-过拟合" class="headerlink" title="欠拟合/过拟合"></a>欠拟合/过拟合</h3><p>当自变量x过少时，会出现<strong>欠拟合（Underfitting）</strong>的问题，而x过多而m太小，则会导致<strong>过拟合（Overfitting）</strong>。<br>比如说，如果一组样本数据$(x^{(i)},y^{(i)})$能被一个二次函数很好地拟合，那么当用一次函数即一条直线取拟合数据时，则不能很好的预测结果；<br>而如果用的次数过高，虽然能准确地匹配样本数据（$J(\theta)\to 0$），但是对于新数据往往不能得到很好的预测值，因为它多出了不必要的弯曲和角度。<br><img src="/2017/01/14/MLearn-logistic-regression/overfitting.png" alt="overfitting.png" title=""></p>
+<h3 id="正则化-1"><a href="#正则化-1" class="headerlink" title="正则化"></a>正则化</h3><p>解决过拟合的问题，有两种思路：</p>
+<ol>
+<li>减少不必要的自变量，在上述例子中就是去掉高次项。</li>
+<li>让自变量的值尽量小，使函数更加“平滑”，即进行正则化，在上述例子中，就是让高次项的系数尽量小。</li>
+</ol>
+<p>在原有的代价函数中，添加正则化系数：<br>$$J’(\theta)=J(\theta)+\lambda\sum_{i=1}^n\theta_i^2$$<br>也就是说，对于$\theta$添加惩罚项，当$\theta$过大时，代价会偏高；其中$\lambda$叫做正则系数。<br>值得注意的是，当正则系数过大时，正则项“喧宾夺主”，也就是说过分注重与$\theta$的大小而导致欠拟合。<br>还有，就是一般不对$\theta_0$进行正则化。</p>
+<h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到：<br><span>$$\begin{align*}
+\dfrac{\partial J(\theta)}{\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
+\theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J(\theta)}{\theta_j}\\
+\theta_j &amp;= \theta_j(1-\dfrac{\lambda\alpha}{m})-\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})
+\end{align*}$$</span><!-- Has MathJax --></p>
+<h3 id="正则化正规方程"><a href="#正则化正规方程" class="headerlink" title="正则化正规方程"></a>正则化正规方程</h3><p>正则化正规方程不仅可以解决过拟合的问题，也可以处理Week2中提及的$X^TX$不可逆的问题。<br>证明略去。<br><span>$$L=\begin{bmatrix}
+0 &amp; 0 &amp; \cdots &amp; 0\\ 
+0 &amp; 1 &amp; \cdots &amp; 0\\ 
+\vdots &amp; \vdots &amp; \ddots &amp;\vdots \\ 
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}\\
+\theta=(X^TX-\lambda L)^{-1}X^Ty$$</span><!-- Has MathJax --></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;style&gt;
+    rt{
+        font-size:60%;
+    }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Machine Learning Week 3 笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;逻辑回归（Logistic Regression）&lt;/strong&gt;虽然被叫做“回归”，但实际上是一种分类算法。通过构造新的函数，分类问题也可以应用梯度下降求解。Andrew针对求凸函数极值给出了一种&lt;ruby&gt;高级&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;cū bào&lt;/rt&gt;&lt;rp&gt;) &lt;/rp&gt;&lt;/ruby&gt;的优化，还介绍了用于解决过拟合（Overfitting）的&lt;strong&gt;正则化&lt;/strong&gt;（Regularization）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="AI/ML" scheme="https://cothrax.github.io/categories/AI-ML/"/>
+    
+    
+      <category term="线性代数" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+      <category term="监督学习" scheme="https://cothrax.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="回归" scheme="https://cothrax.github.io/tags/%E5%9B%9E%E5%BD%92/"/>
+    
+      <category term="偏导数" scheme="https://cothrax.github.io/tags/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
+    
+      <category term="正规方程" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
+    
+      <category term="分类" scheme="https://cothrax.github.io/tags/%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="正则化" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E5%88%99%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>「Week2」多元线性回归</title>
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-12T12:33:13.902Z</updated>
+    <updated>2017-01-14T14:17:37.506Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<style>
+    rt{
+        font-size:60%;
+    }
+</style>
+
+
+<blockquote>
 <p>Machine Learning Week 2 笔记</p>
 </blockquote>
-<p>Week2以<strong>多变量线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化<a href="/2017/01/07/MLearn-linear-regression-2/0.zip" title="版本">版本</a>要简洁优雅很多。</p>
+<p>Week2以<strong>多元线性回归</strong>为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。<br>相比我DIY的OI风格的Gradient Descent，Octave实现的向量化<a href="/2017/01/07/MLearn-linear-regression-2/0.zip" title="版本">版本</a>要简洁优雅很多。</p>
 <a id="more"></a>
-<h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与单变量不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。<br>多项式回归（Polynomial Regression）：即探究因变量与自变量之间的多项式函数关系，如果把不同次项看多是多个变量的话，就规约为了多变量线性回归。</p>
+<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>多元线性回归（Multivarite Linear Regression），即一个因变量与多个自变量之间的线性回归，与一元不同的是，这次的自变量x不在是一个数，而是多个值构成的向量。<br>多项式回归（Polynomial Regression）：即探究因变量与自变量之间的多项式函数关系，如果把不同次项看多是多个变量的话，就规约为了多元线性回归。</p>
 <h3 id="向量化编程"><a href="#向量化编程" class="headerlink" title="向量化编程"></a>向量化编程</h3><p>在上周的代码中，有大量丑陋的for语句嵌套，实际上，用向量化的思想，用矩阵运算处理数据，代码会高效很多。<br>记：</p>
 <ol>
 <li>有$m$组样本数据和$n$个自变量，$x^{(i)}_j$为第i组数据中的第j个自变量</li>
@@ -53,7 +155,7 @@
 </ol>
 </li>
 </ol>
-<p>考虑单变量时：<br><span>$$y=\theta_0+\theta_1\dfrac{x-avg}{rag}\Rightarrow
+<p>考虑一元时：<br><span>$$y=\theta_0+\theta_1\dfrac{x-avg}{rag}\Rightarrow
 \begin{cases}
 \theta_0&apos;=\theta_0-\dfrac{avg}{rag} \\
 \theta_1&apos;=\dfrac{\theta_1}{rag}
@@ -76,16 +178,23 @@
 <li>不考虑并行计算，矩乘的复杂度为$O(n^3)$，在$n$较大时是不够优秀的。</li>
 <li>考虑到参数矩阵$X$存在不可逆的情况，照Ng的讲法，可能是$m&lt;n$或是存在冗余自变量导致的。但实际上，在不可逆时，<code>normalEqu</code>依然能给出正确的答案，这涉及到<code>pinv</code>“伪逆”的概念。由于身为中学生线代知识有限，略过。</li>
 </ol>
-<h3 id="有趣的东西"><a href="#有趣的东西" class="headerlink" title="有趣的东西"></a>有趣的东西</h3><p>在单变量时，把图画出来看看效果。<br><figure class="highlight matlab"><figcaption><span>linearReg.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">100</span>,<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    theta=gradientDes(X,y,<span class="number">1.5</span>,<span class="number">2e2</span>);</span><br><span class="line">    <span class="built_in">disp</span>([theta normalEqu(X,y)]);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">size</span>(X,<span class="number">2</span>)==<span class="number">2</span></span><br><span class="line">        param=[<span class="number">1</span> <span class="number">0</span>;<span class="number">1</span> <span class="number">100</span>];</span><br><span class="line">        figure(<span class="number">2</span>);</span><br><span class="line">        plot(</span><br><span class="line">            X(:,<span class="number">2</span>),y,<span class="string">'om;(x,y);'</span>,</span><br><span class="line">            param(:,<span class="number">2</span>),param*theta,<span class="string">'b;h(x);'</span></span><br><span class="line">            );</span><br><span class="line">        xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);title(<span class="string">'linearReg'</span>);</span><br><span class="line">        print -dpng <span class="string">'Figure1.png'</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="有趣的东西"><a href="#有趣的东西" class="headerlink" title="有趣的东西"></a>有趣的东西</h3><p>在一元时，把图画出来看看效果。<br><figure class="highlight matlab"><figcaption><span>linearReg.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">linearReg</span><span class="params">()</span>;</span></span><br><span class="line">    [X,y]=generateDat(<span class="number">100</span>,<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">    X=[ones(size(y),<span class="number">1</span>) X];</span><br><span class="line">    theta=gradientDes(X,y,<span class="number">1.5</span>,<span class="number">2e2</span>);</span><br><span class="line">    <span class="built_in">disp</span>([theta normalEqu(X,y)]);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">size</span>(X,<span class="number">2</span>)==<span class="number">2</span></span><br><span class="line">        param=[<span class="number">1</span> <span class="number">0</span>;<span class="number">1</span> <span class="number">100</span>];</span><br><span class="line">        figure(<span class="number">2</span>);</span><br><span class="line">        plot(</span><br><span class="line">            X(:,<span class="number">2</span>),y,<span class="string">'om;(x,y);'</span>,</span><br><span class="line">            param(:,<span class="number">2</span>),param*theta,<span class="string">'b;h(x);'</span></span><br><span class="line">            );</span><br><span class="line">        xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>);title(<span class="string">'linearReg'</span>);</span><br><span class="line">        print -dpng <span class="string">'Figure1.png'</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
 <img src="/2017/01/07/MLearn-linear-regression-2/Figure1.png" alt="linearReg" title="linearReg">
 ]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
+      &lt;style&gt;
+    rt{
+        font-size:60%;
+    }
+&lt;/style&gt;
+
+
+&lt;blockquote&gt;
 &lt;p&gt;Machine Learning Week 2 笔记&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Week2以&lt;strong&gt;多变量线性回归&lt;/strong&gt;为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。&lt;br&gt;相比我DIY的OI风格的Gradient Descent，Octave实现的向量化&lt;a href=&quot;/2017/01/07/MLearn-linear-regression-2/0.zip&quot; title=&quot;版本&quot;&gt;版本&lt;/a&gt;要简洁优雅很多。&lt;/p&gt;
+&lt;p&gt;Week2以&lt;strong&gt;多元线性回归&lt;/strong&gt;为中心，介绍了梯度下降的优化、向量化编程的思想、正规方程以及适用于线性数值计算的编程语言——Octave。&lt;br&gt;相比我DIY的OI风格的Gradient Descent，Octave实现的向量化&lt;a href=&quot;/2017/01/07/MLearn-linear-regression-2/0.zip&quot; title=&quot;版本&quot;&gt;版本&lt;/a&gt;要简洁优雅很多。&lt;/p&gt;
     
     </summary>
     
@@ -94,25 +203,25 @@
     
       <category term="线性代数" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     
-      <category term="机器学习" scheme="https://cothrax.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="监督学习" scheme="https://cothrax.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="线性回归" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+      <category term="回归" scheme="https://cothrax.github.io/tags/%E5%9B%9E%E5%BD%92/"/>
     
       <category term="正规方程" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
-    <title>「Week1」单变量线性回归</title>
+    <title>「Week1」一元线性回归</title>
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2017-01-11T14:35:21.892Z</updated>
+    <updated>2017-01-14T14:17:31.090Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记</p>
 </blockquote>
-<p>线性回归，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。<br><a id="more"></a></p>
+<p>线性回归，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化一元线性回归中的二元代价函数。<br><a id="more"></a></p>
 <h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><p>机器学习（Machine Learning）：让计算机在非特定编程的条件下做出正确反应。</p>
 <ol>
 <li>监督学习（Supervised Learning）：给定一组样本数据，以及其对应的正确输出，预测输入与输出之间的关系。<ol>
@@ -122,13 +231,13 @@
 </li>
 <li>无监督学习（Unsuperivised Learning）：给定一组样本数据，在没有对应输出的情况下，将数据分类（聚类问题）。</li>
 </ol>
-<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>单变量线性回归（Univariate Linear Regression）：寻找一个因变量$y$与一个自变量$x$之间近似的线性函数关系$h_{\theta}(x)$。</p>
+<h3 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h3><p>一元线性回归（Univariate Linear Regression）：寻找一个因变量$y$与一个自变量$x$之间近似的线性函数关系$h_{\theta}(x)$。</p>
 <ol>
 <li>样本数据（Training Set）：$m$组离散的数据$(x_i,y_i)$</li>
 <li>假设（Hypothesis）：$h_{\theta}(x)=\theta_0+\theta_1x$</li>
 <li>代价函数（Cost Function）：$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
 </ol>
-<p>这样，通过最小化$J(\theta_0,\theta_1)$来求解单变量线性回归，在平面坐标系内，把样本数据看做坐标的话，其几何意义为求出样本数据的拟合直线。</p>
+<p>这样，通过最小化$J(\theta_0,\theta_1)$来求解一元线性回归，在平面坐标系内，把样本数据看做坐标的话，其几何意义为求出样本数据的拟合直线。</p>
 <h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><p>对一个二元函数$f(\theta_0,\theta_1)$，把其他变量看做常数，对其中一个变量求导，记做$\dfrac{\partial\ f(\theta_0,\theta_1)}{\partial\ \theta_j}$<br>对于线性回归中的代价函数而言：</p>
 <ul>
 <li>$\dfrac{\partial\ J(\theta_0,\theta_1)}{\partial\ \theta_0}=\dfrac{1}{m}\sum_{i=1}^m(h_{\theta}(x_i)-y_i)$</li>
@@ -161,16 +270,16 @@
       &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning&lt;/a&gt; Week1笔记&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;线性回归，第一个简单的ML算法。&lt;br&gt;梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化单变量线性回归中的二元代价函数。&lt;br&gt;
+&lt;p&gt;线性回归，第一个简单的ML算法。&lt;br&gt;梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化一元线性回归中的二元代价函数。&lt;br&gt;
     
     </summary>
     
       <category term="AI/ML" scheme="https://cothrax.github.io/categories/AI-ML/"/>
     
     
-      <category term="机器学习" scheme="https://cothrax.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="监督学习" scheme="https://cothrax.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="线性回归" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+      <category term="回归" scheme="https://cothrax.github.io/tags/%E5%9B%9E%E5%BD%92/"/>
     
       <category term="梯度下降" scheme="https://cothrax.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
     
@@ -255,9 +364,9 @@
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
-    
       <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+      <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
@@ -1097,37 +1206,6 @@
       <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bzoj-2734 [HNOI2012]集合选数</title>
-    <link href="https://cothrax.github.io/2016/12/09/bzoj-2734/"/>
-    <id>https://cothrax.github.io/2016/12/09/bzoj-2734/</id>
-    <published>2016-12-09T11:06:32.000Z</published>
-    <updated>2016-12-31T11:42:21.751Z</updated>
-    
-    <content type="html"><![CDATA[<p>约束条件：若x在集合s中，则2x和3x不能在该集合中。<br>对于任意一个正整数 n≤100000，如何求出{1, 2,…, n} 的满足上述约束条件的子集的个数（只需输出对 1,000,000,001 取模的结果）。<br>n≤20</p>
-<a id="more"></a>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1013" target="_blank" rel="external">bzoj-2734</a><br><a href="/2016/12/09/bzoj-2734/2734.cpp" title="2734.cpp">2734.cpp</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>基于状压dp的想法题<br>详见：<a href="http://hzwer.com/5149.html" target="_blank" rel="external">hzwer</a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><figcaption><span>2734.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100050</span>,K=<span class="number">20</span>,Z=<span class="number">1E9</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> n,m=<span class="number">0</span>,b[K]=&#123;<span class="number">1</span>&#125;,h[<span class="number">1</span>&lt;&lt;K],f[K][<span class="number">1</span>&lt;&lt;K];</span><br><span class="line"><span class="keyword">bool</span> flg[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>,a[K];<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=n;i*=<span class="number">2</span>,cnt++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j*=<span class="number">3</span>)</span><br><span class="line">            a[cnt+<span class="number">1</span>]++,flg[j]=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)fill(f[i],f[i]+b[a[i]],<span class="number">0</span>);</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=cnt;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;h[j]&lt;b[a[i]]&amp;&amp;j&lt;m;j++)<span class="keyword">if</span>(f[i][j])</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;h[k]&lt;b[a[i+<span class="number">1</span>]]&amp;&amp;k&lt;m;k++)</span><br><span class="line">                <span class="keyword">if</span>(!(h[k]&amp;(h[k]&lt;&lt;<span class="number">1</span>))&amp;&amp;!(h[k]&amp;h[j]))</span><br><span class="line">                    f[i+<span class="number">1</span>][k]=((ll)f[i+<span class="number">1</span>][k]+(ll)f[i][j])%Z;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;h[i]&lt;b[a[cnt]]&amp;&amp;i&lt;m;i++)</span><br><span class="line">        ret=((ll)ret+(ll)f[cnt][i])%Z;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in","r",stdin);</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);<span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;K;i++)b[i]=b[i<span class="number">-1</span>]&lt;&lt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1</span>&lt;&lt;K;i++)<span class="keyword">if</span>(!(i&amp;(i&lt;&lt;<span class="number">1</span>)))h[m++]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(!flg[i])ans=((ll)ans*(ll)calc(i))%Z;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;约束条件：若x在集合s中，则2x和3x不能在该集合中。&lt;br&gt;对于任意一个正整数 n≤100000，如何求出{1, 2,…, n} 的满足上述约束条件的子集的个数（只需输出对 1,000,000,001 取模的结果）。&lt;br&gt;n≤20&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
-    
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
-    
-      <category term="想法题" scheme="https://cothrax.github.io/tags/%E6%83%B3%E6%B3%95%E9%A2%98/"/>
     
   </entry>
   
