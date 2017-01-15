@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-15T05:28:22.494Z</updated>
+  <updated>2017-01-15T11:11:15.163Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/"/>
     <id>https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/</id>
     <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-15T05:28:22.494Z</updated>
+    <updated>2017-01-15T11:11:15.163Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -36,19 +36,20 @@
 <p>Under Construction - 代码很快就会补上</p>
 </blockquote>
 <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="二元逻辑回归"><a href="#二元逻辑回归" class="headerlink" title="二元逻辑回归"></a>二元逻辑回归</h3><p>正如引言所说，二元逻辑回归是一类分类问题，和线性回归不同的是，其因变量y只有两个值0或者1，即根据自变量x将数据分为两类。</p>
-<p><strong>构造新的假设函数</strong>：<br>$$h_{\theta}(x)=\dfrac{1}{1+e^{-\theta^Tx}}$$<br>这个函数大概长这样（以$\theta^Tx$为自变量）：<br><img src="/2017/01/14/MLearn-logistic-regression/hx.png" alt="hx.png" title=""><br>$h_{\theta}(x)=P(y=1;x;\theta)\in(0,1)$，即在给定$\theta$下，$x$属于分类1的概率。<br>容易发现：<br><span>$$\begin{cases}
+<p><strong>构造新的假设函数</strong>：<br><span>$$H(x)=\dfrac{1}{1+e^{-x}}\\
+h_{\theta}(x)=H(\theta^Tx)$$</span><!-- Has MathJax --><br>函数$H(x)$大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/hx.png" alt="hx.png" title=""><br>$h_{\theta}(x)=P(y=1;x;\theta)\in(0,1)$，即在给定$\theta$下，$x$属于分类1的概率。<br>容易发现：<br><span>$$\begin{cases}
 h_{\theta}(x)&gt;0.5 &amp; \text{ if } \theta^Tx&gt;0\\ 
 h_{\theta}(x)&lt;0.5 &amp; \text{ if } \theta^Tx&lt;0
 \end{cases}$$</span><!-- Has MathJax --><br>此时就存在一个x取值的集合，使得$\theta^Tx=0$，这个集合就被称为决策边界（Decision Boundary），在边界的两侧分别代表x属于不同的分类。</p>
 <p>在逻辑回归中，最小二乘法类型的代价函数$J(\theta)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$不再适用，因为$h_{\theta}(x)$的含义已经变化，实际上，这样得到的代价函数不是凸函数，这意味着不能通过梯度下降来找到最小值。</p>
 <p><strong>构造新的代价函数</strong>：<br><span>$$\begin{align*}
-g_{\theta}(x)&amp;=\begin{cases}-ln(h_{\theta}(x)) &amp; \text{ if } y=1\\ 
--ln(1-h_{\theta}(x)) &amp; \text{ if } y=0
+g_{\theta}(i)&amp;=\begin{cases}-ln(h_{\theta}(x^{(i)})) &amp; \text{ if } y^{(i)}=1\\ 
+-ln(1-h_{\theta}(x^{(i)})) &amp; \text{ if } y^{(i)}=0
 \end{cases}
 \\ 
-&amp;=-y* ln(h_{\theta}(x))-(1-y)*ln(1-h_{\theta}(x))\\
-J(\theta)&amp;=\sum_{i=1}^mg_{\theta}(x^{(i)})&amp;
-\end{align*}$$</span><!-- Has MathJax --><br>这个函数大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
+&amp;=-y^{(i)}* ln(h_{\theta}(x^{(i)}))-(1-y^{(i)})*ln(1-h_{\theta}(x^{(i)}))\\
+J(\theta)&amp;=\sum_{i=1}^mg_{\theta}(i)&amp;
+\end{align*}$$</span><!-- Has MathJax --><br>函数$g_{\theta}(i)$大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
 <p>当如果$y=1,h_{\theta}(x)\to 0$，即x有很大可能属于分类0，此时将得到$J(\theta)\to+\infty$的惩罚项，反之亦然。<br><ruby>可以证明<rp> (</rp><rt>cǐ chǔ shěng lüè</rt><rp>) </rp></ruby>，这个代价函数是一个凸函数。</p>
 <p><strong>$J(\theta)$的偏导数：</strong><br>为了实现梯度下降，求出代价函数的偏导数：<br>$$\dfrac{\partial J(\theta)}{\partial\theta_j}=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j$$<br>会发现实际上，逻辑回归的偏导数与线性回归是相同的，但值得注意的是，$h_{\theta}(x)$的含义不再相同。</p>
 <h3 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h3><p>除了用梯度下降求一个凸函数的极值，还有其他更复杂的版本：共轭下降法、BFGS、L-BFGS。<br>这些方法以中学数学水平是难以理解的。<br>不过有一种方法高级优化方法，就是……<br>直接调用octave的<code>fminunc</code>函数……</p>
@@ -62,9 +63,9 @@ J(\theta)&amp;=\sum_{i=1}^mg_{\theta}(x^{(i)})&amp;
 <li>让自变量的值尽量小，使函数更加“平滑”，即进行正则化，在上述例子中，就是让高次项的系数尽量小。</li>
 </ol>
 <p>在原有的代价函数中，添加正则化系数：<br>$$J’(\theta)=J(\theta)+\lambda\sum_{i=1}^n\theta_i^2$$<br>也就是说，对于$\theta$添加惩罚项，当$\theta$过大时，代价会偏高；这样，在拟合样本数据的同时兼顾到$\theta$的大小；其中$\lambda$叫做正则系数。值得注意的是，当正则系数过大时，正则项“喧宾夺主”，也就是说过分注重与$\theta$的大小而导致欠拟合。还有，就是一般不对$\theta_0$进行正则化。</p>
-<h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到（$j\not=0）$<br><span>$$\begin{align*}
-\dfrac{\partial J(\theta)}{\partial\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
-\theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J(\theta)}{\partial\theta_j}\\
+<h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到（$j\not=0）$：<br><span>$$\begin{align*}
+\dfrac{\partial J&apos;(\theta)}{\partial\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
+\theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J&apos;(\theta)}{\partial\theta_j}\\
 \theta_j &amp;= \theta_j(1-\dfrac{\lambda\alpha}{m})-\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})
 \end{align*}$$</span><!-- Has MathJax --><br>$\theta_0$不做正则化，偏导数与原来相同。</p>
 <h3 id="正则化正规方程"><a href="#正则化正规方程" class="headerlink" title="正则化正规方程"></a>正则化正规方程</h3><p>正则化正规方程不仅可以解决过拟合的问题，也可以处理Week2中提及的$X^TX$不可逆的问题。<br>证明略去。<br><span>$$L=\begin{bmatrix}
