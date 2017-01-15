@@ -24,7 +24,7 @@
 h_{\theta}(x)&gt;0.5 &amp; \text{ if } \theta^Tx&gt;0\\ 
 h_{\theta}(x)&lt;0.5 &amp; \text{ if } \theta^Tx&lt;0
 \end{cases}$$</span><!-- Has MathJax --><br>此时就存在一个x取值的集合，使得$\theta^Tx=0$，这个集合就被称为决策边界（Decision Boundary），在边界的两侧分别代表x属于不同的分类。</p>
-<p>在逻辑回归中，最小二乘法类型的代价函数$J(\theta_0,\theta_1)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$不再适用，因为$h_{\theta}(x)$的含义已经变化，实际上，这样得到的代价函数不是凸函数，这意味着不能通过梯度下降来找到最小值。</p>
+<p>在逻辑回归中，最小二乘法类型的代价函数$J(\theta)=\dfrac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$不再适用，因为$h_{\theta}(x)$的含义已经变化，实际上，这样得到的代价函数不是凸函数，这意味着不能通过梯度下降来找到最小值。</p>
 <p><strong>构造新的代价函数</strong>：<br><span>$$\begin{align*}
 g_{\theta}(x)&amp;=\begin{cases}-ln(h_{\theta}(x)) &amp; \text{ if } y=1\\ 
 -ln(1-h_{\theta}(x)) &amp; \text{ if } y=0
