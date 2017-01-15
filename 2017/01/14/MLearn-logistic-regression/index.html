@@ -36,7 +36,7 @@ Machine Learning Week 3 笔记
 <meta property="og:image" content="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/hx.png">
 <meta property="og:image" content="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/jtheta.png">
 <meta property="og:image" content="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/overfitting.png">
-<meta property="og:updated_time" content="2017-01-15T04:03:36.610Z">
+<meta property="og:updated_time" content="2017-01-15T04:09:01.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Week3」逻辑回归">
 <meta name="twitter:description" content="rt{
@@ -156,21 +156,21 @@ g_{\theta}(x)&amp;=\begin{cases}-ln(h_{\theta}(x)) &amp; \text{ if } y=1\\
 J(\theta)&amp;=\sum_{i=1}^mg_{\theta}(x^{(i)})&amp;
 \end{align*}$$</span><!-- Has MathJax --><br>这个函数大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
 <p>当如果$y=1,h_{\theta}(x)\to 0$，即x有很大可能属于分类0，此时将得到$J(\theta)\to+\infty$的惩罚项，反之亦然。<br><ruby>可以证明<rp> (</rp><rt>cǐ chǔ shěng lüè</rt><rp>) </rp></ruby>，这个代价函数是一个凸函数。</p>
-<p><strong>$J(\theta)$的偏导数：</strong><br>为了实现梯度下降，求出代价函数的偏导数：<br>$$\dfrac{\partial J(\theta)}{\theta_j}=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j$$<br>会发现实际上，逻辑回归的偏导数与线性回归是相同的，但值得注意的是，$h_{\theta}(x)$的含义不再相同。</p>
+<p><strong>$J(\theta)$的偏导数：</strong><br>为了实现梯度下降，求出代价函数的偏导数：<br>$$\dfrac{\partial J(\theta)}{\partial\theta_j}=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j$$<br>会发现实际上，逻辑回归的偏导数与线性回归是相同的，但值得注意的是，$h_{\theta}(x)$的含义不再相同。</p>
 <h3 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h3><p>除了用梯度下降求一个凸函数的极值，还有其他更复杂的版本：共轭下降法、BFGS、L-BFGS。<br>这些方法以中学数学水平是难以理解的。<br>不过有一种方法高级优化方法，就是……<br>直接调用octave的<code>fminunc</code>函数……</p>
 <p><strong>首先，需要一个自定义函数<code>costFunction</code></strong><br><figure class="highlight matlab"><figcaption><span>costFunction.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[jVal, gradient]</span> = <span class="title">costFunction</span><span class="params">(theta)</span></span></span><br><span class="line">    jVal = [...code to compute J(theta)...];</span><br><span class="line">    gradient = [...code to compute derivative of J(theta)...];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>然后直接调用它就好了</strong><br><figure class="highlight matlab"><figcaption><span>main.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%option： 给定梯度（偏导数）,最大迭代数</span></span><br><span class="line">options = optimset(<span class="string">'GradObj'</span>, <span class="string">'on'</span>, <span class="string">'MaxIter'</span>, <span class="number">100</span>);</span><br><span class="line">initialTheta = <span class="built_in">zeros</span>(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line"><span class="comment">%return: 极值点, 极值, 是否收敛</span></span><br><span class="line">[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);</span><br></pre></td></tr></table></figure></p>
 <h3 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h3><p>将数据分为n个类别而不只是两类，即因变量<span>$y\in U=\{0,1,...,n-1\}$</span><!-- Has MathJax --><br>在这种情况下，需要n个分类器：<br>第$i$个为：将$i$看做1，将<span>$U-\{i\}$</span><!-- Has MathJax -->看做是0，跑二元逻辑回归，记它得到的假设函数为$p_i(x)$<br>那么对于一个新数据x，取$max_{i}(p_i(x))$作为输出结果。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="欠拟合-过拟合"><a href="#欠拟合-过拟合" class="headerlink" title="欠拟合/过拟合"></a>欠拟合/过拟合</h3><p>当自变量x过少时，会出现<strong>欠拟合（Underfitting）</strong>的问题，而x过多而m太小，则会导致<strong>过拟合（Overfitting）</strong>。<br>比如说，如果一组样本数据$(x^{(i)},y^{(i)})$能被一个二次函数很好地拟合，那么当用一次函数即一条直线取拟合数据时，则不能很好的预测结果；<br>而如果用的次数过高，虽然能准确地匹配样本数据（$J(\theta)\to 0$），但是对于新数据往往不能得到很好的预测值，因为它多出了不必要的弯曲和角度。<br><img src="/2017/01/14/MLearn-logistic-regression/overfitting.png" alt="overfitting.png" title=""></p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="欠拟合-过拟合"><a href="#欠拟合-过拟合" class="headerlink" title="欠拟合/过拟合"></a>欠拟合/过拟合</h3><p>当自变量x过少时，会出现<strong>欠拟合（Underfitting）</strong>的问题，而x过多而m太小，则会导致<strong>过拟合（Overfitting）</strong>。<br>比如说，如果一组样本数据$(x^{(i)},y^{(i)})$能被一个二次函数很好地拟合，那么当用一次函数即一条直线取拟合数据时，则不能很好的预测结果；而如果用的次数过高，虽然能准确地匹配样本数据（$J(\theta)\to 0$），但是对于新数据往往不能得到很好的预测值，因为它多出了不必要的弯曲和角度。<br><img src="/2017/01/14/MLearn-logistic-regression/overfitting.png" alt="overfitting.png" title=""></p>
 <h3 id="正则化-1"><a href="#正则化-1" class="headerlink" title="正则化"></a>正则化</h3><p>解决过拟合的问题，有两种思路：</p>
 <ol>
 <li>减少不必要的自变量，在上述例子中就是去掉高次项。</li>
 <li>让自变量的值尽量小，使函数更加“平滑”，即进行正则化，在上述例子中，就是让高次项的系数尽量小。</li>
 </ol>
-<p>在原有的代价函数中，添加正则化系数：<br>$$J’(\theta)=J(\theta)+\lambda\sum_{i=1}^n\theta_i^2$$<br>也就是说，对于$\theta$添加惩罚项，当$\theta$过大时，代价会偏高；这样，在拟合样本数据的同时兼顾到$\theta$的大小；其中$\lambda$叫做正则系数。<br>值得注意的是，当正则系数过大时，正则项“喧宾夺主”，也就是说过分注重与$\theta$的大小而导致欠拟合。<br>还有，就是一般不对$\theta_0$进行正则化。</p>
+<p>在原有的代价函数中，添加正则化系数：<br>$$J’(\theta)=J(\theta)+\lambda\sum_{i=1}^n\theta_i^2$$<br>也就是说，对于$\theta$添加惩罚项，当$\theta$过大时，代价会偏高；这样，在拟合样本数据的同时兼顾到$\theta$的大小；其中$\lambda$叫做正则系数。值得注意的是，当正则系数过大时，正则项“喧宾夺主”，也就是说过分注重与$\theta$的大小而导致欠拟合。还有，就是一般不对$\theta_0$进行正则化。</p>
 <h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到（$j\not=0）$<br><span>$$\begin{align*}
-\dfrac{\partial J(\theta)}{\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
-\theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J(\theta)}{\theta_j}\\
+\dfrac{\partial J(\theta)}{\partial\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
+\theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J(\theta)}{\partial\theta_j}\\
 \theta_j &amp;= \theta_j(1-\dfrac{\lambda\alpha}{m})-\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})
 \end{align*}$$</span><!-- Has MathJax --><br>$\theta_0$不做正则化，偏导数与原来相同。</p>
 <h3 id="正则化正规方程"><a href="#正则化正规方程" class="headerlink" title="正则化正规方程"></a>正则化正规方程</h3><p>正则化正规方程不仅可以解决过拟合的问题，也可以处理Week2中提及的$X^TX$不可逆的问题。<br>证明略去。<br><span>$$L=\begin{bmatrix}
