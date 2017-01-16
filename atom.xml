@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-16T12:27:20.305Z</updated>
+  <updated>2017-01-16T12:30:18.512Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/"/>
     <id>https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/</id>
     <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-16T12:27:20.305Z</updated>
+    <updated>2017-01-16T12:30:18.512Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -132,7 +132,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 <li>让自变量的值尽量小，使函数更加“平滑”，即进行正则化，在上述例子中，就是让高次项的系数尽量小。</li>
 </ol>
 <p>在原有的代价函数中，添加正则化系数：<br>$$J’(\theta)=J(\theta)+\lambda\sum_{i=1}^n\theta_i^2$$<br>也就是说，对于$\theta$添加惩罚项，当$\theta$过大时，代价会偏高；这样，在拟合样本数据的同时兼顾到$\theta$的大小；其中$\lambda$叫做正则系数。值得注意的是，当正则系数过大时，正则项“喧宾夺主”，也就是说过分注重与$\theta$的大小而导致欠拟合。还有，就是一般不对$\theta_0$进行正则化。</p>
-<h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到（$j\not=0）$：<br><span>$$\begin{align*}
+<h3 id="正则化回归"><a href="#正则化回归" class="headerlink" title="正则化回归"></a>正则化回归</h3><p>对添加了正则项的$J’(\theta)$求偏导数，可以得到（$j\not=0$）：<br><span>$$\begin{align*}
 \dfrac{\partial J&apos;(\theta)}{\partial\theta_j}&amp;=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j+\dfrac{\lambda \theta_j}{m}\\ 
 \theta_j &amp;= \theta_j-\alpha\cdot\dfrac{\partial J&apos;(\theta)}{\partial\theta_j}\\
 \theta_j &amp;= \theta_j(1-\dfrac{\lambda\alpha}{m})-\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})
