@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-16T12:22:01.986Z</updated>
+  <updated>2017-01-16T12:27:20.305Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/"/>
     <id>https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/</id>
     <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-16T12:22:01.986Z</updated>
+    <updated>2017-01-16T12:27:20.305Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -150,7 +150,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 <ol>
 <li><code>+</code>和<code>o</code>代表标记形状，<code>k</code>代表标记颜色（k=black），详见<code>help plot</code></li>
 <li><code>;Admitted;</code>和<code>legend(&#39;Admitted&#39;)</code>效果相同</li>
-<li><code>&#39;LineWidth&#39;,2</code>很明显将线宽设为2，<code>MakerFaceColor</code>是标记的填充颜色，还有<code>MakerEdgeColor</code>指描边颜色</li>
+<li><code>&#39;LineWidth&#39;,2</code>很明显将线宽设为2，<code>MarkerFaceColor</code>是标记的填充颜色，还有<code>MarkerEdgeColor</code>指描边颜色</li>
 </ol>
 <img src="/2017/01/14/MLearn-logistic-regression/plot.png" alt="plot.png" title="">
 <h3 id="contour绘制等值线"><a href="#contour绘制等值线" class="headerlink" title="contour绘制等值线"></a>contour绘制等值线</h3><p><code>contour(x,y,Z,v)</code>用于绘制二元函数$f(x,y)$的轮廓图，也就是等值线。<br>这个函数就是先画出有限个点(x,y)，将将函数值相等的点连起来构成等值线。参数x和参数y就是这些点的坐标值，描述了<code>legnth(x)*length(y)</code>个点。Z为这些点的$f(x,y)$值，<code>row(Z)==length(x)</code>而且<code>column(Z)==length(y)</code>。v为一个函数值向量，就是要画出的几条等直线的函数值。</p>
