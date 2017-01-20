@@ -109,7 +109,7 @@ z^{(l)}_0 &amp; \cdots &amp; z^{(l)}_{s_{l}}
  J(\Theta)=&amp;-\dfrac{1}{m}\sum_{i=1}^m\sum_{k=1}^K[y_{k}^{(i)}ln(h_{\Theta}(x^{(i)})_k)+(1-y_{k}^{(i)})ln(1-h_{\Theta}(x^{(i)})_k)] \\ 
  &amp;+\dfrac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}(\Theta^{(l)}_{j,i})^2
 \end{align*}$$</span><!-- Has MathJax --></p>
-<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>为了应用梯度下降，我们需要求出代价函数的偏导数。<br><strong>考虑一组样本数据的情况：</strong><br>首先，通过正向传播，可以得到网络中的所有$a^{(l)}_j$的值。</p>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>为了应用梯度下降，我们需要求出代价函数的偏导数。<br><strong>考虑一组样本数据的情况：</strong><br>首先，通过前向传播，可以得到网络中的所有$a^{(l)}_j$的值。</p>
 <p>然后，用<strong>反向传播（Backpropagation）</strong>求出偏导数。<br>先对$g(z)$求导：<br><span>$$\begin{align*}
 g(z^{(l)}_j) &amp;=
 &Tab;\dfrac{1}{1+e^{-z^{(l)}_j}}&amp;(Scalar)\\
