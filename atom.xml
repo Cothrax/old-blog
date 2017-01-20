@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-16T12:36:31.088Z</updated>
+  <updated>2017-01-20T14:54:18.185Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -14,6 +14,173 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「Week4-5」神经网络</title>
+    <link href="https://cothrax.github.io/2017/01/14/MLearn-neural-networks/"/>
+    <id>https://cothrax.github.io/2017/01/14/MLearn-neural-networks/</id>
+    <published>2017-01-14T11:44:52.000Z</published>
+    <updated>2017-01-20T14:54:18.185Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Machine Learning Week 4-5 笔记</p>
+</blockquote>
+<p>当碰到一些复杂的非线性模型时，尤其是当变量非常多时，一般的多项式回归算法已经不再使用了。基于模仿脑的仿生学原理（虽然其工作方式和神经元是两回事），引入<strong>神经网络（Neural Networks）</strong>模型。<br><a id="more"></a></p>
+<blockquote>
+<p>Quiz和Homework还没做</p>
+</blockquote>
+<h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h2><p>从OIer的角度看，神经网络其实就是一种特殊的带权分层图，而<strong>前向传播（Forward Propagation）</strong>则有一种网络流的即视感，通过传播可以实现向量迭代，来实现机器学习。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><img src="/2017/01/14/MLearn-neural-networks/network.png" alt="network.png" title="">
+<p>神经网络中的每一个点被称为<strong>单元(Unit)</strong>，用$a^{(l)}_i$表示第$l$层的第$i$个单元。点权为当前的数据，其中：</p>
+<ul>
+<li>第一层（没有入边）称作输入层，即表示输入值$x=a^{(1)}$</li>
+<li>最后一层（没有出边）是输出层，表示输出$y$。</li>
+</ul>
+<p>除了输出层外，每一层都有一个<strong>偏置单元(Bias Unit)</strong>，记为$a^{(l)}_0$，类似于在回归算法中存在变量$\theta_0$。</p>
+<p>相邻两层前存在连边，如果记第$l$层除了偏置单元外有$s_l$个单元；那么第$l$层到第$l+1$层有$s_{l+1}\times(s_l+1)$条边，边权用一个矩阵$\Theta^{(l)}\in\mathbb{R}^{s_{l+1}\times(s_l+1)}$表示，其中$\Theta^{(l)}_{i,j}$表示$a^{(l)}_j$到$a^{(l+1)}_i$间的连边。</p>
+<h3 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h3><p>记$z^{(l)}_i$为单元$a^{(l)}_i$从上一层得到的数据的话，那么：<br><span>$$\begin{align*}
+z^{(l+1)}_i&amp;=\sum_{j=0}^{s_l}a^{(l)}_j\Theta^{(l)}_{i,j}\\
+a^{(l+1)}_i&amp;=g(z^{(l+1)}_i)
+\end{align*}$$</span><!-- Has MathJax --><br>其中$g(z)$有个奇怪的名字叫<strong>激励函数（Activation Function）</strong>；在上图的例子中：<br><span>$$\begin{align*}
+a^{(2)}_1&amp;=g(\Theta^{(1)}_{1,0}x_0+\Theta^{(1)}_{1,1}x_1+\Theta^{(1)}_{1,2}x_2+\Theta^{(1)}_{1,3}x_3)\\
+a^{(2)}_2&amp;=g(\Theta^{(1)}_{2,0}x_0+\Theta^{(1)}_{2,1}x_1+\Theta^{(1)}_{2,2}x_2+\Theta^{(1)}_{2,3}x_3)\\
+a^{(2)}_3&amp;=g(\Theta^{(1)}_{3,0}x_0+\Theta^{(1)}_{3,1}x_1+\Theta^{(1)}_{3,2}x_2+\Theta^{(1)}_{3,3}x_3)\\
+y&amp;=g(\Theta^{(2)}_{1,0}a^{(2)}_0+\Theta^{(2)}_{1,1}a^{(2)}_1+\Theta^{(2)}_{1,2}a^{(2)}_2+\Theta^{(2)}_{3,3}a^{(2)}_3)
+\end{align*}$$</span><!-- Has MathJax --></p>
+<blockquote>
+<p>退役狗：$z$的计算不就是费用流吗</p>
+</blockquote>
+<p>这意味着，我们可以边权矩阵$\Theta$实现边之间点权向量$a$的变换，在上图的例子中，如果函数$g(z)=\dfrac{1}{1+e^{-z}}$，那么一个单元就是一次二元逻辑回归运算，通过多层多单元的组合，边得到了一个复杂的计算模型。</p>
+<p>如果将上述的标记向量化的话：<br><span>$$\begin{align*}
+a^{(l)}&amp;=\begin{bmatrix}
+a^{(l)}_0 &amp; \cdots &amp; a^{(l)}_{s_{l}} 
+\end{bmatrix}^T\\
+z^{(l)}&amp;=\begin{bmatrix}
+z^{(l)}_0 &amp; \cdots &amp; z^{(l)}_{s_{l}} 
+\end{bmatrix}^T
+\end{align*}$$</span><!-- Has MathJax --></p>
+<h3 id="例子：逻辑运算"><a href="#例子：逻辑运算" class="headerlink" title="例子：逻辑运算"></a>例子：逻辑运算</h3><p>如果输入$x_1,x_2$为两个布尔值的话，可以用神经网络实现逻辑运算。<br>记$g(z)=\dfrac{1}{1+e^{-z}}$，比如说，那么可以构造一个网络实现<code>and</code>运算。在这个例子中，$z^{(2)}=\Theta^{(1)}x=-30+20x_1+20x_2$。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">x1</th>
+<th style="text-align:center">x2</th>
+<th style="text-align:center">z</th>
+<th style="text-align:center">g(z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">-30</td>
+<td style="text-align:center">≈0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-10</td>
+<td style="text-align:center">≈0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-10</td>
+<td style="text-align:center">≈0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">≈1</td>
+</tr>
+</tbody>
+</table>
+<img src="/2017/01/14/MLearn-neural-networks/and.png" alt="and.png" title="">
+<p>同样的，如果$\Theta^{(1)}=\begin{bmatrix}-10 &amp; 20 &amp; 20\end{bmatrix}$可以构造出<code>or</code>运算等等。<br>那么，由于<code>A xor B = not((A and B) or not (A or B))</code>，构造如下网络实现异或运算：<br><img src="/2017/01/14/MLearn-neural-networks/xor.png" alt="xor.png" title=""></p>
+<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>过构造多层神经网络，可以实现多元分类。这是一个三变量三分类网络的例子：<br><img src="/2017/01/14/MLearn-neural-networks/multi.png" alt="multi.png" title=""><br>输出值y为一个三维列向量，它的三种可能值对应了三种分类：<br><span>$$y=
+\begin{bmatrix}
+1\\ 
+0\\ 
+0
+\end{bmatrix}
+\begin{bmatrix}
+0\\ 
+1\\ 
+0
+\end{bmatrix}
+\begin{bmatrix}
+0\\ 
+0\\ 
+1
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>记：</p>
+<ol>
+<li>$L$：神经网络的层数</li>
+<li>$K$：输出层的单元数量（即$s_L$）</li>
+<li>$h_{\Theta}(x)_k$为输出层的第$k$个单元值（即$a^{(L)}_k$）</li>
+<li>由于是讨论分类，这里的$g(z)=\dfrac{1}{1+e^{-z}}$</li>
+</ol>
+<p>构造一个新的代价函数（带正则化），前面的部分类似二元逻辑回归，相当于把输出层所有单元的代价函数加起来；后面那一坨sigma是正则项，就是求除偏置单元的连边之外的所有边权的平方和。<br><span>$$\begin{align*}
+ J(\Theta)=&amp;-\dfrac{1}{m}\sum_{i=1}^m\sum_{k=1}^K[y_{k}^{(i)}ln(h_{\Theta}(x^{(i)})_k)+(1-y_{k}^{(i)})ln(1-h_{\Theta}(x^{(i)})_k)] \\ 
+ &amp;+\dfrac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}(\Theta^{(l)}_{j,i})^2
+\end{align*}$$</span><!-- Has MathJax --></p>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>为了应用梯度下降，我们需要求出代价函数的偏导数。<br><strong>考虑一组样本数据的情况：</strong><br>首先，通过正向传播，可以得到网络中的所有$a^{(l)}_j$的值。</p>
+<p>然后，用<strong>反向传播（Backpropagation）</strong>求出偏导数。<br>先对$g(z)$求导：<br><span>$$\begin{align*}
+g(z^{(l)}_j) &amp;=
+&Tab;\dfrac{1}{1+e^{-z^{(l)}_j}}&amp;(Scalar)\\
+g(z^{(l)}) &amp;=
+&Tab;\begin{bmatrix}
+&Tab;&Tab;g(z_0^{(l)}) &amp; \cdots &amp; g(z_{s_l}^{(l)})
+&Tab;\end{bmatrix}^T&amp;(Vector)\\
+g&apos;(z^{(l)}) &amp;=
+&Tab;a.*(1-a^{(l)})&amp;(Vector)\\ 
+\end{align*}$$</span><!-- Has MathJax --><br>然后求出误差，$\delta^{(l)}_i$表示第$l$层第$i$个单元的误差：<br><span>$$\begin{align*}
+\delta^{(l)}&amp;=\begin{bmatrix}
+\delta^{(l)}_0 &amp; \cdots &amp; \delta^{(l)}_{s_l}
+\end{bmatrix}^T\\
+\delta^{(l)} &amp;=
+&Tab;\begin{cases}
+&Tab;&Tab;a^{(L)}-y &amp; \text{ if } l=L \\ 
+&Tab;&Tab;(\Theta^{(l)})^T\delta^{(l+1)}.*g&apos;(z^{(l)}) &amp; \text{ if } l\in[2,L-1] 
+&Tab;\end{cases}\\
+\end{align*}$$</span><!-- Has MathJax --><br>其中，$.*$是逐位乘法，即将两个同规模的矩阵对应元素乘起来，得到同规模的新矩阵。<br>然后求出不考虑正则项时，$\Theta_{i,j}^{l}$的偏导数项$\Delta^{(l)}_{i,j}$，向量化$\Delta$规模与$\Theta$相同。<br>$$\Delta^{(l)}=\delta^{l+1}(a^{(l)})^T$$</p>
+<p><strong>通过这样求出所有样本数据的$\Delta^{(l)}$</strong>，然后加起来，最后再添上正则项的导数，这样就得到的$J(\Theta)$中所有参数的偏导数（注意不对连向偏置单元的边正则化）：<br><span>$$\dfrac{\partial J(\Theta)}{\partial \Theta^{(l)}_{i,j}}=\begin{cases}
+\sum^m\Delta^{(l)}_{i,j}+\lambda\Theta^{(l)}_{i,j} &amp; \text{ if } j\not=0\\ 
+\sum^m\Delta^{(l)}_{i,j} &amp; \text{ if } j=0 
+\end{cases}$$</span><!-- Has MathJax --></p>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><ol>
+<li>注意到当前$J(\Theta)$的参数是$L$个矩阵，需要将它们展开合并成一个向量，方便调用<code>fminunc</code>函数；但在计算偏导数时，又需要重构原来的矩阵。</li>
+<li>与回归算法不同的是，$\Theta$初始值不能全部赋成0（盯着上面的图看看，如果边权都是0会怎么样？），引入随机化，取$\Theta^{(l)}_{i,j}\in[-\epsilon,\epsilon]$</li>
+<li>为了验证神经网络的正确性，可以计算$J(\Theta)$在$[x-\epsilon,x+\epsilon]$内的平均变化率（想想数学老师就是这样教我们逼近导数的），验证是不是约等于反向传播求出的偏导数。</li>
+<li>神经网络中的$J(\Theta)$并不是一个凸函数，但在实际应用中，找到一个局部的极小值大都可以给出比较好的预测结果。</li>
+</ol>
+<h3 id="应用：自动驾驶"><a href="#应用：自动驾驶" class="headerlink" title="应用：自动驾驶"></a>应用：自动驾驶</h3><p>这大概是很早的一个实验了，大概就是CMU的一个教授，用一个叫ALVINN的三层神经网络<strong>开车</strong>，开的还是军用悍马。将车前方的路况图像压缩成一个30x32的灰度图作为输入数据，车的行驶方向作为输出值。先让人开一会儿来训练神经网络，然后让ALVINN开。它开车时动用了三个神经网络，从预测结果中选择自信度最高的作为行驶方向。<br>在我看，ALVINN是在“观看”人的驾驶过程中训练网络的，这意味着训练数据是逐一输入的，而本周所讲的训练方法似乎并不适用，因为它要用到所有的数据来计算梯度。<br>另外，总感觉ALVINN的这种方法好不靠谱啊，因为如果路与两边的对比度不高的话，会不会很危险呢。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Machine Learning Week 4-5 笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当碰到一些复杂的非线性模型时，尤其是当变量非常多时，一般的多项式回归算法已经不再使用了。基于模仿脑的仿生学原理（虽然其工作方式和神经元是两回事），引入&lt;strong&gt;神经网络（Neural Networks）&lt;/strong&gt;模型。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="AI/ML" scheme="https://cothrax.github.io/categories/AI-ML/"/>
+    
+    
+      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="线性代数" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+      <category term="监督学习" scheme="https://cothrax.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="分类" scheme="https://cothrax.github.io/tags/%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="神经网络" scheme="https://cothrax.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>「Week3」逻辑回归</title>
@@ -188,13 +355,13 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     
       <category term="回归" scheme="https://cothrax.github.io/tags/%E5%9B%9E%E5%BD%92/"/>
     
-      <category term="偏导数" scheme="https://cothrax.github.io/tags/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
-    
       <category term="正规方程" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
     
       <category term="分类" scheme="https://cothrax.github.io/tags/%E5%88%86%E7%B1%BB/"/>
     
       <category term="正则化" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E5%88%99%E5%8C%96/"/>
+    
+      <category term="偏导数" scheme="https://cothrax.github.io/tags/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
     
   </entry>
   
@@ -203,7 +370,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     <link href="https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/"/>
     <id>https://cothrax.github.io/2017/01/07/MLearn-linear-regression-2/</id>
     <published>2017-01-06T16:00:00.000Z</published>
-    <updated>2017-01-16T05:07:18.274Z</updated>
+    <updated>2017-01-20T14:56:48.629Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -299,6 +466,8 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     
       <category term="正规方程" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
     
+      <category term="梯度下降法" scheme="https://cothrax.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/"/>
+    
   </entry>
   
   <entry>
@@ -306,7 +475,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2017-01-14T14:17:31.090Z</updated>
+    <updated>2017-01-20T14:56:57.439Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记</p>
@@ -367,13 +536,13 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
       <category term="AI/ML" scheme="https://cothrax.github.io/categories/AI-ML/"/>
     
     
+      <category term="线性代数" scheme="https://cothrax.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
       <category term="监督学习" scheme="https://cothrax.github.io/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="回归" scheme="https://cothrax.github.io/tags/%E5%9B%9E%E5%BD%92/"/>
     
-      <category term="梯度下降" scheme="https://cothrax.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
-    
-      <category term="偏导数" scheme="https://cothrax.github.io/tags/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
+      <category term="梯度下降法" scheme="https://cothrax.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/"/>
     
   </entry>
   
@@ -454,9 +623,9 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
       <category term="DFS" scheme="https://cothrax.github.io/tags/DFS/"/>
+    
+      <category term="位运算" scheme="https://cothrax.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
       <category term="网络流" scheme="https://cothrax.github.io/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
     
@@ -690,9 +859,9 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
       <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
     
     
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
       <category term="数据结构" scheme="https://cothrax.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
     
       <category term="平衡树" scheme="https://cothrax.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
@@ -1251,51 +1420,6 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
       <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
       <category term="矩阵" scheme="https://cothrax.github.io/tags/%E7%9F%A9%E9%98%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bzoj-1097 [POI2007]旅游景点atr</title>
-    <link href="https://cothrax.github.io/2016/12/09/bzoj-1097/"/>
-    <id>https://cothrax.github.io/2016/12/09/bzoj-1097/</id>
-    <published>2016-12-09T11:11:26.000Z</published>
-    <updated>2016-12-31T11:39:28.240Z</updated>
-    
-    <content type="html"><![CDATA[<p>大意：给定n个节点，m条边的带权无向图，要最小化这样一条路径的代价：</p>
-<ol>
-<li>从点1出发</li>
-<li>经过点2..k+1，顺序有一定的要求</li>
-<li>终点为n</li>
-</ol>
-<p>$n\leq 20000,m\leq 200000,k\leq 20$</p>
-<a id="more"></a>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://hzwer.com/4742.html" target="_blank" rel="external">hzwer</a><br><a href="/2016/12/09/bzoj-1097/atr.cpp" title="atr.cpp">atr.cpp</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先处理1..k+1及n之间的最短路<br>然后状压dp，记f[s][i]为状态为s，s(x)表示第x个点是否已经经过，i为这条路径终点<br>转移直接枚举补集中的点即可</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><figcaption><span>atr.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mkp(x,y) make_pair(x,y)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">20010</span>,M=<span class="number">400010</span>,K=<span class="number">25</span>,L=<span class="number">1</span>&lt;&lt;<span class="number">21</span>,INF=<span class="number">10E8</span>;</span><br><span class="line"><span class="keyword">struct</span> edge&#123;<span class="keyword">int</span> v,w,nxt;&#125; g[M];</span><br><span class="line"><span class="keyword">int</span> head[N],d[N],a[K][K],f[L][K],bf[K],af[K],b[K];</span><br><span class="line"><span class="keyword">int</span> n,m,k,t,l,sz=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> flg[N];</span><br><span class="line"><span class="keyword">void</span> _add(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span><br><span class="line">&#123;g[++sz]=&#123;v,w,head[u]&#125;;head[u]=sz;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span><br><span class="line"></span>&#123;_add(u,v,w);_add(v,u,w);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dij</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    priority_queue&lt;P,<span class="built_in">vector</span>&lt;P&gt;,greater&lt;P&gt; &gt;q;</span><br><span class="line">    fill(d,d+n+<span class="number">1</span>,INF);fill(flg,flg+n+<span class="number">1</span>,<span class="literal">false</span>);</span><br><span class="line">    d[s]=<span class="number">0</span>;q.push(mkp(<span class="number">0</span>,s));</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u=q.top().second,v;q.pop();</span><br><span class="line">        <span class="keyword">if</span>(flg[u])<span class="keyword">continue</span>;flg[u]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=g[i].nxt)</span><br><span class="line">            <span class="keyword">if</span>(d[u]+g[i].w&lt;d[v=g[i].v])</span><br><span class="line">                d[v]=d[u]+g[i].w,q.push(mkp(d[v],v));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;i++)a[s][i]=d[i];</span><br><span class="line">    a[s][<span class="number">0</span>]=d[n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">jud</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> i)</span></span><br><span class="line"></span>&#123;<span class="keyword">return</span> (x&amp;bf[i])==bf[i]&amp;&amp;(x&amp;af[i])==<span class="number">0</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("atr9b.in","r",stdin);freopen("out","w",stdout);</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d %d\n"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">int</span> u,v,w;l=<span class="number">1</span>&lt;&lt;k;b[<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=k+<span class="number">1</span>;i++)b[i]=b[i<span class="number">-1</span>]&lt;&lt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d\n"</span>,&amp;u,&amp;v,&amp;w),add(u,v,w);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=k+<span class="number">1</span>;i++)dij(i);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d\n"</span>,&amp;u,&amp;v);</span><br><span class="line">        bf[v]|=b[u];af[u]|=b[v];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k+<span class="number">1</span>;j++)f[i][j]=INF;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=k+<span class="number">1</span>;i++)</span><br><span class="line">        <span class="keyword">if</span>(!bf[i])f[b[i]][i]=a[i][<span class="number">1</span>]<span class="comment">/*,printf("%d, ",i)*/</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k+<span class="number">1</span>;j++)<span class="keyword">if</span>(f[i][j]!=INF)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">2</span>;p&lt;=k+<span class="number">1</span>;p++)<span class="keyword">if</span>(!(i&amp;b[p])&amp;&amp;jud(i,p))</span><br><span class="line">                f[i|b[p]][p]=min(f[i|b[p]][p],f[i][j]+a[j][p]);</span><br><span class="line">    <span class="keyword">int</span> ans=INF;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=k+<span class="number">1</span>;i++)ans=min(ans,f[l<span class="number">-1</span>][i]+a[i][<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">    <span class="comment">//fclose(stdin);fclose(stdout);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;大意：给定n个节点，m条边的带权无向图，要最小化这样一条路径的代价：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;从点1出发&lt;/li&gt;
-&lt;li&gt;经过点2..k+1，顺序有一定的要求&lt;/li&gt;
-&lt;li&gt;终点为n&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;$n\leq 20000,m\leq 200000,k\leq 20$&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OI/ACM" scheme="https://cothrax.github.io/categories/OI-ACM/"/>
-    
-    
-      <category term="DP" scheme="https://cothrax.github.io/tags/DP/"/>
-    
-      <category term="图论" scheme="https://cothrax.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-      <category term="最短路" scheme="https://cothrax.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
-      <category term="状压DP" scheme="https://cothrax.github.io/tags/%E7%8A%B6%E5%8E%8BDP/"/>
     
   </entry>
   
