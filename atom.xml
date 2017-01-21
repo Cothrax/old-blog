@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-20T15:03:50.259Z</updated>
+  <updated>2017-01-21T06:01:25.966Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://cothrax.github.io/2017/01/14/MLearn-neural-networks/"/>
     <id>https://cothrax.github.io/2017/01/14/MLearn-neural-networks/</id>
     <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-20T15:03:50.259Z</updated>
+    <updated>2017-01-21T06:01:25.966Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Machine Learning Week 4-5 笔记</p>
@@ -135,7 +135,9 @@ g(z^{(l)}) &amp;=
 &Tab;\end{bmatrix}^T&amp;(Vector)\\
 g&apos;(z^{(l)}) &amp;=
 &Tab;a.*(1-a^{(l)})&amp;(Vector)\\ 
-\end{align*}$$</span><!-- Has MathJax --><br>然后求出误差，$\delta^{(l)}_i$表示第$l$层第$i$个单元的误差：<br><span>$$\begin{align*}
+\end{align*}$$</span><!-- Has MathJax --><br>然后求出误差，$\delta^{(l)}_i$表示第$l$层第$i$个单元的误差。实际上，所谓的“误差”是有数学定义的，它是$cost(x,y)$的偏导数。<br><span>$$\begin{align*}
+cost(x,y)&amp;=y\cdot ln(h_{\Theta}(x))+(1-y)\cdot ln((1-h_{\Theta}(x))\\
+\delta^{(l)}_j&amp;=\dfrac{\partial cost(x,y)}{\partial z_j^{(l)}}\\
 \delta^{(l)}&amp;=\begin{bmatrix}
 \delta^{(l)}_0 &amp; \cdots &amp; \delta^{(l)}_{s_l}
 \end{bmatrix}^T\\
