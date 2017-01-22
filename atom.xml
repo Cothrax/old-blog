@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cothrax.github.io/"/>
-  <updated>2017-01-21T06:01:25.966Z</updated>
+  <updated>2017-01-22T03:57:50.763Z</updated>
   <id>https://cothrax.github.io/</id>
   
   <author>
@@ -17,20 +17,17 @@
   
   <entry>
     <title>「Week4-5」神经网络</title>
-    <link href="https://cothrax.github.io/2017/01/14/MLearn-neural-networks/"/>
-    <id>https://cothrax.github.io/2017/01/14/MLearn-neural-networks/</id>
-    <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-21T06:01:25.966Z</updated>
+    <link href="https://cothrax.github.io/2017/01/21/MLearn-neural-networks/"/>
+    <id>https://cothrax.github.io/2017/01/21/MLearn-neural-networks/</id>
+    <published>2017-01-21T11:44:52.000Z</published>
+    <updated>2017-01-22T03:57:50.763Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Machine Learning Week 4-5 笔记</p>
 </blockquote>
 <p>当碰到一些复杂的非线性模型时，尤其是当变量非常多时，一般的多项式回归算法已经不再使用了。基于模仿脑的仿生学原理（虽然其工作方式和神经元是两回事），引入<strong>神经网络（Neural Networks）</strong>模型。<br><a id="more"></a></p>
-<blockquote>
-<p>Quiz和Homework还没做</p>
-</blockquote>
 <h2 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h2><p>从OIer的角度看，神经网络其实就是一种特殊的带权分层图，而<strong>前向传播（Forward Propagation）</strong>则有一种网络流的即视感，通过传播可以实现向量迭代，来实现机器学习。</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><img src="/2017/01/14/MLearn-neural-networks/network.png" alt="network.png" title="">
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><img src="/2017/01/21/MLearn-neural-networks/network.png" alt="network.png" title="">
 <p>神经网络中的每一个点被称为<strong>单元(Unit)</strong>，用$a^{(l)}_i$表示第$l$层的第$i$个单元。点权为当前的数据，其中：</p>
 <ul>
 <li>第一层（没有入边）称作输入层，即表示输入值$x=a^{(1)}$</li>
@@ -96,9 +93,9 @@ z^{(l)}_0 &amp; \cdots &amp; z^{(l)}_{s_{l}}
 </tr>
 </tbody>
 </table>
-<img src="/2017/01/14/MLearn-neural-networks/and.png" alt="and.png" title="">
-<p>同样的，如果$\Theta^{(1)}=\begin{bmatrix}-10 &amp; 20 &amp; 20\end{bmatrix}$可以构造出<code>or</code>运算等等。<br>那么，由于<code>A xor B = not((A and B) or not (A or B))</code>，构造如下网络实现异或运算：<br><img src="/2017/01/14/MLearn-neural-networks/xor.png" alt="xor.png" title=""></p>
-<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>过构造多层神经网络，可以实现多元分类。这是一个三变量三分类网络的例子：<br><img src="/2017/01/14/MLearn-neural-networks/multi.png" alt="multi.png" title=""><br>输出值y为一个三维列向量，它的三种可能值对应了三种分类：<br><span>$$y=
+<img src="/2017/01/21/MLearn-neural-networks/and.png" alt="and.png" title="">
+<p>同样的，如果$\Theta^{(1)}=\begin{bmatrix}-10 &amp; 20 &amp; 20\end{bmatrix}$可以构造出<code>or</code>运算等等。<br>那么，由于<code>A xor B = not((A and B) or not (A or B))</code>，构造如下网络实现异或运算：<br><img src="/2017/01/21/MLearn-neural-networks/xor.png" alt="xor.png" title=""></p>
+<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>过构造多层神经网络，可以实现多元分类。这是一个三变量三分类网络的例子：<br><img src="/2017/01/21/MLearn-neural-networks/multi.png" alt="multi.png" title=""><br>输出值y为一个三维列向量，它的三种可能值对应了三种分类：<br><span>$$y=
 \begin{bmatrix}
 1\\ 
 0\\ 
@@ -125,6 +122,7 @@ z^{(l)}_0 &amp; \cdots &amp; z^{(l)}_{s_{l}}
  J(\Theta)=&amp;-\dfrac{1}{m}\sum_{i=1}^m\sum_{k=1}^K[y_{k}^{(i)}ln(h_{\Theta}(x^{(i)})_k)+(1-y_{k}^{(i)})ln(1-h_{\Theta}(x^{(i)})_k)] \\ 
  &amp;+\dfrac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}(\Theta^{(l)}_{j,i})^2
 \end{align*}$$</span><!-- Has MathJax --></p>
+<p>这是一个分类数为<code>num_labels</code>的3层神经网络，原来y是一个<code>m*1</code>的向量，取值在<code>[1,num_labels]</code>之间，要把它化成<code>m*num_labels</code>的矩阵。<br><figure class="highlight matlab"><figcaption><span>nnCostFunction.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Forward Propagation</span></span><br><span class="line"><span class="comment">% X		m*401</span></span><br><span class="line"><span class="comment">% opt		m*10</span></span><br><span class="line"><span class="comment">% A2		m*26</span></span><br><span class="line"><span class="comment">% A3(hx)	m*10</span></span><br><span class="line"><span class="comment">% Theta1	25*401</span></span><br><span class="line"><span class="comment">% Theta2	10*26</span></span><br><span class="line">X = [ones(m, <span class="number">1</span>), X];</span><br><span class="line">Z = [<span class="number">1e5</span>*ones(m, <span class="number">1</span>), X*Theta1<span class="string">'];</span><br><span class="line">A2 = sigmoid(Z);</span><br><span class="line">A3 = sigmoid(A2*Theta2'</span>);</span><br><span class="line">opt = ([<span class="number">1</span>:num_labels])(<span class="built_in">ones</span>(m,<span class="number">1</span>),:)==y;</span><br><span class="line">J = sum(sum(-opt.*<span class="built_in">log</span>(A3)-(<span class="number">1</span>-opt).*<span class="built_in">log</span>(<span class="number">1</span>-A3)));</span><br><span class="line">J += lambda*sum(sum(Theta1(:, <span class="number">2</span>:input_layer_size+<span class="number">1</span>).^<span class="number">2</span>))/<span class="number">2</span>;</span><br><span class="line">J += lambda*sum(sum(Theta2(:, <span class="number">2</span>:hidden_layer_size+<span class="number">1</span>).^<span class="number">2</span>))/<span class="number">2</span>;</span><br><span class="line">J /= m;</span><br></pre></td></tr></table></figure></p>
 <h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>为了应用梯度下降，我们需要求出代价函数的偏导数。<br><strong>考虑一组样本数据的情况：</strong><br>首先，通过前向传播，可以得到网络中的所有$a^{(l)}_j$的值。</p>
 <p>然后，用<strong>反向传播（Backpropagation）</strong>求出偏导数。<br>先对$g(z)$求导：<br><span>$$\begin{align*}
 g(z^{(l)}_j) &amp;=
@@ -151,11 +149,19 @@ cost(x,y)&amp;=y\cdot ln(h_{\Theta}(x))+(1-y)\cdot ln((1-h_{\Theta}(x))\\
 \sum^m\Delta^{(l)}_{i,j}+\lambda\Theta^{(l)}_{i,j} &amp; \text{ if } j\not=0\\ 
 \sum^m\Delta^{(l)}_{i,j} &amp; \text{ if } j=0 
 \end{cases}$$</span><!-- Has MathJax --></p>
+<p>上面的数学表达是不严谨的，因为没有考虑偏置单元的细节，实现时根据需要对矩阵进行修改。<br><figure class="highlight matlab"><figcaption><span>nnCostFunction.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Back Propagation</span></span><br><span class="line"><span class="comment">% delta3	10*1</span></span><br><span class="line"><span class="comment">% delta2	26*1</span></span><br><span class="line"><span class="comment">% A2(i, :)	1*26</span></span><br><span class="line"><span class="comment">% Delta2	10*26</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    delta3 = (A3(<span class="built_in">i</span>, :)-opt(<span class="built_in">i</span>, :))';</span><br><span class="line">    delta2 = Theta2'*delta3.*sigmoidGradient(Z(<span class="built_in">i</span>, :))';</span><br><span class="line">    Delta2 = delta3*A2(<span class="built_in">i</span>, :);</span><br><span class="line">    Delta1 = delta2(<span class="number">2</span>:hidden_layer_size+<span class="number">1</span>)*X(<span class="built_in">i</span>, :);</span><br><span class="line">    Theta1_grad += Delta1;</span><br><span class="line">    Theta2_grad += Delta2;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Regularization</span></span><br><span class="line">Theta1_grad(:, <span class="number">2</span>:input_layer_size+<span class="number">1</span>) += lambda*Theta1(:, <span class="number">2</span>:input_layer_size+<span class="number">1</span>);</span><br><span class="line">Theta2_grad(:, <span class="number">2</span>:hidden_layer_size+<span class="number">1</span>) += lambda*Theta2(:, <span class="number">2</span>:hidden_layer_size+<span class="number">1</span>);</span><br><span class="line">Theta1_grad /= m;</span><br><span class="line">Theta2_grad /= m;</span><br></pre></td></tr></table></figure></p>
 <h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><ol>
-<li>注意到当前$J(\Theta)$的参数是$L$个矩阵，需要将它们展开合并成一个向量，方便调用<code>fminunc</code>函数；但在计算偏导数时，又需要重构原来的矩阵。</li>
-<li>与回归算法不同的是，$\Theta$初始值不能全部赋成0（盯着上面的图看看，如果边权都是0会怎么样？），引入随机化，取$\Theta^{(l)}_{i,j}\in[-\epsilon,\epsilon]$</li>
-<li>为了验证神经网络的正确性，可以计算$J(\Theta)$在$[x-\epsilon,x+\epsilon]$内的平均变化率（想想数学老师就是这样教我们逼近导数的），验证是不是约等于反向传播求出的偏导数。</li>
-<li>神经网络中的$J(\Theta)$并不是一个凸函数，但在实际应用中，找到一个局部的极小值大都可以给出比较好的预测结果。</li>
+<li><p>注意到当前$J(\Theta)$的参数是$L$个矩阵，需要将它们展开合并成一个向量，方便调用<code>fminunc</code>函数；但在计算偏导数时，又需要重构原来的矩阵。</p>
+<figure class="highlight matlab"><figcaption><span>nnCostFunction.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 重构边权矩阵</span></span><br><span class="line">Theta1 = <span class="built_in">reshape</span>(nn_params(<span class="number">1</span>:hidden_layer_size * (input_layer_size + <span class="number">1</span>)), ...</span><br><span class="line">                 hidden_layer_size, (input_layer_size + <span class="number">1</span>));</span><br><span class="line">Theta2 = <span class="built_in">reshape</span>(nn_params((<span class="number">1</span> + (hidden_layer_size * (input_layer_size + <span class="number">1</span>))):<span class="keyword">end</span>), ...</span><br><span class="line">                 num_labels, (hidden_layer_size + <span class="number">1</span>));</span><br><span class="line"><span class="comment">% 展开偏导数矩阵</span></span><br><span class="line">grad = [Theta1_grad(:) ; Theta2_grad(:)];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与回归算法不同的是，$\Theta$初始值不能全部赋成0（盯着上面的图看看，如果边权都是0会怎么样？），引入随机化，取$\Theta^{(l)}_{i,j}\in[-\epsilon,\epsilon]$</p>
+<figure class="highlight matlab"><figcaption><span>randInitializeWeights.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">W</span> = <span class="title">randInitializeWeights</span><span class="params">(L_in, L_out)</span></span></span><br><span class="line"><span class="comment">%RANDINITIALIZEWEIGHTS Randomly initialize the weights of a layer with L_in</span></span><br><span class="line">    EPS = <span class="number">0.12</span>;</span><br><span class="line">    W = <span class="built_in">rand</span>(L_out, <span class="number">1</span>+L_in)*<span class="number">2</span>*EPS-EPS;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了验证神经网络的正确性，可以计算$J(\Theta)$在$[x-\epsilon,x+\epsilon]$内的平均变化率（想想数学老师就是这样教我们逼近导数的），验证是不是约等于反向传播求出的偏导数。</p>
+<figure class="highlight matlab"><figcaption><span>computeNumericalGradient.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">numgrad</span> = <span class="title">computeNumericalGradient</span><span class="params">(J, theta)</span></span></span><br><span class="line"><span class="comment">%COMPUTENUMERICALGRADIENT Computes the gradient using "finite differences"</span></span><br><span class="line">    numgrad = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line">    perturb = <span class="built_in">zeros</span>(<span class="built_in">size</span>(theta));</span><br><span class="line">    e = <span class="number">1e-4</span>;</span><br><span class="line">    <span class="keyword">for</span> p = <span class="number">1</span>:<span class="built_in">numel</span>(theta)</span><br><span class="line">        <span class="comment">% Set perturbation vector</span></span><br><span class="line">        perturb(p) = e;</span><br><span class="line">        loss1 = J(theta - perturb);</span><br><span class="line">        loss2 = J(theta + perturb);</span><br><span class="line">        <span class="comment">% Compute Numerical Gradient</span></span><br><span class="line">        numgrad(p) = (loss2 - loss1) / (<span class="number">2</span>*e);</span><br><span class="line">        perturb(p) = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>神经网络中的$J(\Theta)$并不是一个凸函数，但在实际应用中，找到一个局部的极小值大都可以给出比较好的预测结果。</p>
+</li>
 </ol>
 <h3 id="应用：自动驾驶"><a href="#应用：自动驾驶" class="headerlink" title="应用：自动驾驶"></a>应用：自动驾驶</h3><p>这大概是很早的一个实验了，大概就是CMU的一个教授，用一个叫ALVINN的三层神经网络<strong>开车</strong>，开的还是军用悍马。将车前方的路况图像压缩成一个30x32的灰度图作为输入数据，车的行驶方向作为输出值。先让人开一会儿来训练神经网络，然后让ALVINN开。它开车时动用了三个神经网络，从预测结果中选择自信度最高的作为行驶方向。<br>在我看，ALVINN是在“观看”人的驾驶过程中训练网络的，这意味着训练数据是逐一输入的，而本周所讲的训练方法似乎并不适用，因为它要用到所有的数据来计算梯度。<br>另外，总感觉ALVINN的这种方法好不靠谱啊，因为如果路与两边的对比度不高的话，会不会很危险呢。</p>
 ]]></content>
@@ -189,7 +195,7 @@ cost(x,y)&amp;=y\cdot ln(h_{\Theta}(x))+(1-y)\cdot ln((1-h_{\Theta}(x))\\
     <link href="https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/"/>
     <id>https://cothrax.github.io/2017/01/14/MLearn-logistic-regression/</id>
     <published>2017-01-14T11:44:52.000Z</published>
-    <updated>2017-01-16T12:36:31.088Z</updated>
+    <updated>2017-01-21T10:57:47.077Z</updated>
     
     <content type="html"><![CDATA[<style>
     rt{
@@ -363,8 +369,6 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     
       <category term="正则化" scheme="https://cothrax.github.io/tags/%E6%AD%A3%E5%88%99%E5%8C%96/"/>
     
-      <category term="偏导数" scheme="https://cothrax.github.io/tags/%E5%81%8F%E5%AF%BC%E6%95%B0/"/>
-    
   </entry>
   
   <entry>
@@ -477,10 +481,10 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     <link href="https://cothrax.github.io/2016/12/30/MLearn-linear-regression/"/>
     <id>https://cothrax.github.io/2016/12/30/MLearn-linear-regression/</id>
     <published>2016-12-30T13:35:56.000Z</published>
-    <updated>2017-01-20T14:56:57.439Z</updated>
+    <updated>2017-01-21T10:58:00.110Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1笔记</p>
+<p><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a> Week1 笔记</p>
 </blockquote>
 <p>线性回归，第一个简单的ML算法。<br>梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化一元线性回归中的二元代价函数。<br><a id="more"></a></p>
 <h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><p>机器学习（Machine Learning）：让计算机在非特定编程的条件下做出正确反应。</p>
@@ -529,7 +533,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning&lt;/a&gt; Week1笔记&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning&quot;&gt;Machine Learning&lt;/a&gt; Week1 笔记&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;线性回归，第一个简单的ML算法。&lt;br&gt;梯度下降是通过逼近的思想求一个多元函数的极值，可用于最小化一元线性回归中的二元代价函数。&lt;br&gt;
     
