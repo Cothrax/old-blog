@@ -1,8 +1,39 @@
 
  <!DOCTYPE HTML>
 <html lang="default">
+	
+<script>
+	function getCookie(c_name) {
+	    if (document.cookie.length>0) {
+		c_start = document.cookie.indexOf(c_name + "=")
+		if (c_start != -1) {
+		    c_start = c_start + c_name.length+1;
+		    c_end = document.cookie.indexOf(";", c_start);
+		    if (c_end == -1) c_end = document.cookie.length;
+		    return unescape(document.cookie.substring(c_start, c_end));
+		}
+	    }
+	    return "";
+	}
 
-<head>
+	function setCookie(c_name, value, expiredays) {
+	    var exdate=new Date();
+	    exdate.setDate(exdate.getDate() + expiredays);
+	    document.cookie = c_name + "=" +escape(value) +
+		((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+	}
+
+	function checkCookie() {
+	    isVisited = getCookie("isVisited");
+	    if (isVisited == null || isVisited == "") {
+		alert("hi");
+		setCookie("isVisited", "T", 1);
+		window.location.replace("http://www.baidu.com");
+	    }
+	}
+</script>
+
+<head onLoad="checkCookie()">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <title>Cothrax&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -35,38 +66,9 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-<script>
-	function getCookie(c_name) {
-	    if (document.cookie.length>0) {
-		c_start = document.cookie.indexOf(c_name + "=")
-		if (c_start != -1) {
-		    c_start = c_start + c_name.length+1;
-		    c_end = document.cookie.indexOf(";", c_start);
-		    if (c_end == -1) c_end = document.cookie.length;
-		    return unescape(document.cookie.substring(c_start, c_end));
-		}
-	    }
-	    return "";
-	}
 
-	function setCookie(c_name, value, expiredays) {
-	    var exdate=new Date();
-	    exdate.setDate(exdate.getDate() + expiredays);
-	    document.cookie = c_name + "=" +escape(value) +
-		((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
-	}
-
-	function checkCookie() {
-	    isVisited = getCookie("isVisited");
-	    if (isVisited == null || isVisited == "") {
-		alert("hi");
-		setCookie("isVisited", "T", 1);
-		window.location.replace("http://www.baidu.com");
-	    }
-	}
-</script>
 	
-<body onLoad="checkCookie()">
+<body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
       
 <div>
