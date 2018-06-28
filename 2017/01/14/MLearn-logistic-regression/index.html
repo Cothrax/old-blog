@@ -56,13 +56,13 @@ Machine Learning Week 3 笔记
     <link rel="alternative" href="/atom.xml" title="Cothrax&#39;s Blog" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/icon.ico">
+    <link rel="icon" href="/old-blog/img/icon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/logo.png">
-    <link rel="apple-touch-icon-precomposed" href="/img/logo.png">
+    <link rel="apple-touch-icon" href="/old-blog/img/logo.png">
+    <link rel="apple-touch-icon-precomposed" href="/old-blog/img/logo.png">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/old-blog/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
   <body>
@@ -110,7 +110,7 @@ Machine Learning Week 3 笔记
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/01/14/MLearn-logistic-regression/" title="「Week3」逻辑回归" itemprop="url">「Week3」逻辑回归</a>
+      <a href="/old-blog/2017/01/14/MLearn-logistic-regression/" title="「Week3」逻辑回归" itemprop="url">「Week3」逻辑回归</a>
   </h1>
   <p class="article-author">By
        
@@ -139,14 +139,14 @@ Machine Learning Week 3 笔记
 <blockquote>
 <p>Machine Learning Week 3 笔记</p>
 </blockquote>
-<p><strong>逻辑回归（Logistic Regression）</strong>虽然被叫做“回归”，但实际上是一种分类算法。通过构造新的函数，分类问题也可以应用梯度下降求解。Andrew针对求凸函数极值给出了一种<ruby>高级<rp> (</rp><rt>cū bào</rt><rp>) </rp></ruby>的优化，还介绍了用于解决过拟合（Overfitting）的<strong>正则化</strong>（Regularization）。<br><a id="more"></a><br>$\theta,x^{(i)},y^{(i)},h_{\theta}(x),J(\theta)$的含义同<a href="/2017/01/07/MLearn-linear-regression-2/" title="Week2">Week2</a>。</p>
+<p><strong>逻辑回归（Logistic Regression）</strong>虽然被叫做“回归”，但实际上是一种分类算法。通过构造新的函数，分类问题也可以应用梯度下降求解。Andrew针对求凸函数极值给出了一种<ruby>高级<rp> (</rp><rt>cū bào</rt><rp>) </rp></ruby>的优化，还介绍了用于解决过拟合（Overfitting）的<strong>正则化</strong>（Regularization）。<br><a id="more"></a><br>$\theta,x^{(i)},y^{(i)},h_{\theta}(x),J(\theta)$的含义同<a href="/old-blog/2017/01/07/MLearn-linear-regression-2/" title="Week2">Week2</a>。</p>
 <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>这里重点讨论<strong>二元逻辑回归</strong>。正如引言所说，二元逻辑回归是一类分类算法，和线性回归不同的是，其因变量y只有两个值0或者1，即根据自变量x将数据分为两类。</p>
 <h3 id="构造假设函数"><a href="#构造假设函数" class="headerlink" title="构造假设函数"></a>构造假设函数</h3><span>$$\begin{align*}
 H(x)&amp;=\dfrac{1}{1+e^{-x}}\\
 \\ 
 h_{\theta}(x)&amp;=H(\theta^Tx)
 \end{align*}$$</span><!-- Has MathJax -->
-<p>函数$H(x)$叫<strong>Sigmoid/Logistic函数</strong>，大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/hx.png" alt="hx.png" title=""><br>$h_{\theta}(x)=P(y=1;x;\theta)\in(0,1)$，即在给定$\theta$下，$x$属于分类1的概率。<br>容易发现：<br><span>$$\begin{cases}
+<p>函数$H(x)$叫<strong>Sigmoid/Logistic函数</strong>，大概长这样：<br><img src="/old-blog/2017/01/14/MLearn-logistic-regression/hx.png" alt="hx.png" title=""><br>$h_{\theta}(x)=P(y=1;x;\theta)\in(0,1)$，即在给定$\theta$下，$x$属于分类1的概率。<br>容易发现：<br><span>$$\begin{cases}
 h_{\theta}(x)&gt;0.5 &amp; \text{ if } \theta^Tx&gt;0\\ 
 h_{\theta}(x)&lt;0.5 &amp; \text{ if } \theta^Tx&lt;0
 \end{cases}$$</span><!-- Has MathJax --><br>此时就存在一个x取值的集合，使得$\theta^Tx=0$，这个集合就被称为决策边界（Decision Boundary），在边界的两侧分别代表x属于不同的分类。</p>
@@ -159,7 +159,7 @@ g_{\theta}(x,y)&amp;=\begin{cases}-ln(h_{\theta}(x)) &amp; \text{ if } y=1\\
 &amp;=-y* ln(h_{\theta}(x))-(1-y)*ln(1-h_{\theta}(x))\\
 J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 \end{align*}$$</span><!-- Has MathJax -->
-<p>函数$g_{\theta}(x,y)$大概长这样：<br><img src="/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
+<p>函数$g_{\theta}(x,y)$大概长这样：<br><img src="/old-blog/2017/01/14/MLearn-logistic-regression/jtheta.png" alt="jtheta.png" title=""></p>
 <p>当如果$y=1,h_{\theta}(x)\to 0$，即x有很大可能属于分类0，此时将得到$J(\theta)\to+\infty$的惩罚项，反之亦然。<br><ruby>可以证明<rp> (</rp><rt>cǐ chǔ shěng lüè</rt><rp>) </rp></ruby>，这个代价函数是一个凸函数。</p>
 <h3 id="J-theta-的偏导数"><a href="#J-theta-的偏导数" class="headerlink" title="$J(\theta)$的偏导数"></a>$J(\theta)$的偏导数</h3><p>为了实现梯度下降，求出代价函数的偏导数：<br>$$\dfrac{\partial J(\theta)}{\partial\theta_j}=\dfrac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x^{(i)}_j$$<br>会发现实际上，逻辑回归的偏导数与线性回归是相同的，但值得注意的是，$h_{\theta}(x)$的含义不再相同。<br>下面以中学水平，给出不严格的推<del>倒</del>导：<br><span>$$\begin{align*}
 &Tab;\theta^Tx
@@ -233,7 +233,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 </tbody>
 </table>
 <h3 id="多元逻辑回归"><a href="#多元逻辑回归" class="headerlink" title="多元逻辑回归"></a>多元逻辑回归</h3><p>将数据分为n个类别而不只是两类，即因变量<span>$y\in U=\{0,1,...,n-1\}$</span><!-- Has MathJax --><br>在这种情况下，需要n个分类器：<br>第$i$个为：将$i$看做1，将<span>$U-\{i\}$</span><!-- Has MathJax -->看做是0，跑二元逻辑回归，记它得到的假设函数为$p_i(x)$<br>那么对于一个新数据x，取$max_{i}(p_i(x))$作为输出结果。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="欠拟合-过拟合"><a href="#欠拟合-过拟合" class="headerlink" title="欠拟合/过拟合"></a>欠拟合/过拟合</h3><p>当自变量x过少时，会出现<strong>欠拟合（Underfitting）</strong>的问题，而x过多而m太小，则会导致<strong>过拟合（Overfitting）</strong>。<br>比如说，如果一组样本数据$(x^{(i)},y^{(i)})$能被一个二次函数很好地拟合，那么当用一次函数即一条直线取拟合数据时，则不能很好的预测结果；而如果用的次数过高，虽然能准确地匹配样本数据（$J(\theta)\to 0$），但是对于新数据往往不能得到很好的预测值，因为它多出了不必要的弯曲和角度。<br><img src="/2017/01/14/MLearn-logistic-regression/overfitting.png" alt="overfitting.png" title=""></p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="欠拟合-过拟合"><a href="#欠拟合-过拟合" class="headerlink" title="欠拟合/过拟合"></a>欠拟合/过拟合</h3><p>当自变量x过少时，会出现<strong>欠拟合（Underfitting）</strong>的问题，而x过多而m太小，则会导致<strong>过拟合（Overfitting）</strong>。<br>比如说，如果一组样本数据$(x^{(i)},y^{(i)})$能被一个二次函数很好地拟合，那么当用一次函数即一条直线取拟合数据时，则不能很好的预测结果；而如果用的次数过高，虽然能准确地匹配样本数据（$J(\theta)\to 0$），但是对于新数据往往不能得到很好的预测值，因为它多出了不必要的弯曲和角度。<br><img src="/old-blog/2017/01/14/MLearn-logistic-regression/overfitting.png" alt="overfitting.png" title=""></p>
 <h3 id="正则化-1"><a href="#正则化-1" class="headerlink" title="正则化"></a>正则化</h3><p>解决过拟合的问题，有两种思路：</p>
 <ol>
 <li>减少不必要的自变量，在上述例子中就是去掉高次项。</li>
@@ -260,10 +260,10 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 <li><code>;Admitted;</code>和<code>legend(&#39;Admitted&#39;)</code>效果相同</li>
 <li><code>&#39;LineWidth&#39;,2</code>很明显将线宽设为2，<code>MarkerFaceColor</code>是标记的填充颜色，还有<code>MarkerEdgeColor</code>指描边颜色</li>
 </ol>
-<img src="/2017/01/14/MLearn-logistic-regression/plot.png" alt="plot.png" title="">
+<img src="/old-blog/2017/01/14/MLearn-logistic-regression/plot.png" alt="plot.png" title="">
 <h3 id="contour绘制等值线"><a href="#contour绘制等值线" class="headerlink" title="contour绘制等值线"></a>contour绘制等值线</h3><p><code>contour(x,y,Z,v)</code>用于绘制二元函数$f(x,y)$的轮廓图，也就是等值线。<br>就是先画出有限个点(x,y)，将函数值相等的点连起来构成等值线。参数向量x和参数向量y就是这些点的坐标值，描述了<code>legnth(x)*length(y)</code>个点。Z为这些点的$f(x,y)$值，<code>rows(Z)==length(x)</code>而且<code>columns(Z)==length(y)</code>。v为一个函数值向量，就是要画出的几条等直线的函数值。</p>
 <p>比如说，绘制$f(x,y)=(x-2)^2+3*(y-2)^2$的等值线<br><figure class="highlight matlab"><figcaption><span>testc.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">-10</span>:<span class="number">0.1</span>:<span class="number">10</span>]; y = x;</span><br><span class="line"><span class="comment">% compute f(x,y)</span></span><br><span class="line">Z = <span class="built_in">zeros</span>(<span class="built_in">length</span>(x), <span class="built_in">length</span>(y));</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="built_in">length</span>(x)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:<span class="built_in">length</span>(y)</span><br><span class="line">        Z(<span class="built_in">j</span>,<span class="built_in">i</span>) = (x(<span class="built_in">i</span>)<span class="number">-2</span>)^<span class="number">2</span>+<span class="number">3</span>*(y(<span class="built_in">j</span>)<span class="number">-2</span>)^<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">% draw f(x,y)</span></span><br><span class="line">contour(x,y,Z,[<span class="number">0</span>:<span class="number">50</span>:<span class="number">1000</span>]);</span><br><span class="line">colorbar; grid(<span class="string">'on'</span>);</span><br><span class="line">xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'y'</span>);</span><br><span class="line">print(<span class="string">'-dpng'</span>,<span class="string">'contour.png'</span>);</span><br></pre></td></tr></table></figure></p>
-<img src="/2017/01/14/MLearn-logistic-regression/cont.png" alt="cont.png" title="">
+<img src="/old-blog/2017/01/14/MLearn-logistic-regression/cont.png" alt="cont.png" title="">
 <p>细节：</p>
 <ol>
 <li>注意到<code>Z(j,i)=f(x(i),y(j))</code>，因为Z的<strong>第一个</strong>下标表示列，即纵轴，所以指<strong>第二个</strong>参数<code>y</code></li>
@@ -277,13 +277,13 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/AI-ML/">AI/ML</a>
+  <a class="article-category-link" href="/old-blog/categories/AI-ML/">AI/ML</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/线性代数/">线性代数</a><a href="/tags/监督学习/">监督学习</a><a href="/tags/回归/">回归</a><a href="/tags/正规方程/">正规方程</a><a href="/tags/分类/">分类</a><a href="/tags/正则化/">正则化</a>
+  <span></span> <a href="/old-blog/tags/线性代数/">线性代数</a><a href="/old-blog/tags/监督学习/">监督学习</a><a href="/old-blog/tags/回归/">回归</a><a href="/old-blog/tags/正规方程/">正规方程</a><a href="/old-blog/tags/分类/">分类</a><a href="/old-blog/tags/正则化/">正则化</a>
   </div>
 
 </div>
@@ -306,7 +306,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/01/21/MLearn-neural-networks/" title="「Week4-5」神经网络">
+ <a href="/old-blog/2017/01/21/MLearn-neural-networks/" title="「Week4-5」神经网络">
   <strong>上一篇：</strong><br/>
   <span>
   「Week4-5」神经网络</span>
@@ -315,7 +315,7 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 
 
 <div class="next">
-<a href="/2017/01/07/MLearn-linear-regression-2/"  title="「Week2」多元线性回归">
+<a href="/old-blog/2017/01/07/MLearn-linear-regression-2/"  title="「Week2」多元线性回归">
  <strong>下一篇：</strong><br/> 
  <span>「Week2」多元线性回归
 </span>
@@ -343,18 +343,18 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">Archives</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
   
-  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/old-blog/js/tagcloud.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/old-blog/js/tagcanvas.js"></script>
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div id="myCanvasContainer" class="tagcloudlist">
        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-          <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/tags/DP/" style="font-size: 20px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/tags/分类/" style="font-size: 10.67px;">分类</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/tags/回归/" style="font-size: 11.33px;">回归</a> <a href="/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/tags/梯度下降法/" style="font-size: 10.67px;">梯度下降法</a> <a href="/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/tags/正则化/" style="font-size: 10px;">正则化</a> <a href="/tags/正规方程/" style="font-size: 10.67px;">正规方程</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/tags/监督学习/" style="font-size: 12px;">监督学习</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 12.67px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 12px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.33px;">高精度</a>
+          <a href="/old-blog/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/old-blog/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/old-blog/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/old-blog/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/old-blog/tags/DP/" style="font-size: 20px;">DP</a> <a href="/old-blog/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/old-blog/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/old-blog/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/old-blog/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/old-blog/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/old-blog/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/old-blog/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/old-blog/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/old-blog/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/old-blog/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/old-blog/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/old-blog/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/old-blog/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/old-blog/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/old-blog/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/old-blog/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/old-blog/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/old-blog/tags/分块/" style="font-size: 10px;">分块</a> <a href="/old-blog/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/old-blog/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/old-blog/tags/分类/" style="font-size: 10.67px;">分类</a> <a href="/old-blog/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/old-blog/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/old-blog/tags/割点/" style="font-size: 10px;">割点</a> <a href="/old-blog/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/old-blog/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/old-blog/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/old-blog/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/old-blog/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/old-blog/tags/回归/" style="font-size: 11.33px;">回归</a> <a href="/old-blog/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/old-blog/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/old-blog/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/old-blog/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/old-blog/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/old-blog/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/old-blog/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/old-blog/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/old-blog/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/old-blog/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/old-blog/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/old-blog/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/old-blog/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/old-blog/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/old-blog/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/old-blog/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/old-blog/tags/数学/" style="font-size: 18px;">数学</a> <a href="/old-blog/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/old-blog/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/old-blog/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/old-blog/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/old-blog/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/old-blog/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/old-blog/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/old-blog/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/old-blog/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/old-blog/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/old-blog/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/old-blog/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/old-blog/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/old-blog/tags/梯度下降法/" style="font-size: 10.67px;">梯度下降法</a> <a href="/old-blog/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/old-blog/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/old-blog/tags/正则化/" style="font-size: 10px;">正则化</a> <a href="/old-blog/tags/正规方程/" style="font-size: 10.67px;">正规方程</a> <a href="/old-blog/tags/物理/" style="font-size: 10px;">物理</a> <a href="/old-blog/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/old-blog/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/old-blog/tags/监督学习/" style="font-size: 12px;">监督学习</a> <a href="/old-blog/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/old-blog/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/old-blog/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/old-blog/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/old-blog/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/old-blog/tags/线性代数/" style="font-size: 12.67px;">线性代数</a> <a href="/old-blog/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/old-blog/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/old-blog/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/old-blog/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/old-blog/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/old-blog/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/old-blog/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/old-blog/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/old-blog/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/old-blog/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/old-blog/tags/递推/" style="font-size: 10px;">递推</a> <a href="/old-blog/tags/链表/" style="font-size: 12px;">链表</a> <a href="/old-blog/tags/队列/" style="font-size: 10px;">队列</a> <a href="/old-blog/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/old-blog/tags/高精度/" style="font-size: 11.33px;">高精度</a>
        </canvas>
     </div>
   </div>
@@ -413,10 +413,10 @@ J(\theta)&amp;=\dfrac{1}{m}\sum_{i=1}^mg_{\theta}(x^{(i)},y^{(i)})&amp;
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+    <script src="/old-blog/js/jquery-2.0.3.min.js"></script>
+<script src="/old-blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/old-blog/js/gallery.js"></script>
+<script src="/old-blog/js/jquery.qrcode-0.12.0.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){ 
@@ -554,8 +554,8 @@ $(document).ready(function(){
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="/old-blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/old-blog/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
@@ -607,9 +607,9 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/old-blog/img/scrollup.png"/></a>
 	</div>
-	<script src="/js/totop.js"></script>
+	<script src="/old-blog/js/totop.js"></script>
 
 <!-- Totop End -->
 

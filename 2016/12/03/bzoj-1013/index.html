@@ -27,13 +27,13 @@
     <link rel="alternative" href="/atom.xml" title="Cothrax&#39;s Blog" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/icon.ico">
+    <link rel="icon" href="/old-blog/img/icon.ico">
     
     
-    <link rel="apple-touch-icon" href="/img/logo.png">
-    <link rel="apple-touch-icon-precomposed" href="/img/logo.png">
+    <link rel="apple-touch-icon" href="/old-blog/img/logo.png">
+    <link rel="apple-touch-icon-precomposed" href="/old-blog/img/logo.png">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <link rel="stylesheet" href="/old-blog/css/style.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
   <body>
@@ -81,7 +81,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/12/03/bzoj-1013/" title="bzoj-1013 [JSOI2008]球形空间产生器" itemprop="url">bzoj-1013 [JSOI2008]球形空间产生器</a>
+      <a href="/old-blog/2016/12/03/bzoj-1013/" title="bzoj-1013 [JSOI2008]球形空间产生器" itemprop="url">bzoj-1013 [JSOI2008]球形空间产生器</a>
   </h1>
   <p class="article-author">By
        
@@ -102,7 +102,7 @@
 		</div>
 		
 		<p>大意：给定n维空间内的n+1个坐标，求这些坐标确定的球的球心<br>n≤10<br><a id="more"></a></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1013" target="_blank" rel="external">bzoj-1013</a><br><a href="/2016/12/03/bzoj-1013/1013.cpp" title="1013.cpp">1013.cpp</a></p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1013" target="_blank" rel="external">bzoj-1013</a><br><a href="/old-blog/2016/12/03/bzoj-1013/1013.cpp" title="1013.cpp">1013.cpp</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>列方程组，然后高斯消元即可<br>如相邻两个方程：<br>$\sum{(x_i-a_i)^2}=r^2$<br>$\sum{(x_i-b_i)^2}=r^2$<br>相减得到<br>$\sum{2(a_i-b_i)x_i}=\sum{a_i^2}-\sum{b_i^2}$</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><figcaption><span>1013.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="comment">//#define D</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">15</span>;<span class="keyword">const</span> <span class="keyword">double</span> EPS=<span class="number">10E-4</span>;</span><br><span class="line"><span class="keyword">int</span> n;<span class="keyword">double</span> a[N][N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solv</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> p=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(a[p][i]&lt;a[j][i])p=j;</span><br><span class="line">        swap(a[p],a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n+<span class="number">1</span>;j++)a[i][j]/=a[i][i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)<span class="keyword">if</span>(j!=i)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;=n+<span class="number">1</span>;k++)</span><br><span class="line">                a[j][k]-=a[j][i]*a[i][k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    freopen(<span class="string">"in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a[i][j]);</span><br><span class="line">            a[i][n+<span class="number">1</span>]+=a[i][j]*a[i][j];</span><br><span class="line">            a[i][j]*=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n+<span class="number">1</span>;j++)</span><br><span class="line">            a[i][j]-=a[i+<span class="number">1</span>][j];</span><br><span class="line">    solv();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">double</span> x=a[i][n+<span class="number">1</span>];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%0.3lf"</span>,(<span class="built_in">abs</span>(x)&lt;EPS)?<span class="number">0</span>:x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;n)<span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
@@ -112,13 +112,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/OI-ACM/">OI/ACM</a>
+  <a class="article-category-link" href="/old-blog/categories/OI-ACM/">OI/ACM</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/高斯消元/">高斯消元</a>
+  <span></span> <a href="/old-blog/tags/高斯消元/">高斯消元</a>
   </div>
 
 </div>
@@ -141,7 +141,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/12/03/bzoj-1012/" title="bzoj-1012 [JSOI2008]最大数">
+ <a href="/old-blog/2016/12/03/bzoj-1012/" title="bzoj-1012 [JSOI2008]最大数">
   <strong>上一篇：</strong><br/>
   <span>
   bzoj-1012 [JSOI2008]最大数</span>
@@ -150,7 +150,7 @@
 
 
 <div class="next">
-<a href="/2016/12/03/bzoj-1001/"  title="bzoj-1001 狼抓兔子">
+<a href="/old-blog/2016/12/03/bzoj-1001/"  title="bzoj-1001 狼抓兔子">
  <strong>下一篇：</strong><br/> 
  <span>bzoj-1001 狼抓兔子
 </span>
@@ -178,18 +178,18 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">Archives</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2017/01/">January 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/12/">December 2016</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/11/">November 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/10/">October 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/09/">September 2016</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/08/">August 2016</a><span class="archive-list-count">39</span></li><li class="archive-list-item"><a class="archive-list-link" href="/old-blog/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
   
-  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/old-blog/js/tagcloud.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/old-blog/js/tagcanvas.js"></script>
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div id="myCanvasContainer" class="tagcloudlist">
        <canvas width="250" height="250" id="resCanvas" style="width=100%">
-          <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/tags/DP/" style="font-size: 20px;">DP</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/tags/分类/" style="font-size: 10.67px;">分类</a> <a href="/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/tags/回归/" style="font-size: 11.33px;">回归</a> <a href="/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/tags/梯度下降法/" style="font-size: 10.67px;">梯度下降法</a> <a href="/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/tags/正则化/" style="font-size: 10px;">正则化</a> <a href="/tags/正规方程/" style="font-size: 10.67px;">正规方程</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/tags/监督学习/" style="font-size: 12px;">监督学习</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/tags/线性代数/" style="font-size: 12.67px;">线性代数</a> <a href="/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/链表/" style="font-size: 12px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/tags/高精度/" style="font-size: 11.33px;">高精度</a>
+          <a href="/old-blog/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/old-blog/tags/Bash/" style="font-size: 10.67px;">Bash</a> <a href="/old-blog/tags/DFS/" style="font-size: 15.33px;">DFS</a> <a href="/old-blog/tags/DFS序/" style="font-size: 12px;">DFS序</a> <a href="/old-blog/tags/DP/" style="font-size: 20px;">DP</a> <a href="/old-blog/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/old-blog/tags/Hash/" style="font-size: 13.33px;">Hash</a> <a href="/old-blog/tags/Hexo/" style="font-size: 11.33px;">Hexo</a> <a href="/old-blog/tags/KMP/" style="font-size: 10.67px;">KMP</a> <a href="/old-blog/tags/LCA/" style="font-size: 14px;">LCA</a> <a href="/old-blog/tags/Linux/" style="font-size: 10.67px;">Linux</a> <a href="/old-blog/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/old-blog/tags/Splay/" style="font-size: 11.33px;">Splay</a> <a href="/old-blog/tags/Treap/" style="font-size: 12px;">Treap</a> <a href="/old-blog/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/old-blog/tags/主席树/" style="font-size: 10.67px;">主席树</a> <a href="/old-blog/tags/乘法逆元/" style="font-size: 10.67px;">乘法逆元</a> <a href="/old-blog/tags/二分图/" style="font-size: 10.67px;">二分图</a> <a href="/old-blog/tags/二分答案/" style="font-size: 17.33px;">二分答案</a> <a href="/old-blog/tags/仙人掌图/" style="font-size: 10px;">仙人掌图</a> <a href="/old-blog/tags/位运算/" style="font-size: 14.67px;">位运算</a> <a href="/old-blog/tags/倍增/" style="font-size: 12px;">倍增</a> <a href="/old-blog/tags/分块/" style="font-size: 10px;">分块</a> <a href="/old-blog/tags/分层图/" style="font-size: 10.67px;">分层图</a> <a href="/old-blog/tags/分治/" style="font-size: 10.67px;">分治</a> <a href="/old-blog/tags/分类/" style="font-size: 10.67px;">分类</a> <a href="/old-blog/tags/划分DP/" style="font-size: 10px;">划分DP</a> <a href="/old-blog/tags/剪枝/" style="font-size: 10.67px;">剪枝</a> <a href="/old-blog/tags/割点/" style="font-size: 10px;">割点</a> <a href="/old-blog/tags/单调栈/" style="font-size: 11.33px;">单调栈</a> <a href="/old-blog/tags/单调队列/" style="font-size: 11.33px;">单调队列</a> <a href="/old-blog/tags/双向BFS/" style="font-size: 10px;">双向BFS</a> <a href="/old-blog/tags/双连通分量/" style="font-size: 10.67px;">双连通分量</a> <a href="/old-blog/tags/启发式合并/" style="font-size: 10.67px;">启发式合并</a> <a href="/old-blog/tags/回归/" style="font-size: 11.33px;">回归</a> <a href="/old-blog/tags/图论/" style="font-size: 18.67px;">图论</a> <a href="/old-blog/tags/堆/" style="font-size: 12.67px;">堆</a> <a href="/old-blog/tags/字符串/" style="font-size: 13.33px;">字符串</a> <a href="/old-blog/tags/容斥/" style="font-size: 11.33px;">容斥</a> <a href="/old-blog/tags/差分序列/" style="font-size: 11.33px;">差分序列</a> <a href="/old-blog/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/old-blog/tags/平衡树/" style="font-size: 14px;">平衡树</a> <a href="/old-blog/tags/平面图/" style="font-size: 10.67px;">平面图</a> <a href="/old-blog/tags/并查集/" style="font-size: 14px;">并查集</a> <a href="/old-blog/tags/强连通分量/" style="font-size: 12px;">强连通分量</a> <a href="/old-blog/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/old-blog/tags/想法题/" style="font-size: 10.67px;">想法题</a> <a href="/old-blog/tags/折半枚举/" style="font-size: 11.33px;">折半枚举</a> <a href="/old-blog/tags/拓扑排序/" style="font-size: 10.67px;">拓扑排序</a> <a href="/old-blog/tags/搜索/" style="font-size: 13.33px;">搜索</a> <a href="/old-blog/tags/数位DP/" style="font-size: 10.67px;">数位DP</a> <a href="/old-blog/tags/数学/" style="font-size: 18px;">数学</a> <a href="/old-blog/tags/数据结构/" style="font-size: 19.33px;">数据结构</a> <a href="/old-blog/tags/数论/" style="font-size: 16.67px;">数论</a> <a href="/old-blog/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/old-blog/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/old-blog/tags/最大流/" style="font-size: 12px;">最大流</a> <a href="/old-blog/tags/最小割/" style="font-size: 10.67px;">最小割</a> <a href="/old-blog/tags/最短路/" style="font-size: 16px;">最短路</a> <a href="/old-blog/tags/栈/" style="font-size: 10.67px;">栈</a> <a href="/old-blog/tags/树形DP/" style="font-size: 14.67px;">树形DP</a> <a href="/old-blog/tags/树形背包/" style="font-size: 10.67px;">树形背包</a> <a href="/old-blog/tags/树状数组/" style="font-size: 13.33px;">树状数组</a> <a href="/old-blog/tags/树结构/" style="font-size: 14.67px;">树结构</a> <a href="/old-blog/tags/树链剖分/" style="font-size: 11.33px;">树链剖分</a> <a href="/old-blog/tags/梯度下降法/" style="font-size: 10.67px;">梯度下降法</a> <a href="/old-blog/tags/概率期望/" style="font-size: 13.33px;">概率期望</a> <a href="/old-blog/tags/欧拉函数/" style="font-size: 10.67px;">欧拉函数</a> <a href="/old-blog/tags/正则化/" style="font-size: 10px;">正则化</a> <a href="/old-blog/tags/正规方程/" style="font-size: 10.67px;">正规方程</a> <a href="/old-blog/tags/物理/" style="font-size: 10px;">物理</a> <a href="/old-blog/tags/状压DP/" style="font-size: 16.67px;">状压DP</a> <a href="/old-blog/tags/生成树/" style="font-size: 11.33px;">生成树</a> <a href="/old-blog/tags/监督学习/" style="font-size: 12px;">监督学习</a> <a href="/old-blog/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/old-blog/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/old-blog/tags/离散化/" style="font-size: 10.67px;">离散化</a> <a href="/old-blog/tags/离线/" style="font-size: 12.67px;">离线</a> <a href="/old-blog/tags/线性DP/" style="font-size: 14.67px;">线性DP</a> <a href="/old-blog/tags/线性代数/" style="font-size: 12.67px;">线性代数</a> <a href="/old-blog/tags/线性筛/" style="font-size: 11.33px;">线性筛</a> <a href="/old-blog/tags/线段树/" style="font-size: 15.33px;">线段树</a> <a href="/old-blog/tags/组合数学/" style="font-size: 13.33px;">组合数学</a> <a href="/old-blog/tags/网格DP/" style="font-size: 10px;">网格DP</a> <a href="/old-blog/tags/网络流/" style="font-size: 14.67px;">网络流</a> <a href="/old-blog/tags/背包/" style="font-size: 15.33px;">背包</a> <a href="/old-blog/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/old-blog/tags/裴蜀定理/" style="font-size: 10px;">裴蜀定理</a> <a href="/old-blog/tags/贪心/" style="font-size: 15.33px;">贪心</a> <a href="/old-blog/tags/费用流/" style="font-size: 10.67px;">费用流</a> <a href="/old-blog/tags/递推/" style="font-size: 10px;">递推</a> <a href="/old-blog/tags/链表/" style="font-size: 12px;">链表</a> <a href="/old-blog/tags/队列/" style="font-size: 10px;">队列</a> <a href="/old-blog/tags/高斯消元/" style="font-size: 10.67px;">高斯消元</a> <a href="/old-blog/tags/高精度/" style="font-size: 11.33px;">高精度</a>
        </canvas>
     </div>
   </div>
@@ -248,10 +248,10 @@
 		</p>
 </div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+    <script src="/old-blog/js/jquery-2.0.3.min.js"></script>
+<script src="/old-blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/old-blog/js/gallery.js"></script>
+<script src="/old-blog/js/jquery.qrcode-0.12.0.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){ 
@@ -389,8 +389,8 @@ $(document).ready(function(){
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="/old-blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/old-blog/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
@@ -442,9 +442,9 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/old-blog/img/scrollup.png"/></a>
 	</div>
-	<script src="/js/totop.js"></script>
+	<script src="/old-blog/js/totop.js"></script>
 
 <!-- Totop End -->
 
